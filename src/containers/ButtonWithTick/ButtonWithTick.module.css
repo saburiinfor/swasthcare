@@ -1,0 +1,23 @@
+.customButton{
+
+    background-color:#17a2b8 !important;
+
+    border-color: #17a2b8 !important;
+
+    color: #000 !important;
+
+    font-weight:500 !important;
+
+}
+
+.confirmed{
+
+    background-color: darkorange !important;
+
+    color: #000 !important;
+
+    font-weight:500 !important;
+
+    border-color: darkorange !important;
+
+}
