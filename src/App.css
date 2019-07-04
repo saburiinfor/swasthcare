@@ -6,7 +6,7 @@ body{font-family: 'Roboto', sans-serif;}
 .header .logo h2{color:#fff;font-size:32px;font-weight: 400;display: inline-block;vertical-align: middle;margin-top:-10px;}
 .header .searchContainer{text-align: right;padding-right: 10px;}
 .header .search{width: 48%;border-radius: 10px;padding: 6px;border: 1px solid #fff; height: 40px;}
-.searchContainer img{vertical-align: middle;width:40px;}
+.searchContainer img{vertical-align: middle;margin-left:15px;}
 main{background: rgb(19,183,228);
   background: linear-gradient(145deg, rgba(19,183,228,1) 35%, rgba(89,122,239,1) 35%);
   height: 100%;}
