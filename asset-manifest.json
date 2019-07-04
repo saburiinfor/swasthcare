@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/swasthcare/static/css/main.8a4ee01d.chunk.css",
+    "main.css": "/swasthcare/static/css/main.135ce010.chunk.css",
     "main.js": "/swasthcare/static/js/main.1f0313b5.chunk.js",
     "main.js.map": "/swasthcare/static/js/main.1f0313b5.chunk.js.map",
     "runtime~main.js": "/swasthcare/static/js/runtime~main.9eb1b81a.js",
@@ -9,10 +9,10 @@
     "static/js/2.e8dfb3ee.chunk.js": "/swasthcare/static/js/2.e8dfb3ee.chunk.js",
     "static/js/2.e8dfb3ee.chunk.js.map": "/swasthcare/static/js/2.e8dfb3ee.chunk.js.map",
     "index.html": "/swasthcare/index.html",
-    "precache-manifest.a056c529fc70566d654e4c3a8b99f796.js": "/swasthcare/precache-manifest.a056c529fc70566d654e4c3a8b99f796.js",
+    "precache-manifest.412bda672c2d4d4011372f6420f18521.js": "/swasthcare/precache-manifest.412bda672c2d4d4011372f6420f18521.js",
     "service-worker.js": "/swasthcare/service-worker.js",
     "static/css/2.118dfa7b.chunk.css.map": "/swasthcare/static/css/2.118dfa7b.chunk.css.map",
-    "static/css/main.8a4ee01d.chunk.css.map": "/swasthcare/static/css/main.8a4ee01d.chunk.css.map",
+    "static/css/main.135ce010.chunk.css.map": "/swasthcare/static/css/main.135ce010.chunk.css.map",
     "static/media/bannerImg2.jpg": "/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
     "static/media/bannerImg3.jpg": "/swasthcare/static/media/bannerImg3.c2bb48ac.jpg"
   }
