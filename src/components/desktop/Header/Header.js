@@ -2,11 +2,11 @@ import React from "react";
 
 import { Row, Col } from "reactstrap";
 
-import SwasthLogo from "../../assets/images/SwasthLogo.png";
+import SwasthLogo from "../../../assets/images/SwasthLogo.png";
 
-import InputField from "../Common/InputField/InputField";
+import InputField from "../../Common/InputField/InputField";
 
-import search from "../../assets/images/search.png";
+import search from "../../../assets/images/search.png";
 
 import "./Header.module.css";
 

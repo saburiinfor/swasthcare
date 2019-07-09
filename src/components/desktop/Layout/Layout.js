@@ -2,20 +2,20 @@ import React from "react";
 
 import { Container, Row, Col } from "reactstrap"; 
 
-import Aux from "../../hoc/Auxwrap";
+import Aux from "../../../hoc/Auxwrap";
 
-import Header from ".././Header/Header";
+import Header from "../Header/Header";
 
-import Footer from ".././Footer/Footer";
+import Footer from "../Footer/Footer";
 
 import "./Layout.module.css";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import LoginForm from "../../containers/Login/LoginForm";
-import CreateUser from "../../containers/CreateUser/CreateUser";
-import Appointment from "../../containers/Appointment/Appointments";
-import NewApointment from "../../containers/NewApointment/NewApointment";
-import SelectAppointmentDate from "../../containers/SelectAppointmentDate/SelectAppointmentDate";
+import LoginForm from "../../../containers/Login/LoginForm";
+import CreateUser from "../../../containers/CreateUser/CreateUser";
+import Appointment from "../../../containers/Appointment/Appointments";
+import NewApointment from "../../../containers/NewApointment/NewApointment";
+import SelectAppointmentDate from "../../../containers/SelectAppointmentDate/SelectAppointmentDate";
 
 const Layout = props => (
 
