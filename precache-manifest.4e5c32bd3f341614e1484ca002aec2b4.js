@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ee90587770eed6d7d61bc55ae938171f",
+    "revision": "ea3ae94e75465f4203534c9695bd59ce",
     "url": "/swasthcare/index.html"
   },
   {
-    "revision": "9b2113a87842615c6523",
-    "url": "/swasthcare/static/css/2.118dfa7b.chunk.css"
+    "revision": "0ff9431cec542ce47968",
+    "url": "/swasthcare/static/css/2.a5840290.chunk.css"
   },
   {
-    "revision": "0700fb1c8b6f5b77b1f2",
-    "url": "/swasthcare/static/css/main.30619126.chunk.css"
+    "revision": "28708e11c232756a3088",
+    "url": "/swasthcare/static/css/main.3c542f22.chunk.css"
   },
   {
-    "revision": "9b2113a87842615c6523",
-    "url": "/swasthcare/static/js/2.a693fb4a.chunk.js"
+    "revision": "0ff9431cec542ce47968",
+    "url": "/swasthcare/static/js/2.c3c38114.chunk.js"
   },
   {
-    "revision": "0700fb1c8b6f5b77b1f2",
-    "url": "/swasthcare/static/js/main.cf336288.chunk.js"
+    "revision": "28708e11c232756a3088",
+    "url": "/swasthcare/static/js/main.24ab970a.chunk.js"
   },
   {
     "revision": "3d21d64165ee27a00735",
