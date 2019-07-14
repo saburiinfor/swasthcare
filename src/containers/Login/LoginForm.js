@@ -1,9 +1,9 @@
 import React from "react";
-import { Row, Col, Form, Button } from "reactstrap";
+import {Button, Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
 import InputField from "../../components/Common/InputField/InputField";
 import Carousel from '../Carousel/Carousel';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -11,26 +11,25 @@ class LoginForm extends React.Component {
     this.state = {
       userName: ""
     };
-
     //this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-
+  
   onSubmit(e) {
     e.preventDefault();
   }
-
+  
   onChange(e) {
     e.preventDefault();
-    this.setState({ [e.target.name]: e.target.value })
+    this.setState({[e.target.name]: e.target.value})
   }
-
+  
   render() {
     // const { } = this.state;   
     return (
       <Aux>
         <Col sm="8">
-          <Carousel />
+          <Carousel/>
           <div className="keyFeatures">
             <ul>
               <li>* Over 10,000 doctors in network</li>
@@ -46,17 +45,17 @@ class LoginForm extends React.Component {
             <Form className="form">
               <Row>
                 <Col>
-                  <InputField name="userName" id="userName" placeholder="Username" value={this.state.userName} onChange={this.onChange} />
+                  <InputField name="userName" id="userName" placeholder="Username" value={this.state.userName} onChange={this.onChange}/>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <InputField name="password" id="passWord" placeholder="Password" type="password" value={this.state.password} onChange={this.onChange} />
+                  <InputField name="password" id="passWord" placeholder="Password" type="password" value={this.state.password} onChange={this.onChange}/>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <InputField label="Remember me" name="rememberMe" id="rememberMe" type="checkbox" checked="true" value={this.state.rememberMe} onChange={this.onChange} />
+                  <InputField label="Remember me" name="rememberMe" id="rememberMe" type="checkbox" checked="true" value={this.state.rememberMe} onChange={this.onChange}/>
                 </Col>
               </Row>
               <Link to="/appointment">

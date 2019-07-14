@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "reactstrap";
+import {Button} from "reactstrap";
 import styles from "./BasicButton.module.css";
 
 const BasicButton = props => {

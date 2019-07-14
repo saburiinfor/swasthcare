@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardTitle, CardText, CardImg, CardImgOverlay } from "reactstrap";
+import {Card, CardImg, CardImgOverlay, CardText, CardTitle} from "reactstrap";
 // import styles from "./CardImageOverlay.module.css";
 
 const CardImageOverlay = props => {

@@ -1,16 +1,14 @@
 import React, {Component} from "react";
-import {Row, Col, Button, TabContent, TabPane, Nav, NavItem, NavLink, Card, CardTitle, CardText,} from "reactstrap";
+import {Button, Col, Nav, NavItem, NavLink, Row, TabContent, TabPane,} from "reactstrap";
 import AppointmentRowGroup from "../Appointment/AppointmentRowGroup";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from "./Appointment.module.css";
 import classnames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPen, faFastForward} from "@fortawesome/free-solid-svg-icons";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {faCalendarAlt} from "@fortawesome/free-solid-svg-icons";
+import {faCalendarAlt, faPen, faUser} from "@fortawesome/free-solid-svg-icons";
 import newAppointment from "../../assets/images/newAppointment.png";
 import {Helmet} from "react-helmet";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom"
+import {Link} from "react-router-dom"
 
 class Appointment extends Component {
   constructor(props) {
@@ -47,7 +45,7 @@ class Appointment extends Component {
             </Row>
             <Row>
               <Col className="text-center">
-                <FontAwesomeIcon className="mr-2" color="#ccc" size="5x" icon={faUser} />
+                <FontAwesomeIcon className="mr-2" color="#ccc" size="5x" icon={faUser}/>
                 <div className="mb-4">70% profile complete</div>
               </Col>
             </Row>
@@ -57,17 +55,23 @@ class Appointment extends Component {
                 <div>
                   <Nav tabs>
                     <NavItem>
-                      <NavLink className={classnames({active: this.state.activeTab === '1'})} onClick={() => {this.toggle('1');}}>
+                      <NavLink className={classnames({active: this.state.activeTab === '1'})} onClick={() => {
+                        this.toggle('1');
+                      }}>
                         Today
                       </NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink className={classnames({active: this.state.activeTab === '2'})} onClick={() => {this.toggle('2');}}>
+                      <NavLink className={classnames({active: this.state.activeTab === '2'})} onClick={() => {
+                        this.toggle('2');
+                      }}>
                         Tomorrow
                       </NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink className={classnames({active: this.state.activeTab === '3'})} onClick={() => {this.toggle('3');}}>
+                      <NavLink className={classnames({active: this.state.activeTab === '3'})} onClick={() => {
+                        this.toggle('3');
+                      }}>
                         <FontAwesomeIcon className="mr-2" color="#ccc" size="1x" icon={faCalendarAlt}/>
                       </NavLink>
                     </NavItem>

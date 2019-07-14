@@ -1,7 +1,6 @@
 import React from "react";
-import {Row, Button, Col, Media, ListGroup, ListGroupItem} from "reactstrap";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {faStar} from "@fortawesome/free-solid-svg-icons";
+import {Button, Col, ListGroup, ListGroupItem, Media, Row} from "reactstrap";
+import {faStar, faUser} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styles from "./MediaElement.module.css";
 import classnames from "classnames";
