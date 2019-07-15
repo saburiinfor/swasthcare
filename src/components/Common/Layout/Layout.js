@@ -1,8 +1,10 @@
 import React from "react";
 import {Container, Row} from "reactstrap";
 import Aux from "../../../hoc/Auxwrap";
+import {BrowserView, MobileView} from "react-device-detect";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Header_mobile from "../../mobile/Header/Header";
 import "./Layout.module.css";
 import {Route} from "react-router-dom";
 import LoginForm from "../../../containers/Login/LoginForm";
@@ -13,9 +15,14 @@ import SelectAppointmentDate from "../../../containers/SelectAppointmentDate/Sel
 
 const Layout = props => (
   <Aux>
-    <main>
+      <main>
       <div className="TopContainer">
-        <Header/>
+        <BrowserView>
+          <Header/>
+        </BrowserView>
+        <MobileView>
+          <Header_mobile/>
+        </MobileView>
       </div>
       <Container fluid>
         <Row className="MiddleContainer">
@@ -28,7 +35,7 @@ const Layout = props => (
         </Row>
       </Container>
       <Footer/>
-    </main>
+      </main>
   </Aux>
 );
 

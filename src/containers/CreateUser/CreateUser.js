@@ -7,7 +7,6 @@ import Carousel from '../Carousel/Carousel'
 
 class CreateUser extends Component {
   constructor(props) {
-    
     super(props);
     this.state = {
       userTypeId: "1",
@@ -30,8 +29,6 @@ class CreateUser extends Component {
       store: []
       
     }
-    
-    
   }
   
   /*componentDidMount(){

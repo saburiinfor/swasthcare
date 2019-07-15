@@ -11,16 +11,7 @@ class CustomCalenderIcon extends Component {
   render(props) {
     console.log(this.props.value);
     return (
-      <FontAwesomeIcon
-        className="ml-2 align-bottom"
-        color="#ccc"
-        size="2x"
-        icon={faCalendarAlt}
-        className="example-custom-input"
-        onClick={this.props.onClick}
-      />
-    
-    
+      <FontAwesomeIcon className="ml-2 align-bottom" color="#ccc" size="2x" icon={faCalendarAlt} className="example-custom-input" onClick={this.props.onClick}/>
     )
   }
 }

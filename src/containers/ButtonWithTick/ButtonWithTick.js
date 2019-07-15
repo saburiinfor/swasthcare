@@ -27,26 +27,16 @@ class ButtonWithTick extends Component {
     let tickIcon, buttonText;
     if (this.state.isToggleOn) {
       tickIcon = (
-        <FontAwesomeIcon
-          className={this.props.childClass}
-          color={this.props.childColor}
-          size={this.props.childSize}
-          icon={this.props.childIcon}
-        />
+        <FontAwesomeIcon className={this.props.childClass} color={this.props.childColor} size={this.props.childSize} icon={this.props.childIcon}/>
       );
       buttonText = this.props.selectedText;
     } else {
       buttonText = this.props.text;
     }
     return (
-      <Button
-        onClick={this.handleClick.bind(this)}
-        size={this.props.size}
-        color={this.props.color}
-        className={
+      <Button onClick={this.handleClick.bind(this)} size={this.props.size} color={this.props.color} className={
           this.state.isToggleOn ? styles.confirmed : styles.customButton
-        }
-      >
+        }>
         {buttonText}
         {tickIcon}
       </Button>

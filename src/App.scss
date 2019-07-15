@@ -26,6 +26,25 @@ body {
   .header {
     width: 100%;
 
+    .logged-header-mob {
+      width: 100%;
+      position: relative;
+      text-align: center;
+      padding-bottom: 5px;
+      border-bottom: 1px solid #bcbcbc;
+
+      .logo-small {
+      }
+
+      .main-menu {
+        float: left;
+      }
+
+      .notification-icon {
+        float: right;
+      }
+    }
+
     .logo {
       width: auto;
     }
@@ -105,11 +124,29 @@ body {
 }
 
 .header {
-  padding: 10px 15px;
+  padding: 10px 0px;
   display: flex;
 
-  div {
-    width: 50%;
+  //div {
+  //  width: 50%;
+  //}
+  .logged-header-mob {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #bcbcbc;
+
+    .logo-small {
+    }
+
+    .main-menu {
+      float: left;
+    }
+
+    .notification-icon {
+      float: right;
+    }
   }
 
   .logo {
@@ -147,10 +184,14 @@ body {
   }
 }
 
-main {
+.login-bg {
   background: rgb(19, 183, 228);
   background: linear-gradient(136deg, rgba(19, 183, 228, 1) 42%, rgba(89, 122, 239, 1) 35%);
   height: 100%;
+}
+
+.logged-bg {
+  background-color: #fff;
 }
 
 .keyFeatures ul {

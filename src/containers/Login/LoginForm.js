@@ -3,7 +3,8 @@ import {Button, Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
 import InputField from "../../components/Common/InputField/InputField";
 import Carousel from '../Carousel/Carousel';
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import {BrowserView, MobileView} from "react-device-detect";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -29,16 +30,18 @@ class LoginForm extends React.Component {
     return (
       <Aux>
         <Col sm="8">
-          <Carousel/>
-          <div className="keyFeatures">
-            <ul>
-              <li>* Over 10,000 doctors in network</li>
-              <li>* 24x7 expert support</li>
-              <li>* Over 1 million lab facilities</li>
-              <li>* Home clinic services</li>
-              <li>* Express services</li>
-            </ul>
-          </div>
+          <BrowserView>
+            <Carousel/>
+            <div className="keyFeatures">
+              <ul>
+                <li>* Over 10,000 doctors in network</li>
+                <li>* 24x7 expert support</li>
+                <li>* Over 1 million lab facilities</li>
+                <li>* Home clinic services</li>
+                <li>* Express services</li>
+              </ul>
+            </div>
+          </BrowserView>
         </Col>
         <Col sm="4">
           <div class="bgWhite">
@@ -65,15 +68,19 @@ class LoginForm extends React.Component {
               </Link>
             </Form>
             <p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>
-            <p id="signUp"><Link to="/createuser" className="textDn">New User, Sign Up </Link></p>
+            <BrowserView>
+              <p id="signUp"><Link to="/createuser" className="textDn">New User, Sign Up </Link></p>
+            </BrowserView>
           </div>
-          <div class="globalLinks-mob">
-            <ul>
-              <li><Link to="/createuser">Sign Up</Link></li>
-              <li><Link to="#">Privacy</Link></li>
-              <li><Link to="#">Contact us</Link></li>
-            </ul>
-          </div>
+          <MobileView>
+            <div class="globalLinks-mob">
+              <ul>
+                <li><Link to="/createuser">Sign Up</Link></li>
+                <li><Link to="#">Privacy</Link></li>
+                <li><Link to="#">Contact us</Link></li>
+              </ul>
+            </div>
+          </MobileView>
         </Col>
       </Aux>
     );

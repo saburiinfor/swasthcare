@@ -6,11 +6,7 @@ const ImgWithOverlayText = props => {
   return (
     <Aux>
       <div className={styles.overlayContainer}>
-        <img
-          src={props.imagePath}
-          className={styles.overlayImg}
-          alt={props.text}
-        />
+        <img src={props.imagePath} className={styles.overlayImg} alt={props.text}/>
         <div className={styles.textCentered}>{props.text}</div>
       </div>
     </Aux>

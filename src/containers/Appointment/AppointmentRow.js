@@ -31,17 +31,8 @@ class AppointmentRow extends Component {
           <Row>
             <Col md="7">{this.props.name}</Col>
             <Col md="5" className="text-right">
-              <ButtonWithTick
-                size="sm"
-                color="primary"
-                text="Unconfirmed"
-                selectedText="Confirmed"
-                childColor="#007bff"
-                childClass="ml-1"
-                childSize="1x"
-                childIcon={faCheck}
-                handleStateChange={this.handleStateChange.bind(this)}
-              />
+              <ButtonWithTick size="sm" color="primary" text="Unconfirmed" selectedText="Confirmed" childColor="#007bff"
+                              childClass="ml-1" childSize="1x" childIcon={faCheck} handleStateChange={this.handleStateChange.bind(this)}/>
               <BasicButton size="sm" text="Reshedule"/>
             </Col>
           </Row>
