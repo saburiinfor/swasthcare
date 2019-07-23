@@ -1,0 +1,29 @@
+.appointmentSection {
+  border: 1px darkgrey solid;
+  background-color: #fff !important;
+  padding: 10px 0px 10px 0px !important;
+  border-left: 3px #17a2b8 solid;
+}
+
+.appointmentSection.confirmed {
+  border-left: 3px darkorange solid;
+}
+
+/** Responisve css **/
+@media only screen and (max-width: 500px) {
+  body {
+    font-size: 1em;
+  }
+  main {
+    height: calc(100vh - 300px) !important;
+  }
+  .Footer {
+    position: fixed !important;
+    bottom: -10px !important;
+  }
+  .form-control {
+    border: none !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0px !important;
+  }
+}

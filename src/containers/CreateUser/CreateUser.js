@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import Aux from "../../hoc/Auxwrap";
 import {Button, Col, CustomInput, Form, FormGroup, Input, Row} from "reactstrap";
-import styles from "./CreateUser.module.css";
+import styles from "./CreateUser.module.scss";
 import axios from 'axios'
 import Carousel from '../Carousel/Carousel'
+import {BrowserView, MobileView, isMobile} from "react-device-detect";
 
 class CreateUser extends Component {
   constructor(props) {
@@ -15,12 +16,12 @@ class CreateUser extends Component {
       email: "",
       password: "",
       contactNo: "",
-      gender: "F",
+      gender: "",
       city: "",
       address: "",
-      marketId: "",
-      appId: "",
-      createdBy: "",
+      marketId: "1",
+      appId: "1",
+      createdBy: "conferkare_dev",
       roleid: "",
       bloodgrp: "",
       dob: "",
@@ -56,7 +57,7 @@ class CreateUser extends Component {
   
   onSubmitHandler = e => {
     console.log("current state is = " + JSON.stringify(this.state));
-  }
+  };
   onChangeHandler = e => {
     this.setState({[e.target.name]: e.target.value});
   };
@@ -66,87 +67,62 @@ class CreateUser extends Component {
     return (
       <Aux>
         <Col sm="8">
-          <Carousel></Carousel>
-          <div className="keyFeatures">
-            <ul>
-              <li>* Over 10,000 doctors in network</li>
-              <li>* 24x7 expert support</li>
-              <li>* Over 1 million lab facilities</li>
-              <li>* Home clinic services</li>
-              <li>* Express services</li>
-            </ul>
-          </div>
+          <BrowserView>
+            <Carousel/>
+            <div className="keyFeatures">
+              <ul>
+                <li>* Over 10,000 doctors in network</li>
+                <li>* 24x7 expert support</li>
+                <li>* Over 1 million lab facilities</li>
+                <li>* Home clinic services</li>
+                <li>* Express services</li>
+              </ul>
+            </div>
+          </BrowserView>
         </Col>
         <Col sm="4">
-          <div class="bgWhite">
+          <div className={styles.bgWhite}>
             <Form>
               <FormGroup className={styles.floatingLabel}>
                 <Input type="text" name="name" id="name" className="no-border" value={this.state.name} onChange={this.onChangeHandler}/>
-                <label>Name</label>
+                <label>Name *</label>
               </FormGroup>
               <FormGroup className={styles.floatingLabel}>
                 <Input type="email" name="email" id="email" className="no-border" value={this.state.email} onChange={this.onChangeHandler}/>
-                <label>Email</label>
+                <label>Email *</label>
               </FormGroup>
               <FormGroup className={styles.floatingLabel}>
                 <Input type="password" name="password" id="password" className="no-border" value={this.state.password} onChange={this.onChangeHandler}/>
-                <label>Password</label>
+                <label>Password *</label>
               </FormGroup>
               <FormGroup className={styles.floatingLabel}>
                 <Input type="number" name="contactNo" id="contactNo" className="no-border" value={this.state.contactno} onChange={this.onChangeHandler}/>
-                <label>Contact Number</label>
+                <label>Contact Number *</label>
               </FormGroup>
-              <FormGroup>
-                <Row className={styles.gender}>
-                  <Col sm={2}>Gender</Col>
-                  <Col sm={10}>
-                    <CustomInput inline type="radio" id="female" name="gender" label="Female" value="F" checked={this.state.gender === 'F'} onChange={this.onChangeHandler}/>
-                    <CustomInput inline type="radio" id="male" name="gender" label="Male" value="M" checked={this.state.gender === 'M'} onChange={this.onChangeHandler}/>
-                  </Col>
-                </Row>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="city" id="city" className="no-border" value={this.state.city} onChange={this.onChangeHandler}/>
-                <label>City</label>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="address" id="address" className="no-border" value={this.state.address} onChange={this.onChangeHandler}/>
-                <label>Address</label>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="marketId" id="marketId" className="no-border" value={this.state.marketId} onChange={this.onChangeHandler}/>
-                <label>Market Id</label>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="appId" id="appId" className="no-border" value={this.state.appId} onChange={this.onChangeHandler}/>
-                <label>App Id</label>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="createdBy" id="createdBy" className="no-border" value={this.state.createdBy} onChange={this.onChangeHandler}/>
-                <label>Created By</label>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="roleId" id="roleId" className="no-border" value={this.state.roleId} onChange={this.onChangeHandler}/>
-                <label>Role Id</label>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="bloodgrp" id="bloodgrp" className="no-border" value={this.state.bloodgrp} onChange={this.onChangeHandler}/>
-                <label>Blood Group</label>
-              </FormGroup>
-              <FormGroup>
-                <Input type="date" name="dob" id="dob" className="no-border pl-0" value={this.state.dob} onChange={this.onChangeHandler}/>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="status" id="status" className="no-border" value={this.state.status} onChange={this.onChangeHandler}/>
-                <label>Status</label>
-              </FormGroup>
-              <Button color="primary" onClick={this.onSubmitHandler}>Submit</Button>
-              <Button color="secondary" className="ml-2">
-                Cancel
-              </Button>
+              <div className={styles.buttonContainer}>
+                <Button color="primary" onClick={this.onSubmitHandler} className={styles.createUserBtn}>Submit</Button>
+              </div>
+              {/*<Button color="secondary" className="ml-2">*/}
+              {/*  Cancel*/}
+              {/*</Button>*/}
             </Form>
           </div>
         </Col>
+        <MobileView>
+          <div className={styles.faqContainer}>
+            <h4>Faq?</h4>
+            <ul>
+              <li>
+                <span className={styles.question}>Q. Why signup required?</span>
+                <span className={styles.answer}>A. Features are very personal and confidential so to maintain the privacy of customers we need them to have their exclusive member access.</span>
+              </li>
+              <li>
+                <span className={styles.question}>Q. Why mobile number needed?</span>
+                <span className={styles.answer}>A. Mobile number is unique for most most of the individuals and mostly users would interact with systems using phones so mobile number is taken as secondary important point.</span>
+              </li>
+            </ul>
+          </div>
+        </MobileView>
       </Aux>
     );
   }

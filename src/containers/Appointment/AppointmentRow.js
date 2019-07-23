@@ -4,7 +4,7 @@ import classnames from "classnames";
 import ButtonWithTick from "../../containers/ButtonWithTick/ButtonWithTick";
 import BasicButton from "../../components/Common/BasicButton/BasicButton";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
-import styles from "./Appointment.module.css";
+import styles from "./Appointment.module.scss";
 
 class AppointmentRow extends Component {
   constructor(props) {
@@ -29,8 +29,8 @@ class AppointmentRow extends Component {
       >
         <Container fluid>
           <Row>
-            <Col md="7">{this.props.name}</Col>
-            <Col md="5" className="text-right">
+            <Col md="7" className={styles.appointmentDesc}>{this.props.name}</Col>
+            <Col md="5" className={styles.appointmentBtns}>
               <ButtonWithTick size="sm" color="primary" text="Unconfirmed" selectedText="Confirmed" childColor="#007bff"
                               childClass="ml-1" childSize="1x" childIcon={faCheck} handleStateChange={this.handleStateChange.bind(this)}/>
               <BasicButton size="sm" text="Reshedule"/>

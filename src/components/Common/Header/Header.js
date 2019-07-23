@@ -1,7 +1,7 @@
 import React from "react";
+import "./Header.desktop.scss";
 import SwasthLogo from "../../../assets/images/SwasthLogo.png";
 import search from "../../../assets/images/search.png";
-import "./Header.module.css";
 import {Link} from "react-router-dom";
 
 const Header = props => {

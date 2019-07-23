@@ -1,4 +1,5 @@
-import React from "react";
+import React, {Component} from "react";
+import './LoginForm.module.scss';
 import {Button, Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
 import InputField from "../../components/Common/InputField/InputField";
@@ -6,7 +7,7 @@ import Carousel from '../Carousel/Carousel';
 import {Link} from "react-router-dom";
 import {BrowserView, MobileView} from "react-device-detect";
 
-class LoginForm extends React.Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,20 +32,20 @@ class LoginForm extends React.Component {
       <Aux>
         <Col sm="8">
           <BrowserView>
-            <Carousel/>
-            <div className="keyFeatures">
-              <ul>
-                <li>* Over 10,000 doctors in network</li>
-                <li>* 24x7 expert support</li>
-                <li>* Over 1 million lab facilities</li>
-                <li>* Home clinic services</li>
-                <li>* Express services</li>
-              </ul>
-            </div>
+          <Carousel/>
+          <div className="keyFeatures">
+            <ul>
+              <li>* Over 10,000 doctors in network</li>
+              <li>* 24x7 expert support</li>
+              <li>* Over 1 million lab facilities</li>
+              <li>* Home clinic services</li>
+              <li>* Express services</li>
+            </ul>
+          </div>
           </BrowserView>
         </Col>
         <Col sm="4">
-          <div class="bgWhite">
+          <div className="bgWhite">
             <Form className="form">
               <Row>
                 <Col>
@@ -62,7 +63,7 @@ class LoginForm extends React.Component {
                 </Col>
               </Row>
               <Link to="/appointment">
-                <Button color="primary" block>
+                <Button color="primary" block className={"submitBtn"}>
                   Submit
                 </Button>
               </Link>
@@ -73,7 +74,7 @@ class LoginForm extends React.Component {
             </BrowserView>
           </div>
           <MobileView>
-            <div class="globalLinks-mob">
+            <div className="globalLinks-mob">
               <ul>
                 <li><Link to="/createuser">Sign Up</Link></li>
                 <li><Link to="#">Privacy</Link></li>

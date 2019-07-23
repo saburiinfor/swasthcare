@@ -5,7 +5,7 @@ import {BrowserView, MobileView} from "react-device-detect";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import Header_mobile from "../../mobile/Header/Header";
-import "./Layout.module.css";
+import "./Layout.module.scss";
 import {Route} from "react-router-dom";
 import LoginForm from "../../../containers/Login/LoginForm";
 import CreateUser from "../../../containers/CreateUser/CreateUser";
