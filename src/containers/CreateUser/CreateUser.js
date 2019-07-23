@@ -26,7 +26,8 @@ class CreateUser extends Component {
       address: "Nayapalli",
       bloodgrp: "AB+",
       dob: "2009-07-17",
-      status: "N" 
+      status: "N"
+      
     }
   }
   componentDidMount() {
@@ -59,7 +60,7 @@ class CreateUser extends Component {
         </Col>
         <Col sm="4">
           <div className={styles.bgWhite}>
-            <Form>              
+            <Form>
               <FormGroup className={styles.floatingLabel}>
                 <Input type="text" name="name" id="name" className="no-border" value={this.state.name} onChange={this.onChangeHandler} />
                 <label className="ml-0">Name *</label>
