@@ -77,7 +77,7 @@ class LoginForm extends Component {
     const updatedControls = {
       ...this.state.controls,
       [controlName]: {
-        ...this.state.controls[controlName],        
+        ...this.state.controls[controlName],
         valid: checkValid.isValid,
         errorMessage: checkValid.error,
         touched: true
@@ -88,15 +88,15 @@ class LoginForm extends Component {
       formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
     }
     this.setState({ controls: updatedControls, formIsValid: formIsValid });
-  }
-  inputChangedHandler = (event, controlName) => {    
+  };
+  inputChangedHandler = (event, controlName) => {
     const updatedControls = {
       ...this.state.controls,
       [controlName]: {
         ...this.state.controls[controlName],
-        value: event.target.value        
+        value: event.target.value
       }
-    };   
+    };
     this.setState({ controls: updatedControls});
   };
   submitHandler = event => {
@@ -164,7 +164,7 @@ class LoginForm extends Component {
         </Col>
         <Col sm="4">
           <div className="bgWhite">
-            <Form className="form" noValidate>
+          <Form className="form" noValidate>
               {form}
               <ButtonField color="primary" btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
               {errorMessage}
