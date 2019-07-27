@@ -59,9 +59,9 @@ class LoginForm extends Component {
     isSignup: true,
     isFormValid: false
   };
-
-  componentDidMount() {
-
+  
+componentDidMount() {
+  
     {/* if (this.props.authRedirectPath !== '/') {
 
             this.props.onSetAuthRedirectPath(this.props.authRedirectPath);
@@ -166,7 +166,7 @@ class LoginForm extends Component {
           <div className="bgWhite">
           <Form className="form" noValidate>
               {form}
-              <ButtonField color="primary" btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
+              <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
               {errorMessage}
             </Form>
             <p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>
