@@ -1,0 +1,12 @@
+.customButton{
+    background-color: aquamarine !important;
+    margin-top:15px;
+    color:#000 !important;
+    font-weight: 500 !important;
+}
+.customButton.disabled, .customButton:disabled {
+    color: #fff !important;
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+    cursor: not-allowed;
+}
