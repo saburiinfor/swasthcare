@@ -1,0 +1,154 @@
+.gender {
+  color: #495057 !important;
+}
+
+.buttonContainer {
+  width: 100%;
+  display: inline-block;
+
+  .createUserBtn {
+    float: right;
+    text-align: right;
+  }
+}
+
+/* Floating labels starts here */
+.floatingLabel {
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 0.625rem 0;
+    font-size: 1rem;
+    letter-spacing: 0.062rem;
+    margin-bottom: 1.875rem;
+    border: none;
+    border-bottom: 0.065rem solid #ced4da;
+    outline: none;
+    background: transparent;
+  }
+
+  input:focus ~ label,
+  input:not([value=""]) ~ label {
+    top: -1.125rem;
+    left: 0;
+    font-size: 0.75rem;
+  }
+
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.625rem 0;
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.5s;
+    color: #495057 !important;
+  }
+}
+
+/* Floating labels ends here */
+
+/** Styles for mobiles **/
+@media only screen and (max-width: 500px) {
+  .bgWhite {
+    margin-top: 10px;
+    background: #fff;
+
+    #forgotPWD {
+      padding-top: 20px;
+      margin-bottom: 0px;
+      font-size: 14px;
+    }
+
+    #signUp {
+      display: none;
+    }
+  }
+  .container-fluid {
+    z-index: 2;
+  }
+}
+
+.faqContainer {
+  clear: both;
+  margin: 10px 0px;
+  padding: 5px;
+  border-top: 1px solid #666666;
+  border-bottom: 1px solid #666666;
+  background-color: #F6F5F5;
+  height: calc(45vh - 30px);
+  overflow-y: scroll;
+
+  h4 {
+    padding-left: 10px;
+    padding-bottom: 15px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0px 5px;
+    li {
+      padding: 0px 5px;
+      .answer {
+        margin-bottom: 10px;
+      }
+      .question, .answer {
+        clear: both;
+        float: left;
+      }
+    }
+  }
+}
+
+.bgWhite {
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+/** Styles for 5 and six inch devices */
+@media only screen and (max-height: 700px) {
+  .faqContainer {
+    height: calc(25vh - 30px);
+  }
+  .bgWhite {
+    background: #fff;
+    margin-top: 10px;
+    display: inline-block;
+    width: 100%;
+
+    form {
+      width: 100%;
+    }
+
+    #forgotPWD {
+      padding-top: 20px;
+      margin-bottom: 0px;
+      font-size: 14px;
+    }
+
+    #signUp {
+      display: none;
+    }
+
+    form {
+      float: right;
+      text-align: right;
+
+      .btn-primary {
+        float: right;
+        text-align: right;
+      }
+    }
+  }
+  .form-control {
+    border: none !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0px !important;
+  }
+  .container-fluid {
+    z-index: 2;
+  }
+}
+

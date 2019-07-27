@@ -3,185 +3,13 @@
 body {
   font-size: 1.2em;
   font-family: 'Roboto', sans-serif;
-}
-
-/** Responisve css **/
-@media only screen and (max-width: 500px) {
-  body {
+  @media only screen and (max-width: 500px) {
     font-size: 1em;
-  }
-  main {
-    height: calc(100vh - 300px) !important;
-  }
-  .Footer {
-    position: fixed !important;
-    bottom: -10px !important;
-  }
-  .searchContainer,
-  .carousel,
-  .keyFeatures,
-  .FooterCnt ul {
-    display: none;
-  }
-  .header {
-    width: 100%;
-
-    .logged-header-mob {
-      width: 100%;
-      position: relative;
-      text-align: center;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #bcbcbc;
-
-      .logo-small {
-      }
-
-      .main-menu {
-        float: left;
-      }
-
-      .notification-icon {
-        float: right;
-      }
-    }
-
-    .logo {
-      width: auto;
-    }
-  }
-  .bgWhite {
-    background: #fff;
-    padding: 10px;
-    border-radius: 0px !important;
-    border: 1px solid #dcdcdc;
-
-    #forgotPWD {
-      padding-top: 20px;
-      margin-bottom: 0px;
-      font-size: 14px;
-    }
-
-    #signUp {
-      display: none;
-    }
-  }
-  .form-control {
-    border: none !important;
-    border-bottom: 1px solid #ced4da !important;
-    border-radius: 0px !important;
-  }
-  .btn-block {
-    width: auto !important;
-    float: right;
-    padding: 8px 40px !important;
-  }
-  p {
-    clear: both;
-    margin-top: 5px;
-  }
-  .container-fluid {
-    position: relative;
-    top: calc(50vh - 200px);
-    z-index: 2;
-  }
-  .globalLinks-mob {
-    display: block !important;
-
-    ul,
-    li {
-      list-style-type: none;
-    }
-
-    li {
-      float: left;
-      padding: 0px 20px;
-
-      a {
-        color: #666666;
-        font-size: 14px;
-      }
-
-      border-right: 1px solid #ced4da;
-    }
-
-    li:last-child {
-      border-right: none;
-    }
-  }
-}
-
-/** Styles for 5 and six inch devices */
-@media only screen and (max-height: 700px) {
-  .container-fluid {
-    position: relative;
-    top: calc(50vh - 250px);
-    z-index: 2;
   }
 }
 
 .globalLinks-mob {
   display: none;
-}
-
-.header {
-  padding: 10px 0px;
-  display: flex;
-
-  div {
-    width: 50%;
-  }
-  .logged-header-mob {
-    width: 100%;
-    position: relative;
-    text-align: center;
-    padding-bottom: 5px;
-    border-bottom: 1px solid #bcbcbc;
-
-    .logo-small {
-    }
-
-    .main-menu {
-      float: left;
-    }
-
-    .notification-icon {
-      float: right;
-    }
-  }
-
-  .logo {
-    img {
-      display: -webkit-inline-flex;
-      display: inline-flex;
-    }
-
-    h2 {
-      color: #fff;
-      font-size: 32px;
-      font-weight: normal;
-      display: inline-block;
-      vertical-align: middle;
-      margin-top: -10px;
-    }
-  }
-
-  .searchContainer {
-    text-align: right;
-    padding-right: 10px;
-
-    img {
-      vertical-align: middle;
-      margin-left: 15px;
-    }
-  }
-
-  .search {
-    width: 48%;
-    border-radius: 10px;
-    padding: 6px;
-    border: 1px solid #fff;
-    height: 40px;
-  }
 }
 
 .login-bg {
@@ -196,13 +24,12 @@ body {
 
 .keyFeatures ul {
   list-style-type: none;
-}
-
-.keyFeatures ul li {
-  color: #fff;
-  font-size: 25px;
-  line-height: 35px;
-  padding-bottom: 15px;
+  li {
+    color: #fff;
+    font-size: 25px;
+    line-height: 35px;
+    padding-bottom: 15px;
+  }
 }
 
 .form-group {
@@ -228,6 +55,13 @@ body {
   background: #fff;
   border-radius: 10px;
   padding: 10px;
+}
+
+.submitBtn {
+  width: auto !important;
+  float: right;
+  padding: 8px 40px !important;
+  margin-right: 10px;
 }
 
 .Footer {
@@ -335,4 +169,65 @@ body {
   color: #495057 !important;
   background-color: #fff !important;
   border-color: #dee2e6 #dee2e6 #fff !important;
+}
+
+/** Responisve css **/
+@media only screen and (max-width: 500px) {
+  main {
+    height: calc(100vh - 300px) !important;
+  }
+
+  .bgWhite {
+    background: #fff;
+    border-radius: 0px !important;
+    border: 1px solid #dcdcdc;
+    padding: 10px;
+    margin-top: calc(50vh - 300px);
+
+    #forgotPWD {
+      padding-top: 20px;
+      margin-bottom: 0px;
+      font-size: 14px;
+    }
+  }
+
+  .FooterCnt ul {
+    display: none;
+  }
+
+  .Footer {
+    position: fixed !important;
+    bottom: -10px !important;
+  }
+
+  .form-control {
+    border: none !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0px !important;
+  }
+
+  .globalLinks-mob {
+    display: block !important;
+
+    ul,
+    li {
+      list-style-type: none;
+    }
+
+    li {
+      float: left;
+      padding: 0px 20px;
+
+      a {
+        color: #666666;
+        font-size: 14px;
+      }
+
+      border-right: 1px solid #ced4da;
+    }
+
+    li:last-child {
+      border-right: none;
+    }
+  }
 }

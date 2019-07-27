@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {Button, Col, Nav, NavItem, NavLink, Row, TabContent, TabPane,} from "reactstrap";
 import AppointmentRowGroup from "../Appointment/AppointmentRowGroup";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
-import styles from "./Appointment.module.css";
+import styles from "./Appointment.module.scss";
 import classnames from "classnames";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faPen, faUser} from "@fortawesome/free-solid-svg-icons";
@@ -31,15 +31,15 @@ class Appointment extends Component {
     return (
       <Col md="12" className="mt10">
         <Helmet>
-          <style>{'.header .logo h2{color:#333;} .appointmentBtn{height:50px} .tar{text-align:right;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
+          <style>{'.header .logo h2{color:#333;} .appointmentBtn{height:50px} .tar{text-align:right;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc}' +
+          ' @media screen and (min-width: 800px) { .header{border-bottom:1px solid #666} } .header .logo img{height:80px} '}</style>
         </Helmet>
         <Row>
           <Col md="8">
-            <Row>
+            <Row className={styles.editBtnRow}>
               <Col>
                 <Button className={styles.editBtn} size="sm">
-                  <FontAwesomeIcon className="mr-2" color="#000" size="1x" icon={faPen}/>
-                  Edit
+                  <FontAwesomeIcon title={'Edit'} className="mr-2" color="#000" size="1x" icon={faPen}/>
                 </Button>
               </Col>
             </Row>
@@ -79,7 +79,7 @@ class Appointment extends Component {
                   <TabContent activeTab={this.state.activeTab} className={styles.customTabs}>
                     <TabPane tabId="1">
                       <Row>
-                        <Col sm="12">
+                        <Col sm="12" className={styles.appointments}>
                           <AppointmentRowGroup/>
                         </Col>
                       </Row>

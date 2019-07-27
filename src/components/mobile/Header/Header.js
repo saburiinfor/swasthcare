@@ -3,13 +3,14 @@ import SwasthLogo from "../../../assets/images/SwasthLogo.png";
 import SwasthLogoSmall from "../../../assets/images/Swasthlogo-small.png";
 import MenuIcon from "../../../assets/images/menu-icon.png";
 import NotificationIcon from "../../../assets/images/notification-icon.png";
-import "./Header.module.scss";
 import {Link, Route} from "react-router-dom";
+import "./Header.mobile.scss";
 
 const LoginHeader = () => <div className={'logo'}>
-        <Link to="/"><img src={SwasthLogo} alt={'ConferKare'}/>
-          <h2>ConferKare</h2></Link>
-      </div>;
+  <Link to="/"><img src={SwasthLogo} alt={'ConferKare'}/>
+    <h2>ConferKare</h2>
+  </Link>
+</div>;
 
 const UserHeader = () => <div className="logged-header-mob">
   <img src={MenuIcon} alt={'Main menu'} className={'main-menu'}/>
@@ -27,6 +28,7 @@ const Header = props => {
       <Route exact path="/" component={LoginHeader}/>
       <Route exact path="/login" component={LoginHeader}/>
       <Route exact path="/createuser" component={LoggedHeader}/>
+      <Route exact path="/appointment" component={UserHeader}/>
     </div>
   );
 };

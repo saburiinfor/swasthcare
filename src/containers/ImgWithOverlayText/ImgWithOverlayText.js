@@ -1,6 +1,6 @@
 import React from "react";
 import Aux from "../../hoc/Auxwrap";
-import styles from "./ImgWithOverlayText.module.css";
+import styles from "./ImgWithOverlayText.module.scss";
 
 const ImgWithOverlayText = props => {
   return (
