@@ -1,71 +1,163 @@
-import React from "react";
+import React, {Component} from "react";
+import './LoginForm.module.scss';
 import {Button, Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
-import InputField from "../../components/Common/InputField/InputField";
 import Carousel from '../Carousel/Carousel';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {BrowserView, MobileView} from "react-device-detect";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+import InputField from "../../components/Common/Input/Input";
+import ButtonField from "../../components/Common/Button/Button";
+import { checkValidity } from "../../shared/utility";
+class LoginForm extends Component {
+    state = {
+    formIsValid: false,
+    controls: {
+      email: {
+        elementType: "input",
+        elementConfig: {
+          type: "email",
+          placeholder: "Mail Address"
+        },
+        value: "",
+        validation: {
+          required: true,
+          isEmail: true
+        },
+        valid: false,
+        touched: false,
+        errorMessage: ""
+      },
+      password: {
+        elementType: "input",
+        elementConfig: {
+          type: "password",
+          placeholder: "Password"
+        },
+        value: "",
+        validation: {
+          required: true,
+          minLength: 6
+        },
+        valid: false,
+        touched: false,
+        errorMessage: ""
+      },
+      remember: {
+        elementType: "checkbox",
+        elementConfig: {
+          type: "checkbox",
+          label: "Remember Me",
+          checked: true
+        },
+        value: "",
+        valid: true,
+        touched: true
+      }
+    },
+    isSignup: true,
+    isFormValid: false
+  };
 
-class LoginForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: ""
+componentDidMount() {
+
+       {/* if (this.props.authRedirectPath !== '/') {
+
+            this.props.onSetAuthRedirectPath(this.props.authRedirectPath);
+
+        }*/}
+
+    }
+inputChangedHandler = (event, controlName) => {
+    let checkValid = checkValidity(
+      event.target.value,
+      this.state.controls[controlName].validation
+    );
+    const updatedControls = {
+      ...this.state.controls,
+      [controlName]: {
+        ...this.state.controls[controlName],
+        value: event.target.value,
+        valid: checkValid.isValid,
+        errorMessage: checkValid.error,
+        touched: true
+      }
     };
-    //this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
-  }
-  
-  onSubmit(e) {
-    e.preventDefault();
-  }
-  
-  onChange(e) {
-    e.preventDefault();
-    this.setState({[e.target.name]: e.target.value})
-  }
-  
+    let formIsValid = true;
+    for (let inputIdentifier in updatedControls) {
+      formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+    }
+    this.setState({ controls: updatedControls, formIsValid: formIsValid });
+  };
+  submitHandler = event => {
+    event.preventDefault();
+    if (this.state.formIsValid) {
+      this.props.onAuth(
+        this.state.controls.email.value,
+        this.state.controls.password.value,
+        this.state.isSignup
+      );
+    }
+  };
+
   render() {
-    // const { } = this.state;   
+      
+        const formElementsArray = [];
+    for (let key in this.state.controls) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.controls[key]
+      });
+    }
+    let form = formElementsArray.map(formElement => (
+      <Row key={formElement.id}>
+        <Col>
+          <InputField
+            elementType={formElement.config.elementType}
+            elementConfig={formElement.config.elementConfig}
+            value={formElement.config.value}
+            invalid={!formElement.config.valid}
+            shouldValidate={formElement.config.validation}
+            touched={formElement.config.touched}
+            errorMessage={formElement.config.errorMessage}
+            changed={event => this.inputChangedHandler(event, formElement.id)}
+          />
+        </Col>
+      </Row>
+    ));
+    let errorMessage = null;
+    if (this.props.error) {
+      errorMessage = (
+        <p className="text-danger mt-2">{this.props.error}</p>
+      );
+    }       
+    let authRedirect = null;
+    if (this.props.isAuthenticated) {            
+        return <Redirect to={this.props.authRedirectPath}/>;
+    }      
     return (
       <Aux>
         <Col sm="8">
           <BrowserView>
-            <Carousel/>
-            <div className="keyFeatures">
-              <ul>
-                <li>* Over 10,000 doctors in network</li>
-                <li>* 24x7 expert support</li>
-                <li>* Over 1 million lab facilities</li>
-                <li>* Home clinic services</li>
-                <li>* Express services</li>
-              </ul>
-            </div>
+          <Carousel/>
+          <div className="keyFeatures">
+            <ul>
+              <li>* Over 10,000 doctors in network</li>
+              <li>* 24x7 expert support</li>
+              <li>* Over 1 million lab facilities</li>
+              <li>* Home clinic services</li>
+              <li>* Express services</li>
+            </ul>
+          </div>
           </BrowserView>
         </Col>
         <Col sm="4">
-          <div class="bgWhite">
-            <Form className="form">
-              <Row>
-                <Col>
-                  <InputField name="userName" id="userName" placeholder="Username" value={this.state.userName} onChange={this.onChange}/>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <InputField name="password" id="passWord" placeholder="Password" type="password" value={this.state.password} onChange={this.onChange}/>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <InputField label="Remember me" name="rememberMe" id="rememberMe" type="checkbox" checked="true" value={this.state.rememberMe} onChange={this.onChange}/>
-                </Col>
-              </Row>
-              <Link to="/appointment">
-                <Button color="primary" block>
-                  Submit
-                </Button>
-              </Link>
+          <div className="bgWhite">
+          <Form className="form" noValidate>
+              {form}
+              <ButtonField color="primary" btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
+              {errorMessage}
             </Form>
             <p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>
             <BrowserView>
@@ -73,7 +165,7 @@ class LoginForm extends React.Component {
             </BrowserView>
           </div>
           <MobileView>
-            <div class="globalLinks-mob">
+            <div className="globalLinks-mob">
               <ul>
                 <li><Link to="/createuser">Sign Up</Link></li>
                 <li><Link to="#">Privacy</Link></li>
@@ -87,4 +179,18 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = state => {
+  return {
+    loading: state.auth.loading,
+    error: state.auth.error,
+    isAuthenticated: state.auth.token !== null,
+    authRedirectPath: state.auth.authRedirectPath
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+    onSetAuthRedirectPath: (authRedirectPath) => dispatch(actions.setAuthRedirectPath(authRedirectPath))
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
