@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/swasthcare/static/css/main.c17027ca.chunk.css",
-    "main.js": "/swasthcare/static/js/main.59c479e9.chunk.js",
-    "main.js.map": "/swasthcare/static/js/main.59c479e9.chunk.js.map",
+    "main.css": "/swasthcare/static/css/main.28a0cccb.chunk.css",
+    "main.js": "/swasthcare/static/js/main.02fd2162.chunk.js",
+    "main.js.map": "/swasthcare/static/js/main.02fd2162.chunk.js.map",
     "runtime~main.js": "/swasthcare/static/js/runtime~main.9eb1b81a.js",
     "runtime~main.js.map": "/swasthcare/static/js/runtime~main.9eb1b81a.js.map",
     "static/css/2.a73d7da8.chunk.css": "/swasthcare/static/css/2.a73d7da8.chunk.css",
-    "static/js/2.da8499e8.chunk.js": "/swasthcare/static/js/2.da8499e8.chunk.js",
-    "static/js/2.da8499e8.chunk.js.map": "/swasthcare/static/js/2.da8499e8.chunk.js.map",
+    "static/js/2.022ec26a.chunk.js": "/swasthcare/static/js/2.022ec26a.chunk.js",
+    "static/js/2.022ec26a.chunk.js.map": "/swasthcare/static/js/2.022ec26a.chunk.js.map",
     "index.html": "/swasthcare/index.html",
-    "precache-manifest.d48829171a2655083d57c55ccb271542.js": "/swasthcare/precache-manifest.d48829171a2655083d57c55ccb271542.js",
+    "precache-manifest.9d76f661a4688c77c6cb2063a8cf63a2.js": "/swasthcare/precache-manifest.9d76f661a4688c77c6cb2063a8cf63a2.js",
     "service-worker.js": "/swasthcare/service-worker.js",
     "static/css/2.a73d7da8.chunk.css.map": "/swasthcare/static/css/2.a73d7da8.chunk.css.map",
-    "static/css/main.c17027ca.chunk.css.map": "/swasthcare/static/css/main.c17027ca.chunk.css.map",
+    "static/css/main.28a0cccb.chunk.css.map": "/swasthcare/static/css/main.28a0cccb.chunk.css.map",
     "static/media/bannerImg2.jpg": "/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
     "static/media/bannerImg3.jpg": "/swasthcare/static/media/bannerImg3.c2bb48ac.jpg"
   }
