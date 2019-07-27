@@ -59,9 +59,13 @@
       box-shadow: 2px 2px 4px #dcdcdc;
       .appointmentDesc {
         width: 60%;
+        font-size: 14px;
       }
       .appointmentBtns {
         width: 40%;
+        * {
+          font-size: 12px;
+        }
         :first-child {
           margin-bottom: 5px;
         }

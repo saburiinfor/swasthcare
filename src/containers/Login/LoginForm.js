@@ -10,6 +10,7 @@ import * as actions from "../../store/actions/index";
 import InputField from "../../components/Common/Input/Input";
 import ButtonField from "../../components/Common/Button/Button";
 import { checkValidity } from "../../shared/utility";
+
 class LoginForm extends Component {
     state = {
     formIsValid: false,
@@ -18,7 +19,7 @@ class LoginForm extends Component {
         elementType: "input",
         elementConfig: {
           type: "email",
-          placeholder: "Mail Address"
+          placeholder: "Username"
         },
         value: "",
         validation: {
