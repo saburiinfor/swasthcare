@@ -59,8 +59,7 @@ class LoginForm extends Component {
     isSignup: true,
     isFormValid: false
   };
-
-<<<<<<< HEAD
+  
 componentDidMount() {
 
        {/* if (this.props.authRedirectPath !== '/') {
@@ -84,13 +83,6 @@ inputChangedHandler = (event, controlName) => {
         errorMessage: checkValid.error,
         touched: true
       }
-=======
-class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userName: ""
->>>>>>> Updates for mobile and desktop changes as per designs
     };
     let formIsValid = true;
     for (let inputIdentifier in updatedControls) {
@@ -162,34 +154,10 @@ class LoginForm extends Component {
         </Col>
         <Col sm="4">
           <div className="bgWhite">
-<<<<<<< HEAD
           <Form className="form" noValidate>
               {form}
-              <ButtonField color="primary" btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
+              <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
               {errorMessage}
-=======
-            <Form className="form">
-              <Row>
-                <Col>
-                  <InputField name="userName" id="userName" placeholder="Username" value={this.state.userName} onChange={this.onChange}/>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <InputField name="password" id="passWord" placeholder="Password" type="password" value={this.state.password} onChange={this.onChange}/>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <InputField label="Remember me" name="rememberMe" id="rememberMe" type="checkbox" checked="true" value={this.state.rememberMe} onChange={this.onChange}/>
-                </Col>
-              </Row>
-              <Link to="/appointment">
-                <Button color="primary" block className={"submitBtn"}>
-                  Submit
-                </Button>
-              </Link>
->>>>>>> Updates for mobile and desktop changes as per designs
             </Form>
             <p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>
             <BrowserView>
