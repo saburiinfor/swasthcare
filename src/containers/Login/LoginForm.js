@@ -1,17 +1,17 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import './LoginForm.module.scss';
-import {Button, Col, Form, Row} from "reactstrap";
+import { Button, Col, Form, Row } from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
 import Carousel from '../Carousel/Carousel';
-import {Link, Redirect} from "react-router-dom";
-import {BrowserView, MobileView} from "react-device-detect";
+import { Link, Redirect } from "react-router-dom";
+import { BrowserView, MobileView } from "react-device-detect";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import InputField from "../../components/Common/Input/Input";
 import ButtonField from "../../components/Common/Button/Button";
 import { checkValidity } from "../../shared/utility";
 class LoginForm extends Component {
-    state = {
+  state = {
     formIsValid: false,
     controls: {
       email: {
@@ -38,7 +38,7 @@ class LoginForm extends Component {
         value: "",
         validation: {
           required: true,
-          minLength: 6
+         /* minLength: 6*/
         },
         valid: false,
         touched: false,
@@ -60,16 +60,16 @@ class LoginForm extends Component {
     isFormValid: false
   };
 
-componentDidMount() {
+  componentDidMount() {
 
-       {/* if (this.props.authRedirectPath !== '/') {
+    {/* if (this.props.authRedirectPath !== '/') {
 
             this.props.onSetAuthRedirectPath(this.props.authRedirectPath);
 
         }*/}
 
-    }
-inputChangedHandler = (event, controlName) => {
+  }
+  inputBluredHandler = (event, controlName) => {
     let checkValid = checkValidity(
       event.target.value,
       this.state.controls[controlName].validation
@@ -77,8 +77,7 @@ inputChangedHandler = (event, controlName) => {
     const updatedControls = {
       ...this.state.controls,
       [controlName]: {
-        ...this.state.controls[controlName],
-        value: event.target.value,
+        ...this.state.controls[controlName],        
         valid: checkValid.isValid,
         errorMessage: checkValid.error,
         touched: true
@@ -89,6 +88,16 @@ inputChangedHandler = (event, controlName) => {
       formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
     }
     this.setState({ controls: updatedControls, formIsValid: formIsValid });
+  }
+  inputChangedHandler = (event, controlName) => {    
+    const updatedControls = {
+      ...this.state.controls,
+      [controlName]: {
+        ...this.state.controls[controlName],
+        value: event.target.value        
+      }
+    };   
+    this.setState({ controls: updatedControls});
   };
   submitHandler = event => {
     event.preventDefault();
@@ -102,8 +111,8 @@ inputChangedHandler = (event, controlName) => {
   };
 
   render() {
-      
-        const formElementsArray = [];
+
+    const formElementsArray = [];
     for (let key in this.state.controls) {
       formElementsArray.push({
         id: key,
@@ -122,6 +131,7 @@ inputChangedHandler = (event, controlName) => {
             touched={formElement.config.touched}
             errorMessage={formElement.config.errorMessage}
             changed={event => this.inputChangedHandler(event, formElement.id)}
+            blured = {event => this.inputBluredHandler(event,formElement.id)}
           />
         </Col>
       </Row>
@@ -131,30 +141,30 @@ inputChangedHandler = (event, controlName) => {
       errorMessage = (
         <p className="text-danger mt-2">{this.props.error}</p>
       );
-    }       
+    }
     let authRedirect = null;
-    if (this.props.isAuthenticated) {            
-        return <Redirect to={this.props.authRedirectPath}/>;
-    }      
+    if (this.props.isAuthenticated) {
+      return <Redirect to={this.props.authRedirectPath} />;
+    }
     return (
       <Aux>
         <Col sm="8">
           <BrowserView>
-          <Carousel/>
-          <div className="keyFeatures">
-            <ul>
-              <li>* Over 10,000 doctors in network</li>
-              <li>* 24x7 expert support</li>
-              <li>* Over 1 million lab facilities</li>
-              <li>* Home clinic services</li>
-              <li>* Express services</li>
-            </ul>
-          </div>
+            <Carousel />
+            <div className="keyFeatures">
+              <ul>
+                <li>* Over 10,000 doctors in network</li>
+                <li>* 24x7 expert support</li>
+                <li>* Over 1 million lab facilities</li>
+                <li>* Home clinic services</li>
+                <li>* Express services</li>
+              </ul>
+            </div>
           </BrowserView>
         </Col>
         <Col sm="4">
           <div className="bgWhite">
-          <Form className="form" noValidate>
+            <Form className="form" noValidate>
               {form}
               <ButtonField color="primary" btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
               {errorMessage}

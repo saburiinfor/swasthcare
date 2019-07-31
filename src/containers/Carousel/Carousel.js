@@ -71,7 +71,7 @@ class HomeCarousel extends Component {
     
     const slides = items.map(item => {
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src}>
+        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.altText}>
           <img src={item.src} alt={item.altText}/>
           <CarouselCaption captionText={item.caption} captionHeader={item.caption}/>
         </CarouselItem>

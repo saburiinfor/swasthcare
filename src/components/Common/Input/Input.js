@@ -17,7 +17,8 @@ const CustInput = (props) => {
                         {...props.elementConfig}
                         value={props.value}
                         invalid={props.invalid && props.touched}
-                        onChange={props.changed} />
+                        onChange={props.changed}
+                        onBlur={props.blured} />
                     <FormFeedback>{props.errorMessage}</FormFeedback>
                 </FormGroup>;
             break;
@@ -65,7 +66,8 @@ const CustInput = (props) => {
                         {...props.elementConfig}
                         value={props.value}
                         invalid={props.invalid && props.touched}
-                        onChange={props.changed} />
+                        onChange={props.changed}
+                        onBlur={props.blured} />
                     <FormFeedback>Please write at least 3 characters.</FormFeedback>
                 </FormGroup>;
     }
