@@ -16,17 +16,17 @@ class CreateUser extends Component {
       appId: "1",
       createdBy: "1",
       roleid: "4",
-      uhid: "",
+      uhid: "P201900",
       name: "",
       email: "",
       password: "",
       contactNo: "",
-      gender: "",
-      city: "",
-      address: "",
-      bloodgrp: "",
-      dob: "",
-      status: "N"
+      gender: "M",
+      city: "1",
+      address: "Nayapalli",
+      bloodgrp: "AB+",
+      dob: "2009-07-17",
+      status: "N" 
     }
   }
   componentDidMount() {
@@ -59,11 +59,7 @@ class CreateUser extends Component {
         </Col>
         <Col sm="4">
           <div className={styles.bgWhite}>
-            <Form>
-              <FormGroup className={styles.floatingLabel}>
-                <Input type="text" name="uhid" id="uhid" className="no-border" value={this.state.uhid} onChange={this.onChangeHandler} />
-                <label className="ml-0">UHID *</label>
-              </FormGroup>
+            <Form>              
               <FormGroup className={styles.floatingLabel}>
                 <Input type="text" name="name" id="name" className="no-border" value={this.state.name} onChange={this.onChangeHandler} />
                 <label className="ml-0">Name *</label>
@@ -79,91 +75,7 @@ class CreateUser extends Component {
               <FormGroup className={styles.floatingLabel}>
                 <Input type="number" name="contactNo" id="contactNo" className="no-border" value={this.state.contactNo} onChange={this.onChangeHandler} />
                 <label className="ml-0">Contact Number *</label>
-              </FormGroup>
-              <FormGroup>
-                <Row className={styles.gender}>
-                  <Col sm={2}>Gender</Col>
-                  <Col sm={10}>
-                    <CustomInput
-                      inline
-                      type="radio"
-                      id="female"
-                      name="gender"
-                      label="Female"
-                      value="F"
-                      checked={this.state.gender === 'F'}
-                      onChange={this.onChangeHandler}
-                    />
-                    <CustomInput
-                      inline
-                      type="radio"
-                      id="male"
-                      name="gender"
-                      label="Male"
-                      value="M"
-                      checked={this.state.gender === 'M'}
-                      onChange={this.onChangeHandler}
-                    />
-                  </Col>
-                </Row>
-              </FormGroup>
-              <FormGroup>
-                <Row className={styles.gender}>
-                  <Col sm={2} className="text-left">City</Col>
-                  <Col sm={10}>
-                    <Input type="select" name="city" id="city" className="no-border pl-0" value={this.state.city} onChange={this.onChangeHandler}>
-                      {this.props.cityLs.map(city => (
-                        <option key={city} value={city}>
-                          {city}
-                        </option>
-                      ))}
-                    </Input>
-                  </Col>
-                </Row>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input
-                  type="text"
-                  name="address"
-                  id="address"
-                  className="no-border"
-                  value={this.state.address}
-                  onChange={this.onChangeHandler}
-                />
-                <label className="ml-0">Address</label>
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input
-                  type="text"
-                  name="bloodgrp"
-                  id="bloodgrp"
-                  className="no-border"
-                  value={this.state.bloodgrp}
-                  onChange={this.onChangeHandler}
-                />
-                <label className="ml-0">Blood Group</label>
-              </FormGroup>
-              <FormGroup>
-                <Input
-                  type="date"
-                  name="dob"
-                  id="dob"
-                  className="no-border pl-0"
-                  value={this.state.dob}
-                  onChange={this.onChangeHandler}
-                />
-              </FormGroup>
-              <FormGroup className={styles.floatingLabel}>
-                <Input
-                  type="text"
-                  name="status"
-                  id="status"
-                  className="no-border"
-                  value={this.state.status}
-                  onChange={this.onChangeHandler}
-                />
-                <label className="ml-0">Status</label>
-              </FormGroup>
+              </FormGroup> 
               <div className={styles.buttonContainer}>
                 <Button color="primary" onClick={this.onSubmitHandler} className={styles.createUserBtn}>Submit</Button>
               </div>
