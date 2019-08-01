@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/swasthcare/static/css/main.816753e7.chunk.css",
-    "main.js": "/swasthcare/static/js/main.0109e6b8.chunk.js",
-    "main.js.map": "/swasthcare/static/js/main.0109e6b8.chunk.js.map",
+    "main.css": "/swasthcare/static/css/main.9ee136fc.chunk.css",
+    "main.js": "/swasthcare/static/js/main.aab0beea.chunk.js",
+    "main.js.map": "/swasthcare/static/js/main.aab0beea.chunk.js.map",
     "runtime~main.js": "/swasthcare/static/js/runtime~main.9eb1b81a.js",
     "runtime~main.js.map": "/swasthcare/static/js/runtime~main.9eb1b81a.js.map",
-    "static/css/2.a73d7da8.chunk.css": "/swasthcare/static/css/2.a73d7da8.chunk.css",
-    "static/js/2.a501317e.chunk.js": "/swasthcare/static/js/2.a501317e.chunk.js",
-    "static/js/2.a501317e.chunk.js.map": "/swasthcare/static/js/2.a501317e.chunk.js.map",
+    "static/css/2.4ed46a55.chunk.css": "/swasthcare/static/css/2.4ed46a55.chunk.css",
+    "static/js/2.1e27bb87.chunk.js": "/swasthcare/static/js/2.1e27bb87.chunk.js",
+    "static/js/2.1e27bb87.chunk.js.map": "/swasthcare/static/js/2.1e27bb87.chunk.js.map",
     "index.html": "/swasthcare/index.html",
-    "precache-manifest.a6b32c33ec0c02418d814b1822788009.js": "/swasthcare/precache-manifest.a6b32c33ec0c02418d814b1822788009.js",
+    "precache-manifest.120adc134277ad6af064c1bb5f61b80e.js": "/swasthcare/precache-manifest.120adc134277ad6af064c1bb5f61b80e.js",
     "service-worker.js": "/swasthcare/service-worker.js",
-    "static/css/2.a73d7da8.chunk.css.map": "/swasthcare/static/css/2.a73d7da8.chunk.css.map",
-    "static/css/main.816753e7.chunk.css.map": "/swasthcare/static/css/main.816753e7.chunk.css.map",
+    "static/css/2.4ed46a55.chunk.css.map": "/swasthcare/static/css/2.4ed46a55.chunk.css.map",
+    "static/css/main.9ee136fc.chunk.css.map": "/swasthcare/static/css/main.9ee136fc.chunk.css.map",
     "static/media/bannerImg2.jpg": "/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
     "static/media/bannerImg3.jpg": "/swasthcare/static/media/bannerImg3.c2bb48ac.jpg"
   }
