@@ -3,13 +3,13 @@ import './LoginForm.module.scss';
 import {Button, Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
 import Carousel from '../Carousel/Carousel';
-import { Link, Redirect } from "react-router-dom";
-import { BrowserView, MobileView } from "react-device-detect";
-import { connect } from "react-redux";
+import {Link, Redirect} from "react-router-dom";
+import {BrowserView, MobileView} from "react-device-detect";
+import {connect} from "react-redux";
 import * as actions from "../../store/actions/index";
 import InputField from "../../components/Common/Input/Input";
 import ButtonField from "../../components/Common/Button/Button";
-import { checkValidity } from "../../shared/utility";
+import {checkValidity} from "../../shared/utility";
 
 class LoginForm extends Component {
   state = {
@@ -39,7 +39,7 @@ class LoginForm extends Component {
         value: "",
         validation: {
           required: true,
-         /* minLength: 6*/
+          /* minLength: 6*/
         },
         valid: false,
         touched: false,
@@ -61,15 +61,17 @@ class LoginForm extends Component {
     isFormValid: false
   };
   
-componentDidMount() {
-  
+  componentDidMount() {
+    
     {/* if (this.props.authRedirectPath !== '/') {
-
-            this.props.onSetAuthRedirectPath(this.props.authRedirectPath);
-
-        }*/}
-
+     
+     this.props.onSetAuthRedirectPath(this.props.authRedirectPath);
+     
+     }*/
+    }
+    
   }
+  
   inputBluredHandler = (event, controlName) => {
     let checkValid = checkValidity(
       event.target.value,
@@ -88,7 +90,7 @@ componentDidMount() {
     for (let inputIdentifier in updatedControls) {
       formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
     }
-    this.setState({ controls: updatedControls, formIsValid: formIsValid });
+    this.setState({controls: updatedControls, formIsValid: formIsValid});
   };
   inputChangedHandler = (event, controlName) => {
     const updatedControls = {
@@ -98,7 +100,7 @@ componentDidMount() {
         value: event.target.value
       }
     };
-    this.setState({ controls: updatedControls});
+    this.setState({controls: updatedControls});
   };
   submitHandler = event => {
     event.preventDefault();
@@ -110,9 +112,9 @@ componentDidMount() {
       );
     }
   };
-
+  
   render() {
-
+    
     const formElementsArray = [];
     for (let key in this.state.controls) {
       formElementsArray.push({
@@ -132,7 +134,7 @@ componentDidMount() {
             touched={formElement.config.touched}
             errorMessage={formElement.config.errorMessage}
             changed={event => this.inputChangedHandler(event, formElement.id)}
-            blured = {event => this.inputBluredHandler(event,formElement.id)}
+            blured={event => this.inputBluredHandler(event, formElement.id)}
           />
         </Col>
       </Row>
@@ -145,13 +147,13 @@ componentDidMount() {
     }
     let authRedirect = null;
     if (this.props.isAuthenticated) {
-      return <Redirect to={this.props.authRedirectPath} />;
+      return <Redirect to={this.props.authRedirectPath}/>;
     }
     return (
       <Aux>
         <Col sm="8">
           <BrowserView>
-            <Carousel />
+            <Carousel/>
             <div className="keyFeatures">
               <ul>
                 <li>* Over 10,000 doctors in network</li>
@@ -165,7 +167,7 @@ componentDidMount() {
         </Col>
         <Col sm="4">
           <div className="bgWhite">
-          <Form className="form" noValidate>
+            <Form className="form" noValidate>
               {form}
               <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
               {errorMessage}

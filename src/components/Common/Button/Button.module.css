@@ -1,8 +1,8 @@
 .customButton {
-  width: auto;
+  width: auto !important;
   float: right;
   display: inline-block;
-  padding: 8px 30px;
+  padding: 8px 30px !important;
   margin-top: 15px;
 }
 
