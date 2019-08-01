@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import './LoginForm.module.scss';
-import { Button, Col, Form, Row } from "reactstrap";
+import {Button, Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
 import Carousel from '../Carousel/Carousel';
 import { Link, Redirect } from "react-router-dom";
