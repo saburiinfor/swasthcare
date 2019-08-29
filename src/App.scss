@@ -24,6 +24,7 @@ body {
 
 .keyFeatures ul {
   list-style-type: none;
+
   li {
     color: #fff;
     font-size: 25px;
@@ -65,7 +66,7 @@ body {
 }
 
 .Footer {
-  position: relative;
+  //position: relative;
   bottom: -100px;
   min-height: 60px;
   width: 100%;
@@ -184,6 +185,12 @@ body {
     padding: 10px;
     margin-top: calc(50vh - 250px);
 
+    .row {
+      clear: both;
+      float: left;
+      width: 100%;
+    }
+
     #forgotPWD {
       padding-top: 20px;
       margin-bottom: 0px;
@@ -195,10 +202,10 @@ body {
     display: none;
   }
 
-  .Footer {
-    position: fixed !important;
-    bottom: -10px !important;
-  }
+  //.Footer {
+  //  position: fixed !important;
+  //  bottom: -10px !important;
+  //}
 
   .form-control {
     border: none !important;

@@ -19,12 +19,12 @@ class App extends Component {
       <Router basename={'/'}>
         <MobileView>
           <Switch>
-            <Route exact path="/" component={guestUser}/>
-            <Route exact path="/login" component={guestUser}/>
-            <Route exact path="/createuser" component={loggedInUser}/>
-            <Route exact path="/appointment" component={loggedInUser}/>
-            <Route exact path="/newAppointment" component={loggedInUser}/>
-            <Route exact path="/SelectAppointmentDate" component={loggedInUser}/>
+            <Route exact path="/swasthcare/" component={guestUser}/>
+            <Route exact path="/swasthcare/login" component={guestUser}/>
+            <Route exact path="/swasthcare/createuser" component={loggedInUser}/>
+            <Route exact path="/swasthcare/appointment" component={loggedInUser}/>
+            <Route exact path="/swasthcare/newAppointment" component={loggedInUser}/>
+            <Route exact path="/swasthcare/SelectAppointmentDate" component={loggedInUser}/>
           </Switch>
         </MobileView>
         <BrowserView>

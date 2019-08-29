@@ -54,7 +54,7 @@ class LoginForm extends Component {
         },
         value: "",
         valid: true,
-        touched: true
+        touched: false
       }
     },
     isSignup: true,
