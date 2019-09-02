@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a42ecbfe0471a54edc1ae454d3c64464",
+    "revision": "77af32a76d530f4ce6e16a2199cd033d",
     "url": "/swasthcare/index.html"
   },
   {
-    "revision": "dd4fd6eb124ecf9e6b00",
-    "url": "/swasthcare/static/css/2.4ed46a55.chunk.css"
+    "revision": "57534d0a640cb2edcd68",
+    "url": "/swasthcare/static/css/2.cb0a7b97.chunk.css"
   },
   {
-    "revision": "75fdfbcc872bc3114d8b",
+    "revision": "d56159274217367e8328",
     "url": "/swasthcare/static/css/main.c4fb9f51.chunk.css"
   },
   {
-    "revision": "dd4fd6eb124ecf9e6b00",
-    "url": "/swasthcare/static/js/2.1e27bb87.chunk.js"
+    "revision": "57534d0a640cb2edcd68",
+    "url": "/swasthcare/static/js/2.fb483df0.chunk.js"
   },
   {
-    "revision": "75fdfbcc872bc3114d8b",
-    "url": "/swasthcare/static/js/main.6ebc6d62.chunk.js"
+    "revision": "d56159274217367e8328",
+    "url": "/swasthcare/static/js/main.aaaf6e6e.chunk.js"
   },
   {
     "revision": "3d21d64165ee27a00735",
