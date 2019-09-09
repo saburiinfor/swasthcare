@@ -1,19 +1,14 @@
 {
   "files": {
-    "main.css": "/swasthcare/static/css/main.c4fb9f51.chunk.css",
-    "main.js": "/swasthcare/static/js/main.aaaf6e6e.chunk.js",
-    "main.js.map": "/swasthcare/static/js/main.aaaf6e6e.chunk.js.map",
-    "runtime~main.js": "/swasthcare/static/js/runtime~main.9eb1b81a.js",
-    "runtime~main.js.map": "/swasthcare/static/js/runtime~main.9eb1b81a.js.map",
-    "static/css/2.cb0a7b97.chunk.css": "/swasthcare/static/css/2.cb0a7b97.chunk.css",
-    "static/js/2.fb483df0.chunk.js": "/swasthcare/static/js/2.fb483df0.chunk.js",
-    "static/js/2.fb483df0.chunk.js.map": "/swasthcare/static/js/2.fb483df0.chunk.js.map",
-    "index.html": "/swasthcare/index.html",
-    "precache-manifest.0974285521ebb999ecff1ccf804b3759.js": "/swasthcare/precache-manifest.0974285521ebb999ecff1ccf804b3759.js",
-    "service-worker.js": "/swasthcare/service-worker.js",
-    "static/css/2.cb0a7b97.chunk.css.map": "/swasthcare/static/css/2.cb0a7b97.chunk.css.map",
-    "static/css/main.c4fb9f51.chunk.css.map": "/swasthcare/static/css/main.c4fb9f51.chunk.css.map",
-    "static/media/bannerImg2.jpg": "/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
-    "static/media/bannerImg3.jpg": "/swasthcare/static/media/bannerImg3.c2bb48ac.jpg"
+    "main.css": "/static/css/main.b4e35e2b.chunk.css",
+    "main.js": "/static/js/main.980780c1.chunk.js",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "static/css/2.f6bae65e.chunk.css": "/static/css/2.f6bae65e.chunk.css",
+    "static/js/2.3f830d51.chunk.js": "/static/js/2.3f830d51.chunk.js",
+    "index.html": "/index.html",
+    "precache-manifest.9c3c9008350ec97f03d7a1210db42b59.js": "/precache-manifest.9c3c9008350ec97f03d7a1210db42b59.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/bannerImg2.jpg": "/static/media/bannerImg2.fb8a4d06.jpg",
+    "static/media/bannerImg3.jpg": "/static/media/bannerImg3.c2bb48ac.jpg"
   }
 }
