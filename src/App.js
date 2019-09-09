@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './App.scss';
 import Layout from './components/Common/Layout/Layout';
 import {BrowserView, MobileView} from "react-device-detect";
-// import {BrowserRouter as Router, Route} from "react-router-dom";
-import {HashRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+// import {HashRouter as Router, Route, Switch} from "react-router-dom";
 
 const loggedInUser = () => <div className="App logged-bg">
   <Layout/>

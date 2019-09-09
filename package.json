@@ -1,6 +1,6 @@
 {
-   "name": "swasthcare",
-   "homepage": "https://saburiinfor.github.io/swasthcare",
+   "name": "conferkare",
+   "homepage": "http://localhost/",
    "version": "0.1.0",
    "private": true,
    "dependencies": {
@@ -31,11 +31,8 @@
       "test": "react-scripts test",
       "eject": "react-scripts eject",
       "predeploy": "npm run build",
-      "deploy": "gh-pages -d build",
-      "server": "node-env-run server --exec nodemon | pino-colada",
-      "dev": "run-p start server"
+      "deploy": "gh-pages -d build"
    },
-   "proxy": "http://localhost:3001",
    "eslintConfig": {
       "extends": "react-app"
    },
@@ -50,14 +47,5 @@
          "last 1 firefox version",
          "last 1 safari version"
       ]
-   },
-   "devDependencies": {
-      "body-parser": "^1.19.0",
-      "express": "^4.17.1",
-      "express-pino-logger": "^4.0.0",
-      "node-env-run": "^3.0.2",
-      "nodemon": "^1.19.1",
-      "npm-run-all": "^4.1.5",
-      "pino-colada": "^1.4.5"
    }
 }
