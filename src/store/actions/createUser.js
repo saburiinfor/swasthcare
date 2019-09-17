@@ -38,7 +38,7 @@ export const createUser = (userDataObj) => {
         userData.append("bloodgrp", userDataObj.bloodgrp);
         userData.append("dob", userDataObj.dob);
         userData.append("status", userDataObj.status);
-        axios.post("https://www.skrepository.com/restapi/User/create/", userData).then(
+        axios.post(actionTypes.API_URL + "/User/create/", userData).then(
             response => {
                 if (response.data && response.data["Message"] === "New User is created") {                    
                     dispatch(createUserSuccess());
@@ -55,7 +55,7 @@ export const getCountry = () => {
     return dispatch => {
         const getCountryData = new FormData();
         getCountryData.append("id", 1);
-        axios.post("https://www.skrepository.com/restapi/Market/getmarket/", getCountryData).then(
+        axios.post(actionTypes.API_URL + "/Market/getmarket/", getCountryData).then(
             response => {
                 console.log("res ***" + JSON.stringify(response));
                 console.log("res ***" + JSON.stringify(response.data["marketname"]));
@@ -72,7 +72,7 @@ export const getCountry = () => {
 };
 export const getCity = () => {
     return dispatch => {
-        axios.get("https://www.skrepository.com/restapi/Market/getcity/").then(
+        axios.get(actionTypes.API_URL + "/Market/getcity/").then(
             response => {               
                 console.log("res ***" + JSON.stringify(response));
                 console.log("res ***" + JSON.stringify(response.data));

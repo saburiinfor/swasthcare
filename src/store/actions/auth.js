@@ -25,7 +25,7 @@ export const auth = (email, password, isSignup) => {
         const authData = new FormData();
         authData.append("email", email);
         authData.append("password", password);
-        axios.post("https://www.skrepository.com/restapi/User/login/", authData).then(
+        axios.post(actionTypes.API_URL + "/User/login/", authData).then(
             response => {
                 console.log("res ***" + JSON.stringify(response));
                 if (response.data.success === 1) {
