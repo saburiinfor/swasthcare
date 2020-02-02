@@ -1,14 +1,22 @@
 {
   "files": {
-    "main.css": "/swasthcare/static/css/main.b4e35e2b.chunk.css",
-    "main.js": "/swasthcare/static/js/main.5da8e8c1.chunk.js",
-    "runtime~main.js": "/swasthcare/static/js/runtime~main.9eb1b81a.js",
-    "static/css/2.f6bae65e.chunk.css": "/swasthcare/static/css/2.f6bae65e.chunk.css",
-    "static/js/2.3f830d51.chunk.js": "/swasthcare/static/js/2.3f830d51.chunk.js",
+    "main.css": "/swasthcare/static/css/main.a6423b5a.chunk.css",
+    "main.js": "/swasthcare/static/js/main.fc155a55.chunk.js",
+    "runtime-main.js": "/swasthcare/static/js/runtime-main.c551c4a6.js",
+    "static/css/2.3a1dcc63.chunk.css": "/swasthcare/static/css/2.3a1dcc63.chunk.css",
+    "static/js/2.b0862f3d.chunk.js": "/swasthcare/static/js/2.b0862f3d.chunk.js",
     "index.html": "/swasthcare/index.html",
-    "precache-manifest.81313c313b62858a5ecbc18e34543ea9.js": "/swasthcare/precache-manifest.81313c313b62858a5ecbc18e34543ea9.js",
+    "precache-manifest.4b0a6bea1752afb8dcffd4c2edf12b9d.js": "/swasthcare/precache-manifest.4b0a6bea1752afb8dcffd4c2edf12b9d.js",
     "service-worker.js": "/swasthcare/service-worker.js",
+    "static/js/2.b0862f3d.chunk.js.LICENSE.txt": "/swasthcare/static/js/2.b0862f3d.chunk.js.LICENSE.txt",
     "static/media/bannerImg2.jpg": "/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
     "static/media/bannerImg3.jpg": "/swasthcare/static/media/bannerImg3.c2bb48ac.jpg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c551c4a6.js",
+    "static/css/2.3a1dcc63.chunk.css",
+    "static/js/2.b0862f3d.chunk.js",
+    "static/css/main.a6423b5a.chunk.css",
+    "static/js/main.fc155a55.chunk.js"
+  ]
 }
