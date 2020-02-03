@@ -167,9 +167,10 @@ class LoginForm extends Component {
         </Col>
         <Col sm="4">
           <div className="bgWhite">
+            <div class={'welcomeMsg'}>Welcome to ConferKare</div>
             <Form className="form" noValidate>
               {form}
-              <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Submit</ButtonField>
+              <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Sign In</ButtonField>
               {errorMessage}
             </Form>
             <p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>

@@ -17,6 +17,7 @@
       display: inline-block;
       vertical-align: middle;
       margin-top: -10px;
+      text-shadow: #0d1319 3px 2px 4px;
     }
   }
 
@@ -27,15 +28,18 @@
 
     img {
       vertical-align: middle;
-      margin-left: 15px;
+      position: relative;
+      top: -1px;
+      width: 15px;
+      right: 25px;
     }
-  }
-
-  .search {
-    width: 48%;
-    border-radius: 10px;
-    padding: 6px;
-    border: 1px solid #fff;
-    height: 40px;
+    .search {
+      width: 48%;
+      height: 26px;
+      border-radius: 5px;
+      padding: 6px;
+      border: 1px solid #fff;
+      box-shadow: #0d1319 2px 2px 3px;
+    }
   }
 }
