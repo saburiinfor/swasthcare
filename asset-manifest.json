@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/swasthcare/static/css/main.a6423b5a.chunk.css",
+    "main.css": "/swasthcare/static/css/main.6c1732c5.chunk.css",
     "main.js": "/swasthcare/static/js/main.07e52cae.chunk.js",
     "runtime-main.js": "/swasthcare/static/js/runtime-main.c551c4a6.js",
     "static/css/2.3a1dcc63.chunk.css": "/swasthcare/static/css/2.3a1dcc63.chunk.css",
     "static/js/2.686fc4bc.chunk.js": "/swasthcare/static/js/2.686fc4bc.chunk.js",
     "index.html": "/swasthcare/index.html",
-    "precache-manifest.67a459a1fa37c77429972e684755baaf.js": "/swasthcare/precache-manifest.67a459a1fa37c77429972e684755baaf.js",
+    "precache-manifest.b86d1645c9c8efaee9a55fd0ed3fec5e.js": "/swasthcare/precache-manifest.b86d1645c9c8efaee9a55fd0ed3fec5e.js",
     "service-worker.js": "/swasthcare/service-worker.js",
     "static/js/2.686fc4bc.chunk.js.LICENSE.txt": "/swasthcare/static/js/2.686fc4bc.chunk.js.LICENSE.txt",
     "static/media/bannerImg2.jpg": "/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
@@ -16,7 +16,7 @@
     "static/js/runtime-main.c551c4a6.js",
     "static/css/2.3a1dcc63.chunk.css",
     "static/js/2.686fc4bc.chunk.js",
-    "static/css/main.a6423b5a.chunk.css",
+    "static/css/main.6c1732c5.chunk.css",
     "static/js/main.07e52cae.chunk.js"
   ]
 }

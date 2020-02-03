@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d50fe05ca1eb9be7abb567e06551ad5b",
+    "revision": "1f3aafb179f139cd007ecb438f833347",
     "url": "/swasthcare/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swasthcare/static/css/2.3a1dcc63.chunk.css"
   },
   {
-    "revision": "12927119e5cb45a4795d",
-    "url": "/swasthcare/static/css/main.a6423b5a.chunk.css"
+    "revision": "29ac76f8dcfa718e76cd",
+    "url": "/swasthcare/static/css/main.6c1732c5.chunk.css"
   },
   {
     "revision": "7e4e48f50d5fbe85ff33",
@@ -20,7 +20,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/swasthcare/static/js/2.686fc4bc.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "12927119e5cb45a4795d",
+    "revision": "29ac76f8dcfa718e76cd",
     "url": "/swasthcare/static/js/main.07e52cae.chunk.js"
   },
   {
