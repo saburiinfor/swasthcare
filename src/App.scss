@@ -187,6 +187,9 @@ body {
   .carousel-item.active {
     align-items: center;
   }
+  .carousel-indicators li {
+    background-color: #000000;
+  }
 }
 
 .carousel-item > img {

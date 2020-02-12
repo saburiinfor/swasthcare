@@ -104,7 +104,24 @@
 .bgWhite {
   background: #fff;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: #0d1319 2px 2px 4px;
+
+  .welcomeMsg {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .reactTelInput {
+    width: 100%;
+    [type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+      height: 34px;
+    }
+    input[type='tel'] {
+      height: 35px;
+    }
+  }
 }
 
 /** Styles for 5 and six inch devices */

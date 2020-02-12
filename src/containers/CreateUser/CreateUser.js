@@ -7,6 +7,9 @@ import Carousel from '../Carousel/Carousel'
 import { BrowserView, MobileView, isMobile } from "react-device-detect";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
+import ReactTelephoneInput from "react-telephone-input/lib/withStyles";
+import flags from "../../assets/images/flags.png";
+
 class CreateUser extends Component {
   constructor(props) {
     super(props);
@@ -41,6 +44,11 @@ class CreateUser extends Component {
   onChangeHandler = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  
+  handleInputChange(telNumber, selectedCountry) {
+    console.log('input changed. number: ', telNumber, 'selected country: ', selectedCountry);
+  };
+  
   render() {
     return (
       <Aux>
@@ -60,6 +68,7 @@ class CreateUser extends Component {
         </Col>
         <Col sm="4">
           <div className={styles.bgWhite}>
+            <div className={styles.welcomeMsg}>Welcome to ConferKare</div>
             <Form>
               <FormGroup className={styles.floatingLabel}>
                 <Input type="text" name="name" id="name" className="no-border" value={this.state.name} onChange={this.onChangeHandler} />
@@ -74,9 +83,14 @@ class CreateUser extends Component {
                 <label className="ml-0">Password *</label>
               </FormGroup>
               <FormGroup className={styles.floatingLabel}>
-                <Input type="number" name="contactNo" id="contactNo" className="no-border" value={this.state.contactNo} onChange={this.onChangeHandler} />
-                <label className="ml-0">Contact Number *</label>
-              </FormGroup> 
+                <ReactTelephoneInput
+                  className={styles.reactTelInput}
+                  defaultCountry="in"
+                  initialValue='911234567890'
+                  flagsImagePath={flags}
+                  onChange={this.handleInputChange}
+                />
+              </FormGroup>
               <div className={styles.buttonContainer}>
                 <Button color="primary" onClick={this.onSubmitHandler} className={styles.createUserBtn}>Submit</Button>
               </div>
