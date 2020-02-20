@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import Aux from "../../hoc/Auxwrap";
-import { Button, Col, CustomInput, Form, FormGroup, Input, Row } from "reactstrap";
+import { Button, Col, Form, FormGroup, Input, Row } from "reactstrap";
 import styles from "./CreateUser.module.scss";
-import axios from 'axios'
 import Carousel from '../Carousel/Carousel'
 import { BrowserView, MobileView, isMobile } from "react-device-detect";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import ReactTelephoneInput from "react-telephone-input/lib/withStyles";
 import flags from "../../assets/images/flags.png";
+import {Redirect} from "react-router-dom";
 
 class CreateUser extends Component {
   constructor(props) {
@@ -30,12 +30,12 @@ class CreateUser extends Component {
       bloodgrp: "AB+",
       dob: "2009-07-17",
       status: "N"
-      
     }
   }
   componentDidMount() {
     this.props.onGetCountryList();
     this.props.onGetCityList();
+    this.props.onSetUserStatus();
   };
   onSubmitHandler = e => {
     console.log("current state is = " + JSON.stringify(this.state));
@@ -45,11 +45,22 @@ class CreateUser extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   
+  updateContactNo = (telPhoneNumber) => {
+    const contactNo = telPhoneNumber.trim().substr(3).replace('-','');
+    this.setState({
+      contactNo
+    });
+  };
+  
   handleInputChange(telNumber, selectedCountry) {
     console.log('input changed. number: ', telNumber, 'selected country: ', selectedCountry);
   };
-  
   render() {
+    if (this.props.userStatus === 'new') {
+      this.props.onSetUserStatus();
+      return (
+        <Redirect to='/newUser' />);
+    }
     return (
       <Aux>
         <Col sm="8">
@@ -86,9 +97,12 @@ class CreateUser extends Component {
                 <ReactTelephoneInput
                   className={styles.reactTelInput}
                   defaultCountry="in"
-                  initialValue='911234567890'
+                  initialValue=''
+                  required={true}
                   flagsImagePath={flags}
-                  onChange={this.handleInputChange}
+                  // onChange={this.handleInputChange}
+                  onBlur={this.updateContactNo}
+                  placeholder={'911234567890'}
                 />
               </FormGroup>
               <div className={styles.buttonContainer}>
@@ -122,13 +136,15 @@ class CreateUser extends Component {
 const mapStateToProps = state => {
   return {
     countryLs: state.createUser.countryList,
-    cityLs: state.createUser.cityList
+    cityLs: state.createUser.cityList,
+    userStatus: state.createUser.userStatus
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onGetCountryList: () => dispatch(actions.getCountry()),
     onGetCityList: () => dispatch(actions.getCity()),
+    onSetUserStatus: () => dispatch(actions.setUserStatus()),
     onCreateUser: (userDataObj) => dispatch(actions.createUser(userDataObj))
   };
 };

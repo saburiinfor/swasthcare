@@ -7,4 +7,6 @@ export const COUNTRY_SUCCESS = 'COUNTRY_SUCCESS';
 export const CITY_SUCCESS = 'CITY_SUCCESS';
 export const CREATEUSER_SUCCESS = 'CREATEUSER_SUCCESS';
 export const CREATEUSER_FAIL = 'CREATEUSER_FAIL';
-export const API_URL = 'https://www.conferadmin.com/restapi';
+export const SET_EXIST_USER_STATUS = 'SET_EXIST_USER_STATUS';
+// export const API_URL = 'https://www.conferadmin.com/restapi';
+export const API_URL = 'https://www.skrepository.com/restapi/';

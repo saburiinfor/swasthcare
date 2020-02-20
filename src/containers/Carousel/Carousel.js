@@ -9,17 +9,17 @@ import img3 from "../../assets/images/CK3.jpg";
 const items = [
   {
     src: img1,
-    altText: "",
+    altText: "img1",
     caption: ""
   },
   {
     src: img2,
-    altText: "",
+    altText: "img2",
     caption: ""
   },
   {
     src: img3,
-    altText: "",
+    altText: "img3",
     caption: ""
   }
 ];

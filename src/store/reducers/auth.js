@@ -1,6 +1,7 @@
 
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../shared/utility';
+
 const initialState = {
     token: null,
     userId: null,
@@ -8,6 +9,7 @@ const initialState = {
     loading: false,
     authRedirectPath: '/'
 };
+
 const authStart = (state, action) => {
     return updateObject(state, { error: null, loading: true });
 };

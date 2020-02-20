@@ -63,7 +63,8 @@ class LoginForm extends Component {
   
   componentDidMount() {
     
-    {/* if (this.props.authRedirectPath !== '/') {
+    {
+      /* if (this.props.authRedirectPath !== '/') {
      
      this.props.onSetAuthRedirectPath(this.props.authRedirectPath);
      
@@ -145,7 +146,6 @@ class LoginForm extends Component {
         <p className="text-danger mt-2">{this.props.error}</p>
       );
     }
-    let authRedirect = null;
     if (this.props.isAuthenticated) {
       return <Redirect to={this.props.authRedirectPath}/>;
     }
@@ -170,13 +170,13 @@ class LoginForm extends Component {
         </Col>
         <Col sm="4">
           <div className="bgWhite">
-            <div class={'welcomeMsg'}>Welcome to ConferKare</div>
+            <div className={'welcomeMsg'}>Welcome to ConferKare</div>
             <Form className="form" noValidate>
               {form}
               <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Sign In</ButtonField>
               {errorMessage}
             </Form>
-            <p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>
+            {/*<p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>*/}
             <BrowserView>
               <p id="signUp"><Link to="/createuser" className="textDn">New User, Sign Up </Link></p>
             </BrowserView>
