@@ -8,5 +8,10 @@ export const CITY_SUCCESS = 'CITY_SUCCESS';
 export const CREATEUSER_SUCCESS = 'CREATEUSER_SUCCESS';
 export const CREATEUSER_FAIL = 'CREATEUSER_FAIL';
 export const SET_EXIST_USER_STATUS = 'SET_EXIST_USER_STATUS';
+
+export const APPOINTMENTLIST_SUCCESS = 'APPOINTMENTLIST_SUCCESS';
+export const USERDETAIL_SUCCESS = 'USERDETAIL_SUCCESS';
+export const SET_APPOINTMENTDATE = 'SET_APPOINTMENTDATE';
+
 // export const API_URL = 'https://www.conferadmin.com/restapi';
 export const API_URL = 'https://www.skrepository.com/restapi/';

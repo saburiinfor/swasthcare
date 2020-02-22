@@ -29,7 +29,8 @@ export const auth = (email, password, isSignup) => {
             response => {
                 console.log("res ***" + JSON.stringify(response));
                 if (response.data.success === 1) {
-                    localStorage.setItem('token', response.data.token);
+                    sessionStorage.setItem('token', response.data.token);
+                    sessionStorage.setItem('id', response.data.id);
                     dispatch(authSuccess(response.data.token, response.data.id));
                 }
                 else {

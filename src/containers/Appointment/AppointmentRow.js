@@ -5,6 +5,7 @@ import ButtonWithTick from "../../containers/ButtonWithTick/ButtonWithTick";
 import BasicButton from "../../components/Common/BasicButton/BasicButton";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from "./Appointment.module.scss";
+import dateformat from 'dateformat';
 
 class AppointmentRow extends Component {
   constructor(props) {
@@ -20,6 +21,11 @@ class AppointmentRow extends Component {
   }
   
   render() {
+    console.log(this.props.appointment);
+    let appointmentDate = '';
+    if (this.props.appointment.appdate !== '--') {
+      appointmentDate = dateformat(new Date(this.props.appointment.appdate), 'dd/mm/yyyy');
+    }
     return (
       <Jumbotron
         className={classnames(
@@ -29,7 +35,7 @@ class AppointmentRow extends Component {
       >
         <Container fluid>
           <Row>
-            <Col md="7" className={styles.appointmentDesc}>{this.props.name}</Col>
+            <Col md="7" className={styles.appointmentDesc}>Meet physician on {appointmentDate}</Col>
             <Col md="5" className={styles.appointmentBtns}>
               <ButtonWithTick size="sm" color="primary" text="Unconfirmed" selectedText="Confirmed" childColor="#007bff"
                               childClass="ml-1" childSize="1x" childIcon={faCheck} handleStateChange={this.handleStateChange.bind(this)}/>

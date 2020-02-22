@@ -1,7 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
-import { history } from "../../store";
-import {setNewUser} from "../actions/createUser";
 
 const initialState = {
   countryList: [],

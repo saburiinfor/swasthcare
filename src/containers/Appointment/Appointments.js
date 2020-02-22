@@ -8,7 +8,10 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCalendarAlt, faPen, faUser} from "@fortawesome/free-solid-svg-icons";
 import newAppointment from "../../assets/images/newAppointment.png";
 import {Helmet} from "react-helmet";
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
+import dateformat from 'dateformat';
 
 class Appointment extends Component {
   constructor(props) {
@@ -27,11 +30,23 @@ class Appointment extends Component {
     }
   }
   
+  componentDidMount() {
+    // this.props.onGetUserDetails();
+    const apDate = dateformat(Date(), 'dd/mm/yyyy');
+    this.props.onSetAppointmentDate(apDate);
+  }
+  
   render() {
+    const userToken = sessionStorage.getItem('token');
+    if (userToken === null) {
+      return <Redirect to='/' />;
+    }
     return (
       <Col md="12" className="mt10">
         <Helmet>
-          <style>{'.header .logo h2{color:#333;} .appointmentBtn{height:50px} .tar{text-align:right;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc}' +
+          <style>{'.header .logo h2{color:#333;} .appointmentBtn{height:50px} .tar{text-align:right;} .mt10{margin-top:10px;} main{ background: #fff; } .header' +
+          ' .search{border:1px' +
+          ' solid #ccc}' +
           ' @media screen and (min-width: 800px) { .header{border-bottom:1px solid #666} } .header .logo img{height:80px} '}</style>
         </Helmet>
         <Row>
@@ -104,4 +119,18 @@ class Appointment extends Component {
   }
 }
 
-export default Appointment;
+const mapStateToProps = state => {
+  return {
+    // userDetails: state.appointment.userDetails,
+    appointmentDate: state.appointment.appointmentDate
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    // onGetUserDetails: () => dispatch(actions.getUserDetails()),
+    onSetAppointmentDate: (date) => dispatch(actions.setAppointmentDate(date))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Appointment);
