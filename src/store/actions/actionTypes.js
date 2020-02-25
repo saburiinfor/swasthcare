@@ -19,6 +19,7 @@ export const SET_APPOINTMENTDATE = 'SET_APPOINTMENTDATE';
 
 export const PHYSICIANLIST_SUCCESS = 'PHYSICIANLIST_SUCCESS';
 export const SET_PHY_FILTER_TEXT = 'SET_PHY_FILTER_TEXT';
+export const SET_SELECTED_PHY_ID = 'SET_SELECTED_PHY_ID';
 
 // export const API_URL = 'https://www.conferadmin.com/restapi';
 export const API_URL = 'https://www.skrepository.com/restapi/';

@@ -9,6 +9,13 @@ export const physicianListSuccess = (physicianList) => {
   };
 };
 
+export const selectPhysician = (phyid) => {
+  return {
+    type: actionTypes.SET_SELECTED_PHY_ID,
+    phyid
+  };
+};
+
 export const getPhysicianList = (phyname, phycity, physpecialisation) => {
   return dispatch => {
     const physicianData = new FormData();

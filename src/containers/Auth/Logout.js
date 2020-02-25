@@ -16,7 +16,7 @@ class Logout extends Component {
   }
   signoutHandler = () => {
     this.props.onSetSignout();
-    window.location.replace('/');
+    window.location.replace('/swasthcare/');
   };
   render() {
     return <Button color="primary" onClick={this.signoutHandler.bind(null, this)}>Sign out</Button>;
