@@ -21,10 +21,10 @@ class AppointmentRow extends Component {
   }
   
   render() {
-    console.log(this.props.appointment);
-    let appointmentDate = '';
+    let appointmentDate = '',
+      toggleOn = this.props.appointment.status === 'Booked';
     if (this.props.appointment.appdate !== '--') {
-      appointmentDate = dateformat(new Date(this.props.appointment.appdate), 'dd/mm/yyyy');
+      appointmentDate = dateformat(new Date(this.props.appointment.appdate), 'yyyy-mm-dd');
     }
     return (
       <Jumbotron
@@ -37,7 +37,7 @@ class AppointmentRow extends Component {
           <Row>
             <Col md="7" className={styles.appointmentDesc}>Meet physician on {appointmentDate}</Col>
             <Col md="5" className={styles.appointmentBtns}>
-              <ButtonWithTick size="sm" color="primary" text="Unconfirmed" selectedText="Confirmed" childColor="#007bff"
+              <ButtonWithTick size="sm" color="primary" text="Unconfirmed" selectedText="Confirmed" childColor="#007bff" isToggleOn={toggleOn}
                               childClass="ml-1" childSize="1x" childIcon={faCheck} handleStateChange={this.handleStateChange.bind(this)}/>
               <BasicButton size="sm" text="Reshedule"/>
             </Col>

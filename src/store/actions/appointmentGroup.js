@@ -9,6 +9,13 @@ export const appointmentListSuccess = (appointmentsList) => {
   };
 };
 
+export const setAppointmentDateSuccess = (appointmentDate) => {
+  return {
+    type: actionTypes.SET_APPOINTMENTDATE,
+    appointmentDate
+  };
+};
+
 export const getAppointmentList = () => {
   return dispatch => {
     const appointmentData = new FormData();
@@ -19,8 +26,7 @@ export const getAppointmentList = () => {
       response => {
         // console.log('inside patients data response');
         // console.log("res ***" + JSON.stringify(response.data));
-        let appointmentsList = Array.from(response.data.result);
-        dispatch(appointmentListSuccess(appointmentsList));
+        dispatch(appointmentListSuccess(Array.from(response.data.result)));
       }).catch(err => {
       console.log(err);
     });

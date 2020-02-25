@@ -2,20 +2,20 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
 
 const initialState = {
-  appointmentList: []
+  physicianList: []
 };
 
-const appointmentListSuccess = (state, action) => {
+const physicianListSuccess = (state, action) => {
   return updateObject(state, {
-    appointmentsList: action.appointmentsList
+    physicianList: action.physicianList
   });
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.APPOINTMENTLIST_SUCCESS:
-      return appointmentListSuccess(state, action);
-    default:
-      return state;
+  case actionTypes.PHYSICIANLIST_SUCCESS:
+    return physicianListSuccess(state, action);
+  default:
+    return state;
   }
 };
 export default reducer;

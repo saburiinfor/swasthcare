@@ -7,7 +7,7 @@ import Footer from "../Footer/Footer";
 import Header_mobile from "../../mobile/Header/Header";
 import "./Layout.module.scss";
 import { Route } from "react-router-dom";
-import LoginForm from "../../../containers/Login/LoginForm";
+import LoginForm from "../../../containers/Auth/LoginForm";
 import CreateUser from "../../../containers/CreateUser/CreateUser";
 import NewUser from "../../../containers/NewRegisteredUser/NewUser";
 import Appointment from "../../../containers/Appointment/Appointments";

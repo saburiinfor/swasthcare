@@ -2,20 +2,20 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
 
 const initialState = {
-  appointmentList: []
+  filter: ''
 };
 
-const appointmentListSuccess = (state, action) => {
+const setPhysicianFilterTextSuccess = (state, action) => {
   return updateObject(state, {
-    appointmentsList: action.appointmentsList
+    filter: action.filter
   });
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.APPOINTMENTLIST_SUCCESS:
-      return appointmentListSuccess(state, action);
-    default:
-      return state;
+  case actionTypes.SET_PHY_FILTER_TEXT:
+    return setPhysicianFilterTextSuccess(state, action);
+  default:
+    return state;
   }
 };
 export default reducer;

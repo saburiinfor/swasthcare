@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import MediaElement from "./MediaElement";
 import {Input} from "reactstrap";
 import styles from "./MediaElement.module.css";
+import { connect } from 'react-redux';
+import * as actions from "../../../store/actions/index";
 
 class MediaElementGroup extends Component {
   constructor(props) {
@@ -49,16 +51,19 @@ class MediaElementGroup extends Component {
     };
   }
   
+  componentDidMount() {
+  }
+  
   handleChange = event => {
     this.setState({filter: event.target.value});
+    this.props.onSetPhysicianFilterText(event.target.value);
   };
   
   render() {
-    const {filter, listOfPannels} = this.state;
-    const lowercasedFilter = filter.toLowerCase();
-    const filteredData = listOfPannels.filter(item => {
+    const {filter} = this.state;
+    const filteredData = this.props.physicianList.filter((item) => {
       return Object.keys(item).some(key =>
-        item[key].toLowerCase().includes(lowercasedFilter)
+        (item[key] !== null) ? item[key].toLowerCase().includes(filter.toLowerCase()):false
       );
     });
     
@@ -74,4 +79,17 @@ class MediaElementGroup extends Component {
   }
 }
 
-export default MediaElementGroup;
+const mapStateToProps = (state) => {
+  return {
+    physicianList: state.newAppointment.physicianList,
+    filter: state.mediaElementGroup.filter
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetPhysicianFilterText: (filterText) => dispatch(actions.setPhysicianFilterText(filterText))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MediaElementGroup);

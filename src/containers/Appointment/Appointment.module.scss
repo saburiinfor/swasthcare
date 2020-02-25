@@ -1,16 +1,29 @@
-.container-fluid {
-  background: #fff;
+.appointments {
+  margin: 15px;
+  padding: 0px;
+  width: auto;
+  border-top: 1px solid #333333;
+  .appointmentSection {
+    border: 1px darkgrey solid;
+    background-color: #fff !important;
+    padding: 10px 0px 10px 0px !important;
+    border-left: 3px #17a2b8 solid;
+    margin: 10px 10px .5rem;
+    border-radius: 0px;
+    box-shadow: #999999 2px 2px 4px;
+
+    .container-fluid {
+      background: #fff;
+    }
+  }
+
+  .appointmentSection.confirmed {
+    border-left: 3px darkorange solid;
+  }
 }
 
-.appointmentSection {
-  border: 1px darkgrey solid;
-  background-color: #fff !important;
-  padding: 10px 0px 10px 0px !important;
-  border-left: 3px #17a2b8 solid;
-}
-
-.appointmentSection.confirmed {
-  border-left: 3px darkorange solid;
+.appointmentBtns {
+  text-align: right;
 }
 
 .editBtn {

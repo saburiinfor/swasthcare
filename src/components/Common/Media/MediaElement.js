@@ -1,6 +1,6 @@
 import React from "react";
 import {Button, Col, ListGroup, ListGroupItem, Media, Row} from "reactstrap";
-import {faStar, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styles from "./MediaElement.module.css";
 import classnames from "classnames";
@@ -11,7 +11,7 @@ const MediaElement = props => {
   var starIconArray = [];
   for (var i = 0; i < noOfStars; i++) {
     starIconArray[i] = (
-      <FontAwesomeIcon key={"star" + i} color="yellow" size="1x" icon={faStar}/>
+      <FontAwesomeIcon key={"star" + i} color="#D88D37" size="1x" icon={faStar}/>
     );
   }
   
@@ -35,17 +35,17 @@ const MediaElement = props => {
                 Name
               </Col>
               <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                {panelData.name}
+                {panelData.phyname}
               </Col>
             </Row>
           </ListGroupItem>
           <ListGroupItem className="border-0 p-0">
             <Row>
               <Col className={classnames(styles.widthHalf, "font-weight-bold", "pr-1")} md="5">
-                Expertise in
+                Specializations
               </Col>
               <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                {panelData.expertiseIn}
+                {panelData.specializations}
               </Col>
             </Row>
           </ListGroupItem>
@@ -55,7 +55,7 @@ const MediaElement = props => {
                 Practicing since
               </Col>
               <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                {panelData.practicingSince}
+                {panelData.experience}
               </Col>
             </Row>
           </ListGroupItem>
@@ -65,7 +65,7 @@ const MediaElement = props => {
                 Consult at
               </Col>
               <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                {panelData.consultAt}
+                {panelData.clinicname}
               </Col>
             </Row>
           </ListGroupItem>

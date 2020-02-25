@@ -7,6 +7,9 @@ import authReducer from './store/reducers/auth';
 import createUserReducer from './store/reducers/createUser';
 import appointmentGroupReducer from './store/reducers/appointmentGroup';
 import appointmentReducer from './store/reducers/appointment';
+import logoutReducer from './store/reducers/logout';
+import newAppointmentReducer from './store/reducers/newAppointment';
+import mediaElementGroupReducer from './store/reducers/mediaElementGroup';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -15,6 +18,9 @@ const rootReducer = combineReducers({
   createUser: createUserReducer,
   appointmentGroup: appointmentGroupReducer,
   appointment: appointmentReducer,
+  logout: logoutReducer,
+  newAppointment: newAppointmentReducer,
+  mediaElementGroup: mediaElementGroupReducer,
   routing: routerReducer
 });
 

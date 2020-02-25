@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import AppointmentRow from "./AppointmentRow";
-//import styles from "./Appointment.module.css";
 import Aux from "../../hoc/Auxwrap";
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import * as actions from "../../store/actions/index";
 
 
@@ -13,16 +12,17 @@ class AppointmentRowGroup extends Component {
       appointmentsList: []
     };
   }
+  
   componentDidMount() {
     this.props.onGetAppointmentList();
   }
   
   render() {
-    console.log(this.state);
-    if (this.props.appointmentsList !== undefined ) {
+    if (this.props.appointmentsList !== undefined) {
+      let filteredList = Array.from(this.props.appointmentsList).filter(item => (item.appdate !== '--' && item.appdate === this.props.appointmentDate));
       return (
         <Aux>
-          {this.props.appointmentsList.map((appointmentItem, index) => {
+          {filteredList.map((appointmentItem, index) => {
             return <AppointmentRow appointment={appointmentItem} key={index}/>;
           })}
         </Aux>

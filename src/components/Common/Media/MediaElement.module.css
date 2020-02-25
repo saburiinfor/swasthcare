@@ -1,73 +1,41 @@
-.customListGroup .list-group-item{
-
-    font-size: 0.9rem !important;  
-
+.customListGroup .list-group-item {
+  font-size: 0.9rem !important;
 }
 
-.mediaElement{
-
-    width:48.8%;
-
-    font-size:13px;
-
-    float:left;
-
-  
-
-    border: 1px #ccc solid;
-
-    border-radius: 3px;
-
-  
-
+.mediaElement {
+  width: 45%;
+  font-size: 13px;
+  float: left;
+  border: 1px #ccc solid;
+  border-radius: 3px;
+  margin: 5px 15px !important;
+  box-shadow: #999999 2px 2px 4px;
 }
 
-.appointmentList{
-
-    border:1px #ccc solid;
-
-    float:left;
-
-    border-radius: 3px;
-
-    width:100%;
-
-   
-
+.appointmentList {
+  border: 1px #ccc solid;
+  float: left;
+  border-radius: 3px;
+  width: 100%;
+  padding-bottom: 15px;
 }
 
-.appointmentList h4{
-
-    background-color: #ccc;
-
-    padding:10px;
-
-   
-
+.appointmentList h4 {
+  background-color: #ccc;
+  padding: 10px;
 }
 
-.appointmentList input{   
-
-    margin:20px 2%;
-
-    width:96%;
-
+.appointmentList input {
+  margin: 20px 2%;
+  width: 46%;
 }
 
 @media (max-width: 768px) {
+  .mediaElement {
+    width: 98%;
+  }
 
-    .mediaElement{
-
-        width:98%;  
-
-    }
-
-    .widthHalf{
-
-        width:50% !important;
-
-    }
-
-      
-
+  .widthHalf {
+    width: 50% !important;
+  }
 }
