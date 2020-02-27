@@ -1,0 +1,18 @@
+.customButton {
+  width: auto !important;
+  float: right;
+  display: inline-block;
+  padding: 8px 30px !important;
+  margin-top: 15px;
+}
+
+.customButton.disabled, .customButton:disabled {
+  width: auto;
+  float: right;
+  display: inline-block;
+  padding: 8px 30px;
+  margin-top: 15px;
+  background-color: #6c757d !important;
+  border-color: #6c757d !important;
+  cursor: not-allowed;
+}
