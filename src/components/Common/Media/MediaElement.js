@@ -23,7 +23,7 @@ const MediaElement = props => {
           <FontAwesomeIcon color="#ccc" size="5x" icon={faUser}/>
         </div>
         <div>{starIconArray}</div>
-        <Button className="pt-0" color="link">
+        <Button className="pt-0" color="link" onClick={() => alert('hello')}>
           Select
         </Button>
       </Media>

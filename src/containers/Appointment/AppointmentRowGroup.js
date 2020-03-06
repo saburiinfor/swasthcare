@@ -15,7 +15,6 @@ class AppointmentRowGroup extends Component {
   
   componentDidMount() {
     this.props.onGetAppointmentList();
-    
   }
   
   render() {

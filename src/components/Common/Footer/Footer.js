@@ -13,7 +13,7 @@ const Footer = props => {
             <li><a href="#">Sitemap</a></li>
           </ul>
           <div className="copyright">
-            @2019 ConferKare
+            @{new Date().getFullYear()} ConferKare
           </div>
         </div>
       </div>
