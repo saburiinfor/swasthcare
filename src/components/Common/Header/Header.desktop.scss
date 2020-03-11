@@ -15,13 +15,19 @@
         margin-top: -10px;
         margin-right: 10px;
       }
-      h2 {
-        color: #333333;
+      a {
+        display: inline-block;
+      }
+      span {
+        color: #6EBF7A;
+        font-weight: normal;
+      }
+      .logoText {
+        color: #255DAA;
         font-size: 32px;
         font-weight: bold;
         display: inline-block;
         vertical-align: middle;
-        margin-top: -10px;
         text-shadow: #0d1319 3px 2px 4px;
       }
     }
@@ -49,15 +55,18 @@
         display: -webkit-inline-flex;
         display: inline-flex;
       }
-
-      h2 {
-        color: #fff;
-        font-size: 32px;
+      span {
+        color: #6EBF7A;
         font-weight: normal;
+      }
+      .logoText {
+        color: #255DAA;
+        font-size: 40px;
+        font-weight: bold;
         display: inline-block;
         vertical-align: middle;
-        margin-top: -10px;
-        text-shadow: #0d1319 3px 2px 4px;
+        margin: 10px 0 0 30px;
+        text-shadow: #0d1319 1px 2px 2px;
       }
     }
 

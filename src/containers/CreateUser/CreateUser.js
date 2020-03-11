@@ -46,7 +46,7 @@ class CreateUser extends Component {
   };
   
   updateContactNo = (telPhoneNumber) => {
-    const contactNo = telPhoneNumber.trim().substr(3).replace('-','');
+    const contactNo = telPhoneNumber;
     this.setState({
       contactNo
     });

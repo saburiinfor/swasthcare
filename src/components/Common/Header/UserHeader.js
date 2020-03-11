@@ -16,8 +16,8 @@ class UserHeader extends React.Component {
         <img src={MenuIcon} alt={'Main menu'} className={'main-menu'}/>
         <div className={'logo'}>
           <Link to="/">
-            <img className={'logo-small'} src={SwasthLogoSmall} alt={'ConferKare'} />
-            <h2>ConferKare</h2>
+            {/*<img className={'logo-small'} src={SwasthLogoSmall} alt={'ConferKare'} />*/}
+            <h3 className={'logoText'}>Confer<span>Kare</span></h3>
           </Link>
         </div>
         <div className={'header-controls'}>

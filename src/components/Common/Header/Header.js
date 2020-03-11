@@ -8,8 +8,9 @@ import UserHeader from "./UserHeader";
 
 const LoginHeader = () => <div className={'login-header'} style={{'width':'100%'}}>
   <div className={'logo'}>
-    <Link to="/"><img src={SwasthLogo} alt={'logo'}/>
-      <h2>ConferKare</h2>
+    <Link to="/">
+      {/*<img src={SwasthLogo} alt={'logo'}/>*/}
+      <h1 className={'logoText'}>Confer<span>Kare</span></h1>
     </Link>
   </div>
   <div className="searchContainer">
@@ -19,7 +20,7 @@ const LoginHeader = () => <div className={'login-header'} style={{'width':'100%'
 </div>;
 
 const LoggedHeader = () => <div className="logged-header">
-  <img src={SwasthLogoSmall} alt={'ConferKare'} className={'logo-small'}/>
+  <h3 className={'logoText'}>Confer<span>Kare</span></h3>
 </div>;
 
 class Header extends React.Component {
@@ -28,6 +29,7 @@ class Header extends React.Component {
       <div className="header">
         <Route exact path="/" component={LoginHeader}/>
         <Route exact path="/login" component={LoginHeader}/>
+        <Route exact path="/newUser" component={LoginHeader}/>
         <Route exact path="/createuser" component={LoginHeader}/>
         <Route exact path="/appointment" component={UserHeader}/>
         <Route exact path="/newAppointment" component={UserHeader}/>

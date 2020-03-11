@@ -7,8 +7,9 @@ import {Link, Route} from "react-router-dom";
 import "./Header.mobile.scss";
 
 const LoginHeader = () => <div className={'logo'}>
-  <Link to="/"><img src={SwasthLogo} alt={'ConferKare'}/>
-    <h2>ConferKare</h2>
+  <Link to="/">
+    {/*<img src={SwasthLogo} alt={'ConferKare'}/>*/}
+    <h1 className={'logoText'}>Confer<span>Kare</span></h1>
   </Link>
 </div>;
 
@@ -19,7 +20,8 @@ const UserHeader = () => <div className="logged-header-mob">
 </div>;
 
 const LoggedHeader = () => <div className="logged-header-mob">
-  <img src={SwasthLogoSmall} alt={'ConferKare'} className={'logo-small'}/>
+  {/*<img src={SwasthLogoSmall} alt={'ConferKare'} className={'logo-small'}/>*/}
+  <h1 className={'logoText'}>Confer<span>Kare</span></h1>
 </div>;
 
 const Header = props => {
