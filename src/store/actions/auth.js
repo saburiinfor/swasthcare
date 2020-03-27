@@ -32,8 +32,6 @@ export const auth = (email, password, isSignup) => {
         // console.log("res ***" + JSON.stringify(response));
         if (response.data.success === 1) {
           utilities.storeInSession('token', response.data.token);
-          utilities.storeInSession('id', response.data.id);
-          utilities.storeInSession('startTime', Date.now());
           dispatch(authSuccess(response.data.token, response.data.id));
         } else {
           dispatch(authFail(response.data.error.errormsg));

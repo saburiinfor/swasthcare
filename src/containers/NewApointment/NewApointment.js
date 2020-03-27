@@ -3,69 +3,69 @@ import {Col, Row} from "reactstrap";
 import MediaElementGroup from "../../components/Common/Media/MediaElementGroup";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import {Helmet} from 'react-helmet';
-import styles from "./NewApointment.module.css";
-import classnames from "classnames";
 import {Link, Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions/index";
+import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 
 class NewApointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      physicianList: [],
+      cityList: [],
+      appointmentTypeList: [],
       appointmentData: {
-        phyid: null
+        phyid: null,
+        city: null,
+        appointmentType: null
       }
     };
   }
   
   componentDidMount() {
-    this.props.onGetPhysicianList();
+    // this.props.onGetPhysicianList();
   }
   
   render() {
     const userToken = sessionStorage.getItem('token');
+    const phyId = this.props.appointmentData.phyid;
+    // If the user want to logout or token invalidated, take user to Guest page
     if (userToken === null) {
       return <Redirect to='/'/>;
-    } else {
-      return (
-        <Col md="12" className="mt10">
-          <Helmet>
-            <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
-          </Helmet>
-          
-          <Row>
-            <Col md="8">
-              <div>
-                <h2>New appointment</h2>
-                <ul className={classnames(styles.customBreadcrump, "p-0")}>
-                  <li className={styles.active}>Step 1</li>
-                  <li><Link to="/SelectAppointmentDate">Step 2</Link></li>
-                  <li>Step 3</li>
-                  <li>Step 4</li>
-                  <li>Step 5</li>
-                  <li>Step 6</li>
-                </ul>
-              </div>
-              <MediaElementGroup {...this.props} />
-            </Col>
-            
-            <Col md="4">
-              <ImgWithOverlayTextGroup/>
-            </Col>
-          </Row>
-        </Col>
-      
-      );
     }
+    // If user selected the physician then redirect user to next page
+    if (phyId !== null) {
+      return <Redirect to={"/selectAppointmentDate"} />;
+    }
+    return (
+      <Col md="12" className="mt10">
+        <Helmet>
+          <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
+        </Helmet>
+        
+        <Row>
+          <Col md="8">
+            <div>
+              <h2>New appointment</h2>
+              <Breadcrumb activeStep={'1'} />
+            </div>
+            <MediaElementGroup {...this.props} />
+          </Col>
+          
+          <Col md="4">
+            <ImgWithOverlayTextGroup/>
+          </Col>
+        </Row>
+      </Col>
+    
+    );
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    physicianList: state.newAppointment.physicianList,
-    appointmentData: state.newAppointment.appointmentData
+    physicianList: state.selectPhysician.physicianList,
+    appointmentData: state.selectPhysician.appointmentData
   };
 };
 

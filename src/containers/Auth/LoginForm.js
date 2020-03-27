@@ -18,6 +18,7 @@ class LoginForm extends Component {
       email: {
         elementType: "input",
         elementConfig: {
+          name: "email",
           type: "email",
           placeholder: "Username"
         },
@@ -33,6 +34,7 @@ class LoginForm extends Component {
       password: {
         elementType: "input",
         elementConfig: {
+          name: "pwd",
           type: "password",
           placeholder: "Password"
         },
@@ -48,6 +50,7 @@ class LoginForm extends Component {
       remember: {
         elementType: "checkbox",
         elementConfig: {
+          name: "rememberMe",
           type: "checkbox",
           label: "Remember Me",
           checked: true
@@ -58,7 +61,8 @@ class LoginForm extends Component {
       }
     },
     isSignup: true,
-    isFormValid: false
+    isFormValid: false,
+    enableSubmit: false
   };
   
   componentDidMount() {
@@ -101,7 +105,11 @@ class LoginForm extends Component {
         value: event.target.value
       }
     };
-    this.setState({controls: updatedControls});
+    let pwdHasValue = false;
+    if (controlName === 'password' && event.target.value !== '') {
+      pwdHasValue = true;
+    }
+    this.setState({controls: updatedControls, enableSubmit: pwdHasValue});
   };
   submitHandler = event => {
     event.preventDefault();
@@ -173,7 +181,7 @@ class LoginForm extends Component {
             <div className={'welcomeMsg'}>Welcome to ConferKare</div>
             <Form className="form" noValidate>
               {form}
-              <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.formIsValid}>Sign In</ButtonField>
+              <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.enableSubmit}>Sign In</ButtonField>
               {errorMessage}
             </Form>
             {/*<p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>*/}

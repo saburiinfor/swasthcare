@@ -10,7 +10,7 @@ import { Route } from "react-router-dom";
 import LoginForm from "../../../containers/Auth/LoginForm";
 import CreateUser from "../../../containers/CreateUser/CreateUser";
 import NewUser from "../../../containers/NewRegisteredUser/NewUser";
-import Appointment from "../../../containers/Appointment/Appointments";
+import UserDashboard from "../../../containers/UserDashboard/UserDashboard";
 import NewApointment from "../../../containers/NewApointment/NewApointment";
 import SelectAppointmentDate from "../../../containers/SelectAppointmentDate/SelectAppointmentDate";
 
@@ -32,9 +32,9 @@ const Layout = props => {
             <Route exact path="/newUser" component={NewUser}/>
             <Route exact path="/login" component={LoginForm}/>
             <Route exact path="/createuser" component={CreateUser}/>
-            <Route exact path="/appointment" component={Appointment}/>
+            <Route exact path="/dashboard" component={UserDashboard}/>
             <Route exact path="/newAppointment" component={NewApointment}/>
-            <Route exact path="/SelectAppointmentDate" component={SelectAppointmentDate}/>
+            <Route exact path="/selectAppointmentDate" component={SelectAppointmentDate}/>
           </Row>
         </Container>
         <Footer/>

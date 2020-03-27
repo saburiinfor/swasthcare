@@ -26,9 +26,9 @@ class CreateUser extends Component {
       contactNo: "",
       gender: "M",
       city: "1",
-      address: "Nayapalli",
-      bloodgrp: "AB+",
-      dob: "2009-07-17",
+      address: "",
+      bloodgrp: "",
+      dob: "",
       status: "N"
     }
   }
@@ -46,7 +46,9 @@ class CreateUser extends Component {
   };
   
   updateContactNo = (telPhoneNumber) => {
-    const contactNo = telPhoneNumber;
+    // console.log(telPhoneNumber);
+    const contactNo = telPhoneNumber.trim();
+    console.log(contactNo);
     this.setState({
       contactNo
     });
@@ -57,7 +59,7 @@ class CreateUser extends Component {
   };
   render() {
     if (this.props.userStatus === 'new') {
-      this.props.onSetUserStatus();
+      // this.props.onSetUserStatus();
       return (
         <Redirect to='/newUser' />);
     }
@@ -96,6 +98,7 @@ class CreateUser extends Component {
               <FormGroup className={styles.floatingLabel}>
                 <ReactTelephoneInput
                   className={styles.reactTelInput}
+                  autoFormat={false}
                   defaultCountry="in"
                   initialValue=''
                   required={true}

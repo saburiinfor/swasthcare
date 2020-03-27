@@ -30,7 +30,7 @@ const Header = props => {
       <Route exact path="/" component={LoginHeader}/>
       <Route exact path="/login" component={LoginHeader}/>
       <Route exact path="/createuser" component={LoggedHeader}/>
-      <Route exact path="/appointment" component={UserHeader}/>
+      <Route exact path="/dashboard" component={UserHeader}/>
     </div>
   );
 };

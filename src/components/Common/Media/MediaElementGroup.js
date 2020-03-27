@@ -4,6 +4,7 @@ import {Input} from "reactstrap";
 import styles from "./MediaElement.module.css";
 import { connect } from 'react-redux';
 import * as actions from "../../../store/actions/index";
+import WizardButtons from "../WizardButtons/WizardButtons";
 
 class MediaElementGroup extends Component {
   constructor(props) {
@@ -31,8 +32,10 @@ class MediaElementGroup extends Component {
     
     return (
       <div className={styles.appointmentList}>
-        <h4>Select the doctor</h4>
-        <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange}/>
+        <h4>Select the doctor
+          <WizardButtons activeStep={'1'} />
+        </h4>
+        <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
         {filteredData.map((item, index) => (
           <MediaElement noOfStars="5" record={item} key={index} className="styles.mediaElement" {...this.props} />
         ))}
@@ -43,7 +46,7 @@ class MediaElementGroup extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    physicianList: state.newAppointment.physicianList,
+    physicianList: state.selectPhysician.physicianList,
     filter: state.mediaElementGroup.filter
   };
 };

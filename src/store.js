@@ -6,9 +6,10 @@ import { routerReducer } from "react-router-redux";
 import authReducer from './store/reducers/auth';
 import createUserReducer from './store/reducers/createUser';
 import appointmentGroupReducer from './store/reducers/appointmentGroup';
-import appointmentReducer from './store/reducers/appointment';
+import userDashboardReducer from './store/reducers/UserDashboard';
+import userProfiledReducer from './store/reducers/UserProfile';
 import logoutReducer from './store/reducers/logout';
-import newAppointmentReducer from './store/reducers/newAppointment';
+import selectPhysicianReducer from './store/reducers/selectPhysician';
 import mediaElementGroupReducer from './store/reducers/mediaElementGroup';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -17,9 +18,10 @@ const rootReducer = combineReducers({
   auth: authReducer,
   createUser: createUserReducer,
   appointmentGroup: appointmentGroupReducer,
-  appointment: appointmentReducer,
+  UserDashboard: userDashboardReducer,
+  UserProfile: userProfiledReducer,
   logout: logoutReducer,
-  newAppointment: newAppointmentReducer,
+  selectPhysician: selectPhysicianReducer,
   mediaElementGroup: mediaElementGroupReducer,
   routing: routerReducer
 });

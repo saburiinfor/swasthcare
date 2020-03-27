@@ -1,7 +1,8 @@
 export { auth, setAuthRedirectPath } from './auth';
 export { getCountry, getCity, createUser, setUserStatus } from './createUser';
 export { getAppointmentList } from './appointmentGroup';
-export { setAppointmentDate } from './appointment';
+export { setAppointmentDate, getProfile } from './UserDashboard';
+export { getUserProfile, updateUserProfile } from './UserProfile';
 export { setSignout } from './logout';
-export { getPhysicianList, selectPhysician } from './newAppointment';
+export { getPhysicianList, selectPhysician } from './selectPhysician';
 export { setPhysicianFilterText } from './mediaElementGroup';

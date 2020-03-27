@@ -2,10 +2,12 @@ import React, {Component} from "react";
 import {Col, CustomInput, Input, Row} from "reactstrap";
 import DatePicker from "react-datepicker";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
-import styles from "./SelectAppointmentDate.module.css";
+import styles from "./SelectAppointmentDate.module.scss";
 import classnames from "classnames";
 import {Helmet} from "react-helmet";
 import CustomCalenderIcon from "../CustomCalenderIcon/CustomCalenderIcon";
+import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
+import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 
 class SelectAppointmentDate extends Component {
   constructor(props) {
@@ -57,26 +59,21 @@ class SelectAppointmentDate extends Component {
       <Col md="12" className="mt10">
         <Row>
           <Col>
-            <ul className={classnames(styles.customBreadcrump, "p-0")}>
-              <li className={styles.confirmed}>Step 1</li>
-              <li className={styles.active}>Step 2</li>
-              <li>Step 3</li>
-              <li>Step 4</li>
-              <li>Step 5</li>
-              <li>Step 6</li>
-            </ul>
+            <Breadcrumb activeStep={'2'} />
           </Col>
         </Row>
         <Row>
           <Col md="8">
             <div className={styles.selectDate}>
-              <h4>Select the Date</h4>
+              <h4>
+                Select the Date
+                <WizardButtons activeStep={'2'} />
+              </h4>
               <Helmet>
                 
                 <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
               </Helmet>
               <div>
-                
                 <Row>
                   <Col md="4">
                     <Input

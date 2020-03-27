@@ -12,10 +12,10 @@ const appointmentDateSuccess = (state, action) => {
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-  case actionTypes.SET_APPOINTMENTDATE:
-    return appointmentDateSuccess(state, action);
-  default:
-    return state;
+    case actionTypes.SET_APPOINTMENTDATE:
+      return appointmentDateSuccess(state, action);
+    default:
+      return state;
   }
 };
 export default reducer;

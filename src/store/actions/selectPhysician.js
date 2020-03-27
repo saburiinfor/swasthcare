@@ -30,8 +30,8 @@ export const getPhysicianList = (phyname, phycity, physpecialisation) => {
     }
     axios.post(actionTypes.API_URL + "Physician/getphysician/", physicianData).then(
       response => {
-        console.log('inside physician data response');
-        console.log("res ***" + JSON.stringify(response.data));
+        // console.log('inside physician data response');
+        // console.log("res ***" + JSON.stringify(response.data));
         dispatch(physicianListSuccess(Array.from(response.data.result)));
       }).catch(err => {
       console.log(err);
