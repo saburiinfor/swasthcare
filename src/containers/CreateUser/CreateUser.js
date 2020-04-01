@@ -31,7 +31,7 @@ class CreateUser extends Component {
       dob: "",
       status: "N"
     }
-  }
+  } 
   componentDidMount() {
     this.props.onGetCountryList();
     this.props.onGetCityList();

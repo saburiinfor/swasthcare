@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Col, Row} from "reactstrap";
+import {Col, CustomInput, Input, Row} from "reactstrap";
 import MediaElementGroup from "../../components/Common/Media/MediaElementGroup";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import {Helmet} from 'react-helmet';
@@ -7,6 +7,19 @@ import {Link, Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions/index";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
+import UserProfile from "../UserProfile/UserProfile";
+import styles from "../SelectAppointmentDate/SelectAppointmentDate.module.scss";
+import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
+
+function CityList(props) {
+  const cities = props.cityList;
+  const selectItems = cities.map((item, i) => {
+    return <option value={i}>{item}</option>
+  });
+  return (
+    {selectItems}
+  );
+}
 
 class NewApointment extends Component {
   constructor(props) {
@@ -15,7 +28,6 @@ class NewApointment extends Component {
       cityList: [],
       appointmentTypeList: [],
       appointmentData: {
-        phyid: null,
         city: null,
         appointmentType: null
       }
@@ -23,33 +35,56 @@ class NewApointment extends Component {
   }
   
   componentDidMount() {
+    this.props.onGetUserProfile(sessionStorage.getItem('token'));
+    this.props.onGetCities();
+    this.props.onGetAppointmentTypeList();
     // this.props.onGetPhysicianList();
   }
   
   render() {
-    const userToken = sessionStorage.getItem('token');
-    const phyId = this.props.appointmentData.phyid;
-    // If the user want to logout or token invalidated, take user to Guest page
-    if (userToken === null) {
+    if (this.props.userProfile.success === 0) {
       return <Redirect to='/'/>;
-    }
-    // If user selected the physician then redirect user to next page
-    if (phyId !== null) {
-      return <Redirect to={"/selectAppointmentDate"} />;
     }
     return (
       <Col md="12" className="mt10">
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
-        
+        { this.props.profileCompliant === false &&
+          <UserProfile/>
+        }
         <Row>
           <Col md="8">
             <div>
               <h2>New appointment</h2>
               <Breadcrumb activeStep={'1'} />
             </div>
-            <MediaElementGroup {...this.props} />
+            <Row>
+              <Col>
+                <div className={styles.selectDate}>
+                  <h4>
+                    Select the appointment type and city
+                    <WizardButtons activeStep={'1'} />
+                  </h4>
+                  <Helmet>
+                    <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
+                  </Helmet>
+                  <div>
+                    { this.props.cityList.length > 0 &&
+                      <Row>
+                        <Col>
+                          <select value={0} onChange={''}>
+                            <CityList cityList={this.props.cityList} />
+                          </select>
+                        </Col>
+                      </Row>
+                      }
+                    <Row>
+                    </Row>
+                  </div>
+                </div>
+              </Col>
+            </Row>
           </Col>
           
           <Col md="4">
@@ -64,15 +99,19 @@ class NewApointment extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    physicianList: state.selectPhysician.physicianList,
-    appointmentData: state.selectPhysician.appointmentData
+    cityList: state.newAppointment.cityList,
+    appointmentTypeList: state.newAppointment.appointmentTypeList,
+    userProfile: state.UserProfile.userProfile,
+    profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00'
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetPhysicianList: (phyname, phycity, physpecialisation) => dispatch(actions.getPhysicianList(phyname, phycity, physpecialisation)),
-    onSelectPhysician: (phyid) => dispatch(actions.selectPhysician(phyid))
+    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
+    onGetCities: () => dispatch(actions.getCities()),
+    onGetAppointmentTypeList: () => dispatch(actions.getAppointmentTypeList()),
+    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))
   };
 };
 

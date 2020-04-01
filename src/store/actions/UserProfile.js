@@ -42,7 +42,7 @@ export const getUserProfile = (userToken) => {
 
 export const updateUserProfile = (userProfile) => {
   return dispatch => {
-    axios.post(actionTypes.API_URL + "User/update/", userProfile).then(
+    axios.post(actionTypes.API_URL + "User/userprofileupdate/", userProfile).then(
       response => {
         console.log('inside profile update call');
         console.log(JSON.stringify(response.data));

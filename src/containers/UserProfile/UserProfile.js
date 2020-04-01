@@ -12,14 +12,8 @@ class UserProfile extends Component {
     this.state = {
       userProfile: {
         uid: null,
-        token: sessionStorage.getItem('token'),
-        contactno: null,
-        dob: new Date(),
-        name: null,
-        gender: null,
-        bloodgrp: null,
-        Address: null,
-        email: null
+        token: null,
+        dob: null
       },
       dob: new Date(),
       error: null
@@ -27,15 +21,9 @@ class UserProfile extends Component {
   };
   
   componentDidMount() {
-    console.log(this.props.userProfile);
     this.state.userProfile = {
       uid: this.props.userProfile.id,
-      name: this.props.userProfile.name,
-      gender: this.props.userProfile.gender,
-      contactno: this.props.userProfile.contactno,
       dob: this.props.userProfile.dateofbirth,
-      Address: this.props.userProfile.address,
-      bloodgrp: this.props.userProfile.bloodgroup,
       token: sessionStorage.getItem('token')
     };
   }
@@ -46,7 +34,6 @@ class UserProfile extends Component {
   
   updateUserProfile = () => {
     this.state.userProfile.dob = dateformat(this.state.dob, 'yyyy-mm-dd');
-    console.log("request object -- " + JSON.stringify(this.state.userProfile));
     this.props.onUpdateUserProfile(this.state.userProfile);
   };
   

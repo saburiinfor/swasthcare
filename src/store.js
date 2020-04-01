@@ -11,6 +11,7 @@ import userProfiledReducer from './store/reducers/UserProfile';
 import logoutReducer from './store/reducers/logout';
 import selectPhysicianReducer from './store/reducers/selectPhysician';
 import mediaElementGroupReducer from './store/reducers/mediaElementGroup';
+import newAppointmentReducer from './store/reducers/newAppointment';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   logout: logoutReducer,
   selectPhysician: selectPhysicianReducer,
   mediaElementGroup: mediaElementGroupReducer,
+  newAppointment: newAppointmentReducer,
   routing: routerReducer
 });
 
