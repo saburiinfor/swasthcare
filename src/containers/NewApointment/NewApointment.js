@@ -11,14 +11,10 @@ import UserProfile from "../UserProfile/UserProfile";
 import styles from "../SelectAppointmentDate/SelectAppointmentDate.module.scss";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 
-function CityList(props) {
-  const cities = props.cityList;
-  const selectItems = cities.map((item, i) => {
-    return <option value={i}>{item}</option>
-  });
-  return (
-    {selectItems}
-  );
+function CityOptions(cityList) {
+  let activeCities = cityList.cityList.filter(city => city.status === "Active");
+  let optList = activeCities.map((item) => <option key={item.id} value={item.id}>{item.name}</option> );
+  return optList;
 }
 
 class NewApointment extends Component {
@@ -73,8 +69,10 @@ class NewApointment extends Component {
                     { this.props.cityList.length > 0 &&
                       <Row>
                         <Col>
-                          <select value={0} onChange={''}>
-                            <CityList cityList={this.props.cityList} />
+                          <h5>Select city where appointment needed</h5>
+                          <select>
+                            <option>Select city</option>
+                            <CityOptions cityList={this.props.cityList}/>
                           </select>
                         </Col>
                       </Row>

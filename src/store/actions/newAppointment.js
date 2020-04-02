@@ -19,11 +19,12 @@ export const getCities = () => {
   return dispatch => {
     axios.get(actionTypes.API_URL + "/Market/getcity/").then(
       response => {
-        let cityList = [];
-        response.data.map(function (item) {
-          cityList.push(item.name);
-        });
-        dispatch(citiesSuccess(cityList));
+        // let cityList = [];
+        // console.log('cities response', JSON.stringify(response.data));
+        // response.data.map(function (item) {
+        //   cityList.push(item.name);
+        // });
+        dispatch(citiesSuccess(response.data));
       }).catch(err => {
       console.log(err);
     });
@@ -39,24 +40,35 @@ export const appointmentTypeSuccess = (appointmentTypeList) => {
 
 export const getAppointmentTypeList = () => {
   return dispatch => {
-    let appointmentTypeList = [
-      {
-        appointmentTypeId: 1,
-        appointmentTypeLabel: 'In person'
-      },
-      {
-        appointmentTypeId: 2,
-        appointmentTypeLabel: 'Call'
-      },
-      {
-        appointmentTypeId: 3,
-        appointmentTypeLabel: 'Video'
-      },
-      {
-        appointmentTypeId: 4,
-        appointmentTypeLabel: 'On-demand video'
-      }
-    ];
-    dispatch(appointmentTypeSuccess(appointmentTypeList));
+    axios.get(actionTypes.API_URL + "/Appointments/appointmenttype/").then(
+      response => {
+        let appointmentTypeList = [];
+        // console.log('appointmenttype response', JSON.stringify(response.data));
+        Array.from(response.data).map(function (item) {
+          appointmentTypeList.push(item);
+        });
+        dispatch(appointmentTypeSuccess(appointmentTypeList));
+      }).catch(err => {
+      console.log(err);
+    });
+    // let appointmentTypeList = [
+    //   {
+    //     appointmentTypeId: 1,
+    //     appointmentTypeLabel: 'In person'
+    //   },
+    //   {
+    //     appointmentTypeId: 2,
+    //     appointmentTypeLabel: 'Call'
+    //   },
+    //   {
+    //     appointmentTypeId: 3,
+    //     appointmentTypeLabel: 'Video'
+    //   },
+    //   {
+    //     appointmentTypeId: 4,
+    //     appointmentTypeLabel: 'On-demand video'
+    //   }
+    // ];
+    // dispatch(appointmentTypeSuccess(appointmentTypeList));
   };
 };
