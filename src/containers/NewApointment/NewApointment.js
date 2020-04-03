@@ -28,6 +28,8 @@ class NewApointment extends Component {
         appointmentType: null
       }
     };
+    this.nextBtn = React.createRef();
+    this.handlerNextBtnClick.bind(this);
   }
   
   componentDidMount() {
@@ -37,10 +39,46 @@ class NewApointment extends Component {
     // this.props.onGetPhysicianList();
   }
   
+  handleAppointmentTypeChange = (e) => {
+    this.setState({
+      appointmentType: e.target.value
+    });
+  };
+  
+  handleCityChange = (e) => {
+    this.setState({
+     city: e.target.value
+    });
+  };
+  
+  handlerNextBtnClick = () => {
+    this.state.appointmentData.city = this.state.city;
+    this.state.appointmentData.appointmentType = this.state.appointmentType;
+    console.log(this.state);
+    this.props.onSetAppointmentData(this.state.appointmentData);
+  };
+  
   render() {
+    const continueBtn = React.createRef('backBtn');
+    
+    
     if (this.props.userProfile.success === 0) {
       return <Redirect to='/'/>;
     }
+    const btnGroup = this.props.appointmentTypeList.map((item) => (
+      <div className="form-check" key={item.id}>
+        <label>
+          <input
+            type="radio"
+            name="react-tips"
+            value={item.id}
+            onClick={this.handleAppointmentTypeChange}
+            className="form-check-input"
+          />
+          {item.label}
+        </label>
+      </div>
+    ));
     return (
       <Col md="12" className="mt10">
         <Helmet>
@@ -60,24 +98,28 @@ class NewApointment extends Component {
                 <div className={styles.selectDate}>
                   <h4>
                     Select the appointment type and city
-                    <WizardButtons activeStep={'1'} />
+                    <WizardButtons activeStep={'1'} nextBtnCallback={this.handlerNextBtnClick} />
                   </h4>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
                   </Helmet>
                   <div>
-                    { this.props.cityList.length > 0 &&
-                      <Row>
-                        <Col>
-                          <h5>Select city where appointment needed</h5>
-                          <select>
-                            <option>Select city</option>
-                            <CityOptions cityList={this.props.cityList}/>
-                          </select>
-                        </Col>
-                      </Row>
-                      }
                     <Row>
+                      <Col>
+                        <h5>City</h5>
+                        <select onChange={this.handleCityChange}>
+                          <option>Select city</option>
+                          <CityOptions cityList={this.props.cityList}/>
+                        </select>
+                      </Col>
+                    </Row><br/><br/>
+                    <Row>
+                      <Col>
+                        <h5>Consultation type</h5>
+                        <form>
+                          {btnGroup}
+                        </form>
+                      </Col>
                     </Row>
                   </div>
                 </div>
@@ -100,7 +142,8 @@ const mapStateToProps = (state) => {
     cityList: state.newAppointment.cityList,
     appointmentTypeList: state.newAppointment.appointmentTypeList,
     userProfile: state.UserProfile.userProfile,
-    profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00'
+    profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
+    appointmentData: state.newAppointment.appointmentData
   };
 };
 

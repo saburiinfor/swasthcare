@@ -59,7 +59,7 @@ class SelectAppointmentDate extends Component {
       <Col md="12" className="mt10">
         <Row>
           <Col>
-            <Breadcrumb activeStep={'2'} />
+            <Breadcrumb activeStep={'3'} />
           </Col>
         </Row>
         <Row>
@@ -67,7 +67,7 @@ class SelectAppointmentDate extends Component {
             <div className={styles.selectDate}>
               <h4>
                 Select the Date
-                <WizardButtons activeStep={'2'} />
+                <WizardButtons activeStep={'3'} />
               </h4>
               <Helmet>
                 

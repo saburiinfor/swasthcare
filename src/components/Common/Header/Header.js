@@ -33,6 +33,7 @@ class Header extends React.Component {
         <Route exact path="/createuser" component={LoginHeader}/>
         <Route exact path="/dashboard" component={UserHeader}/>
         <Route exact path="/newAppointment" component={UserHeader}/>
+        <Route exact path="/selectPhysician" component={UserHeader}/>
         <Route exact path="/selectAppointmentDate" component={UserHeader}/>
       </div>
     );

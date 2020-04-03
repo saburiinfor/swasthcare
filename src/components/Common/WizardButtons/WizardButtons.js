@@ -18,11 +18,14 @@ class WizardButtons extends Component {
         backUrl = '/newAppointment';
         break;
       case 3:
+        backUrl = '/selectPhysician';
+        break;
+      case 4:
         backUrl = '/selectappointmentdate';
         break;
       default:
-          backUrl = '/dashboard';
-          break;
+        backUrl = '/dashboard';
+        break;
     }
     window.location.replace(backUrl);
   };
@@ -30,25 +33,26 @@ class WizardButtons extends Component {
     let backUrl;
     switch(parseInt(this.props.activeStep)) {
       case 1:
-        backUrl = '/selectappointmentdate';
+        backUrl = '/selectPhysician';
         break;
       case 2:
-        backUrl = '/';
+        backUrl = '/selectappointmentdate';
         break;
       case 3:
         backUrl = '/';
         break;
       default:
-          backUrl = '/dashboard';
-          break;
+        backUrl = '/dashboard';
+        break;
     }
-    window.location.replace(backUrl);
+    this.props.nextBtnCallback();
+    // window.location.replace(backUrl);
   };
   render() {
     return (
       <div className={'wizBtnsContainer'}>
-        <Button onClick={this.backButtonClick}>Back</Button>
-        <Button onClick={this.nextButtonClick}>Continue</Button>
+        <button type={'button'} className={'btn btn-secondary'} onClick={this.backButtonClick}>Back</button>
+        <Button ref={'nextBtn'} onClick={this.nextButtonClick}>Continue</Button>
       </div>
     );
   }

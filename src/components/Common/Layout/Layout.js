@@ -13,6 +13,7 @@ import NewUser from "../../../containers/NewRegisteredUser/NewUser";
 import UserDashboard from "../../../containers/UserDashboard/UserDashboard";
 import NewApointment from "../../../containers/NewApointment/NewApointment";
 import SelectAppointmentDate from "../../../containers/SelectAppointmentDate/SelectAppointmentDate";
+import SelectPhysician from "../../../containers/SelectPhysician/SelectPhysician";
 
 const Layout = props => {
   return (
@@ -34,6 +35,7 @@ const Layout = props => {
             <Route exact path="/createuser" component={CreateUser}/>
             <Route exact path="/dashboard" component={UserDashboard}/>
             <Route exact path="/newAppointment" component={NewApointment}/>
+            <Route exact path="/selectPhysician" component={SelectPhysician}/>
             <Route exact path="/selectAppointmentDate" component={SelectAppointmentDate}/>
           </Row>
         </Container>

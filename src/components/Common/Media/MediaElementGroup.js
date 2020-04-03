@@ -33,7 +33,7 @@ class MediaElementGroup extends Component {
     return (
       <div className={styles.appointmentList}>
         <h4>Select the doctor
-          <WizardButtons activeStep={'1'} />
+          <WizardButtons activeStep={'2'} />
         </h4>
         <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
         {filteredData.map((item, index) => (

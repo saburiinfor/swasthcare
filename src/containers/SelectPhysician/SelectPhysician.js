@@ -41,7 +41,7 @@ class SelectPhysician extends Component {
           <Col md="8">
             <div>
               <h2>New appointment</h2>
-              <Breadcrumb activeStep={'1'} />
+              <Breadcrumb activeStep={'2'} />
             </div>
             <MediaElementGroup {...this.props} />
           </Col>
