@@ -5,13 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import "react-datepicker/dist/react-datepicker.css";
 import {BrowserRouter as Router} from "react-router-dom";
-import { Provider } from 'react-redux';
-import store from "./store";
+import {Provider} from 'react-redux';
+import store, {persistor} from "./store";
+import {PersistGate} from 'redux-persist/integration/react'
 
 const ckrender = (
   <Provider store={store}>
     <Router>
-      <App />
+      <PersistGate loading={null} persistor={persistor}>
+        <App/>
+      </PersistGate>
     </Router>
   </Provider>
 );

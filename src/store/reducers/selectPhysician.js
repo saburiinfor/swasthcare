@@ -2,10 +2,7 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
 
 const initialState = {
-  physicianList: [],
-  appointmentData: {
-    phyid: null
-  }
+  physicianList: []
 };
 
 const physicianListSuccess = (state, action) => {
@@ -26,7 +23,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.PHYSICIANLIST_SUCCESS:
       return physicianListSuccess(state, action);
-  case actionTypes.SET_SELECTED_PHY_ID:
+    case actionTypes.SET_SELECTED_PHY_ID:
       return selectPhysicianSuccess(state, action);
     default:
       return state;

@@ -1,6 +1,5 @@
 import React, {Component} from "react";
-import {Col, CustomInput, Input, Row} from "reactstrap";
-import MediaElementGroup from "../../components/Common/Media/MediaElementGroup";
+import {Col, Row} from "reactstrap";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import {Helmet} from 'react-helmet';
 import {Link, Redirect} from "react-router-dom";
@@ -25,7 +24,8 @@ class NewApointment extends Component {
       appointmentTypeList: [],
       appointmentData: {
         city: null,
-        appointmentType: null
+        appointmentType: null,
+        phyId: null
       }
     };
     this.nextBtn = React.createRef();
@@ -54,16 +54,15 @@ class NewApointment extends Component {
   handlerNextBtnClick = () => {
     this.state.appointmentData.city = this.state.city;
     this.state.appointmentData.appointmentType = this.state.appointmentType;
-    console.log(this.state);
     this.props.onSetAppointmentData(this.state.appointmentData);
   };
   
   render() {
-    const continueBtn = React.createRef('backBtn');
-    
-    
     if (this.props.userProfile.success === 0) {
       return <Redirect to='/'/>;
+    }
+    if (this.props.appointmentData.city !== null) {
+      return <Redirect to='/selectPhysician'/>;
     }
     const btnGroup = this.props.appointmentTypeList.map((item) => (
       <div className="form-check" key={item.id}>
@@ -71,7 +70,8 @@ class NewApointment extends Component {
           <input
             type="radio"
             name="react-tips"
-            value={item.id}
+            value={item.label}
+            defaultChecked={item.id === "01"}
             onClick={this.handleAppointmentTypeChange}
             className="form-check-input"
           />

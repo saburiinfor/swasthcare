@@ -12,6 +12,13 @@ import logoutReducer from './store/reducers/logout';
 import selectPhysicianReducer from './store/reducers/selectPhysician';
 import mediaElementGroupReducer from './store/reducers/mediaElementGroup';
 import newAppointmentReducer from './store/reducers/newAppointment';
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -28,10 +35,16 @@ const rootReducer = combineReducers({
   routing: routerReducer
 });
 
-const store = createStore(rootReducer, composeEnhancers(
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const store = createStore(persistedReducer, composeEnhancers(
   applyMiddleware(thunk)
 ));
 
+console.log(store.getState());
+
 export const history = syncHistoryWithStore(browserHistory, store);
+
+export const persistor = persistStore(store);
 
 export default store;

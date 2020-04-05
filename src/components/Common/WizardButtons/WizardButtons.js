@@ -5,6 +5,10 @@ import './WizardButtons.scss';
 class WizardButtons extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      backUrl: null,
+      nextUrl: null
+    }
   }
   componentDidMount() {
   };
@@ -30,29 +34,31 @@ class WizardButtons extends Component {
     window.location.replace(backUrl);
   };
   nextButtonClick = (e) => {
-    let backUrl;
+    let nextUrl;
     switch(parseInt(this.props.activeStep)) {
       case 1:
-        backUrl = '/selectPhysician';
+        nextUrl = '/selectPhysician';
         break;
       case 2:
-        backUrl = '/selectappointmentdate';
+        nextUrl = '/selectappointmentdate';
         break;
       case 3:
-        backUrl = '/';
+        nextUrl = '/';
         break;
       default:
-        backUrl = '/dashboard';
+        nextUrl = '/dashboard';
         break;
     }
+    this.setState({
+      nextUrl
+    });
     this.props.nextBtnCallback();
-    // window.location.replace(backUrl);
   };
   render() {
     return (
       <div className={'wizBtnsContainer'}>
-        <button type={'button'} className={'btn btn-secondary'} onClick={this.backButtonClick}>Back</button>
-        <Button ref={'nextBtn'} onClick={this.nextButtonClick}>Continue</Button>
+        <Button onClick={this.backButtonClick}>Back</Button>
+        <Button onClick={this.nextButtonClick}>Continue</Button>
       </div>
     );
   }

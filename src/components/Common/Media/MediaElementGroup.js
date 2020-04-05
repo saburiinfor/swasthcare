@@ -22,6 +22,10 @@ class MediaElementGroup extends Component {
     this.props.onSetPhysicianFilterText(event.target.value);
   };
   
+  handlerNextBtnClick = () => {
+    this.props.onSetAppointmentData(this.props.appointmentData);
+  };
+  
   render() {
     const {filter} = this.state;
     const filteredData = this.props.physicianList.filter((item) => {
@@ -33,7 +37,7 @@ class MediaElementGroup extends Component {
     return (
       <div className={styles.appointmentList}>
         <h4>Select the doctor
-          <WizardButtons activeStep={'2'} />
+          <WizardButtons activeStep={'2'} nextBtnCallback={this.handlerNextBtnClick} />
         </h4>
         <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
         {filteredData.map((item, index) => (

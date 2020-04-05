@@ -54,6 +54,15 @@ class UserDashboard extends Component {
     this.props.onSetAppointmentDate(apDate);
   }
   
+  initializeAppointment = () => {
+    let appointmentData = {
+      city: null,
+      appointmentType: null,
+      phyId: null
+    };
+    this.props.onSetAppointmentData(appointmentData);
+  };
+  
   render() {
     if (this.props.userProfile.success === 0) {
       return <Redirect to='/' />;
@@ -86,7 +95,7 @@ class UserDashboard extends Component {
             }
             <Row>
               <Col>
-                <div className="tar"><Link to="/newAppointment"><img src={newAppointment} className="appointmentBtn"></img></Link></div>
+                <div className="tar"><Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn"></img></Link></div>
                 <div>
                   <Button onClick={this.toggle.bind(null, '1')}>
                     Today
@@ -126,6 +135,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSetAppointmentDate: (date) => dispatch(actions.setAppointmentDate(date)),
+    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
     onGetUserProfile: (userToken) => dispatch(actions.getProfile(userToken))
   };
 };

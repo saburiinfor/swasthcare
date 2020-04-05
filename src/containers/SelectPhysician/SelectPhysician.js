@@ -17,16 +17,17 @@ class SelectPhysician extends Component {
   }
   
   componentDidMount() {
-    this.props.onGetPhysicianList();
+    this.props.onGetUserProfile(sessionStorage.getItem('token'));
+    this.props.onGetPhysicianList(this.props.appointmentData.city);
   }
   
   render() {
-    const userToken = sessionStorage.getItem('token');
-    const phyId = this.props.appointmentData.phyid;
+    // console.log(this.props.appointmentData);
     // If the user want to logout or token invalidated, take user to Guest page
-    if (userToken === null) {
+    if (this.props.userProfile.success === 0) {
       return <Redirect to='/'/>;
     }
+    const phyId = this.props.appointmentData.phyId;
     // If user selected the physician then redirect user to next page
     if (phyId !== null) {
       return <Redirect to={"/selectAppointmentDate"} />;
@@ -59,12 +60,16 @@ class SelectPhysician extends Component {
 const mapStateToProps = (state) => {
   return {
     physicianList: state.selectPhysician.physicianList,
-    appointmentData: state.selectPhysician.appointmentData // For now, leaving it as selectPhysician but would change to new appointment
+    userProfile: state.UserProfile.userProfile,
+    profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
+    appointmentData: state.newAppointment.appointmentData // For now, leaving it as selectPhysician but would change to new appointment
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
+    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
     onGetPhysicianList: (phyname, phycity, physpecialisation) => dispatch(actions.getPhysicianList(phyname, phycity, physpecialisation)),
     onSelectPhysician: (phyid) => dispatch(actions.selectPhysician(phyid))
   };

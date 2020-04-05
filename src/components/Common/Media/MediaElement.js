@@ -16,7 +16,7 @@ class MediaElement extends Component {
   
   // click handler for physician selection
   selectPhysician = (phyid) => {
-    console.log(phyid);
+    this.props.appointmentData.phyId = phyid;
     this.props.onSelectPhysician(phyid);
   };
   render() {

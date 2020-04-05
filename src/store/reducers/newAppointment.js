@@ -2,7 +2,11 @@ import * as actionTypes from '../actions/actionTypes';
 import {updateObject} from '../../shared/utility';
 
 const initialState = {
-  appointmentData: null,
+  appointmentData: {
+    city: null,
+    appointmentType: null,
+    phyId: null
+  },
   cityList: [],
   appointmentTypeList: []
 };
@@ -25,6 +29,10 @@ const citiesSuccess = (state, action) => {
   });
 };
 
+const getAppointmentDataSuccess = (state, action) => {
+  return state;
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SET_APPOINTMENTDATA:
@@ -33,6 +41,8 @@ const reducer = (state = initialState, action) => {
       return appointmentTypeSuccess(state, action);
     case actionTypes.CITY_SUCCESS:
       return citiesSuccess(state, action);
+    case actionTypes.GET_APPOINTMENT_DATA:
+      return getAppointmentDataSuccess(state, action);
     default:
       return state;
   }
