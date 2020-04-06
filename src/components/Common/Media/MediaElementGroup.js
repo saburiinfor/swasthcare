@@ -12,6 +12,7 @@ class MediaElementGroup extends Component {
     this.state = {
       filter: ""
     };
+    this.handlerNextBtnClick.bind(this);
   }
   
   componentDidMount() {
@@ -23,7 +24,7 @@ class MediaElementGroup extends Component {
   };
   
   handlerNextBtnClick = () => {
-    this.props.onSetAppointmentData(this.props.appointmentData);
+    // this.props.onSetAppointmentData(this.props.appointmentData);
   };
   
   render() {
@@ -33,16 +34,15 @@ class MediaElementGroup extends Component {
         (item[key] !== null) ? item[key].toLowerCase().includes(filter.toLowerCase()):false
       );
     });
-    
     return (
       <div className={styles.appointmentList}>
         <h4>Select the doctor
-          <WizardButtons activeStep={'2'} nextBtnCallback={this.handlerNextBtnClick} />
+          <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
         </h4>
-        <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
-        {filteredData.map((item, index) => (
-          <MediaElement noOfStars="5" record={item} key={index} className="styles.mediaElement" {...this.props} />
-        ))}
+          <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
+          {filteredData.map((item, index) => (
+            <MediaElement noOfStars="5" record={item} key={index} className="styles.mediaElement" {...this.props} />
+          ))}
       </div>
     );
   }
@@ -57,6 +57,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
     onSetPhysicianFilterText: (filterText) => dispatch(actions.setPhysicianFilterText(filterText))
   };
 };

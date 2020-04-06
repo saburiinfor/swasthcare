@@ -47,6 +47,20 @@ class LoginForm extends Component {
         touched: false,
         errorMessage: ""
       },
+      userType: {
+        elementType: "input",
+        elementConfig: {
+          name: "userType",
+          type: "hidden"
+        },
+        value: "1",
+        validation: {
+          required: false
+        },
+        valid: true,
+        touched: true,
+        errorMessage: ""
+      },
       remember: {
         elementType: "checkbox",
         elementConfig: {
@@ -66,15 +80,6 @@ class LoginForm extends Component {
   };
   
   componentDidMount() {
-    
-    {
-      /* if (this.props.authRedirectPath !== '/') {
-     
-     this.props.onSetAuthRedirectPath(this.props.authRedirectPath);
-     
-     }*/
-    }
-    
   }
   
   inputBluredHandler = (event, controlName) => {
@@ -117,6 +122,7 @@ class LoginForm extends Component {
       this.props.onAuth(
         this.state.controls.email.value,
         this.state.controls.password.value,
+        this.state.controls.userType.value,
         this.state.isSignup
       );
     }
@@ -214,7 +220,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+    onAuth: (email, password, userType, isSignup) => dispatch(actions.auth(email, password, userType, isSignup)),
     onSetAuthRedirectPath: (authRedirectPath) => dispatch(actions.setAuthRedirectPath(authRedirectPath))
   };
 };

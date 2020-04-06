@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import dateformat from 'dateformat';
 import UserProfile from "../UserProfile/UserProfile";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 class UserDashboard extends Component {
   constructor(props) {
@@ -60,11 +61,14 @@ class UserDashboard extends Component {
       appointmentType: null,
       phyId: null
     };
+    // Set an activeStage counter to sessionStorage object for moving around pages in wizard
+    sessionStorage.setItem('conferkare.appointment.activeStage', 1);
     this.props.onSetAppointmentData(appointmentData);
   };
   
   render() {
     if (this.props.userProfile.success === 0) {
+      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return <Redirect to='/' />;
     }
     return (

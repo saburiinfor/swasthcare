@@ -3,11 +3,14 @@ import {Col, CustomInput, Input, Row} from "reactstrap";
 import DatePicker from "react-datepicker";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from "./SelectAppointmentDate.module.scss";
-import classnames from "classnames";
 import {Helmet} from "react-helmet";
 import CustomCalenderIcon from "../CustomCalenderIcon/CustomCalenderIcon";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
+import { connect } from 'react-redux';
+import * as actions from "../../store/actions/index";
+import {Redirect} from "react-router-dom";
+import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
 class SelectAppointmentDate extends Component {
   constructor(props) {
@@ -18,16 +21,21 @@ class SelectAppointmentDate extends Component {
       currentDate: ""
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handlerNextBtnClick.bind(this);
+  }
+  
+  componentDidMount() {
   }
   
   handleChange(date) {
-    var newFormatedDate = new Date(date);
+    let newFormatedDate;
     newFormatedDate =
       date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
     
     this.setState({
       startDate: date,
-      inputDate: newFormatedDate
+      inputDate: newFormatedDate,
+      appointmentDate: newFormatedDate
     });
   }
   
@@ -37,7 +45,7 @@ class SelectAppointmentDate extends Component {
       date =
         date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
       
-      this.setState({[e.target.name]: date, currentDate: e.target.value});
+      this.setState({[e.target.name]: date, currentDate: e.target.value, appointmentDate: date });
     }
     
     if (e.target.value === "tomorrow") {
@@ -47,16 +55,28 @@ class SelectAppointmentDate extends Component {
       let tomorrow =
         date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
       
-      this.setState({[e.target.name]: tomorrow, currentDate: e.target.value});
+      this.setState({[e.target.name]: tomorrow, currentDate: e.target.value, appointmentDate: tomorrow });
     }
   };
+  
   handleDateChange = m => {
     this.setState({startDate: m});
   };
   
+  handlerNextBtnClick = () => {
+    this.props.appointmentData.appointmentDate = this.state.appointmentDate;
+    this.props.onSetAppointmentData(this.props.appointmentData);
+  };
+  
   render() {
+    if (this.props.userProfile.success === 0) {
+      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      return <Redirect to='/'/>;
+    }
+    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
+        <Redirect to={pageUrl}/>
         <Row>
           <Col>
             <Breadcrumb activeStep={'3'} />
@@ -67,10 +87,9 @@ class SelectAppointmentDate extends Component {
             <div className={styles.selectDate}>
               <h4>
                 Select the Date
-                <WizardButtons activeStep={'3'} />
+                <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
               </h4>
               <Helmet>
-                
                 <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
               </Helmet>
               <div>
@@ -78,8 +97,8 @@ class SelectAppointmentDate extends Component {
                   <Col md="4">
                     <Input
                       type="text"
-                      name="name"
-                      id="name"
+                      name="appointmentDate"
+                      id="appointmentDate"
                       value={this.state.inputDate}
                       onChange={this.onChangeHandler}
                       placeholder="DD/MM/YYYY"
@@ -140,4 +159,20 @@ class SelectAppointmentDate extends Component {
   }
 }
 
-export default SelectAppointmentDate;
+const mapStateToProps = (state) => {
+  return {
+    userProfile: state.UserProfile.userProfile,
+    profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
+    appointmentData: state.newAppointment.appointmentData
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
+    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
+  };
+};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SelectAppointmentDate);

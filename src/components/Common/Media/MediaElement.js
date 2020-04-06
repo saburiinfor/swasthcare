@@ -18,6 +18,7 @@ class MediaElement extends Component {
   selectPhysician = (phyid) => {
     this.props.appointmentData.phyId = phyid;
     this.props.onSelectPhysician(phyid);
+    this.props.onSetAppointmentData(this.props.appointmentData);
   };
   render() {
     const noOfStars = this.props.noOfStars;

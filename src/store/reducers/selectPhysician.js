@@ -13,9 +13,7 @@ const physicianListSuccess = (state, action) => {
 
 const selectPhysicianSuccess = (state, action) => {
   return updateObject(state, {
-    appointmentData: {
-      phyid: action.phyid
-    }
+    phyid: action.phyid
   })
 };
 

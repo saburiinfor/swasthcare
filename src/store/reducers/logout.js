@@ -13,6 +13,7 @@ const reducer = (state = initialState, action) => {
       utilities.removeFromSession('token');
       utilities.removeFromSession('id');
       utilities.removeFromSession('startTime');
+      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return authLogoutSuccess(state, action);
     default:
       return state;

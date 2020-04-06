@@ -21,17 +21,19 @@ export const authFail = (error) => {
     error: error
   };
 };
-export const auth = (email, password, isSignup) => {
+export const auth = (email, password, userType, isSignup) => {
   return dispatch => {
     dispatch(authStart());
     const authData = new FormData();
     authData.append("email", email);
     authData.append("password", password);
+    authData.append("userType", userType);
     axios.post(actionTypes.API_URL + "/User/login/", authData).then(
       response => {
         // console.log("res ***" + JSON.stringify(response));
         if (response.data.success === 1) {
           utilities.storeInSession('token', response.data.token);
+          utilities.storeInSession('conferkare.appointment.activeStage', 0);
           dispatch(authSuccess(response.data.token, response.data.id));
         } else {
           dispatch(authFail(response.data.error.errormsg));

@@ -7,6 +7,7 @@ import {Link, Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions/index";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
+import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
 class SelectPhysician extends Component {
   constructor(props) {
@@ -18,22 +19,19 @@ class SelectPhysician extends Component {
   
   componentDidMount() {
     this.props.onGetUserProfile(sessionStorage.getItem('token'));
-    this.props.onGetPhysicianList(this.props.appointmentData.city);
+    this.props.onGetPhysicianList(null, this.props.appointmentData.city, null);
   }
   
   render() {
-    // console.log(this.props.appointmentData);
     // If the user want to logout or token invalidated, take user to Guest page
     if (this.props.userProfile.success === 0) {
+      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return <Redirect to='/'/>;
     }
-    const phyId = this.props.appointmentData.phyId;
-    // If user selected the physician then redirect user to next page
-    if (phyId !== null) {
-      return <Redirect to={"/selectAppointmentDate"} />;
-    }
+    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
+        <Redirect to={pageUrl}/>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
@@ -69,7 +67,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
-    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
     onGetPhysicianList: (phyname, phycity, physpecialisation) => dispatch(actions.getPhysicianList(phyname, phycity, physpecialisation)),
     onSelectPhysician: (phyid) => dispatch(actions.selectPhysician(phyid))
   };

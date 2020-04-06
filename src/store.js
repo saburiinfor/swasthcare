@@ -18,6 +18,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 const persistConfig = {
   key: 'root',
   storage,
+  blacklist: ['auth', 'UserProfile']
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -40,8 +41,6 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = createStore(persistedReducer, composeEnhancers(
   applyMiddleware(thunk)
 ));
-
-console.log(store.getState());
 
 export const history = syncHistoryWithStore(browserHistory, store);
 

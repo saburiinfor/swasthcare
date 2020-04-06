@@ -9,10 +9,11 @@ import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import UserProfile from "../UserProfile/UserProfile";
 import styles from "../SelectAppointmentDate/SelectAppointmentDate.module.scss";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
+import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
 function CityOptions(cityList) {
   let activeCities = cityList.cityList.filter(city => city.status === "Active");
-  let optList = activeCities.map((item) => <option key={item.id} value={item.id}>{item.name}</option> );
+  let optList = activeCities.map((item) => <option key={item.id} value={item.name}>{item.name}</option> );
   return optList;
 }
 
@@ -22,6 +23,7 @@ class NewApointment extends Component {
     this.state = {
       cityList: [],
       appointmentTypeList: [],
+      appointmentType: "04",
       appointmentData: {
         city: null,
         appointmentType: null,
@@ -36,7 +38,6 @@ class NewApointment extends Component {
     this.props.onGetUserProfile(sessionStorage.getItem('token'));
     this.props.onGetCities();
     this.props.onGetAppointmentTypeList();
-    // this.props.onGetPhysicianList();
   }
   
   handleAppointmentTypeChange = (e) => {
@@ -59,28 +60,31 @@ class NewApointment extends Component {
   
   render() {
     if (this.props.userProfile.success === 0) {
+      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return <Redirect to='/'/>;
     }
-    if (this.props.appointmentData.city !== null) {
-      return <Redirect to='/selectPhysician'/>;
-    }
+    // if (this.props.appointmentData.city !== null) {
+    //   return <Redirect to='/selectPhysician'/>;
+    // }
     const btnGroup = this.props.appointmentTypeList.map((item) => (
       <div className="form-check" key={item.id}>
         <label>
           <input
             type="radio"
             name="react-tips"
-            value={item.label}
-            defaultChecked={item.id === "01"}
+            value={item.id}
+            defaultChecked={item.id === "04"}
             onClick={this.handleAppointmentTypeChange}
             className="form-check-input"
           />
-          {item.label}
+          {item.apptype}
         </label>
       </div>
     ));
+    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
+        <Redirect to={pageUrl}/>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
@@ -98,7 +102,7 @@ class NewApointment extends Component {
                 <div className={styles.selectDate}>
                   <h4>
                     Select the appointment type and city
-                    <WizardButtons activeStep={'1'} nextBtnCallback={this.handlerNextBtnClick} />
+                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
                   </h4>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>

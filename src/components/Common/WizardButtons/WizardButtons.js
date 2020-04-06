@@ -5,58 +5,26 @@ import './WizardButtons.scss';
 class WizardButtons extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      backUrl: null,
-      nextUrl: null
-    }
   }
   componentDidMount() {
+    this.formRef = React.createRef();
   };
-  backButtonClick = (e) => {
-    let backUrl;
-    switch(parseInt(this.props.activeStep)) {
-      case 1:
-        backUrl = '/dashboard';
-        break;
-      case 2:
-        backUrl = '/newAppointment';
-        break;
-      case 3:
-        backUrl = '/selectPhysician';
-        break;
-      case 4:
-        backUrl = '/selectappointmentdate';
-        break;
-      default:
-        backUrl = '/dashboard';
-        break;
-    }
-    window.location.replace(backUrl);
+
+  backButtonClick = () => {
+    let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
+    sessionStorage.setItem('conferkare.appointment.activeStage', activeStage < 1 ? 0 : (activeStage - 1));
+    this.formRef.current.submit();
   };
-  nextButtonClick = (e) => {
-    let nextUrl;
-    switch(parseInt(this.props.activeStep)) {
-      case 1:
-        nextUrl = '/selectPhysician';
-        break;
-      case 2:
-        nextUrl = '/selectappointmentdate';
-        break;
-      case 3:
-        nextUrl = '/';
-        break;
-      default:
-        nextUrl = '/dashboard';
-        break;
-    }
-    this.setState({
-      nextUrl
-    });
+  nextButtonClick = () => {
+    let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
+    sessionStorage.setItem('conferkare.appointment.activeStage', activeStage + 1);
     this.props.nextBtnCallback();
+    this.formRef.current.submit();
   };
   render() {
     return (
       <div className={'wizBtnsContainer'}>
+        <form ref={this.formRef}/>
         <Button onClick={this.backButtonClick}>Back</Button>
         <Button onClick={this.nextButtonClick}>Continue</Button>
       </div>

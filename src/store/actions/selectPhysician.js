@@ -20,19 +20,21 @@ export const getPhysicianList = (phyname, phycity, physpecialisation) => {
   return dispatch => {
     const physicianData = new FormData();
     // Extract the default city from user location, until user search base on location
-    const city = (phycity === undefined) ? 'Bhubaneswar' : phycity;
+    const city = (phycity === null) ? 'Bhubaneswar' : phycity;
     physicianData.append('city', city);
-    if (phyname !== undefined) {
+    if (phyname !== null) {
       physicianData.append('phyname', phyname);
     }
-    if (physpecialisation !== undefined) {
+    if (physpecialisation !== null) {
       physicianData.append('specializations', physpecialisation);
     }
     axios.post(actionTypes.API_URL + "Physician/getphysician/", physicianData).then(
       response => {
-        // console.log('inside physician data response');
-        // console.log("res ***" + JSON.stringify(response.data));
-        dispatch(physicianListSuccess(Array.from(response.data.result)));
+        console.log('inside physician data response');
+        console.log("res ***" + JSON.stringify(response.data));
+        if (response.data.success === 1) {
+          dispatch(physicianListSuccess(Array.from(response.data.result)));
+        }
       }).catch(err => {
       console.log(err);
     });
