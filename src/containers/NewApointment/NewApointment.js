@@ -30,7 +30,6 @@ class NewApointment extends Component {
         phyId: null
       }
     };
-    this.nextBtn = React.createRef();
     this.handlerNextBtnClick.bind(this);
   }
   

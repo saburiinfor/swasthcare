@@ -30,8 +30,8 @@ export const getUserProfile = (userToken) => {
     userData.append("token", userToken);
     axios.post(actionTypes.API_URL + "User/getbytoken/", userData).then(
       response => {
-        console.log('inside profile data response inside userProfile');
-        console.log("res ***" + JSON.stringify(response.data));
+        // console.log('inside profile data response inside userProfile');
+        // console.log("res ***" + JSON.stringify(response.data));
         let userProfile = response.data;
         dispatch(userDetailsSuccess(userProfile));
       }).catch(err => {
@@ -42,10 +42,14 @@ export const getUserProfile = (userToken) => {
 
 export const updateUserProfile = (userProfile) => {
   return dispatch => {
-    axios.post(actionTypes.API_URL + "User/userprofileupdate/", userProfile).then(
+    let userData = new FormData();
+    for (const key in userProfile) {
+      userData.append(key, userProfile[key]);
+    }
+    axios.post(actionTypes.API_URL + "User/userprofileupdate/", userData).then(
       response => {
-        console.log('inside profile update call');
-        console.log(JSON.stringify(response.data));
+        // console.log('inside profile update call');
+        // console.log(JSON.stringify(response.data));
         let userProfile = response.data;
         if (response.data.success === 1) {
           dispatch(userUpdateSuccess(userProfile));

@@ -68,7 +68,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onGetPhysicianList: (phyname, phycity, physpecialisation) => dispatch(actions.getPhysicianList(phyname, phycity, physpecialisation)),
-    onSelectPhysician: (phyid) => dispatch(actions.selectPhysician(phyid))
+    onSelectPhysician: (phyid, clinicid) => dispatch(actions.selectPhysician(phyid, clinicid))
   };
 };
 

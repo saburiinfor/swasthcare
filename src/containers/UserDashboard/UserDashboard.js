@@ -50,7 +50,7 @@ class UserDashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.onGetUserProfile(sessionStorage.getItem('token'));
+    // this.props.onGetUserProfile(sessionStorage.getItem('token'));
     const apDate = dateformat(new Date('2019/07/03'), 'yyyy-mm-dd');
     this.props.onSetAppointmentDate(apDate);
   }
@@ -138,9 +138,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    // onGetUserProfile: (userToken) => dispatch(actions.getProfile(userToken)),
     onSetAppointmentDate: (date) => dispatch(actions.setAppointmentDate(date)),
-    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
-    onGetUserProfile: (userToken) => dispatch(actions.getProfile(userToken))
+    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))
   };
 };
 

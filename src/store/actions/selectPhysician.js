@@ -9,10 +9,11 @@ export const physicianListSuccess = (physicianList) => {
   };
 };
 
-export const selectPhysician = (phyid) => {
+export const selectPhysician = (phyid, clinicid) => {
   return {
     type: actionTypes.SET_SELECTED_PHY_ID,
-    phyid
+    phyid,
+    clinicid
   };
 };
 

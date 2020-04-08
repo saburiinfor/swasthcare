@@ -13,18 +13,23 @@ class WizardButtons extends Component {
   backButtonClick = () => {
     let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
     sessionStorage.setItem('conferkare.appointment.activeStage', activeStage < 1 ? 0 : (activeStage - 1));
-    this.formRef.current.submit();
+    setTimeout(function(formObj) {
+      formObj.submit();
+    }, 200, this.formRef.current);
   };
   nextButtonClick = () => {
     let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
     sessionStorage.setItem('conferkare.appointment.activeStage', activeStage + 1);
     this.props.nextBtnCallback();
-    this.formRef.current.submit();
+    setTimeout(function(formObj) {
+      formObj.submit();
+    }, 200, this.formRef.current);
   };
   render() {
     return (
       <div className={'wizBtnsContainer'}>
         <form ref={this.formRef}/>
+        
         <Button onClick={this.backButtonClick}>Back</Button>
         <Button onClick={this.nextButtonClick}>Continue</Button>
       </div>

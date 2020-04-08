@@ -18,7 +18,7 @@ const guestUser = () => <div className="App login-bg">
 class App extends Component {
   render() {
     return (
-      <Router basename={'/swasthcare/'} history={history}>
+      <Router basename={'/swasthcare/'}>
         <MobileView>
           <Switch>
             <Route exact path="/" component={guestUser}/>
@@ -27,7 +27,10 @@ class App extends Component {
             <Route exact path="/dashboard" component={loggedInUser}/>
             <Route exact path="/newAppointment" component={loggedInUser}/>
             <Route exact path="/selectPhysician" component={loggedInUser}/>
-            <Route exact path="/SelectAppointmentDate" component={loggedInUser}/>
+            <Route exact path="/selectAppointmentDate" component={loggedInUser}/>
+            <Route exact path="/selectSlot" component={loggedInUser}/>
+            <Route exact path="/addComplaints" component={loggedInUser}/>
+            <Route exact path="/appointmentPayment" component={loggedInUser}/>
           </Switch>
         </MobileView>
         <BrowserView>

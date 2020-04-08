@@ -47,6 +47,11 @@ class Breadcrumb extends Component {
           <span className={'stepDivider'}/>
           <img src={tickImage} alt={'Done'}/>
         </li>
+        <li ref={'step7'} id={'step-7'}>
+          <span className={'stepText'}>Step 7</span>
+          <span className={'stepDivider'}/>
+          <img src={tickImage} alt={'Done'}/>
+        </li>
       </ul>
     );
   }

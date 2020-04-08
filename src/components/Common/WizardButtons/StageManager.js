@@ -18,7 +18,16 @@ const getPageLink = function () {
       pageUrl = '/selectappointmentdate';
       break;
     case 4:
-      pageUrl = '/selectappointmentdate';
+      pageUrl = '/selectSlot';
+      break;
+    case 5:
+      pageUrl = '/addComplaints';
+      break;
+    case 6:
+      pageUrl = '/appointmentPayment';
+      break;
+    case 7:
+      pageUrl = '/appointmentPayment';
       break;
     default:
       pageUrl = '/dashboard';

@@ -15,9 +15,10 @@ class MediaElement extends Component {
   }
   
   // click handler for physician selection
-  selectPhysician = (phyid) => {
+  selectPhysician = (phyid, clinicid) => {
     this.props.appointmentData.phyId = phyid;
-    this.props.onSelectPhysician(phyid);
+    this.props.appointmentData.clinicid = clinicid;
+    this.props.onSelectPhysician(phyid, clinicid);
     this.props.onSetAppointmentData(this.props.appointmentData);
   };
   render() {
@@ -37,7 +38,7 @@ class MediaElement extends Component {
             <FontAwesomeIcon color="#ccc" size="5x" icon={faUser}/>
           </div>
           <div>{starIconArray}</div>
-          <Button className="pt-0" color="link" onClick={this.selectPhysician.bind(null, panelData.id)}>
+          <Button className="pt-0" color="link" onClick={this.selectPhysician.bind(null, panelData.id, panelData.clinicid)}>
             Select
           </Button>
         </Media>

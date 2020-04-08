@@ -169,7 +169,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
+    // onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
   };
 };

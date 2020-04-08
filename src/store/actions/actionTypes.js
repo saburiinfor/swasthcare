@@ -27,5 +27,9 @@ export const GET_USERDETAIL_SUCCESS = 'GET_USERDETAIL_SUCCESS';
 export const UPDATE_USERDETAILS_SUCCESS = 'UPDATE_USERDETAILS_SUCCESS';
 export const UPDATE_USERDETAILS_FAILURE = 'UPDATE_USERDETAILS_FAILURE';
 
+export const GET_SLOTS_SUCCESS = 'GET_SLOTS_SUCCESS';
+export const GET_APPOINTMENT_COST_DETAILS_SUCCESS = 'GET_APPOINTMENT_COST_DETAILS_SUCCESS';
+export const RPAY_ORDER_ID_SUCCESS = 'RPAY_ORDER_ID_SUCCESS';
+
 // export const API_URL = 'https://www.conferadmin.com/restapi';
 export const API_URL = 'https://www.skrepository.com/restapi/';
