@@ -37,8 +37,8 @@ export const getAppointmentCostDetails = (appointmentData) => {
       'amount': 50000,
       'currency': 'INR',
       'description': 'Patient appointment scheduled by SimpleKare.',
-      'p_name': 'SimpleKare patient',
-      'p_email': 'patientcontact@simsplekare.com'
+      'p_name': 'Ravi Kiran',
+      'p_email': 'lravik.saburi@gmail.com'
     };
     dispatch(getAppointmentCostDetailsSuccess(appointmentCostDetails));
   };

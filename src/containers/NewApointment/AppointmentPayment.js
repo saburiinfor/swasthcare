@@ -10,6 +10,7 @@ import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import './razorpay.scss';
+import { loadCheckout } from '@tiltbike/razorpay-checkout-js';
 
 class AppointmentPayment extends Component {
   constructor(props) {
@@ -22,21 +23,16 @@ class AppointmentPayment extends Component {
   }
   
   componentDidMount() {
-    // Inject the RazorPay JS library
-    const rzpScript = document.createElement('script');
-    rzpScript.src = 'https://checkout.razorpay.com/v1/razorpay.js';
-    rzpScript.async = true;
-    document.head.appendChild(rzpScript);
     this.props.onGetAppointmentCostDetails(this.props.appointmentData);
     let orderDetails = {
       amount: this.props.costDetails.amount,
       currency: this.props.costDetails.currency,
       receipt: 'rpay_conferkare_' + this.props.appointmentData.id + '_' + new Date().getTime()
     };
-    this.props.onCreateRPayOrderId(orderDetails);
+    // this.props.onCreateRPayOrderId(orderDetails);
   }
   
-  handlePaymentSubmission = (e) => {
+  handlePaymentSubmission = async (e) => {
     e.preventDefault();
     let options = {
       "key": "rzp_test_11WWnGxxs9Gky3", // Test API Key, @TODO would change while pushing to production.
@@ -44,7 +40,7 @@ class AppointmentPayment extends Component {
       "currency": this.props.costDetails.currency,
       "name": "ConferKare",
       "description": this.props.costDetails.description,
-      "image": "../../.../assets/images/SwasthLogo.png",
+      "image": 'ConferKare',
       "handler": function (response) {
         this.state.paymentResponse.razorpay_payment_id = response.razorpay_payment_id;
         this.state.paymentResponse.razorpay_order_id = response.razorpay_order_id;
@@ -59,8 +55,8 @@ class AppointmentPayment extends Component {
       }
     };
   
-    // let rzp = new Razorpay(options);
-    // rzp.open();
+    const rzp = await loadCheckout(options);
+    rzp.open();
   };
   
   handlerNextBtnClick = () => {
@@ -128,7 +124,7 @@ class AppointmentPayment extends Component {
                           </tbody>
                         </table>
                         <br/>
-                        <button className={'rzp-button'} onClick={this.handlePaymentSubmission}>
+                        <button className={'rzp-button'} onClick={this.handlePaymentSubmission.bind(this)}>
                           <p>
                             Pay fees
                           </p>
