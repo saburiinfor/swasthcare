@@ -26,7 +26,7 @@ class AppointmentPayment extends Component {
     const rzpScript = document.createElement('script');
     rzpScript.src = 'https://checkout.razorpay.com/v1/razorpay.js';
     rzpScript.async = true;
-    document.body.appendChild(rzpScript);
+    document.head.appendChild(rzpScript);
     this.props.onGetAppointmentCostDetails(this.props.appointmentData);
     let orderDetails = {
       amount: this.props.costDetails.amount,
@@ -39,7 +39,7 @@ class AppointmentPayment extends Component {
   handlePaymentSubmission = (e) => {
     e.preventDefault();
     let options = {
-      "key": "YOUR_KEY_ID",
+      "key": "rzp_test_11WWnGxxs9Gky3", // Test API Key, @TODO would change while pushing to production.
       "amount": this.props.costDetails.amount,
       "currency": this.props.costDetails.currency,
       "name": "ConferKare",

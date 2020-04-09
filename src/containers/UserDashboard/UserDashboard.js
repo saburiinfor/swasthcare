@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import dateformat from 'dateformat';
 import UserProfile from "../UserProfile/UserProfile";
-import StageManager from "../../components/Common/WizardButtons/StageManager";
+import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
 class UserDashboard extends Component {
   constructor(props) {
@@ -71,8 +71,10 @@ class UserDashboard extends Component {
       sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return <Redirect to='/' />;
     }
+    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
+        <Redirect to={pageUrl}/>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .tar{text-align:right;} .mt10{margin-top:10px;} main{ background: #fff; } .header' +
           ' .search{border:1px' +
