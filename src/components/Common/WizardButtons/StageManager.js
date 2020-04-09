@@ -15,7 +15,7 @@ const getPageLink = function () {
       pageUrl = '/selectPhysician';
       break;
     case 3:
-      pageUrl = '/selectappointmentdate';
+      pageUrl = '/selectAppointmentDate';
       break;
     case 4:
       pageUrl = '/selectSlot';

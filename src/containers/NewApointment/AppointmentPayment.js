@@ -111,7 +111,7 @@ class AppointmentPayment extends Component {
                             </tr>
                             <tr>
                               <td>Appointment charges</td>
-                              <td>{this.props.costDetails.amount}</td>
+                              <td>Rs. {parseInt(this.props.costDetails.amount)/100}</td>
                             </tr>
                             <tr>
                               <td>Patient name</td>
