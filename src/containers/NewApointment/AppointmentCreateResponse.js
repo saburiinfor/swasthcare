@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import UserProfile from "../UserManagement/UserProfile";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from './NewApointment.module.scss';
-import {Button} from "bootstrap/js/src";
 
 class AppointmentCreateResponse extends Component {
   constructor(props) {
@@ -13,7 +12,6 @@ class AppointmentCreateResponse extends Component {
   }
   
   componentDidMount() {
-    console.log(this.props);
   }
   
   render() {
