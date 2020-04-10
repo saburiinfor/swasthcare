@@ -4,11 +4,11 @@ import DatePicker from "react-datepicker";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from "./SelectAppointmentDate.module.scss";
 import {Helmet} from "react-helmet";
-import CustomCalenderIcon from "../CustomCalenderIcon/CustomCalenderIcon";
+import CustomCalenderIcon from "../../components/Common/CustomCalenderIcon/CustomCalenderIcon";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import { connect } from 'react-redux';
-import * as actions from "../../store/actions/index";
+import * as actions from "../../store/actions";
 import {Redirect} from "react-router-dom";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
@@ -18,7 +18,9 @@ class SelectAppointmentDate extends Component {
     this.state = {
       startDate: new Date(),
       inputDate: "",
-      currentDate: ""
+      currentDate: "",
+      appday: 'Sun',
+      appregid: 'A202026'
     };
     this.handleChange = this.handleChange.bind(this);
     this.handlerNextBtnClick.bind(this);
@@ -27,15 +29,30 @@ class SelectAppointmentDate extends Component {
   componentDidMount() {
   }
   
+  zeroPrefixing = (val) => {
+    return (val < 10) ? '0' + val : val;
+  };
+  
+  getDayText = (day) => {
+    return ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][day];
+  };
+  
+  generateAppRegId = (year, clinicid) => {
+    return `A${year}${clinicid}`;
+  };
+  
   handleChange(date) {
     let newFormatedDate;
     newFormatedDate =
-      date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+      // date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+      date.getFullYear() + "-" + this.zeroPrefixing(date.getMonth() + 1) + "-" + this.zeroPrefixing(date.getDate());
     
     this.setState({
       startDate: date,
       inputDate: newFormatedDate,
-      appointmentDate: newFormatedDate
+      appdate: newFormatedDate,
+      appday: this.getDayText(date.getDay()),
+      appregid: this.generateAppRegId(date.getFullYear(), this.props.appointmentData.clinicid)
     });
   }
   
@@ -43,9 +60,10 @@ class SelectAppointmentDate extends Component {
     if (e.target.value === "today") {
       var date = new Date();
       date =
-        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+        // date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+        date.getFullYear() + "-" + this.zeroPrefixing(date.getMonth() + 1) + "-" + this.zeroPrefixing(date.getDate());
       
-      this.setState({[e.target.name]: date, currentDate: e.target.value, appointmentDate: date });
+      this.setState({[e.target.name]: date, currentDate: e.target.value, appdate: date, appday: this.getDayText(date.getDay()), appregid: this.generateAppRegId(date.getFullYear(), this.props.appointmentData.clinicid) });
     }
     
     if (e.target.value === "tomorrow") {
@@ -53,9 +71,10 @@ class SelectAppointmentDate extends Component {
       date.setDate(date.getDate() + 1); // even 32 is acceptable
       
       let tomorrow =
-        date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+        // date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+        date.getFullYear() + "-" + this.zeroPrefixing(date.getMonth() + 1) + "-" + this.zeroPrefixing(date.getDate());
       
-      this.setState({[e.target.name]: tomorrow, currentDate: e.target.value, appointmentDate: tomorrow });
+      this.setState({[e.target.name]: tomorrow, currentDate: e.target.value, appdate: tomorrow, appday: this.getDayText(tomorrow.getDay()), appregid: this.generateAppRegId(date.getFullYear(), this.props.appointmentData.clinicid) });
     }
   };
   
@@ -64,7 +83,9 @@ class SelectAppointmentDate extends Component {
   };
   
   handlerNextBtnClick = () => {
-    this.props.appointmentData.appointmentDate = this.state.appointmentDate;
+    this.props.appointmentData.appdate = this.state.appdate;
+    this.props.appointmentData.appday = this.state.appday;
+    this.props.appointmentData.appregid = this.state.appregid;
     this.props.onSetAppointmentData(this.props.appointmentData);
   };
   
@@ -101,7 +122,7 @@ class SelectAppointmentDate extends Component {
                       id="appointmentDate"
                       value={this.state.inputDate}
                       onChange={this.onChangeHandler}
-                      placeholder="DD/MM/YYYY"
+                      placeholder="YYYY-MM-DD"
                     />
                   </Col>
                   <Col md="8">
@@ -169,7 +190,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
   };
 };

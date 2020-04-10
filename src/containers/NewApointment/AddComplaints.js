@@ -5,7 +5,7 @@ import {Redirect} from "react-router-dom";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
-import UserProfile from "../UserProfile/UserProfile";
+import UserProfile from "../UserManagement/UserProfile";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";

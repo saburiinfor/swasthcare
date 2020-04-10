@@ -6,7 +6,7 @@ import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import styles from './SelectSlot.scss';
-import UserProfile from "../UserProfile/UserProfile";
+import UserProfile from "../UserManagement/UserProfile";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
@@ -15,21 +15,24 @@ class SelectSlot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      slotId: null
+      slotId: null,
+      ctime: ''
     };
     this.handlerNextBtnClick.bind(this);
     this.handleSlotSelection.bind(this);
   }
   
   componentDidMount() {
-    let {phyId, clinicId, appointmentDate} = this.props.appointmentData;
-    this.props.onGetSlots(phyId, clinicId, appointmentDate);
+    let {pid, clinicid, appdate} = this.props.appointmentData;
+    this.props.onGetSlots(pid, clinicid, appdate);
     this.state.slotListing = this.generateSlots(this.props.slots.slots);
   }
 
   handleSlotSelection = (e) => {
+    console.log(e.target.title);
     this.setState({
-      slotId: e.target.value
+      slotId: e.target.value,
+      ctime: e.target.title
     });
   };
   
@@ -42,7 +45,7 @@ class SelectSlot extends Component {
           <span>{slot.period}</span>
           <span>{slot.waitingTime}</span>
           <span>{slot.status}</span>
-          <span><button className={'btn btn-link'} onClick={this.handleSlotSelection} value={slot.id}>Select</button></span>
+          <span><button title={slot.startTime} className={'btn btn-link'} onClick={this.handleSlotSelection} value={slot.id}>Select</button></span>
         </li>
       );
     });
@@ -63,6 +66,7 @@ class SelectSlot extends Component {
   
   handlerNextBtnClick = () => {
     this.props.appointmentData.slotId = this.state.slotId;
+    this.props.appointmentData.ctime = this.state.ctime;
     this.props.onSetAppointmentData(this.props.appointmentData);
   };
   
@@ -181,7 +185,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetSlots: (phyId, clinicId, slotDate) => dispatch(actions.getSlots(phyId, clinicId, slotDate)),
+    onGetSlots: (pid, clinicid, slotDate) => dispatch(actions.getSlots(pid, clinicid, slotDate)),
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))
   };
 };

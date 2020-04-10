@@ -10,11 +10,11 @@ export const getSlotsSuccess = (slots) => {
   };
 };
 
-export const getSlots = (phyId, clinicId, slotDate) => {
+export const getSlots = (pid, clinicid, slotDate) => {
   return dispatch => {
     const slotRequestData = new FormData();
-    slotRequestData.append("phyId", phyId);
-    slotRequestData.append("clinicId", clinicId);
+    slotRequestData.append("pid", pid);
+    slotRequestData.append("clinicid", clinicid);
     slotRequestData.append("slotDate", slotDate);
     // axios.post(actionTypes.API_URL + "Physician/getslots/", slotRequestData).then(
     //   response => {
@@ -26,9 +26,9 @@ export const getSlots = (phyId, clinicId, slotDate) => {
     //   console.log(err);
     // });
     let slotsData = {
-      'slotDate': '09/04/2020',
-      'phyId': 21,
-      'clinicid': 21,
+      'slotDate': slotDate,
+      'phyId': pid,
+      'clinicid': clinicid,
       'slots':
         [
           {
@@ -43,7 +43,7 @@ export const getSlots = (phyId, clinicId, slotDate) => {
             'id': '002',
             'startTime': '11:00 AM',
             'waitingTime': '10',
-            'status': 'full',
+            'status': 'available',
             'period': 'morning',
             'type': '04'
           },
@@ -67,13 +67,37 @@ export const getSlots = (phyId, clinicId, slotDate) => {
             'id': '005',
             'startTime': '3:00 PM',
             'waitingTime': '10',
-            'status': 'halted',
+            'status': 'available',
             'period': 'evening',
             'type': '04'
           },
           {
             'id': '006',
             'startTime': '4:00 PM',
+            'waitingTime': '10',
+            'status': 'available',
+            'period': 'evening',
+            'type': '03'
+          },
+          {
+            'id': '007',
+            'startTime': '7:00 PM',
+            'waitingTime': '10',
+            'status': 'available',
+            'period': 'evening',
+            'type': '04'
+          },
+          {
+            'id': '008',
+            'startTime': '8:00 PM',
+            'waitingTime': '10',
+            'status': 'available',
+            'period': 'evening',
+            'type': '03'
+          },
+          {
+            'id': '009',
+            'startTime': '9:00 PM',
             'waitingTime': '10',
             'status': 'available',
             'period': 'evening',

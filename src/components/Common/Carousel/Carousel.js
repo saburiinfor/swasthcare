@@ -1,9 +1,9 @@
 import React, {Component} from "react";
 import {Carousel, CarouselCaption, CarouselControl, CarouselIndicators, CarouselItem} from "reactstrap";
 
-import img1 from "../../assets/images/CK1.jpg";
-import img2 from "../../assets/images/CK2.jpg";
-import img3 from "../../assets/images/CK3.jpg";
+import img1 from "../../../assets/images/CK1.jpg";
+import img2 from "../../../assets/images/CK2.jpg";
+import img3 from "../../../assets/images/CK3.jpg";
 //import styles from "./Carousel.module.css";
 
 const items = [

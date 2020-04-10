@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Col } from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
-import Carousel from '../Carousel/Carousel';
+import Carousel from '../../components/Common/Carousel/Carousel';
 import {Link} from "react-router-dom";
 import {BrowserView} from "react-device-detect";
 

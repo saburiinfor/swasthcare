@@ -20,8 +20,8 @@ export const createRPayPrderIdSuccess = (rpayOrder) => {
 export const getAppointmentCostDetails = (appointmentData) => {
   return dispatch => {
     const costRequestData = new FormData();
-    costRequestData.append("phyId", appointmentData.phyId);
-    costRequestData.append("clinicId", appointmentData.clinicid);
+    costRequestData.append("pid", appointmentData.pid);
+    costRequestData.append("clinicid", appointmentData.clinicid);
     costRequestData.append("appointmentDate", appointmentData.appointmentDate);
     costRequestData.append("slotId", appointmentData.slotId);
     // axios.post(actionTypes.API_URL + "Physician/getslots/", slotRequestData).then(
@@ -34,11 +34,11 @@ export const getAppointmentCostDetails = (appointmentData) => {
     //   console.log(err);
     // });
     let appointmentCostDetails = {
-      'amount': 50000,
+      'amount': appointmentData.pt_price,
       'currency': 'INR',
       'description': 'Patient appointment scheduled by SimpleKare.',
-      'p_name': 'Ravi Kiran',
-      'p_email': 'lravik.saburi@gmail.com'
+      'p_name': appointmentData.name,
+      'p_email': appointmentData.email
     };
     dispatch(getAppointmentCostDetailsSuccess(appointmentCostDetails));
   };

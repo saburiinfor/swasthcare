@@ -14,13 +14,14 @@ import mediaElementGroupReducer from './store/reducers/mediaElementGroup';
 import newAppointmentReducer from './store/reducers/newAppointment';
 import selectSlotReducer from './store/reducers/SelectSlot';
 import appointmentPaymentReducer from './store/reducers/appointmentPayment';
+import submitAppointmentReducer from './store/reducers/submitAppointment';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['auth','UserProfile']
+  blacklist: ['auth']
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -37,6 +38,7 @@ const rootReducer = combineReducers({
   newAppointment: newAppointmentReducer,
   selectSlot: selectSlotReducer,
   appointmentPayment: appointmentPaymentReducer,
+  submitAppointment: submitAppointmentReducer,
   routing: routerReducer
 });
 

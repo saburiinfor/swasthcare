@@ -51,13 +51,15 @@ class MediaElementGroup extends Component {
 const mapStateToProps = (state) => {
   return {
     physicianList: state.selectPhysician.physicianList,
-    filter: state.mediaElementGroup.filter
+    filter: state.mediaElementGroup.filter,
+    physicianDetails: state.mediaElementGroup.physicianDetails
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
+    onGetPhysicianById: (pid, clinicid) => dispatch(actions.getPhysicianById(pid,clinicid)),
     onSetPhysicianFilterText: (filterText) => dispatch(actions.setPhysicianFilterText(filterText))
   };
 };

@@ -5,7 +5,7 @@ import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGro
 import {Helmet} from 'react-helmet';
 import {Link, Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
-import * as actions from "../../store/actions/index";
+import * as actions from "../../store/actions";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
@@ -18,7 +18,6 @@ class SelectPhysician extends Component {
   }
   
   componentDidMount() {
-    this.props.onGetUserProfile(sessionStorage.getItem('token'));
     this.props.onGetPhysicianList(null, this.props.appointmentData.city, null);
   }
   
@@ -66,9 +65,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onGetPhysicianList: (phyname, phycity, physpecialisation) => dispatch(actions.getPhysicianList(phyname, phycity, physpecialisation)),
-    onSelectPhysician: (phyid, clinicid) => dispatch(actions.selectPhysician(phyid, clinicid))
+    onSelectPhysician: (pid, clinicid) => dispatch(actions.selectPhysician(pid, clinicid))
   };
 };
 

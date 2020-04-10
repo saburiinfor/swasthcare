@@ -4,6 +4,7 @@ import {faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styles from "./MediaElement.module.css";
 import classnames from "classnames";
+import {updateObject} from "../../../shared/utility";
 
 class MediaElement extends Component {
   constructor(props) {
@@ -15,10 +16,15 @@ class MediaElement extends Component {
   }
   
   // click handler for physician selection
-  selectPhysician = (phyid, clinicid) => {
-    this.props.appointmentData.phyId = phyid;
-    this.props.appointmentData.clinicid = clinicid;
-    this.props.onSelectPhysician(phyid, clinicid);
+  selectPhysician = (pid, clinicid) => {
+    this.props.onGetPhysicianById(pid, clinicid);
+    for (const key of ['clinicname', 'pt_price', 'clinicaddress', 'cliniccontact', 'cityname']) {
+      this.props.appointmentData[key] = this.props.physicianDetails[key];
+    }
+    this.props.appointmentData.servicedet_string = this.props.physicianDetails.phyname;
+    this.props.appointmentData.speciality = this.props.physicianDetails.specializations;
+    this.props.appointmentData.pname = this.props.physicianDetails.phyname;
+    this.props.onSelectPhysician(pid, clinicid);
     this.props.onSetAppointmentData(this.props.appointmentData);
   };
   render() {

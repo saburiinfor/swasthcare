@@ -9,10 +9,10 @@ export const physicianListSuccess = (physicianList) => {
   };
 };
 
-export const selectPhysician = (phyid, clinicid) => {
+export const selectPhysician = (pid, clinicid) => {
   return {
     type: actionTypes.SET_SELECTED_PHY_ID,
-    phyid,
+    pid,
     clinicid
   };
 };
@@ -21,7 +21,7 @@ export const getPhysicianList = (phyname, phycity, physpecialisation) => {
   return dispatch => {
     const physicianData = new FormData();
     // Extract the default city from user location, until user search base on location
-    const city = (phycity === null) ? 'Bhubaneswar' : phycity;
+    const city = (phycity === 'All') ? 'Bhubaneswar' : phycity;
     physicianData.append('city', city);
     if (phyname !== null) {
       physicianData.append('phyname', phyname);
@@ -31,8 +31,8 @@ export const getPhysicianList = (phyname, phycity, physpecialisation) => {
     }
     axios.post(actionTypes.API_URL + "Physician/getphysician/", physicianData).then(
       response => {
-        console.log('inside physician data response');
-        console.log("res ***" + JSON.stringify(response.data));
+        // console.log('inside physician data response');
+        // console.log("res ***" + JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(physicianListSuccess(Array.from(response.data.result)));
         }

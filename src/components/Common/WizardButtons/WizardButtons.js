@@ -29,9 +29,10 @@ class WizardButtons extends Component {
     return (
       <div className={'wizBtnsContainer'}>
         <form ref={this.formRef}/>
-        
         <Button onClick={this.backButtonClick}>Back</Button>
-        <Button onClick={this.nextButtonClick}>Continue</Button>
+        { parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 &&
+          <Button onClick={this.nextButtonClick}>Continue</Button>
+        }
       </div>
     );
   }

@@ -9,14 +9,16 @@ import "./Layout.module.scss";
 import { Route } from "react-router-dom";
 import LoginForm from "../../../containers/Auth/LoginForm";
 import CreateUser from "../../../containers/CreateUser/CreateUser";
-import NewUser from "../../../containers/NewRegisteredUser/NewUser";
-import UserDashboard from "../../../containers/UserDashboard/UserDashboard";
-import NewApointment from "../../../containers/NewApointment/NewApointment";
-import SelectAppointmentDate from "../../../containers/SelectAppointmentDate/SelectAppointmentDate";
-import SelectPhysician from "../../../containers/SelectPhysician/SelectPhysician";
-import SelectSlot from "../../../containers/SelectSlot/SelectSlot";
+import NewUser from "../../../containers/CreateUser/NewUser";
+import UserDashboard from "../../../containers/NewApointment/UserDashboard";
+import NewAppointment from "../../../containers/NewApointment/NewApointment";
+import SelectAppointmentDate from "../../../containers/NewApointment/SelectAppointmentDate";
+import SelectPhysician from "../../../containers/NewApointment/SelectPhysician";
+import SelectSlot from "../../../containers/NewApointment/SelectSlot";
 import AddComplaints from "../../../containers/NewApointment/AddComplaints";
 import AppointmentPayment from "../../../containers/NewApointment/AppointmentPayment";
+import SubmitAppointment from "../../../containers/NewApointment/SubmitAppointment";
+import AppointmentCreateResponse from "../../../containers/NewApointment/AppointmentCreateResponse";
 
 const Layout = props => {
   return (
@@ -37,12 +39,14 @@ const Layout = props => {
             <Route exact path="/login" component={LoginForm}/>
             <Route exact path="/createuser" component={CreateUser}/>
             <Route exact path="/dashboard" component={UserDashboard}/>
-            <Route exact path="/newAppointment" component={NewApointment}/>
+            <Route exact path="/newAppointment" component={NewAppointment}/>
             <Route exact path="/selectPhysician" component={SelectPhysician}/>
             <Route exact path="/selectAppointmentDate" component={SelectAppointmentDate}/>
             <Route exact path="/selectSlot" component={SelectSlot}/>
             <Route exact path="/addComplaints" component={AddComplaints}/>
             <Route exact path="/appointmentPayment" component={AppointmentPayment}/>
+            <Route exact path="/submitAppointment" component={SubmitAppointment}/>
+            <Route exact path="/appointmentCreateResponse" component={AppointmentCreateResponse}/>
           </Row>
         </Container>
         <Footer/>

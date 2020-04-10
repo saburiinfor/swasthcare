@@ -11,7 +11,7 @@ import {Link, Redirect} from "react-router-dom"
 import { connect } from "react-redux";
 import * as actions from "../../store/actions";
 import dateformat from 'dateformat';
-import UserProfile from "../UserProfile/UserProfile";
+import UserProfile from "../UserManagement/UserProfile";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
 class UserDashboard extends Component {
@@ -50,7 +50,7 @@ class UserDashboard extends Component {
   }
 
   componentDidMount() {
-    // this.props.onGetUserProfile(sessionStorage.getItem('token'));
+    this.props.onGetUserProfile(sessionStorage.getItem('token'));
     const apDate = dateformat(new Date('2019/07/03'), 'yyyy-mm-dd');
     this.props.onSetAppointmentDate(apDate);
   }
@@ -59,7 +59,7 @@ class UserDashboard extends Component {
     let appointmentData = {
       city: null,
       appointmentType: null,
-      phyId: null
+      pid: null
     };
     // Set an activeStage counter to sessionStorage object for moving around pages in wizard
     sessionStorage.setItem('conferkare.appointment.activeStage', 1);
@@ -140,7 +140,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // onGetUserProfile: (userToken) => dispatch(actions.getProfile(userToken)),
+    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onSetAppointmentDate: (date) => dispatch(actions.setAppointmentDate(date)),
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))
   };

@@ -31,6 +31,8 @@ class App extends Component {
             <Route exact path="/selectSlot" component={loggedInUser}/>
             <Route exact path="/addComplaints" component={loggedInUser}/>
             <Route exact path="/appointmentPayment" component={loggedInUser}/>
+            <Route exact path="/submitAppointment" component={loggedInUser}/>
+            <Route exact path="/appointmentCreateResponse" component={loggedInUser}/>
           </Switch>
         </MobileView>
         <BrowserView>

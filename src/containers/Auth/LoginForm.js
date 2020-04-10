@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import styles from './LoginForm.module.scss';
 import {Button, Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
-import Carousel from '../Carousel/Carousel';
+import Carousel from '../../components/Common/Carousel/Carousel';
 import {Link, Redirect} from "react-router-dom";
 import {BrowserView, MobileView} from "react-device-detect";
 import {connect} from "react-redux";

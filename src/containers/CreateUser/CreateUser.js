@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Aux from "../../hoc/Auxwrap";
 import { Button, Col, Form, FormGroup, Input, Row } from "reactstrap";
 import styles from "./CreateUser.module.scss";
-import Carousel from '../Carousel/Carousel'
+import Carousel from '../../components/Common/Carousel/Carousel'
 import { BrowserView, MobileView, isMobile } from "react-device-detect";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";

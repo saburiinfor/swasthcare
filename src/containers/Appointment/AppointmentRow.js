@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Col, Container, Jumbotron, Row} from "reactstrap";
 import classnames from "classnames";
-import ButtonWithTick from "../../containers/ButtonWithTick/ButtonWithTick";
+import ButtonWithTick from "../../components/Common/ButtonWithTick/ButtonWithTick";
 import BasicButton from "../../components/Common/BasicButton/BasicButton";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from "./Appointment.module.scss";

@@ -6,8 +6,8 @@ import {Link, Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from "../../store/actions/index";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
-import UserProfile from "../UserProfile/UserProfile";
-import styles from "../SelectAppointmentDate/SelectAppointmentDate.module.scss";
+import UserProfile from "../UserManagement/UserProfile";
+import styles from "./SelectAppointmentDate.module.scss";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
@@ -21,27 +21,30 @@ class NewApointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      city: 'All',
       cityList: [],
       appointmentTypeList: [],
       appointmentType: "04",
+      appointmentTypeLabel: 'Clinic visit',
       appointmentData: {
-        city: null,
+        city: 'All',
         appointmentType: null,
-        phyId: null
+        pid: null
       }
     };
     this.handlerNextBtnClick.bind(this);
+    this.handleAppointmentTypeChange.bind(this);
   }
   
   componentDidMount() {
-    this.props.onGetUserProfile(sessionStorage.getItem('token'));
     this.props.onGetCities();
     this.props.onGetAppointmentTypeList();
   }
   
   handleAppointmentTypeChange = (e) => {
     this.setState({
-      appointmentType: e.target.value
+      appointmentType: e.target.value,
+      appointmentTypeLabel: e.target.parentNode.innerText
     });
   };
   
@@ -54,6 +57,12 @@ class NewApointment extends Component {
   handlerNextBtnClick = () => {
     this.state.appointmentData.city = this.state.city;
     this.state.appointmentData.appointmentType = this.state.appointmentType;
+    this.state.appointmentData.appointmentTypeLabel = this.state.appointmentTypeLabel;
+    this.state.appointmentData.patientid = this.props.userProfile.id;
+    this.state.appointmentData.name = this.props.userProfile.name;
+    this.state.appointmentData.email = this.props.userProfile.email;
+    this.state.appointmentData.application_id = 1;
+    this.state.appointmentData.service = 'Consultation';
     this.props.onSetAppointmentData(this.state.appointmentData);
   };
   
@@ -111,7 +120,7 @@ class NewApointment extends Component {
                       <Col>
                         <h5>City</h5>
                         <select onChange={this.handleCityChange}>
-                          <option>Select city</option>
+                          <option value={'All'}>All cities</option>
                           <CityOptions cityList={this.props.cityList}/>
                         </select>
                       </Col>
@@ -152,7 +161,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onGetCities: () => dispatch(actions.getCities()),
     onGetAppointmentTypeList: () => dispatch(actions.getAppointmentTypeList()),
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))

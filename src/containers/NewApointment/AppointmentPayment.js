@@ -5,7 +5,7 @@ import {Redirect} from "react-router-dom";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
-import UserProfile from "../UserProfile/UserProfile";
+import UserProfile from "../UserManagement/UserProfile";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
@@ -16,10 +16,12 @@ class AppointmentPayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      paymentResponse: {}
-    };
+      consultfee: (parseInt(this.props.appointmentData.consultfee) > 0 ?  parseInt(this.props.appointmentData.consultfee) : 0)
+  
+  };
     this.handlePaymentSubmission.bind(this);
     this.handlerNextBtnClick.bind(this);
+    this.formRef = React.createRef();
   }
   
   componentDidMount() {
@@ -32,23 +34,32 @@ class AppointmentPayment extends Component {
     // this.props.onCreateRPayOrderId(orderDetails);
   }
   
+  handlePaymentSuccess = (response) => {
+    this.setState({
+      razorpay_payment_id: response.razorpay_payment_id
+    });
+    let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
+    sessionStorage.setItem('conferkare.appointment.activeStage', activeStage + 1);
+    this.formRef.current.submit();
+  };
+  
   handlePaymentSubmission = async (e) => {
     e.preventDefault();
+    let that = this;
     let options = {
       "key": "rzp_test_11WWnGxxs9Gky3", // Test API Key, @TODO would change while pushing to production.
-      "amount": this.props.costDetails.amount,
+      "amount": this.state.consultfee * 100,
       "currency": this.props.costDetails.currency,
       "name": "ConferKare",
       "description": this.props.costDetails.description,
-      "image": 'ConferKare',
+      "image": '/swasthcare/ConferKare.png',
       "handler": function (response) {
-        this.state.paymentResponse.razorpay_payment_id = response.razorpay_payment_id;
-        this.state.paymentResponse.razorpay_order_id = response.razorpay_order_id;
-        this.state.paymentResponse.razorpay_signature = response.razorpay_signature;
+        that.handlePaymentSuccess(response);
       },
       "prefill": {
         "name": this.props.costDetails.p_name,
-        "email": this.props.costDetails.p_email
+        "email": this.props.costDetails.p_email,
+        "contact": this.props.userProfile.contactno
       },
       "theme": {
         "color": "#F37254"
@@ -60,7 +71,9 @@ class AppointmentPayment extends Component {
   };
   
   handlerNextBtnClick = () => {
-    this.props.appointmentData.paymentResponse = this.state.paymentResponse;
+    this.props.appointmentData.paymentResponse = {
+      razorpay_payment_id: this.state.razorpay_payment_id
+    };
     this.props.onSetAppointmentData(this.props.appointmentData);
   };
   
@@ -74,6 +87,7 @@ class AppointmentPayment extends Component {
       <Col md="12" className="mt10">
         <Redirect to={pageUrl}/>
         <Helmet>
+          <base href={'/'}/>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
         { this.props.profileCompliant === false &&
@@ -96,6 +110,7 @@ class AppointmentPayment extends Component {
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
                   </Helmet>
                   <div>
+                    <form ref={this.formRef}/>
                     <Row>
                       <Col>
                         <table className={'appointmentTable'}>
@@ -111,7 +126,7 @@ class AppointmentPayment extends Component {
                             </tr>
                             <tr>
                               <td>Appointment charges</td>
-                              <td>Rs. {parseInt(this.props.costDetails.amount)/100}</td>
+                              <td>Rs. {this.state.consultfee}</td>
                             </tr>
                             <tr>
                               <td>Patient name</td>
