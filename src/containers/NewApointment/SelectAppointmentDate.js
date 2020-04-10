@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from "./SelectAppointmentDate.module.scss";
 import {Helmet} from "react-helmet";
-import CustomCalenderIcon from "../../components/Common/CustomCalenderIcon/CustomCalenderIcon";
+// import CustomCalenderIcon from "../../components/Common/CustomCalenderIcon/CustomCalenderIcon";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import { connect } from 'react-redux';
@@ -59,22 +59,25 @@ class SelectAppointmentDate extends Component {
   onChangeHandler = e => {
     if (e.target.value === "today") {
       var date = new Date();
+      let day = date.getDay(), fullYear = date.getFullYear();
       date =
         // date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
         date.getFullYear() + "-" + this.zeroPrefixing(date.getMonth() + 1) + "-" + this.zeroPrefixing(date.getDate());
       
-      this.setState({[e.target.name]: date, currentDate: e.target.value, appdate: date, appday: this.getDayText(date.getDay()), appregid: this.generateAppRegId(date.getFullYear(), this.props.appointmentData.clinicid) });
+      this.setState({[e.target.name]: date, currentDate: e.target.value, appdate: date, appday: this.getDayText(day), appregid: this.generateAppRegId(fullYear, this.props.appointmentData.clinicid) });
     }
     
     if (e.target.value === "tomorrow") {
       let date = new Date();
       date.setDate(date.getDate() + 1); // even 32 is acceptable
+
+      let day = date.getDay(), fullYear = date.getFullYear();
       
       let tomorrow =
         // date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
         date.getFullYear() + "-" + this.zeroPrefixing(date.getMonth() + 1) + "-" + this.zeroPrefixing(date.getDate());
       
-      this.setState({[e.target.name]: tomorrow, currentDate: e.target.value, appdate: tomorrow, appday: this.getDayText(tomorrow.getDay()), appregid: this.generateAppRegId(date.getFullYear(), this.props.appointmentData.clinicid) });
+      this.setState({[e.target.name]: tomorrow, currentDate: e.target.value, appdate: tomorrow, appday: this.getDayText(day), appregid: this.generateAppRegId(fullYear, this.props.appointmentData.clinicid) });
     }
   };
   
@@ -127,15 +130,15 @@ class SelectAppointmentDate extends Component {
                   </Col>
                   <Col md="8">
                     
-                    <DatePicker
-                      customInput={
-                        <CustomCalenderIcon
-                          onClickCustHandler={this.handleChange}
-                        />
-                      }
-                      selected={this.state.startDate}
-                      onChange={this.handleChange}
-                    />
+                    {/*<DatePicker*/}
+                    {/*  customInput={*/}
+                    {/*    <CustomCalenderIcon*/}
+                    {/*      onClickCustHandler={this.handleChange}*/}
+                    {/*    />*/}
+                    {/*  }*/}
+                    {/*  selected={this.state.startDate}*/}
+                    {/*  onChange={this.handleChange}*/}
+                    {/*/>*/}
                   </Col>
                 </Row>
                 <Row>
@@ -166,6 +169,7 @@ class SelectAppointmentDate extends Component {
                       selected={this.state.startDate}
                       inline
                       onChange={this.handleChange}
+                      startDate={new Date()}
                       monthsShown={2}
                     />
                   </Col>
