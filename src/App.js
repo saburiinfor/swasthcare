@@ -16,7 +16,7 @@ const guestUser = () => <div className="App login-bg">
 class App extends Component {
   render() {
     return (
-      <Router basename={'/swasthcare'}>
+      <Router basename={'/'}>
         <MobileView>
           <Switch>
             <Route exact path="/" component={guestUser}/>
