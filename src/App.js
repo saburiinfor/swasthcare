@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/Common/Layout/Layout';
 import {BrowserView, MobileView} from "react-device-detect";
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { history } from "./store";
 // import {HashRouter as Router, Route, Switch} from "react-router-dom";
 
 const loggedInUser = () => <div className="App logged-bg">
@@ -18,7 +17,7 @@ const guestUser = () => <div className="App login-bg">
 class App extends Component {
   render() {
     return (
-      <Router basename={'/swasthcare/'}>
+      <Router basename={'/swasthcare'}>
         <MobileView>
           <Switch>
             <Route exact path="/" component={guestUser}/>
