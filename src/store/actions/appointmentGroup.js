@@ -16,12 +16,11 @@ export const setAppointmentDateSuccess = (appointmentDate) => {
   };
 };
 
-export const getAppointmentList = () => {
+export const getAppointmentList = (patientid) => {
   return dispatch => {
     const appointmentData = new FormData();
-    const patientid = sessionStorage.getItem('id');
-    // appointmentData.append("patientid", patientid);
-    appointmentData.append("patientid", 1590);
+    appointmentData.append("patientid", patientid);
+    // appointmentData.append("patientid", 1590);
     axios.post(actionTypes.API_URL + "Appointments/getappointmentbyuser/", appointmentData).then(
       response => {
         // console.log('inside patients data response');

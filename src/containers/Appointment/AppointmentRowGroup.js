@@ -14,7 +14,7 @@ class AppointmentRowGroup extends Component {
   }
   
   componentDidMount() {
-    this.props.onGetAppointmentList();
+    this.props.onGetAppointmentList(this.props.userProfile.id);
   }
   
   render() {
@@ -39,12 +39,13 @@ class AppointmentRowGroup extends Component {
 
 const mapStateToProps = state => {
   return {
+    userProfile: state.UserProfile.userProfile,
     appointmentsList: state.appointmentGroup.appointmentsList
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    onGetAppointmentList: () => dispatch(actions.getAppointmentList())
+    onGetAppointmentList: (id) => dispatch(actions.getAppointmentList(id))
   };
 };
 
