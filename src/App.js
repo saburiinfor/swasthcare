@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/Common/Layout/Layout';
 import {BrowserView, MobileView} from "react-device-detect";
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import {HashRouter as Router, Route, Switch} from "react-router-dom";
 
 const loggedInUser = () => <div className="App logged-bg">
   <Layout/>

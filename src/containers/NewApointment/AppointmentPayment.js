@@ -16,7 +16,7 @@ class AppointmentPayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      consultfee: (parseInt(this.props.appointmentData.consultfee) > 0 ?  parseInt(this.props.appointmentData.consultfee) : 0)
+      consultfee: (parseInt(this.props.appointmentData.pt_price) > 0 ?  parseInt(this.props.appointmentData.pt_price) : 0)
   
   };
     this.handlePaymentSubmission.bind(this);

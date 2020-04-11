@@ -44,7 +44,8 @@ class AddComplaints extends Component {
       <Col md="12" className="mt10">
         <Redirect to={pageUrl}/>
         <Helmet>
-          <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
+          <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} textarea{width:' +
+          ' 100%; height: 200px;}'}</style>
         </Helmet>
         { this.props.profileCompliant === false &&
           <UserProfile/>
@@ -68,7 +69,7 @@ class AddComplaints extends Component {
                   <div>
                     <Row>
                       <Col>
-                        <textarea rows={'10'} cols={'200'} key={'complaintDesc'} onBlur={this.handleAddComplaintDescription}/>
+                        <textarea key={'complaintDesc'} onBlur={this.handleAddComplaintDescription}/>
                       </Col>
                     </Row>
                   </div>

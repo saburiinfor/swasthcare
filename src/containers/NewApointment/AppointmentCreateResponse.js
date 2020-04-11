@@ -14,6 +14,11 @@ class AppointmentCreateResponse extends Component {
   componentDidMount() {
   }
   
+  handleGoHome = () => {
+    // Set an activeStage counter to sessionStorage object for moving around pages in wizard
+    sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+  };
+  
   render() {
     return (
       <Col md="12" className="mt10">
@@ -42,7 +47,7 @@ class AppointmentCreateResponse extends Component {
                       <Col>
                         Congratulations you have successfully submitted information for an appointment. Our team would go through it and respond on your request. <br/> Have a great time ahead...
                         <br/><br/>
-                        <Link to={'/dashboard'}>Go to Home</Link>
+                        <Link onClick={this.handleGoHome} to={'/dashboard'}>Go to Home</Link>
                       </Col>
                     </Row>
                   </div>

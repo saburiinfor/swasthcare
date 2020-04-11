@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import { routerReducer } from "react-router-redux";
 import authReducer from './store/reducers/auth';
 import createUserReducer from './store/reducers/createUser';
 import appointmentGroupReducer from './store/reducers/appointmentGroup';
@@ -36,8 +35,7 @@ const rootReducer = combineReducers({
   newAppointment: newAppointmentReducer,
   selectSlot: selectSlotReducer,
   appointmentPayment: appointmentPaymentReducer,
-  submitAppointment: submitAppointmentReducer,
-  routing: routerReducer
+  submitAppointment: submitAppointmentReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
