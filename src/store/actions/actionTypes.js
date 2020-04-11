@@ -34,5 +34,5 @@ export const RPAY_ORDER_ID_SUCCESS = 'RPAY_ORDER_ID_SUCCESS';
 export const SUBMIT_APPOINTMENT_SUCCESS = 'SUBMIT_APPOINTMENT_SUCCESS';
 export const SUBMIT_APPOINTMENT_FAILURE = 'SUBMIT_APPOINTMENT_FAILURE';
 
-// export const API_URL = 'https://www.conferadmin.com/restapi';
-export const API_URL = 'https://www.skrepository.com/restapi/';
+export const API_URL = 'https://www.conferadmin.com/restapi';
+// export const API_URL = 'https://www.skrepository.com/restapi/';
