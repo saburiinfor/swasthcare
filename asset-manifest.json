@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "https://saburiinfor.github.io/swasthcare/static/css/main.9e60887d.chunk.css",
-    "main.js": "https://saburiinfor.github.io/swasthcare/static/js/main.f24eb5d9.chunk.js",
-    "runtime-main.js": "https://saburiinfor.github.io/swasthcare/static/js/runtime-main.1ea8219d.js",
-    "static/css/2.d6847abf.chunk.css": "https://saburiinfor.github.io/swasthcare/static/css/2.d6847abf.chunk.css",
-    "static/js/2.d12e46aa.chunk.js": "https://saburiinfor.github.io/swasthcare/static/js/2.d12e46aa.chunk.js",
-    "index.html": "https://saburiinfor.github.io/swasthcare/index.html",
-    "precache-manifest.0bda43327d3107dc56eca8a64f06514d.js": "https://saburiinfor.github.io/swasthcare/precache-manifest.0bda43327d3107dc56eca8a64f06514d.js",
-    "service-worker.js": "https://saburiinfor.github.io/swasthcare/service-worker.js",
-    "static/js/2.d12e46aa.chunk.js.LICENSE.txt": "https://saburiinfor.github.io/swasthcare/static/js/2.d12e46aa.chunk.js.LICENSE.txt",
-    "static/media/CK1.jpg": "https://saburiinfor.github.io/swasthcare/static/media/CK1.2dc2afa1.jpg",
-    "static/media/CK2.jpg": "https://saburiinfor.github.io/swasthcare/static/media/CK2.9f382b5f.jpg",
-    "static/media/CK3.jpg": "https://saburiinfor.github.io/swasthcare/static/media/CK3.1e847968.jpg",
-    "static/media/bannerImg2.jpg": "https://saburiinfor.github.io/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
-    "static/media/bannerImg3.jpg": "https://saburiinfor.github.io/swasthcare/static/media/bannerImg3.c2bb48ac.jpg",
-    "static/media/flags.png": "https://saburiinfor.github.io/swasthcare/static/media/flags.723494a4.png"
+    "main.css": "/swasthcare/static/css/main.9e60887d.chunk.css",
+    "main.js": "/swasthcare/static/js/main.be4a1cb9.chunk.js",
+    "runtime-main.js": "/swasthcare/static/js/runtime-main.c90d2062.js",
+    "static/css/2.d6847abf.chunk.css": "/swasthcare/static/css/2.d6847abf.chunk.css",
+    "static/js/2.d12e46aa.chunk.js": "/swasthcare/static/js/2.d12e46aa.chunk.js",
+    "index.html": "/swasthcare/index.html",
+    "precache-manifest.1c9291ef8ae437914a91b12609699dc9.js": "/swasthcare/precache-manifest.1c9291ef8ae437914a91b12609699dc9.js",
+    "service-worker.js": "/swasthcare/service-worker.js",
+    "static/js/2.d12e46aa.chunk.js.LICENSE.txt": "/swasthcare/static/js/2.d12e46aa.chunk.js.LICENSE.txt",
+    "static/media/CK1.jpg": "/swasthcare/static/media/CK1.2dc2afa1.jpg",
+    "static/media/CK2.jpg": "/swasthcare/static/media/CK2.9f382b5f.jpg",
+    "static/media/CK3.jpg": "/swasthcare/static/media/CK3.1e847968.jpg",
+    "static/media/bannerImg2.jpg": "/swasthcare/static/media/bannerImg2.fb8a4d06.jpg",
+    "static/media/bannerImg3.jpg": "/swasthcare/static/media/bannerImg3.c2bb48ac.jpg",
+    "static/media/flags.png": "/swasthcare/static/media/flags.723494a4.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.1ea8219d.js",
+    "static/js/runtime-main.c90d2062.js",
     "static/css/2.d6847abf.chunk.css",
     "static/js/2.d12e46aa.chunk.js",
     "static/css/main.9e60887d.chunk.css",
-    "static/js/main.f24eb5d9.chunk.js"
+    "static/js/main.be4a1cb9.chunk.js"
   ]
 }
