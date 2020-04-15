@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import {Button, Col, Row } from "reactstrap";
-import AppointmentRowGroup from "../Appointment/AppointmentRowGroup";
+import AppointmentRowGroup from "./AppointmentRowGroup";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
-import styles from "../Appointment/Appointment.module.scss";
+import styles from "./Dashboard.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCalendarAlt, faPen, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faPen, faUser} from "@fortawesome/free-solid-svg-icons";
 import newAppointment from "../../assets/images/newAppointment.png";
 import {Helmet} from "react-helmet";
 import {Link, Redirect} from "react-router-dom"
@@ -13,15 +13,26 @@ import * as actions from "../../shared";
 import dateformat from 'dateformat';
 import UserProfile from "../UserManagement/UserProfile";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
+import DatePicker from 'react-date-picker';
 
 class UserDashboard extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
     this.state = {
-      activeTab: '1'
+      activeTab: '1',
+      appointmentDate: new Date()
     };
   }
+  
+  selectAppointmentDate = (appointmentDate) => {
+    this.setState({
+      appointmentDate
+    });
+    setTimeout(function(obj) {
+      obj.toggle('3');
+    }, 100, this);
+  };
   
   toggle(tab) {
     // Set the date for which we want to fetch the appointments list and show in UI
@@ -29,13 +40,14 @@ class UserDashboard extends Component {
     let appointmentDate = null;
     switch (tab) {
       case '1':
-        appointmentDate = dateformat(new Date('2019/07/03'), 'yyyy-mm-dd');
+        appointmentDate = dateformat(new Date(), 'yyyy-mm-dd');
         break;
       case '2':
-        appointmentDate = dateformat(new Date('2019/07/04'), 'yyyy-mm-dd');
+        let tomorrow = new Date();
+        appointmentDate = dateformat(tomorrow.setDate(tomorrow.getDate() + 1), 'yyyy-mm-dd');
         break;
       case '3':
-        appointmentDate = dateformat(new Date('2019/07/04'), 'yyyy-mm-dd');
+        appointmentDate = dateformat(this.state.appointmentDate, 'yyyy-mm-dd');
         break;
       default:
         appointmentDate = dateformat(new Date(), 'yyyy-mm-dd');
@@ -50,8 +62,8 @@ class UserDashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.onGetUserProfile(sessionStorage.getItem('token'));
-    const apDate = dateformat(new Date('2019/07/03'), 'yyyy-mm-dd');
+    // this.props.onGetUserProfile(sessionStorage.getItem('token'));
+    const apDate = dateformat(new Date(), 'yyyy-mm-dd');
     this.props.onSetAppointmentDate(apDate);
   }
   
@@ -106,15 +118,15 @@ class UserDashboard extends Component {
               <Col>
                 <div className="tar"><Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn" alt={'New appointment'}/></Link></div>
                 <div>
-                  <Button onClick={this.toggle.bind(null, '1')}>
+                  <Button className={this.state.activeTab === '1' ? styles.tabButtons + ' active' : styles.tabButtons} onClick={this.toggle.bind(this, '1')}>
                     Today
                   </Button>
-                  <Button onClick={this.toggle.bind(null, '2')}>
+                  <Button className={this.state.activeTab === '2' ? styles.tabButtons + ' active' : styles.tabButtons} onClick={this.toggle.bind(this, '2')}>
                     Tomorrow
                   </Button>
-                  <Button onClick={this.toggle.bind(null, '3')}>
-                    <FontAwesomeIcon className="mr-2" color="#ccc" size="1x" icon={faCalendarAlt}/>
-                  </Button>
+                  <div className={this.state.activeTab === '3' ? styles.tabCalendar + ' ' + styles.active : styles.tabCalendar}>
+                    <DatePicker value={this.state.appointmentDate} onChange={this.selectAppointmentDate} format={'y-MM-dd'}/>
+                  </div>
                   <Row>
                     <Col sm="12" className={styles.appointments}>
                       <AppointmentRowGroup appointmentDate={this.props.appointmentDate} />
@@ -143,7 +155,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
+    // onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onSetAppointmentDate: (date) => dispatch(actions.setAppointmentDate(date)),
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))
   };

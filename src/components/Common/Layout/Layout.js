@@ -10,7 +10,7 @@ import { Route } from "react-router-dom";
 import LoginForm from "../../../containers/Auth/LoginForm";
 import CreateUser from "../../../containers/CreateUser/CreateUser";
 import NewUser from "../../../containers/CreateUser/NewUser";
-import UserDashboard from "../../../containers/NewApointment/UserDashboard";
+import UserDashboard from "../../../containers/Dashboard/UserDashboard";
 import NewAppointment from "../../../containers/NewApointment/NewApointment";
 import SelectAppointmentDate from "../../../containers/NewApointment/SelectAppointmentDate";
 import SelectPhysician from "../../../containers/NewApointment/SelectPhysician";

@@ -27,7 +27,7 @@ class WizardButtons extends Component {
       <div className={'wizBtnsContainer'}>
         <form ref={this.formRef}/>
           <Button onClick={this.backButtonClick}>Back</Button>
-          { parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 &&
+          { (parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && this.noContinue === false) &&
             <Button onClick={this.nextButtonClick}>Continue</Button>
           }
       </div>

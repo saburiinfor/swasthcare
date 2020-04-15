@@ -4,7 +4,7 @@ import classnames from "classnames";
 import ButtonWithTick from "../../components/Common/ButtonWithTick/ButtonWithTick";
 import BasicButton from "../../components/Common/BasicButton/BasicButton";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
-import styles from "./Appointment.module.scss";
+import styles from "./Dashboard.module.scss";
 import dateformat from 'dateformat';
 
 class AppointmentRow extends Component {
@@ -20,7 +20,12 @@ class AppointmentRow extends Component {
     this.setState({parentSelected: value});
   }
   
+  cancelAppointment = (appointmentID) => {
+    console.log(appointmentID);
+  };
+  
   render() {
+    console.log(this.props.appointment);
     let appointmentDate = '',
       toggleOn = this.props.appointment.status === 'Booked';
     if (this.props.appointment.appdate !== '--') {
@@ -40,6 +45,7 @@ class AppointmentRow extends Component {
               <ButtonWithTick size="sm" color="primary" text="Unconfirmed" selectedText="Confirmed" childColor="#007bff" isToggleOn={toggleOn}
                               childClass="ml-1" childSize="1x" childIcon={faCheck} handleStateChange={this.handleStateChange.bind(this)}/>
               <BasicButton size="sm" text="Reshedule"/>
+              {/*<BasicButton color={'default'} size="sm" text="Cancel" onClick={this.cancelAppointment}/>*/}
             </Col>
           </Row>
         </Container>

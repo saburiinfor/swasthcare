@@ -37,7 +37,7 @@ class SelectSlot extends Component {
   generateSlots = (slotList) => {
     let slotListing = slotList.map((slot) => {
       return (
-        <li key={slot.id}>
+        <li key={slot.id} className={(this.state.slotId === slot.id) ? 'selected' : ''}>
           <span>{slot.id}</span>
           <span>{slot.startTime}</span>
           <span>{slot.period}</span>

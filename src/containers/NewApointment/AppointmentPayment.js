@@ -48,7 +48,7 @@ class AppointmentPayment extends Component {
     e.preventDefault();
     let that = this;
     let options = {
-      "key": RAZORPAY_API_KEY, // Test API Key, @TODO would change while pushing to production.
+      "key": RAZORPAY_API_KEY,
       "amount": this.state.consultfee * 100,
       "currency": this.props.costDetails.currency,
       "name": "ConferKare",
@@ -105,7 +105,7 @@ class AppointmentPayment extends Component {
                 <div className={'paymentBox'}>
                   <h4>
                     Make payment for appointment
-                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
+                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={ this.state.razorpay_payment_id === undefined ? 1 : 0 } />
                   </h4>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>

@@ -33,7 +33,7 @@ export const auth = (email, password, userType, isSignup) => {
         // console.log("res ***" + JSON.stringify(response));
         if (response.data.success === 1) {
           utilities.storeInSession('token', response.data.token);
-          utilities.storeInSession('conferkare.appointment.activeStage', 0);
+          // utilities.storeInSession('conferkare.appointment.activeStage', 0);
           dispatch(authSuccess(response.data.token, response.data.id));
         } else {
           dispatch(authFail(response.data.error.errormsg));

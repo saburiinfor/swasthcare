@@ -160,6 +160,7 @@ class LoginForm extends Component {
       );
     }
     if (this.props.isAuthenticated) {
+      this.props.onGetUserProfile(this.props.token);
       return <Redirect to={this.props.authRedirectPath}/>;
     }
     return (
@@ -214,12 +215,15 @@ const mapStateToProps = state => {
     loading: state.auth.loading,
     error: state.auth.error,
     isAuthenticated: state.auth.token !== null,
-    authRedirectPath: state.auth.authRedirectPath
+    authRedirectPath: state.auth.authRedirectPath,
+    userProfile: state.UserProfile.userProfile,
+    token: state.auth.token
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onAuth: (email, password, userType, isSignup) => dispatch(actions.auth(email, password, userType, isSignup)),
+    onGetUserProfile: (userToken) => dispatch(actions.getUserProfile(userToken)),
     onSetAuthRedirectPath: (authRedirectPath) => dispatch(actions.setAuthRedirectPath(authRedirectPath))
   };
 };

@@ -30,6 +30,10 @@
           width: 5%;
         }
       }
+      &.selected {
+        background-color: #ccc;
+        border-color: #666666;
+      }
     }
   }
 

@@ -18,6 +18,7 @@ class MediaElement extends Component {
   selectPhysician = (pid, clinicid) => {
     this.props.onGetPhysicianById(pid, clinicid);
     let that = this;
+    that.props.appointmentData.pid = pid;
     setTimeout(function() {
       for (const key of ['clinicname', 'pt_price', 'clinicaddress', 'cliniccontact', 'cityname']) {
         that.props.appointmentData[key] = that.props.physicianDetails[key];
@@ -29,7 +30,7 @@ class MediaElement extends Component {
       that.props.appointmentData.clinicid = clinicid;
       that.props.onSelectPhysician(pid, clinicid);
       that.props.onSetAppointmentData(that.props.appointmentData);
-    }, 500, this);
+    }, 200, this);
     // console.log(this.props.physicianDetails);
   };
   render() {
@@ -42,7 +43,7 @@ class MediaElement extends Component {
       );
     }
     return (
-      <Media className={classnames(styles.mediaElement, "m-1", "p-1")}>
+      <Media className={classnames(styles.mediaElement, "m-1", "p-1", (this.props.appointmentData.pid === panelData.id) ? styles.selected : '')}>
         <Media left top href="#">
           {/*} <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />*/}
           <div className="text-center">
@@ -50,7 +51,7 @@ class MediaElement extends Component {
           </div>
           <div>{starIconArray}</div>
           <Button className="pt-0" color="link" onClick={this.selectPhysician.bind(null, panelData.id, panelData.clinicid)}>
-            Select
+            { (this.props.appointmentData.pid === panelData.id) ? 'Selected' : 'Select' }
           </Button>
         </Media>
         <Media body>
