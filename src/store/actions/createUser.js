@@ -1,6 +1,6 @@
 import axios from 'axios';
 import FormData from 'form-data';
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 
 export const countrySuccess = (countryList) => {
   return {
@@ -65,9 +65,9 @@ export const getCountry = () => {
       response => {
         // console.log("res ***" + JSON.stringify(response));
         // console.log("res ***" + JSON.stringify(response.data["marketname"]));
-        let countryList = [];
-        response.data["marketname"].map(function (item) {
-          countryList.push(item.marketname);
+        let countryList;
+        countryList = response.data["marketname"].map(function (item) {
+          return item.marketname;
         });
         dispatch(countrySuccess(countryList));
       }).catch(err => {
@@ -81,9 +81,9 @@ export const getCity = () => {
       response => {
         // console.log("res ***" + JSON.stringify(response));
         // console.log("res ***" + JSON.stringify(response.data));
-        let cityList = [];
-        response.data.map(function (item) {
-          cityList.push(item.name);
+        let cityList;
+        cityList = response.data.map(function (item) {
+          return item.name;
         });
         dispatch(citySuccess(cityList));
       }).catch(err => {

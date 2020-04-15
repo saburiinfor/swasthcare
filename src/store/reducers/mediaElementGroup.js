@@ -1,9 +1,10 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 import {updateObject} from '../../shared/utility';
 
 const initialState = {
   filter: '',
-  physicianDetails: {}
+  physicianDetails: {},
+  error: null
 };
 
 const setPhysicianFilterTextSuccess = (state, action) => {
@@ -14,7 +15,17 @@ const setPhysicianFilterTextSuccess = (state, action) => {
 
 const getPhysicianDetailsSuccess = (state, action) => {
   return updateObject(state, {
-    physicianDetails: action.physicianDetails
+    physicianDetails: action.physicianDetails,
+    error: null,
+    filter: ''
+  });
+};
+
+const getPhysicianDetailsFailure = (state, action) => {
+  return updateObject(state, {
+    error: action.error,
+    physicianDetails: [],
+    filter: ''
   });
 };
 
@@ -24,6 +35,8 @@ const reducer = (state = initialState, action) => {
       return setPhysicianFilterTextSuccess(state, action);
     case actionTypes.GET_PHYSICIANDETAIL_SUCCESS:
       return getPhysicianDetailsSuccess(state, action);
+    case actionTypes.GET_PHYSICIANDETAIL_FAILURE:
+      return getPhysicianDetailsFailure(state, action);
     default:
       return state;
   }

@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 import {updateObject} from '../../shared/utility';
 
 const initialState = {
@@ -8,13 +8,15 @@ const initialState = {
 
 const getAppointmentCostDetailsSuccess = (state, action) => {
   return updateObject(state, {
-    costDetails: action.costDetails
+    costDetails: action.costDetails,
+    rpayOrder: {}
   });
 };
 
 const createRPayPrderIdSuccess = (state, action) => {
   return updateObject(state, {
-    rpayOrder: action.rpayOrder
+    rpayOrder: action.rpayOrder,
+    costDetails: {}
   })
 };
 

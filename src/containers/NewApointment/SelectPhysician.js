@@ -3,11 +3,12 @@ import {Col, Row} from "reactstrap";
 import MediaElementGroup from "../../components/Common/Media/MediaElementGroup";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import {Helmet} from 'react-helmet';
-import {Link, Redirect} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
-import * as actions from "../../store/actions";
+import * as actions from "../../shared";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
+import UserProfile from "../UserManagement/UserProfile";
 
 class SelectPhysician extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class SelectPhysician extends Component {
   }
   
   componentDidMount() {
-    this.props.onGetPhysicianList(null, this.props.appointmentData.city, null);
+    // For now only using city for searching physicians, @TODO add other filters too...
+    // this.props.onGetPhysicianList(null, this.props.appointmentData.city, null);
   }
   
   render() {
@@ -34,7 +36,9 @@ class SelectPhysician extends Component {
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
-        
+        { this.props.profileCompliant === false &&
+          <UserProfile/>
+        }
         <Row>
           <Col md="8">
             <div>
@@ -43,7 +47,6 @@ class SelectPhysician extends Component {
             </div>
             <MediaElementGroup {...this.props} />
           </Col>
-          
           <Col md="4">
             <ImgWithOverlayTextGroup/>
           </Col>
@@ -56,10 +59,10 @@ class SelectPhysician extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    physicianList: state.selectPhysician.physicianList,
     userProfile: state.UserProfile.userProfile,
     profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
-    appointmentData: state.newAppointment.appointmentData // For now, leaving it as selectPhysician but would change to new appointment
+    appointmentData: state.newAppointment.appointmentData, // For now, leaving it as selectPhysician but would change to new appointment
+    error: state.selectPhysician.error
   };
 };
 

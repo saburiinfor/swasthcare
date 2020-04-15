@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import Aux from "../../hoc/Auxwrap";
-import { Button, Col, Form, FormGroup, Input, Row } from "reactstrap";
+import { Button, Col, Form, FormGroup, Input } from "reactstrap";
 import styles from "./CreateUser.module.scss";
 import Carousel from '../../components/Common/Carousel/Carousel'
-import { BrowserView, MobileView, isMobile } from "react-device-detect";
+import { BrowserView, MobileView } from "react-device-detect";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions/index";
+import * as actions from "../../shared";
 import ReactTelephoneInput from "react-telephone-input/lib/withStyles";
 import flags from "../../assets/images/flags.png";
 import {Redirect} from "react-router-dom";
@@ -37,29 +37,23 @@ class CreateUser extends Component {
     this.props.onGetCityList();
     this.props.onSetUserStatus();
   };
-  onSubmitHandler = e => {
+  onSubmitHandler = (e) => {
     console.log("current state is = " + JSON.stringify(this.state));
     this.props.onCreateUser(this.state);
   };
-  onChangeHandler = e => {
+  onChangeHandler = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   
   updateContactNo = (telPhoneNumber) => {
-    // console.log(telPhoneNumber);
     const contactNo = telPhoneNumber.trim();
-    console.log(contactNo);
     this.setState({
       contactNo
     });
   };
   
-  handleInputChange(telNumber, selectedCountry) {
-    console.log('input changed. number: ', telNumber, 'selected country: ', selectedCountry);
-  };
   render() {
     if (this.props.userStatus === 'new') {
-      // this.props.onSetUserStatus();
       return (
         <Redirect to='/newUser' />);
     }
@@ -103,7 +97,6 @@ class CreateUser extends Component {
                   initialValue=''
                   required={true}
                   flagsImagePath={flags}
-                  // onChange={this.handleInputChange}
                   onBlur={this.updateContactNo}
                   placeholder={'911234567890'}
                 />

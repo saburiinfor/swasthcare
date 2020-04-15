@@ -1,5 +1,4 @@
 import React from "react";
-import SwasthLogo from "../../../assets/images/SwasthLogo.png";
 import SwasthLogoSmall from "../../../assets/images/Swasthlogo-small.png";
 import MenuIcon from "../../../assets/images/menu-icon.png";
 import NotificationIcon from "../../../assets/images/notification-icon.png";
@@ -24,7 +23,7 @@ const LoggedHeader = () => <div className="logged-header-mob">
   <h1 className={'logoText'}>Confer<span>Kare</span></h1>
 </div>;
 
-const Header = props => {
+const Header = () => {
   return (
     <div className="header">
       <Route exact path="/" component={LoginHeader}/>

@@ -1,5 +1,3 @@
-import React from 'react';
-
 // Function which would return the page url to be render depending on activeStage item value stored in sessionStorage
 const getPageLink = function () {
   let pageUrl;
@@ -30,7 +28,7 @@ const getPageLink = function () {
       pageUrl = '/submitAppointment';
       break;
     case 8:
-      pageUrl = '/submitAppointment';
+      pageUrl = '/appointmentCreateResponse';
       break;
     default:
       pageUrl = '/dashboard';

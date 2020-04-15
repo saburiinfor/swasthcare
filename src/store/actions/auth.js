@@ -1,6 +1,6 @@
 import axios from 'axios';
 import FormData from 'form-data';
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 import * as utilities from '../../shared/utility';
 
 export const authStart = () => {

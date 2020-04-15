@@ -1,8 +1,8 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 import {updateObject} from '../../shared/utility';
 
 const initialState = {
-  appId: '',
+  appId: null,
   error: null
 };
 
@@ -15,7 +15,8 @@ const submitAppointmentSuccess = (state, action) => {
 
 const submitAppointmentFailure = (state, action) => {
   return updateObject(state, {
-    error: action.error
+    error: action.error,
+    appId: null
   })
 };
 

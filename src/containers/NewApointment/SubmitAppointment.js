@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from "../../store/actions";
+import * as actions from "../../shared";
 import {Redirect} from "react-router-dom";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
@@ -15,7 +15,6 @@ class SubmitAppointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      appId: null,
       error: null
     };
     this.handleAppointmentSubmission.bind(this);
@@ -33,8 +32,8 @@ class SubmitAppointment extends Component {
       sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return <Redirect to='/'/>;
     }
-    console.log(this.props);
-    if (this.props.appId !== undefined) {
+    if (this.props.appId !== null) {
+      sessionStorage.setItem('conferkare.appointment.activeStage', 8);
       return <Redirect to={'/appointmentCreateResponse'} {...this.props} />
     }
     const pageUrl = getPageLink();
@@ -82,7 +81,7 @@ class SubmitAppointment extends Component {
                           <tbody>
                           <tr>
                             <td>Appointment Date</td>
-                            <td>{this.props.appointmentData.appointmentDate}</td>
+                            <td>{this.props.appointmentData.appdate}</td>
                           </tr>
                           <tr>
                             <td>Patient name</td>
@@ -106,7 +105,7 @@ class SubmitAppointment extends Component {
                           </tr>
                           <tr>
                             <td>Consulting doctor</td>
-                            <td>{this.props.appointmentData.phyname}</td>
+                            <td>{this.props.appointmentData.pname}</td>
                           </tr>
                           <tr>
                             <td>Clinic name</td>

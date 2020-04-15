@@ -1,12 +1,11 @@
 import React, {Component} from "react";
-import styles from './LoginForm.module.scss';
-import {Button, Col, Form, Row} from "reactstrap";
+import {Col, Form, Row} from "reactstrap";
 import Aux from "../../hoc/Auxwrap";
 import Carousel from '../../components/Common/Carousel/Carousel';
 import {Link, Redirect} from "react-router-dom";
 import {BrowserView, MobileView} from "react-device-detect";
 import {connect} from "react-redux";
-import * as actions from "../../store/actions/index";
+import * as actions from "../../shared";
 import InputField from "../../components/Common/Input/Input";
 import ButtonField from "../../components/Common/Button/Button";
 import {checkValidity} from "../../shared/utility";

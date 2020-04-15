@@ -1,6 +1,6 @@
 import axios from 'axios';
 import FormData from 'form-data';
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 
 export const submitAppointmentSuccess = (appId, Message) => {
   return {

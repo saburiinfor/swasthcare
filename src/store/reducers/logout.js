@@ -1,4 +1,4 @@
-import * as actionTypes from '../actions/actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 import * as utilities from '../../shared/utility';
 
 const initialState = {

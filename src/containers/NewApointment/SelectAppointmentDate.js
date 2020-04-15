@@ -8,7 +8,7 @@ import {Helmet} from "react-helmet";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import { connect } from 'react-redux';
-import * as actions from "../../store/actions";
+import * as actions from "../../shared";
 import {Redirect} from "react-router-dom";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 

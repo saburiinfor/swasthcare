@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import UserProfile from "../UserManagement/UserProfile";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from './NewApointment.module.scss';
+import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
 class AppointmentCreateResponse extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
   componentDidMount() {
   }
-  
   handleGoHome = () => {
     // Set an activeStage counter to sessionStorage object for moving around pages in wizard
     sessionStorage.setItem('conferkare.appointment.activeStage', 0);
   };
   
   render() {
+    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
+        <Redirect to={pageUrl}/>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
@@ -30,9 +28,6 @@ class AppointmentCreateResponse extends Component {
         }
         <Row>
           <Col md="8">
-            <div>
-              <h2></h2>
-            </div>
             <Row>
               <Col>
                 <div className={styles.appointmentBox}>

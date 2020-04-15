@@ -13,11 +13,12 @@ import selectSlotReducer from './store/reducers/SelectSlot';
 import appointmentPaymentReducer from './store/reducers/appointmentPayment';
 import submitAppointmentReducer from './store/reducers/submitAppointment';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage';
 
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['newAppointment', 'UserProfile'],
   blacklist: ['auth']
 };
 

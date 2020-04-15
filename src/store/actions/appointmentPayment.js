@@ -1,6 +1,6 @@
 import axios from 'axios';
 import FormData from 'form-data';
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 
 // SuccessHandler for get appointment cost details api
 export const getAppointmentCostDetailsSuccess = (costDetails) => {

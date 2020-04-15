@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import {Col, Row} from "reactstrap";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import {Helmet} from 'react-helmet';
-import {Link, Redirect} from "react-router-dom";
-import { connect } from 'react-redux';
-import * as actions from "../../store/actions/index";
+import {Redirect} from "react-router-dom";
+import {connect} from 'react-redux';
+import * as actions from "../../shared";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import UserProfile from "../UserManagement/UserProfile";
 import styles from "./SelectAppointmentDate.module.scss";
@@ -13,7 +13,7 @@ import getPageLink from "../../components/Common/WizardButtons/StageManager";
 
 function CityOptions(cityList) {
   let activeCities = cityList.cityList.filter(city => city.status === "Active");
-  let optList = activeCities.map((item) => <option key={item.id} value={item.name}>{item.name}</option> );
+  let optList = activeCities.map((item) => <option key={item.id} value={item.name}>{item.name}</option>);
   return optList;
 }
 
@@ -21,15 +21,15 @@ class NewApointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: 'All',
       cityList: [],
       appointmentTypeList: [],
-      appointmentType: "04",
-      appointmentTypeLabel: 'Clinic visit',
       appointmentData: {
         city: 'All',
-        appointmentType: null,
-        pid: null
+        appointmentType: "04",
+        appointmentTypeLabel: 'Clinic visit',
+        pid: null,
+        application_id: 1,
+        service: 'Consultation'
       }
     };
     this.handlerNextBtnClick.bind(this);
@@ -39,30 +39,46 @@ class NewApointment extends Component {
   componentDidMount() {
     this.props.onGetCities();
     this.props.onGetAppointmentTypeList();
+    console.log(this.props);
+    this.setState({
+      appointmentData: {
+        ...this.state.appointmentData,
+        name: this.props.userProfile.name,
+        email: this.props.userProfile.email,
+        contactno: this.props.userProfile.contactno
+      }
+    });
   }
   
   handleAppointmentTypeChange = (e) => {
+    let appointmentType = e.target.value,
+      appointmentTypeLabel = e.target.parentNode.innerText;
     this.setState({
-      appointmentType: e.target.value,
-      appointmentTypeLabel: e.target.parentNode.innerText
+      appointmentData: {
+        ...this.state.appointmentData,
+        appointmentType: appointmentType,
+        appointmentTypeLabel: appointmentTypeLabel
+      }
     });
   };
   
   handleCityChange = (e) => {
+    let cityName = e.target.value;
     this.setState({
-     city: e.target.value
+      appointmentData: {
+        ...this.state.appointmentData,
+        city: cityName
+      }
     });
   };
   
   handlerNextBtnClick = () => {
-    this.state.appointmentData.city = this.state.city;
-    this.state.appointmentData.appointmentType = this.state.appointmentType;
-    this.state.appointmentData.appointmentTypeLabel = this.state.appointmentTypeLabel;
-    this.state.appointmentData.patientid = this.props.userProfile.id;
-    this.state.appointmentData.name = this.props.userProfile.name;
-    this.state.appointmentData.email = this.props.userProfile.email;
-    this.state.appointmentData.application_id = 1;
-    this.state.appointmentData.service = 'Consultation';
+    this.setState({
+      appointmentData: {
+        ...this.state.appointmentData,
+        patientid: this.props.userProfile.id
+      }
+    });
     this.props.onSetAppointmentData(this.state.appointmentData);
   };
   
@@ -96,21 +112,21 @@ class NewApointment extends Component {
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
-        { this.props.profileCompliant === false &&
+        {this.props.profileCompliant === false &&
           <UserProfile/>
         }
         <Row>
           <Col md="8">
             <div>
               <h2>New appointment</h2>
-              <Breadcrumb activeStep={'1'} />
+              <Breadcrumb activeStep={'1'}/>
             </div>
             <Row>
               <Col>
                 <div className={styles.selectDate}>
                   <h4>
                     Select the appointment type and city
-                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
+                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick}/>
                   </h4>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>

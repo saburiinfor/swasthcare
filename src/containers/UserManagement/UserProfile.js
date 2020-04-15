@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Button, Col, Row, Form, FormGroup, Label } from "reactstrap";
 import "./UserProfile.scss";
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
+import * as actions from "../../shared";
 import dateformat from 'dateformat';
 import DatePicker from 'react-date-picker';
 
@@ -21,11 +21,13 @@ class UserProfile extends Component {
   };
   
   componentDidMount() {
-    this.state.userProfile = {
-      uid: this.props.userProfile.id,
-      dob: this.props.userProfile.dateofbirth,
-      token: sessionStorage.getItem('token')
-    };
+    this.setState({
+      userProfile: {
+        uid: this.props.userProfile.id,
+        dob: this.props.userProfile.dateofbirth,
+        token: sessionStorage.getItem('token')
+      }
+    });
   }
   
   selectUserDOB = (dob) => {
@@ -33,12 +35,15 @@ class UserProfile extends Component {
   };
   
   updateUserProfile = () => {
-    this.state.userProfile.dob = dateformat(this.state.dob, 'yyyy-mm-dd');
+    this.setState({
+      userProfile: {
+        dob: dateformat(this.state.dob, 'yyyy-mm-dd')
+      }
+    });
     this.props.onUpdateUserProfile(this.state.userProfile);
   };
   
   render() {
-    let todayDate = dateformat(new Date(), 'yyyy-mm-dd');
     return (
       <Row>
         <Col md="12">

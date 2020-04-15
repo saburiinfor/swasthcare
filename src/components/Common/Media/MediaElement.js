@@ -4,7 +4,6 @@ import {faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import styles from "./MediaElement.module.css";
 import classnames from "classnames";
-import {updateObject} from "../../../shared/utility";
 
 class MediaElement extends Component {
   constructor(props) {
@@ -18,14 +17,20 @@ class MediaElement extends Component {
   // click handler for physician selection
   selectPhysician = (pid, clinicid) => {
     this.props.onGetPhysicianById(pid, clinicid);
-    for (const key of ['clinicname', 'pt_price', 'clinicaddress', 'cliniccontact', 'cityname']) {
-      this.props.appointmentData[key] = this.props.physicianDetails[key];
-    }
-    this.props.appointmentData.servicedet_string = this.props.physicianDetails.phyname;
-    this.props.appointmentData.speciality = this.props.physicianDetails.specializations;
-    this.props.appointmentData.pname = this.props.physicianDetails.phyname;
-    this.props.onSelectPhysician(pid, clinicid);
-    this.props.onSetAppointmentData(this.props.appointmentData);
+    let that = this;
+    setTimeout(function() {
+      for (const key of ['clinicname', 'pt_price', 'clinicaddress', 'cliniccontact', 'cityname']) {
+        that.props.appointmentData[key] = that.props.physicianDetails[key];
+      }
+      that.props.appointmentData.servicedet_string = that.props.physicianDetails.phyname;
+      that.props.appointmentData.speciality = that.props.physicianDetails.specializations;
+      that.props.appointmentData.pname = that.props.physicianDetails.phyname;
+      that.props.appointmentData.pid = pid;
+      that.props.appointmentData.clinicid = clinicid;
+      that.props.onSelectPhysician(pid, clinicid);
+      that.props.onSetAppointmentData(that.props.appointmentData);
+    }, 500, this);
+    // console.log(this.props.physicianDetails);
   };
   render() {
     const noOfStars = this.props.noOfStars;

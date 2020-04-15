@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
-import {Link, Redirect} from "react-router-dom";
+import * as actions from "../../shared";
+import {Redirect} from "react-router-dom";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
-import styles from './SelectSlot.scss';
 import UserProfile from "../UserManagement/UserProfile";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
+import './SelectSlot.scss';
 
 class SelectSlot extends Component {
   constructor(props) {
@@ -25,11 +25,9 @@ class SelectSlot extends Component {
   componentDidMount() {
     let {pid, clinicid, appdate} = this.props.appointmentData;
     this.props.onGetSlots(pid, clinicid, appdate);
-    this.state.slotListing = this.generateSlots(this.props.slots.slots);
   }
 
   handleSlotSelection = (e) => {
-    console.log(e.target.title);
     this.setState({
       slotId: e.target.value,
       ctime: e.target.title
@@ -76,6 +74,7 @@ class SelectSlot extends Component {
       sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return <Redirect to='/'/>;
     }
+    this.state.slotListing = this.generateSlots(this.props.slotList.slots);
     const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
@@ -144,6 +143,10 @@ class SelectSlot extends Component {
                         </div>
                       </Col>
                     </Row><br/>
+                    {
+                      this.props.error !== null &&
+                      <p><strong>{this.props.error}</strong></p>
+                    }
                     <Row>
                       <Col>
                         <ul className={'slotsListingContainer'}>
@@ -179,7 +182,8 @@ const mapStateToProps = (state) => {
     userProfile: state.UserProfile.userProfile,
     profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
     appointmentData: state.newAppointment.appointmentData,
-    slots: state.selectSlot.slots
+    slotList: state.selectSlot.slotList,
+    error: state.selectSlot.error
   };
 };
 

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import AppointmentRow from "./AppointmentRow";
 import Aux from "../../hoc/Auxwrap";
 import {connect} from "react-redux";
-import * as actions from "../../store/actions/index";
+import * as actions from "../../shared";
 
 
 class AppointmentRowGroup extends Component {
@@ -40,7 +40,8 @@ class AppointmentRowGroup extends Component {
 const mapStateToProps = state => {
   return {
     userProfile: state.UserProfile.userProfile,
-    appointmentsList: state.appointmentGroup.appointmentsList
+    appointmentsList: state.appointmentGroup.appointmentsList,
+    error: state.appointmentGroup.error
   };
 };
 const mapDispatchToProps = dispatch => {

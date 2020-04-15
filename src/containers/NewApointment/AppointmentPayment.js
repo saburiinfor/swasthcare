@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
+import * as actions from "../../shared";
 import {Redirect} from "react-router-dom";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
@@ -11,12 +11,13 @@ import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import './razorpay.scss';
 import { loadCheckout } from '@tiltbike/razorpay-checkout-js';
+import {RAZORPAY_API_KEY} from '../../shared/actionTypes';
 
 class AppointmentPayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      consultfee: (parseInt(this.props.appointmentData.pt_price) > 0 ?  parseInt(this.props.appointmentData.pt_price) : 0)
+      consultfee: (parseInt(this.props.appointmentData.pt_price) > 0 ?  parseInt(this.props.appointmentData.pt_price) : 1)
   
   };
     this.handlePaymentSubmission.bind(this);
@@ -47,19 +48,19 @@ class AppointmentPayment extends Component {
     e.preventDefault();
     let that = this;
     let options = {
-      "key": "rzp_test_11WWnGxxs9Gky3", // Test API Key, @TODO would change while pushing to production.
+      "key": RAZORPAY_API_KEY, // Test API Key, @TODO would change while pushing to production.
       "amount": this.state.consultfee * 100,
       "currency": this.props.costDetails.currency,
       "name": "ConferKare",
       "description": this.props.costDetails.description,
-      "image": '/swasthcare/ConferKare.png',
+      "image": '/ConferKare.png',
       "handler": function (response) {
         that.handlePaymentSuccess(response);
       },
       "prefill": {
         "name": this.props.costDetails.p_name,
         "email": this.props.costDetails.p_email,
-        "contact": this.props.userProfile.contactno
+        "contact": this.props.costDetails.contactno
       },
       "theme": {
         "color": "#F37254"

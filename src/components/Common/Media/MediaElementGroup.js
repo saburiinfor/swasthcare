@@ -3,7 +3,7 @@ import MediaElement from "./MediaElement";
 import {Input} from "reactstrap";
 import styles from "./MediaElement.module.css";
 import { connect } from 'react-redux';
-import * as actions from "../../../store/actions/index";
+import * as actions from "../../../shared";
 import WizardButtons from "../WizardButtons/WizardButtons";
 
 class MediaElementGroup extends Component {
@@ -16,6 +16,7 @@ class MediaElementGroup extends Component {
   }
   
   componentDidMount() {
+    this.props.onGetPhysicianList(null, this.props.appointmentData.city, null);
   }
   
   handleChange = event => {
@@ -39,7 +40,13 @@ class MediaElementGroup extends Component {
         <h4>Select the doctor
           <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
         </h4>
+          {this.props.plistError !== null &&
+            <h6 style={{color: '#FF0000', marginLeft: '20px'}}>No physicians available in selected city, please try after sometime...</h6>
+          }
           <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
+          { this.props.error !== null &&
+            <p>Physician details not found, please select another one</p>
+          }
           {filteredData.map((item, index) => (
             <MediaElement noOfStars="5" record={item} key={index} className="styles.mediaElement" {...this.props} />
           ))}
@@ -51,8 +58,11 @@ class MediaElementGroup extends Component {
 const mapStateToProps = (state) => {
   return {
     physicianList: state.selectPhysician.physicianList,
+    appointmentData: state.newAppointment.appointmentData, // For now, leaving it as selectPhysician but would change to new appointment
     filter: state.mediaElementGroup.filter,
-    physicianDetails: state.mediaElementGroup.physicianDetails
+    physicianDetails: state.mediaElementGroup.physicianDetails,
+    error: state.mediaElementGroup.error,
+    plistError: state.selectPhysician.error
   };
 };
 

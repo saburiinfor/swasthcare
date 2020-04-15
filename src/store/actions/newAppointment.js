@@ -1,4 +1,4 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 import axios from "axios";
 
 export const setAppointmentData = (appointmentData) => {
@@ -56,36 +56,12 @@ export const getAppointmentTypeList = () => {
     axios.get(actionTypes.API_URL + "/Appointments/appointmenttype/").then(
       response => {
         let appointmentTypeList = [];
-        // console.log('appointmenttype response', JSON.stringify(response.data));
-        Array.from(response.data.result).map(function (item) {
-          appointmentTypeList.push(item);
+        appointmentTypeList = Array.from(response.data.result).map(function (item) {
+          return item;
         });
         dispatch(appointmentTypeSuccess(appointmentTypeList));
       }).catch(err => {
       console.log(err);
     });
-    // let appointmentTypeList = [
-    //   {
-    //     "id": "01",
-    //     "label": "Clinic visit"
-    //   },
-    //   {
-    //     "id": "02",
-    //     "label": "Voice"
-    //   },
-    //   {
-    //     "id": "03",
-    //     "label": "Chat"
-    //   },
-    //   {
-    //     "id": "04",
-    //     "label": "Video"
-    //   },
-    //   {
-    //     "id": "05",
-    //     "label": "Immediate video"
-    //   }
-    // ];
-    // dispatch(appointmentTypeSuccess(appointmentTypeList));
   };
 };

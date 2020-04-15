@@ -3,9 +3,6 @@ import { Button } from "reactstrap";
 import './WizardButtons.scss';
 
 class WizardButtons extends Component {
-  constructor(props) {
-    super(props);
-  }
   componentDidMount() {
     this.formRef = React.createRef();
   };
@@ -29,10 +26,10 @@ class WizardButtons extends Component {
     return (
       <div className={'wizBtnsContainer'}>
         <form ref={this.formRef}/>
-        <Button onClick={this.backButtonClick}>Back</Button>
-        { parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 &&
-          <Button onClick={this.nextButtonClick}>Continue</Button>
-        }
+          <Button onClick={this.backButtonClick}>Back</Button>
+          { parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 &&
+            <Button onClick={this.nextButtonClick}>Continue</Button>
+          }
       </div>
     );
   }

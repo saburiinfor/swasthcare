@@ -1,4 +1,4 @@
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 import { getUserProfile } from "./UserProfile";
 
 export const setAppointmentDate = (date) => {

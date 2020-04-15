@@ -1,7 +1,6 @@
 import axios from 'axios';
 import FormData from 'form-data';
-import * as actionTypes from './actionTypes';
-import {physicianListSuccess} from "./selectPhysician";
+import * as actionTypes from '../../shared/actionTypes';
 
 export const setPhysicianFilterText = (filterText) => {
   return {
@@ -17,6 +16,13 @@ export const getPhysicianDetailsSuccess = (physicianDetails) => {
   };
 };
 
+export const getPhysicianDetailsFailure = (error) => {
+  return {
+    type: actionTypes.GET_PHYSICIANDETAIL_FAILURE,
+    error
+  };
+};
+
 export const getPhysicianById = (pid, clinicid) => {
   return dispatch => {
     const physicianData = new FormData();
@@ -25,9 +31,11 @@ export const getPhysicianById = (pid, clinicid) => {
     axios.post(actionTypes.API_URL + "Physician/getphysicianbyid/", physicianData).then(
       response => {
         // console.log('inside physician data response');
-        // console.log("res ***" + JSON.stringify(response.data));
+        console.log("res ***" + JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(getPhysicianDetailsSuccess(response.data.result[0]));
+        } else {
+          dispatch(getPhysicianDetailsFailure(response.data.error.errormsg));
         }
       }).catch(err => {
       console.log(err);

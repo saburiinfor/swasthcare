@@ -4,7 +4,7 @@ import Aux from "../../../hoc/Auxwrap";
 import {BrowserView, MobileView} from "react-device-detect";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import Header_mobile from "../../mobile/Header/Header";
+import HeaderMobile from "../../mobile/Header/Header";
 import "./Layout.module.scss";
 import { Route } from "react-router-dom";
 import LoginForm from "../../../containers/Auth/LoginForm";
@@ -20,7 +20,7 @@ import AppointmentPayment from "../../../containers/NewApointment/AppointmentPay
 import SubmitAppointment from "../../../containers/NewApointment/SubmitAppointment";
 import AppointmentCreateResponse from "../../../containers/NewApointment/AppointmentCreateResponse";
 
-const Layout = props => {
+const Layout = (props) => {
   return (
     <Aux>
       <main>
@@ -29,7 +29,7 @@ const Layout = props => {
             <Header/>
           </BrowserView>
           <MobileView>
-            <Header_mobile/>
+            <HeaderMobile/>
           </MobileView>
         </div>
         <Container fluid>

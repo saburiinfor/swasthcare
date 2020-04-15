@@ -1,9 +1,7 @@
 import React from "react";
 import "./Header.desktop.scss";
-import SwasthLogo from "../../../assets/images/SwasthLogo.png";
 import search from "../../../assets/images/search.png";
 import {Link, Route} from "react-router-dom";
-import SwasthLogoSmall from "../../../assets/images/Swasthlogo-small.png";
 import UserHeader from "./UserHeader";
 
 const LoginHeader = () => <div className={'login-header'} style={{'width':'100%'}}>
@@ -17,10 +15,6 @@ const LoginHeader = () => <div className={'login-header'} style={{'width':'100%'
     <input type="text" className="search"/>
     <img src={search} alt=""/>
   </div>
-</div>;
-
-const LoggedHeader = () => <div className="logged-header">
-  <h3 className={'logoText'}>Confer<span>Kare</span></h3>
 </div>;
 
 class Header extends React.Component {

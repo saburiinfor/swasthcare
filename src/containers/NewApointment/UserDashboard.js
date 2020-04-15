@@ -9,7 +9,7 @@ import newAppointment from "../../assets/images/newAppointment.png";
 import {Helmet} from "react-helmet";
 import {Link, Redirect} from "react-router-dom"
 import { connect } from "react-redux";
-import * as actions from "../../store/actions";
+import * as actions from "../../shared";
 import dateformat from 'dateformat';
 import UserProfile from "../UserManagement/UserProfile";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
@@ -59,7 +59,10 @@ class UserDashboard extends Component {
     let appointmentData = {
       city: null,
       appointmentType: null,
-      pid: null
+      pid: null,
+      name: this.props.userProfile.name,
+      email: this.props.userProfile.email,
+      contactno: this.props.userProfile.contactno
     };
     // Set an activeStage counter to sessionStorage object for moving around pages in wizard
     sessionStorage.setItem('conferkare.appointment.activeStage', 1);
@@ -101,7 +104,7 @@ class UserDashboard extends Component {
             }
             <Row>
               <Col>
-                <div className="tar"><Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn"></img></Link></div>
+                <div className="tar"><Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn" alt={'New appointment'}/></Link></div>
                 <div>
                   <Button onClick={this.toggle.bind(null, '1')}>
                     Today

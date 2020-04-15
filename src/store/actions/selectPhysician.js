@@ -1,11 +1,18 @@
 import axios from 'axios';
 import FormData from 'form-data';
-import * as actionTypes from './actionTypes';
+import * as actionTypes from '../../shared/actionTypes';
 
 export const physicianListSuccess = (physicianList) => {
   return {
     type: actionTypes.PHYSICIANLIST_SUCCESS,
     physicianList
+  };
+};
+
+export const physicianListFailure = (error) => {
+  return {
+    type: actionTypes.PHYSICIANLIST_FAILURE,
+    error
   };
 };
 
@@ -20,9 +27,7 @@ export const selectPhysician = (pid, clinicid) => {
 export const getPhysicianList = (phyname, phycity, physpecialisation) => {
   return dispatch => {
     const physicianData = new FormData();
-    // Extract the default city from user location, until user search base on location
-    const city = (phycity === 'All') ? 'Bhubaneswar' : phycity;
-    physicianData.append('city', city);
+    physicianData.append('city', phycity);
     if (phyname !== null) {
       physicianData.append('phyname', phyname);
     }
@@ -35,6 +40,8 @@ export const getPhysicianList = (phyname, phycity, physpecialisation) => {
         // console.log("res ***" + JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(physicianListSuccess(Array.from(response.data.result)));
+        } else {
+          dispatch(physicianListFailure(response.data.error.errormsg));
         }
       }).catch(err => {
       console.log(err);
