@@ -19,13 +19,12 @@ export const submitAppointmentFailure = (error) => {
 
 export const submitAppointment = (appointmentData) => {
   return dispatch => {
-    let userData = new FormData();
-    for (const key in ['appdate', 'appday', 'ctime', 'name', 'appregid', 'patientid', 'pid', 'pname', 'speciality', 'service', 'application_id', 'servicedet_string']) {
+    const userData = new FormData();
+    for (const key of ['appdate', 'appday', 'ctime', 'name', 'appregid', 'patientid', 'pid', 'pname', 'speciality', 'service', 'application_id', 'servicedet_string']) {
       userData.append(key, appointmentData[key]);
     }
     userData.append('city', appointmentData['cityname']);
     userData.append('clinic', appointmentData['clinicid']);
-    console.log(userData);
     axios.post(actionTypes.API_URL + "Appointments/create/", userData).then(
       response => {
         console.log('inside appointment creation call');

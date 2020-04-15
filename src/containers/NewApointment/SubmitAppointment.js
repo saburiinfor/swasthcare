@@ -23,8 +23,8 @@ class SubmitAppointment extends Component {
   componentDidMount() {
   }
   
-  handleAppointmentSubmission = (appointmentData) => {
-    this.props.onSubmitAppointment(appointmentData);
+  handleAppointmentSubmission = () => {
+    this.props.onSubmitAppointment(this.props.appointmentData);
   };
   
   render() {

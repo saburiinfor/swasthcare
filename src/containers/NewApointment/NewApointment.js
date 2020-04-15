@@ -39,10 +39,10 @@ class NewApointment extends Component {
   componentDidMount() {
     this.props.onGetCities();
     this.props.onGetAppointmentTypeList();
-    console.log(this.props);
     this.setState({
       appointmentData: {
         ...this.state.appointmentData,
+        patientid: this.props.userProfile.id,
         name: this.props.userProfile.name,
         email: this.props.userProfile.email,
         contactno: this.props.userProfile.contactno
