@@ -23,11 +23,12 @@ class WizardButtons extends Component {
     }, 200, this.formRef.current);
   };
   render() {
+    console.log(this.props.noContinue);
     return (
       <div className={'wizBtnsContainer'}>
         <form ref={this.formRef}/>
           <Button onClick={this.backButtonClick}>Back</Button>
-          { (parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && this.noContinue === false) &&
+          { (parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
             <Button onClick={this.nextButtonClick}>Continue</Button>
           }
       </div>
