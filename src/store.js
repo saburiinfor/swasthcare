@@ -12,6 +12,7 @@ import newAppointmentReducer from './store/reducers/newAppointment';
 import selectSlotReducer from './store/reducers/SelectSlot';
 import appointmentPaymentReducer from './store/reducers/appointmentPayment';
 import submitAppointmentReducer from './store/reducers/submitAppointment';
+import uploadPrescriptionReducer from './store/reducers/uploadPrescription';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -36,7 +37,8 @@ const rootReducer = combineReducers({
   newAppointment: newAppointmentReducer,
   selectSlot: selectSlotReducer,
   appointmentPayment: appointmentPaymentReducer,
-  submitAppointment: submitAppointmentReducer
+  submitAppointment: submitAppointmentReducer,
+  uploadPrescription: uploadPrescriptionReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

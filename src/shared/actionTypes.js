@@ -22,7 +22,6 @@ export const GET_APPOINTMENT_DATA = 'GET_APPOINTMENT_DATA';
 export const CANCEL_APPOINTMENT_SUCCESS = 'CANCEL_APPOINTMENT_SUCCESS';
 export const CANCEL_APPOINTMENT_FAILURE = 'CANCEL_APPOINTMENT_FAILURE';
 
-
 export const PHYSICIANLIST_SUCCESS = 'PHYSICIANLIST_SUCCESS';
 export const PHYSICIANLIST_FAILURE = 'PHYSICIANLIST_FAILURE';
 export const SET_PHY_FILTER_TEXT = 'SET_PHY_FILTER_TEXT';
@@ -41,8 +40,15 @@ export const RPAY_ORDER_ID_SUCCESS = 'RPAY_ORDER_ID_SUCCESS';
 export const SUBMIT_APPOINTMENT_SUCCESS = 'SUBMIT_APPOINTMENT_SUCCESS';
 export const SUBMIT_APPOINTMENT_FAILURE = 'SUBMIT_APPOINTMENT_FAILURE';
 
-export const API_URL = 'https://www.conferadmin.com/restapi/';
-// export const API_URL = 'https://www.skrepository.com/restapi/';
+export const CLINIC_SUCCESS = 'CLINIC_SUCCESS';
+export const CLINIC_FAILURE = 'CLINIC_FAILURE';
+export const GENERATE_PHARMA_ORDER_ID_SUCCESS = 'GENERATE_PHARMA_ORDER_ID_SUCCESS';
+export const GENERATE_PHARMA_ORDER_ID_FAILURE = 'GENERATE_PHARMA_ORDER_ID_FAILURE';
+export const PLACE_PHARMA_ORDER_SUCCESS = 'PLACE_PHARMA_ORDER_SUCCESS';
+export const PLACE_PHARMA_ORDER_FAILURE = 'PLACE_PHARMA_ORDER_FAILURE';
 
-// export const RAZORPAY_API_KEY = 'rzp_test_11WWnGxxs9Gky3';
-export const RAZORPAY_API_KEY = 'rzp_live_GrKF0EQL5LjQSA';
+// export const API_URL = 'https://www.conferadmin.com/restapi/';
+export const API_URL = 'https://www.skrepository.com/restapi/';
+
+export const RAZORPAY_API_KEY = 'rzp_test_11WWnGxxs9Gky3';
+// export const RAZORPAY_API_KEY = 'rzp_live_GrKF0EQL5LjQSA';

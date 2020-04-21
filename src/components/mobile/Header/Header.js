@@ -30,6 +30,16 @@ const Header = () => {
       <Route exact path="/login" component={LoginHeader}/>
       <Route exact path="/createuser" component={LoggedHeader}/>
       <Route exact path="/dashboard" component={UserHeader}/>
+      <Route exact path="/appointments" component={UserHeader}/>
+      <Route exact path="/newAppointment" component={UserHeader}/>
+      <Route exact path="/selectPhysician" component={UserHeader}/>
+      <Route exact path="/selectAppointmentDate" component={UserHeader}/>
+      <Route exact path="/selectSlot" component={UserHeader}/>
+      <Route exact path="/addComplaints" component={UserHeader}/>
+      <Route exact path="/appointmentPayment" component={UserHeader}/>
+      <Route exact path="/submitAppointment" component={UserHeader}/>
+      <Route exact path="/appointmentCreateResponse" component={UserHeader}/>
+      <Route exact path="/uploadPrescription" component={UserHeader}/>
     </div>
   );
 };

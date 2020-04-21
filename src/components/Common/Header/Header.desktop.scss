@@ -45,6 +45,25 @@
         height: 25px;
       }
     }
+    .mainNav {
+      border-top: 1px solid #666666;
+      padding-top: 15px;
+      .navItem {
+        float: left;
+        display: inline-block;
+        margin: 0px 20px;
+        font-size: 14px;
+        img {
+          height: 30px;
+        }
+        .launchItems {
+          color: #ffffff;
+          background-color: red;
+          font-weight: bold;
+          padding: 2px;
+        }
+      }
+    }
   }
 
   .login-header {

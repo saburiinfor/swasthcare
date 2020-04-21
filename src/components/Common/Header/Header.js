@@ -26,6 +26,7 @@ class Header extends React.Component {
         <Route exact path="/newUser" component={LoginHeader}/>
         <Route exact path="/createuser" component={LoginHeader}/>
         <Route exact path="/dashboard" component={UserHeader}/>
+        <Route exact path="/appointments" component={UserHeader}/>
         <Route exact path="/newAppointment" component={UserHeader}/>
         <Route exact path="/selectPhysician" component={UserHeader}/>
         <Route exact path="/selectAppointmentDate" component={UserHeader}/>
@@ -34,6 +35,7 @@ class Header extends React.Component {
         <Route exact path="/appointmentPayment" component={UserHeader}/>
         <Route exact path="/submitAppointment" component={UserHeader}/>
         <Route exact path="/appointmentCreateResponse" component={UserHeader}/>
+        <Route exact path="/uploadPrescription" component={UserHeader}/>
       </div>
     );
   }

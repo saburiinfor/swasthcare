@@ -22,6 +22,7 @@ class App extends Component {
             <Route exact path="/" component={guestUser}/>
             <Route exact path="/login" component={guestUser}/>
             <Route exact path="/createuser" component={loggedInUser}/>
+            <Route exact path="/appointments" component={loggedInUser}/>
             <Route exact path="/dashboard" component={loggedInUser}/>
             <Route exact path="/newAppointment" component={loggedInUser}/>
             <Route exact path="/selectPhysician" component={loggedInUser}/>
@@ -31,6 +32,7 @@ class App extends Component {
             <Route exact path="/appointmentPayment" component={loggedInUser}/>
             <Route exact path="/submitAppointment" component={loggedInUser}/>
             <Route exact path="/appointmentCreateResponse" component={loggedInUser}/>
+            <Route exact path="/uploadPrescription" component={loggedInUser}/>
           </Switch>
         </MobileView>
         <BrowserView>

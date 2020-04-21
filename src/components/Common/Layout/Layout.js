@@ -19,6 +19,7 @@ import AddComplaints from "../../../containers/NewApointment/AddComplaints";
 import AppointmentPayment from "../../../containers/NewApointment/AppointmentPayment";
 import SubmitAppointment from "../../../containers/NewApointment/SubmitAppointment";
 import AppointmentCreateResponse from "../../../containers/NewApointment/AppointmentCreateResponse";
+import UploadPrescription from "../../../containers/Pharmacy/UploadPrescription";
 
 const Layout = (props) => {
   return (
@@ -39,6 +40,7 @@ const Layout = (props) => {
             <Route exact path="/login" component={LoginForm}/>
             <Route exact path="/createuser" component={CreateUser}/>
             <Route exact path="/dashboard" component={UserDashboard}/>
+            <Route exact path="/appointments" component={UserDashboard}/>
             <Route exact path="/newAppointment" component={NewAppointment}/>
             <Route exact path="/selectPhysician" component={SelectPhysician}/>
             <Route exact path="/selectAppointmentDate" component={SelectAppointmentDate}/>
@@ -47,6 +49,7 @@ const Layout = (props) => {
             <Route exact path="/appointmentPayment" component={AppointmentPayment}/>
             <Route exact path="/submitAppointment" component={SubmitAppointment}/>
             <Route exact path="/appointmentCreateResponse" component={AppointmentCreateResponse}/>
+            <Route exact path="/uploadPrescription" component={UploadPrescription}/>
           </Row>
         </Container>
         <Footer/>

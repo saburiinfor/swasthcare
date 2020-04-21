@@ -10,3 +10,4 @@ export { getAppointmentTypeList, getCities, setAppointmentData, getAppointmentDa
 export { getSlots } from '../store/actions/SelectSlot';
 export { getAppointmentCostDetails, createRPayOrderId } from '../store/actions/appointmentPayment';
 export { submitAppointment } from '../store/actions/submitAppointment';
+export { generatePharmacyOrderId, placeOrderPharmaItems, getClinics } from '../store/actions/uploadPrescription';

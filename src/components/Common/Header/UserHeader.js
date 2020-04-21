@@ -5,6 +5,9 @@ import AnnouncementIcon from "../../../assets/images/announcement-icon.png";
 import ProfileIcon from "../../../assets/images/profile-icon.png";
 import Logout from "../../../containers/Auth/Logout";
 import React from "react";
+import './Header.desktop.scss';
+import PharmacyIcon from '../../../assets/images/pharmacy-100.png';
+import TreatmentIcon from '../../../assets/images/treatment-1.png';
 
 class UserHeader extends React.Component {
   componentDidMount() {
@@ -31,6 +34,18 @@ class UserHeader extends React.Component {
           </Link>
           <Logout {...this.props} />
         </div>
+        <nav className={'mainNav'}>
+          <div className={'navItem'}>
+            <Link to={'/appointments'}>
+              <img src={TreatmentIcon} alt={'Manage your appointments'}/>
+            </Link>
+          </div>
+          <div className={'navItem'}>
+            <Link to={'/uploadPrescription'}>
+              <img src={PharmacyIcon} alt={'Upload latest prescription and get medicines deliver at your door steps'}/><sup className={'launchItems'} title={'New'}>New</sup>
+            </Link>
+          </div>
+        </nav>
       </div>
     );
   }
