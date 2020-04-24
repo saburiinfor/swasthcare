@@ -31,7 +31,7 @@ export const getPhysicianById = (pid, clinicid) => {
     axios.post(actionTypes.API_URL + "Physician/getphysicianbyid/", physicianData).then(
       response => {
         // console.log('inside physician data response');
-        // console.log("res ***" + JSON.stringify(response.data));
+        console.log("res ***" + JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(getPhysicianDetailsSuccess(response.data.result[0]));
         } else {

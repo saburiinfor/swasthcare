@@ -36,7 +36,7 @@ export const getAppointmentCostDetails = (appointmentData) => {
     let appointmentCostDetails = {
       'amount': appointmentData.pt_price,
       'currency': 'INR',
-      'description': 'SimpleKare appointment',
+      'description': 'ConferKare appointment',
       'p_name': appointmentData.name,
       'p_email': appointmentData.email
     };

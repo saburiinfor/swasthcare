@@ -35,12 +35,12 @@ class UserHeader extends React.Component {
           <Logout {...this.props} />
         </div>
         <nav className={'mainNav'}>
-          <div className={'navItem'}>
+          <div className={this.props.selectedMenuItem === '1' ? 'navItem active' : 'navItem'}>
             <Link to={'/appointments'}>
               <img src={TreatmentIcon} alt={'Manage your appointments'}/>
             </Link>
           </div>
-          <div className={'navItem'}>
+          <div className={this.props.selectedMenuItem === '2' ? 'navItem active' : 'navItem'}>
             <Link to={'/uploadPrescription'}>
               <img src={PharmacyIcon} alt={'Upload latest prescription and get medicines deliver at your door steps'}/><sup className={'launchItems'} title={'New'}>New</sup>
             </Link>

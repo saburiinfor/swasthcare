@@ -110,7 +110,7 @@ class SelectAppointmentDate extends Component {
           <Col md="8">
             <div className={styles.selectDate}>
               <h4>
-                Select the Date
+                Select appointment Date
                 <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
               </h4>
               <Helmet>

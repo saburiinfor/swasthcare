@@ -26,16 +26,36 @@ class Header extends React.Component {
         <Route exact path="/newUser" component={LoginHeader}/>
         <Route exact path="/createuser" component={LoginHeader}/>
         <Route exact path="/dashboard" component={UserHeader}/>
-        <Route exact path="/appointments" component={UserHeader}/>
-        <Route exact path="/newAppointment" component={UserHeader}/>
-        <Route exact path="/selectPhysician" component={UserHeader}/>
-        <Route exact path="/selectAppointmentDate" component={UserHeader}/>
-        <Route exact path="/selectSlot" component={UserHeader}/>
-        <Route exact path="/addComplaints" component={UserHeader}/>
-        <Route exact path="/appointmentPayment" component={UserHeader}/>
-        <Route exact path="/submitAppointment" component={UserHeader}/>
-        <Route exact path="/appointmentCreateResponse" component={UserHeader}/>
-        <Route exact path="/uploadPrescription" component={UserHeader}/>
+        <Route exact path="/appointments">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/newAppointment">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/selectPhysician">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/selectAppointmentDate">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/selectSlot">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/addComplaints">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/appointmentPayment">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/submitAppointment">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/appointmentCreateResponse">
+          <UserHeader selectedMenuItem={'1'}/>
+        </Route>
+        <Route exact path="/uploadPrescription">
+          <UserHeader selectedMenuItem={'2'}/>
+        </Route>
       </div>
     );
   }

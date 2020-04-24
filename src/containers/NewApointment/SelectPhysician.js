@@ -42,7 +42,7 @@ class SelectPhysician extends Component {
         <Row>
           <Col md="8">
             <div>
-              <h2>New appointment</h2>
+              <h2>Select physician</h2>
               <Breadcrumb activeStep={'2'} />
             </div>
             <MediaElementGroup {...this.props} />

@@ -38,7 +38,7 @@ class MediaElementGroup extends Component {
     return (
       <div className={styles.appointmentList}>
         <h4>Select the doctor
-          <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
+          <WizardButtons nextBtnCallback={this.handlerNextBtnClick}/>
         </h4>
           {this.props.plistError !== null &&
             <h6 style={{color: '#FF0000', marginLeft: '20px'}}>No physicians available in selected city, please try after sometime...</h6>

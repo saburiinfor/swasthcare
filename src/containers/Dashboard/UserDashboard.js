@@ -116,7 +116,9 @@ class UserDashboard extends Component {
             }
             <Row>
               <Col>
-                <div className="tar"><Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn" alt={'New appointment'}/></Link></div>
+                <div className="tar">
+                  <Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn" alt={'New appointment'}/></Link>
+                </div>
                 <div>
                   <Button className={this.state.activeTab === '1' ? styles.tabButtons + ' active' : styles.tabButtons} onClick={this.toggle.bind(this, '1')}>
                     Today

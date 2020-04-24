@@ -118,7 +118,7 @@ class NewApointment extends Component {
         <Row>
           <Col md="8">
             <div>
-              <h2>New appointment</h2>
+              <h2>Select city and appointment type</h2>
               <Breadcrumb activeStep={'1'}/>
             </div>
             <Row>
@@ -126,7 +126,7 @@ class NewApointment extends Component {
                 <div className={styles.selectDate}>
                   <h4>
                     Select the appointment type and city
-                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick}/>
+                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.props.profileCompliant} />
                   </h4>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>

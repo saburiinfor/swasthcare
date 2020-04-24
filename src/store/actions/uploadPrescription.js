@@ -87,8 +87,13 @@ export const generatePharmacyOrderId = (clinicId, userId) => {
     clinicData.append('userId', userId);
     axios.post(actionTypes.API_URL + "Pharmacyorder/getpharmaorderid/", clinicData).then(
       response => {
-        // As this API is not yet handling the error use case not checking for success or failure
-        dispatch(generatePharmacyOrderIdSuccess(response.data.result.orderid));
+        console.log('response for generatePharmacyOrderId');
+        console.log(JSON.stringify(response.data));
+        if (response.data.success === 1) {
+          dispatch(generatePharmacyOrderIdSuccess(response.data.result.orderid));
+        } else {
+          dispatch(generatePharmacyOrderIdFailure(response.data.result.errorMsg));
+        }
       }).catch(err => {
       console.log(err);
     });
@@ -104,8 +109,13 @@ export const placeOrderPharmaItems = (clinicId, userId, pharmaOrderId, fileName)
     fileData.append('file', fileName);
     axios.post(actionTypes.API_URL + "orderpharmacyitems/", fileData).then(
       response => {
-        console.log(response);
-        dispatch(orderPharmaItemsFailure(response));
+        console.log('inside placeOrderPharmaItems response');
+        console.log(JSON.stringify(response.data));
+        if (response.data.success === 1) {
+          dispatch(orderPharmaItemsSuccess(response.data.result));
+        } else {
+          dispatch(orderPharmaItemsFailure(response.data.result.errorMsg));
+        }
       }).catch(err => {
         console.log(err);
     });
