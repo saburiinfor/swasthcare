@@ -47,8 +47,8 @@ export const GENERATE_PHARMA_ORDER_ID_FAILURE = 'GENERATE_PHARMA_ORDER_ID_FAILUR
 export const PLACE_PHARMA_ORDER_SUCCESS = 'PLACE_PHARMA_ORDER_SUCCESS';
 export const PLACE_PHARMA_ORDER_FAILURE = 'PLACE_PHARMA_ORDER_FAILURE';
 
-// export const API_URL = 'https://www.conferadmin.com/restapi/';
-export const API_URL = 'https://www.skrepository.com/restapi/';
+export const API_URL = 'https://www.conferadmin.com/restapi/';
+// export const API_URL = 'https://www.skrepository.com/restapi/';
 
-export const RAZORPAY_API_KEY = 'rzp_test_11WWnGxxs9Gky3';
-// export const RAZORPAY_API_KEY = 'rzp_live_GrKF0EQL5LjQSA';
+// export const RAZORPAY_API_KEY = 'rzp_test_11WWnGxxs9Gky3';
+export const RAZORPAY_API_KEY = 'rzp_live_GrKF0EQL5LjQSA';
