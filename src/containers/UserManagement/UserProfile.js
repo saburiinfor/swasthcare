@@ -31,15 +31,16 @@ class UserProfile extends Component {
   }
   
   selectUserDOB = (dob) => {
-    this.setState({dob});
+    this.setState({
+      dob: dob,
+      userProfile: {
+        ...this.state.userProfile,
+        dob: dateformat(dob, 'yyyy-mm-dd')
+      }
+    });
   };
   
   updateUserProfile = () => {
-    this.setState({
-      userProfile: {
-        dob: dateformat(this.state.dob, 'yyyy-mm-dd')
-      }
-    });
     this.props.onUpdateUserProfile(this.state.userProfile);
   };
   
