@@ -30,7 +30,7 @@ class MediaElement extends Component {
       that.props.appointmentData.clinicid = clinicid;
       that.props.onSelectPhysician(pid, clinicid);
       that.props.onSetAppointmentData(that.props.appointmentData);
-    }, 200, this);
+    }, 400, this);
     // console.log(this.props.physicianDetails);
   };
   render() {

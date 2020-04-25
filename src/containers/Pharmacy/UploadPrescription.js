@@ -97,13 +97,6 @@ class UploadPrescription extends Component {
             }
             <Row>
               <Col>
-                {this.props.orderError !== false &&
-                  <p><strong>{this.props.orderError}</strong></p>
-                }
-              </Col>
-            </Row>
-            <Row>
-              <Col>
                 <h6>You could upload your latest prescription and get medicines delivered to you. Prescriptions are need to be</h6>
                 <ol>
                   <li>
@@ -115,6 +108,14 @@ class UploadPrescription extends Component {
                 </ol>
                 <br/>
                 <span className={'prescriptionDisclaimer'}>** Prescription would be reviewed by our authorized chemist and medicines would be delivered as per availability.</span>
+              </Col>
+            </Row>
+            <br/>
+            <Row>
+              <Col>
+                {this.props.orderError !== false &&
+                <p><strong>{this.props.error}</strong></p>
+                }
               </Col>
             </Row>
             <Row>
@@ -162,7 +163,8 @@ const mapStateToProps = state => {
     clinicList: state.uploadPrescription.clinicList,
     pharmaOrderId: state.uploadPrescription.pharmaOrderId,
     order_success_id: state.uploadPrescription.order_success_id,
-    orderError: state.uploadPrescription.order_success_id === null
+    orderError: state.uploadPrescription.order_success_id === null,
+    error: state.uploadPrescription.error
   };
 };
 

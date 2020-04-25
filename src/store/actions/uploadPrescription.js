@@ -90,7 +90,7 @@ export const generatePharmacyOrderId = (clinicId, userId) => {
         console.log('response for generatePharmacyOrderId');
         console.log(JSON.stringify(response.data));
         if (response.data.success === 1) {
-          dispatch(generatePharmacyOrderIdSuccess(response.data.result.orderid));
+          dispatch(generatePharmacyOrderIdSuccess(response.data.result));
         } else {
           dispatch(generatePharmacyOrderIdFailure(response.data.result.errorMsg));
         }
@@ -107,7 +107,7 @@ export const placeOrderPharmaItems = (clinicId, userId, pharmaOrderId, fileName)
     fileData.append('userId', userId);
     fileData.append('pharmaOrderId', pharmaOrderId);
     fileData.append('file', fileName);
-    axios.post(actionTypes.API_URL + "orderpharmacyitems/", fileData).then(
+    axios.post(actionTypes.API_URL + "Pharmacyorder/orderpharmacyitems/", fileData).then(
       response => {
         console.log('inside placeOrderPharmaItems response');
         console.log(JSON.stringify(response.data));

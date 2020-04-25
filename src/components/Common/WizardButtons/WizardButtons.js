@@ -23,7 +23,6 @@ class WizardButtons extends Component {
     }, 200, this.formRef.current);
   };
   render() {
-    console.log(this.props.noContinue);
     return (
       <div className={'wizBtnsContainer'}>
         <form ref={this.formRef}/>

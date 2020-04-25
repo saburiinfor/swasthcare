@@ -43,7 +43,9 @@ const placeOrderSuccess = (state, action) => {
 };
 
 const placeOrderFailure = (state, action) => {
-  return state;
+  return updateObject(state, {
+    error: action.error
+  });
 };
 
 const reducer = (state = initialState, action) => {
@@ -59,9 +61,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.GENERATE_PHARMA_ORDER_ID_FAILURE:
       return generateOrderIdFailure(state, action);
     case actionTypes.PLACE_PHARMA_ORDER_SUCCESS:
-      return orderPharmaItemsSuccess(state, action);
+      return placeOrderSuccess(state, action);
     case actionTypes.PLACE_PHARMA_ORDER_FAILURE:
-      return orderPharmaItemsFailure(state, action);
+      return placeOrderFailure(state, action);
     default:
       return state;
   }
