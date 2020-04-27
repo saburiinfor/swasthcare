@@ -92,7 +92,7 @@ export const generatePharmacyOrderId = (clinicId, userId) => {
         if (response.data.success === 1) {
           dispatch(generatePharmacyOrderIdSuccess(response.data.result));
         } else {
-          dispatch(generatePharmacyOrderIdFailure(response.data.result.errorMsg));
+          dispatch(generatePharmacyOrderIdFailure(response.data.result[0].errorMsg));
         }
       }).catch(err => {
       console.log(err);
@@ -114,7 +114,7 @@ export const placeOrderPharmaItems = (clinicId, userId, pharmaOrderId, fileName)
         if (response.data.success === 1) {
           dispatch(orderPharmaItemsSuccess(response.data.result));
         } else {
-          dispatch(orderPharmaItemsFailure(response.data.result.errorMsg));
+          dispatch(orderPharmaItemsFailure(response.data.result[0].errorMsg));
         }
       }).catch(err => {
         console.log(err);

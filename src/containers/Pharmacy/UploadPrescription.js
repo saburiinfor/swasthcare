@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {connect} from "react-redux";
-import { Redirect } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import {Button, Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import UserProfile from "../UserManagement/UserProfile";
@@ -9,6 +9,7 @@ import './Pharmacy.scss';
 import * as actions from "../../shared";
 import Form from "react-bootstrap/Form";
 import bsCustomFileInput from 'bs-custom-file-input'
+import {Alert} from "react-bootstrap";
 
 function CityOptions(cityList) {
   let activeCities = cityList.cityList.filter(city => city.status === "Active");
@@ -30,7 +31,8 @@ class UploadPrescription extends Component {
       clinicId: null,
       pharmaOrderId: null,
       error: null,
-      file: null
+      file: null,
+      formSubmitted: false
     };
   }
   
@@ -43,7 +45,7 @@ class UploadPrescription extends Component {
   handleCityChange = (e) => {
     let cityId = e.target.value;
     this.setState({
-        city: cityId
+      city: cityId
     });
     this.props.onGetClinics(cityId);
   };
@@ -69,18 +71,20 @@ class UploadPrescription extends Component {
   };
   
   submitPrescription = (e) => {
-    console.log(this.state);
     if (this.state.clinicId === null || this.state.pharmaOrderId === null) {
       this.fileInputElement.isInvalid = true;
       return false;
     }
+    this.setState({
+      formSubmitted: true
+    });
     this.props.onPlaceOrderPharmaItems(this.state.clinicId, this.props.userProfile.id, this.state.pharmaOrderId, this.state.file);
   };
   
   render() {
     if (this.props.userProfile.success === 0) {
       sessionStorage.setItem('conferkare.appointment.activeStage', 0);
-      return <Redirect to='/' />;
+      return <Redirect to='/'/>;
     }
     return (
       <Col md="12" className="mt10">
@@ -92,8 +96,8 @@ class UploadPrescription extends Component {
         </Helmet>
         <Row>
           <Col md="8">
-            { this.props.profileCompliant === false &&
-              <UserProfile/>
+            {this.props.profileCompliant === false &&
+            <UserProfile/>
             }
             <Row>
               <Col>
@@ -110,14 +114,24 @@ class UploadPrescription extends Component {
                 <span className={'prescriptionDisclaimer'}>** Prescription would be reviewed by our authorized chemist and medicines would be delivered as per availability.</span>
               </Col>
             </Row>
-            <br/>
+            {(this.props.orderError !== false && this.state.formSubmitted === true) &&
             <Row>
               <Col>
-                {this.props.orderError !== false &&
-                <p><strong>{this.props.error}</strong></p>
-                }
+                <Alert key={'order-error'} variant={'danger'}>
+                  {this.props.error}
+                </Alert>
               </Col>
             </Row>
+            }
+            {(this.props.orderError === false && this.state.formSubmitted === true) &&
+            <Row>
+              <Col>
+                <Alert key={'order-success'} variant={'success'}>
+                  Congratulations, we received your medicine delivery request. Our chemist would review and get back to you with further details...
+                </Alert>
+              </Col>
+            </Row>
+            }
             <Row>
               <Col className={'boundingBox'}>
                 <h5>City</h5>

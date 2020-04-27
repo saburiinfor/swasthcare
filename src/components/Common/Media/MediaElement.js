@@ -43,7 +43,7 @@ class MediaElement extends Component {
       );
     }
     return (
-      <Media className={classnames(styles.mediaElement, "m-1", "p-1", (this.props.appointmentData.pid === panelData.id) ? styles.selected : '')}>
+      <Media className={classnames(styles.mediaElement, "m-1", "p-1", (this.props.appointmentData.pid === panelData.id && this.props.appointmentData.clinicid === panelData.clinicid) ? styles.selected : '')}>
         <Media left top href="#">
           {/*} <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />*/}
           <div className="text-center">
