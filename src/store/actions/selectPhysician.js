@@ -34,7 +34,7 @@ export const getPhysicianList = (phyname, phycity, physpecialisation) => {
     if (physpecialisation !== null) {
       physicianData.append('specializations', physpecialisation);
     }
-    axios.post(actionTypes.API_URL + "Physician/getphysician/", physicianData).then(
+    axios.post(process.env.REACT_APP_API_URL + "Physician/getphysician/", physicianData).then(
       response => {
         // console.log('inside physician data response');
         // console.log("res ***" + JSON.stringify(response.data));

@@ -1,6 +1,5 @@
 import * as actionTypes from '../../shared/actionTypes';
 import {updateObject} from '../../shared/utility';
-import {orderPharmaItemsFailure, orderPharmaItemsSuccess} from "../actions/uploadPrescription";
 
 const initialState = {
   cityList: [],

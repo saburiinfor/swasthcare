@@ -135,7 +135,7 @@ class NewApointment extends Component {
                     <Row>
                       <Col>
                         <h5>City</h5>
-                        <select onChange={this.handleCityChange}>
+                        <select onChange={this.handleCityChange} value='Bhubaneswar'>
                           <option value={'All'}>All cities</option>
                           <CityOptions cityList={this.props.cityList}/>
                         </select>

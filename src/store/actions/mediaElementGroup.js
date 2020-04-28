@@ -28,7 +28,7 @@ export const getPhysicianById = (pid, clinicid) => {
     const physicianData = new FormData();
     physicianData.append('pid', pid);
     physicianData.append('clinicid', clinicid);
-    axios.post(actionTypes.API_URL + "Physician/getphysicianbyid/", physicianData).then(
+    axios.post(process.env.REACT_APP_API_URL + "Physician/getphysicianbyid/", physicianData).then(
       response => {
         // console.log('inside physician data response');
         console.log("res ***" + JSON.stringify(response.data));

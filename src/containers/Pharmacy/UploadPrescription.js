@@ -27,8 +27,8 @@ class UploadPrescription extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      city: null,
-      clinicId: null,
+      city: '1',
+      clinicId: '26',
       pharmaOrderId: null,
       error: null,
       file: null,
@@ -38,6 +38,10 @@ class UploadPrescription extends Component {
   
   componentDidMount() {
     this.props.onGetCities();
+    // Defaulting to city = 1 (Bhuvaneswar)
+    this.props.onGetClinics('1');
+    this.props.onGeneratePharmaOrderId('26', this.props.userProfile.id);
+
     bsCustomFileInput.init();
     this.fileInputElement = document.querySelector('.custom-file input[type="file"]');
   }
@@ -65,8 +69,9 @@ class UploadPrescription extends Component {
       pharmaOrderId: this.props.pharmaOrderId
     });
     const filename = e.target.parentNode.querySelector('.custom-file-label').textContent;
+    const fileElement = e.target.files;
     this.setState({
-      file: filename
+      file: fileElement
     });
   };
   
@@ -117,7 +122,7 @@ class UploadPrescription extends Component {
             {(this.props.orderError !== false && this.state.formSubmitted === true) &&
             <Row>
               <Col>
-                <Alert key={'order-error'} variant={'danger'}>
+                <Alert key={'order-error'} variant={this.state.error !== null ? 'danger' : 'light'}>
                   {this.props.error}
                 </Alert>
               </Col>
@@ -135,12 +140,12 @@ class UploadPrescription extends Component {
             <Row>
               <Col className={'boundingBox'}>
                 <h5>City</h5>
-                <select onChange={this.handleCityChange}>
+                <select onChange={this.handleCityChange} value='1'>
                   <option value={''}>Select city</option>
                   <CityOptions cityList={this.props.cityList}/>
                 </select><br/><br/>
                 <h5>Clinic</h5>
-                <select onChange={this.handleClinicChange}>
+                <select onChange={this.handleClinicChange} value='26'>
                   <option value={''}>Select clinic</option>
                   <ClinicOptions clinicList={this.props.clinicList}/>
                 </select><br/><br/>
@@ -148,7 +153,7 @@ class UploadPrescription extends Component {
                   <Form.File
                     id="prescription"
                     label="Doctor prescription"
-                    disabled={true}
+                    // disabled={true}
                     // multiple
                     custom
                     onChange={this.handleFileSelection}

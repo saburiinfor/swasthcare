@@ -25,7 +25,7 @@ export const submitAppointment = (appointmentData) => {
     }
     userData.append('city', appointmentData['cityname']);
     userData.append('clinic', appointmentData['clinicid']);
-    axios.post(actionTypes.API_URL + "Appointments/create/", userData).then(
+    axios.post(process.env.REACT_APP_API_URL + "Appointments/create/", userData).then(
       response => {
         console.log('inside appointment creation call');
         console.log(JSON.stringify(response.data));

@@ -17,7 +17,7 @@ export const citiesSuccess = (cityList) => {
 
 export const getCities = () => {
   return dispatch => {
-    axios.get(actionTypes.API_URL + "/Market/getcity/").then(
+    axios.get(process.env.REACT_APP_API_URL + "Market/getcity/").then(
       response => {
         // let cityList = [];
         // console.log('cities response', JSON.stringify(response.data));
@@ -53,7 +53,7 @@ export const getAppointmentData = () => {
 
 export const getAppointmentTypeList = () => {
   return dispatch => {
-    axios.get(actionTypes.API_URL + "/Appointments/appointmenttype/").then(
+    axios.get(process.env.REACT_APP_API_URL + "Appointments/appointmenttype/").then(
       response => {
         let appointmentTypeList = [];
         appointmentTypeList = Array.from(response.data.result).map(function (item) {

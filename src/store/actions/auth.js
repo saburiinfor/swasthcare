@@ -28,7 +28,7 @@ export const auth = (email, password, userType, isSignup) => {
     authData.append("email", email);
     authData.append("password", password);
     authData.append("userType", userType);
-    axios.post(actionTypes.API_URL + "/User/login/", authData).then(
+    axios.post(process.env.REACT_APP_API_URL + "User/login/", authData).then(
       response => {
         // console.log("res ***" + JSON.stringify(response));
         if (response.data.success === 1) {

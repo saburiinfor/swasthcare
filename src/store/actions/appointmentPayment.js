@@ -24,7 +24,7 @@ export const getAppointmentCostDetails = (appointmentData) => {
     costRequestData.append("clinicid", appointmentData.clinicid);
     costRequestData.append("appointmentDate", appointmentData.appointmentDate);
     costRequestData.append("slotId", appointmentData.slotId);
-    // axios.post(actionTypes.API_URL + "Physician/getslots/", slotRequestData).then(
+    // axios.post(process.env.REACT_APP_API_URL + "Physician/getslots/", slotRequestData).then(
     //   response => {
     //     // console.log('inside profile data response inside userProfile');
     //     // console.log("res ***" + JSON.stringify(response.data));

@@ -46,7 +46,7 @@ export const getAppointmentList = (patientid) => {
     const appointmentData = new FormData();
     appointmentData.append("patientid", patientid);
     // appointmentData.append("patientid", 1590);
-    axios.post(actionTypes.API_URL + "Appointments/getappointmentbyuser/", appointmentData).then(
+    axios.post(process.env.REACT_APP_API_URL + "Appointments/getappointmentbyuser/", appointmentData).then(
       response => {
         // console.log('inside patients data response');
         console.log("res ***" + JSON.stringify(response.data));
@@ -65,7 +65,7 @@ export const cancelAppointment = (appId) => {
   return dispatch => {
     const appointmentData = new FormData();
     appointmentData.append('id', appId);
-    axios.post(actionTypes.API_URL + "Appointments/cancelappointmentbyid/", appointmentData).then(
+    axios.post(process.env.REACT_APP_API_URL + "Appointments/cancelappointmentbyid/", appointmentData).then(
       response => {
         // console.log('inside patients data response');
         console.log("res ***" + JSON.stringify(response.data));

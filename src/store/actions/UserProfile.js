@@ -28,7 +28,7 @@ export const getUserProfile = (userToken) => {
   return dispatch => {
     const userData = new FormData();
     userData.append("token", userToken);
-    axios.post(actionTypes.API_URL + "User/getbytoken/", userData).then(
+    axios.post(process.env.REACT_APP_API_URL + "User/getbytoken/", userData).then(
       response => {
         // console.log('inside profile data response inside userProfile');
         // console.log("res ***" + JSON.stringify(response.data));
@@ -46,7 +46,7 @@ export const updateUserProfile = (userProfile) => {
     for (const key in userProfile) {
       userData.append(key, userProfile[key]);
     }
-    axios.post(actionTypes.API_URL + "User/userprofileupdate/", userData).then(
+    axios.post(process.env.REACT_APP_API_URL + "User/userprofileupdate/", userData).then(
       response => {
         // console.log('inside profile update call');
         // console.log(JSON.stringify(response.data));

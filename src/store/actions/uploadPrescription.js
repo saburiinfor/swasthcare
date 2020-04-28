@@ -53,7 +53,7 @@ export const orderPharmaItemsFailure = (error) => {
 
 export const getCities = () => {
   return dispatch => {
-    axios.get(actionTypes.API_URL + "Market/getcity/").then(
+    axios.get(process.env.REACT_APP_API_URL + "Market/getcity/").then(
       response => {
         dispatch(citiesSuccess(response.data));
       }).catch(err => {
@@ -66,7 +66,7 @@ export const getClinics = (city) => {
   return dispatch => {
     const cityData = new FormData();
     cityData.append('city', city);
-    axios.post(actionTypes.API_URL + "Clinic/getregisteredclinicsbycity/", cityData).then(
+    axios.post(process.env.REACT_APP_API_URL + "Clinic/getregisteredclinicsbycity/", cityData).then(
       response => {
         // console.log(JSON.stringify(response.data));
         if (response.data.success === 1) {
@@ -85,7 +85,7 @@ export const generatePharmacyOrderId = (clinicId, userId) => {
     const clinicData = new FormData();
     clinicData.append('clinicId', clinicId);
     clinicData.append('userId', userId);
-    axios.post(actionTypes.API_URL + "Pharmacyorder/getpharmaorderid/", clinicData).then(
+    axios.post(process.env.REACT_APP_API_URL + "Pharmacyorder/getpharmaorderid/", clinicData).then(
       response => {
         console.log('response for generatePharmacyOrderId');
         console.log(JSON.stringify(response.data));
@@ -106,8 +106,9 @@ export const placeOrderPharmaItems = (clinicId, userId, pharmaOrderId, fileName)
     fileData.append('clinicId', clinicId);
     fileData.append('userId', userId);
     fileData.append('pharmaOrderId', pharmaOrderId);
-    fileData.append('file', fileName);
-    axios.post(actionTypes.API_URL + "Pharmacyorder/orderpharmacyitems/", fileData).then(
+    // For now as we are expecting only a file for upload taking 0th element, would change to array once start accepting multiples.
+    fileData.append('file', fileName[0]);
+    axios.post(process.env.REACT_APP_API_URL + "Pharmacyorder/orderpharmacyitems/", fileData).then(
       response => {
         console.log('inside placeOrderPharmaItems response');
         console.log(JSON.stringify(response.data));

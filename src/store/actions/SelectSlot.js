@@ -24,7 +24,7 @@ export const getSlots = (pid, clinicid, slotDate) => {
     slotRequestData.append("clinicId", clinicid);
     // slotRequestData.append("slotDate", slotDate);
     slotRequestData.append("slotDate", new Date().toLocaleDateString());
-    // axios.post(actionTypes.API_URL + "Timeslot/getphysiciantimeslot/", slotRequestData).then(
+    // axios.post(process.env.REACT_APP_API_URL + "Timeslot/getphysiciantimeslot/", slotRequestData).then(
     //   response => {
     //     // console.log('inside profile data response inside userProfile');
     //     // console.log("res ***" + JSON.stringify(response.data));

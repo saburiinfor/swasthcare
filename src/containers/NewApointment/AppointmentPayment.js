@@ -11,7 +11,6 @@ import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import './razorpay.scss';
 import { loadCheckout } from '@tiltbike/razorpay-checkout-js';
-import {RAZORPAY_API_KEY} from '../../shared/actionTypes';
 
 class AppointmentPayment extends Component {
   constructor(props) {
@@ -48,7 +47,7 @@ class AppointmentPayment extends Component {
     e.preventDefault();
     let that = this;
     let options = {
-      "key": RAZORPAY_API_KEY,
+      "key": process.env.REACT_APP_RAZORPAY_API_KEY,
       "amount": this.state.consultfee * 100,
       "currency": this.props.costDetails.currency,
       "name": "ConferKare",
