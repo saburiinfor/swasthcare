@@ -24,7 +24,7 @@ class NewApointment extends Component {
       cityList: [],
       appointmentTypeList: [],
       appointmentData: {
-        city: 'All',
+        city: 'Bhubaneswar',
         appointmentType: "04",
         appointmentTypeLabel: 'Clinic visit',
         pid: null,
