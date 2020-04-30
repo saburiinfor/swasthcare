@@ -56,7 +56,7 @@ class SubmitAppointment extends Component {
         <Row>
           <Col md="8">
             <div>
-              <h2>Appointment payment</h2>
+              <h2>Appointment details</h2>
               <Breadcrumb activeStep={'7'} />
             </div>
             <Row>
