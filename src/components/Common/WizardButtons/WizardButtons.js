@@ -1,35 +1,64 @@
 import React, {Component} from "react";
-import { Button } from "reactstrap";
+import {Button, Form} from "react-bootstrap";
 import './WizardButtons.scss';
 
 class WizardButtons extends Component {
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      processing: true
+    };
     this.formRef = React.createRef();
+    this.processingComplete.bind(this);
+  }
+  
+  componentDidMount() {
   };
-
+  
+  processingComplete = () => {
+    this.setState({
+      processing: false
+    });
+    window.location.reload();
+  };
+  
+  setPreviousStep = () => {
+    return new Promise((resolve) => {
+      let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
+      sessionStorage.setItem('conferkare.appointment.activeStage', activeStage < 1 ? 0 : (activeStage - 1));
+      resolve('done');
+    });
+  };
+  
   backButtonClick = () => {
-    let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
-    sessionStorage.setItem('conferkare.appointment.activeStage', activeStage < 1 ? 0 : (activeStage - 1));
-    setTimeout(function(formObj) {
-      formObj.submit();
-    }, 200, this.formRef.current);
+    this.setPreviousStep().then(() => {
+      this.processingComplete();
+    });
   };
+  
+  setNextStep = () => {
+    return new Promise((resolve) => {
+      let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
+      sessionStorage.setItem('conferkare.appointment.activeStage', activeStage + 1);
+      resolve('done');
+    });
+  };
+  
   nextButtonClick = () => {
-    let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
-    sessionStorage.setItem('conferkare.appointment.activeStage', activeStage + 1);
-    this.props.nextBtnCallback();
-    setTimeout(function(formObj) {
-      formObj.submit();
-    }, 200, this.formRef.current);
-  };
+    this.setNextStep().then(() => {
+      this.props.nextBtnCallback();
+    }).then(() => {
+      this.processingComplete();
+    });
+  }
+  
   render() {
     return (
       <div className={'wizBtnsContainer'}>
-        <form ref={this.formRef}/>
-          <Button onClick={this.backButtonClick}>Back</Button>
-          { (parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
-            <Button onClick={this.nextButtonClick}>Continue</Button>
-          }
+        <Button variant={'primary'} onClick={this.backButtonClick}>Back</Button>
+        {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
+        <Button variant={'primary'} onClick={this.nextButtonClick} disabled={!this.state.processing}>Continue</Button>
+        }
       </div>
     );
   }

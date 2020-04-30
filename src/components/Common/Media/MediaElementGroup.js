@@ -25,7 +25,14 @@ class MediaElementGroup extends Component {
   };
   
   handlerNextBtnClick = () => {
-    // this.props.onSetAppointmentData(this.props.appointmentData);
+    for (const key of ['clinicname', 'pt_price', 'clinicaddress', 'cliniccontact', 'cityname']) {
+      this.props.appointmentData[key] = this.props.physicianDetails[key];
+    }
+    this.props.appointmentData.servicedet_string = this.props.physicianDetails.phyname;
+    this.props.appointmentData.speciality = this.props.physicianDetails.specializations;
+    this.props.appointmentData.pname = this.props.physicianDetails.phyname;
+    this.props.onSelectPhysician(this.props.appointmentData.pid, this.props.appointmentData.clinicid);
+    this.props.onSetAppointmentData(this.props.appointmentData);
   };
   
   render() {

@@ -8,6 +8,10 @@ import classnames from "classnames";
 class MediaElement extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      pid: null,
+      clinicid: null
+    };
     this.selectPhysician.bind(this);
   };
 
@@ -17,21 +21,8 @@ class MediaElement extends Component {
   // click handler for physician selection
   selectPhysician = (pid, clinicid) => {
     this.props.onGetPhysicianById(pid, clinicid);
-    let that = this;
-    that.props.appointmentData.pid = pid;
-    setTimeout(function() {
-      for (const key of ['clinicname', 'pt_price', 'clinicaddress', 'cliniccontact', 'cityname']) {
-        that.props.appointmentData[key] = that.props.physicianDetails[key];
-      }
-      that.props.appointmentData.servicedet_string = that.props.physicianDetails.phyname;
-      that.props.appointmentData.speciality = that.props.physicianDetails.specializations;
-      that.props.appointmentData.pname = that.props.physicianDetails.phyname;
-      that.props.appointmentData.pid = pid;
-      that.props.appointmentData.clinicid = clinicid;
-      that.props.onSelectPhysician(pid, clinicid);
-      that.props.onSetAppointmentData(that.props.appointmentData);
-    }, 400, this);
-    // console.log(this.props.physicianDetails);
+    this.props.appointmentData.pid = pid;
+    this.props.appointmentData.clinicid = clinicid;
   };
   render() {
     const noOfStars = this.props.noOfStars;
