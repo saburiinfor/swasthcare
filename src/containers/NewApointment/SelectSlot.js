@@ -28,9 +28,11 @@ class SelectSlot extends Component {
   }
 
   handleSlotSelection = (e) => {
+    let slotDetails = JSON.parse(e.target.value);
     this.setState({
-      slotId: e.target.value,
-      ctime: e.target.title
+      slotId: slotDetails.id,
+      ctime: slotDetails.startTime,
+      pt_price: slotDetails.regular_price
     });
   };
   
@@ -41,9 +43,9 @@ class SelectSlot extends Component {
           <span>{slot.id}</span>
           <span>{slot.startTime}</span>
           <span>{slot.period}</span>
-          <span>{slot.waitingTime}</span>
+          <span>{slot.waitingTime} mins</span>
           <span>{slot.status}</span>
-          <span><button title={slot.startTime} className={'btn btn-link'} onClick={this.handleSlotSelection} value={slot.id}>Select</button></span>
+          <span><button value={JSON.stringify(slot)} className={'btn btn-link'} onClick={this.handleSlotSelection} title={slot.id}>Select</button></span>
         </li>
       );
     });
@@ -65,6 +67,7 @@ class SelectSlot extends Component {
   handlerNextBtnClick = () => {
     this.props.appointmentData.slotId = this.state.slotId;
     this.props.appointmentData.ctime = this.state.ctime;
+    this.props.appointmentData.pt_price = this.state.pt_price;
     this.props.onSetAppointmentData(this.props.appointmentData);
   };
   

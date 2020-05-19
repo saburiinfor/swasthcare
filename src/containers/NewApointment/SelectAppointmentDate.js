@@ -171,6 +171,7 @@ class SelectAppointmentDate extends Component {
                       onChange={this.handleChange}
                       startDate={new Date()}
                       monthsShown={2}
+                      minDate={new Date()}
                     />
                   </Col>
                 </Row>

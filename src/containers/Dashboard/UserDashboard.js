@@ -74,7 +74,7 @@ class UserDashboard extends Component {
       pid: null,
       name: this.props.userProfile.name,
       email: this.props.userProfile.email,
-      contactno: this.props.userProfile.contactno
+      contactNo: this.props.userProfile.contactNo
     };
     // Set an activeStage counter to sessionStorage object for moving around pages in wizard
     sessionStorage.setItem('conferkare.appointment.activeStage', 1);

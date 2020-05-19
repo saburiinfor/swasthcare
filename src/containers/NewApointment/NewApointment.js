@@ -45,7 +45,7 @@ class NewApointment extends Component {
         patientid: this.props.userProfile.id,
         name: this.props.userProfile.name,
         email: this.props.userProfile.email,
-        contactno: this.props.userProfile.contactno
+        contactNo: this.props.userProfile.contactNo
       }
     });
   }
@@ -91,17 +91,17 @@ class NewApointment extends Component {
     //   return <Redirect to='/selectPhysician'/>;
     // }
     const btnGroup = this.props.appointmentTypeList.map((item) => (
-      <div className="form-check" key={item.id}>
+      <div className="form-check" key={item.typeId}>
         <label>
           <input
             type="radio"
             name="react-tips"
-            value={item.id}
-            defaultChecked={item.id === "04"}
+            value={item.typeId}
+            defaultChecked={item.typeId === "04"}
             onClick={this.handleAppointmentTypeChange}
             className="form-check-input"
           />
-          {item.apptype}
+          {item.appttype}
         </label>
       </div>
     ));

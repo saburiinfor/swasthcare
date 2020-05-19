@@ -45,7 +45,7 @@ class CreateUser extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   
-  updateContactNo = (telPhoneNumber) => {
+  updatecontactNo = (telPhoneNumber) => {
     const contactNo = telPhoneNumber.trim();
     this.setState({
       contactNo
@@ -97,7 +97,7 @@ class CreateUser extends Component {
                   initialValue=''
                   required={true}
                   flagsImagePath={flags}
-                  onBlur={this.updateContactNo}
+                  onBlur={this.updatecontactNo}
                   placeholder={'911234567890'}
                 />
               </FormGroup>

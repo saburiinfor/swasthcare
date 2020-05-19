@@ -21,7 +21,10 @@ class UserProfile extends Component {
   };
   
   componentDidMount() {
+    let minDate = new Date();
+    minDate.setFullYear(minDate.getFullYear() - 18);
     this.setState({
+      dob: minDate,
       userProfile: {
         uid: this.props.userProfile.id,
         dob: this.props.userProfile.dateofbirth,
@@ -58,7 +61,7 @@ class UserProfile extends Component {
             <Form>
               <FormGroup>
                 <Label>Date of birth</Label><br/>
-                <DatePicker value={this.state.dob} onChange={this.selectUserDOB} format={'y-MM-dd'}/>
+                <DatePicker maxDate={this.state.dob} value={this.state.dob} onChange={this.selectUserDOB} format={'y-MM-dd'}/>
                 <Button className={'updateBtn'} color="primary" onClick={this.updateUserProfile}>Update</Button>
               </FormGroup>
             </Form>

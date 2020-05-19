@@ -38,7 +38,8 @@ export const getAppointmentCostDetails = (appointmentData) => {
       'currency': 'INR',
       'description': 'ConferKare appointment',
       'p_name': appointmentData.name,
-      'p_email': appointmentData.email
+      'p_email': appointmentData.email,
+      'contactno': appointmentData.contactno
     };
     dispatch(getAppointmentCostDetailsSuccess(appointmentCostDetails));
   };

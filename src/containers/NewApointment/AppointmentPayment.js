@@ -59,7 +59,7 @@ class AppointmentPayment extends Component {
       "prefill": {
         "name": this.props.costDetails.p_name,
         "email": this.props.costDetails.p_email,
-        "contact": this.props.costDetails.contactno
+        "contact": this.props.costDetails.contactNo
       },
       "theme": {
         "color": "#F37254"
