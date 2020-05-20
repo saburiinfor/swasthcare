@@ -39,7 +39,7 @@
       "redux-persist": "^6.0.0",
       "redux-thunk": "^2.3.0",
       "sass-loader": "^7.3.1",
-      "typescript": "^3.9.2"
+      "typescript": "^3.9.3"
    },
    "scripts": {
       "start": "react-scripts start",

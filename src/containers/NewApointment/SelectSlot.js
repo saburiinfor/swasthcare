@@ -125,7 +125,7 @@ class SelectSlot extends Component {
                             <input
                               type="radio"
                               name="react-tips"
-                              value={'morning'}
+                              value={'Morning'}
                               onClick={this.handleSlotPeriodChange}
                               className="form-check-input"
                             />
@@ -137,7 +137,7 @@ class SelectSlot extends Component {
                             <input
                               type="radio"
                               name="react-tips"
-                              value={'evening'}
+                              value={'Evening'}
                               onClick={this.handleSlotPeriodChange}
                               className="form-check-input"
                             />
