@@ -48,7 +48,7 @@ class SelectSlot extends Component {
             <span>{slot.startTime}</span>
             <span>{slot.period}</span>
             <span>{slot.waitingTime} mins</span>
-            <span>{slot.status}</span>
+            <span>{slot.slot_status}</span>
             <span>
             {slot.slot_status !== 'Booked' &&
             <button value={JSON.stringify(slot)} className={'btn btn-link'} onClick={this.handleSlotSelection} title={slot.id}>Select</button>
