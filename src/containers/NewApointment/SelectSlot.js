@@ -16,7 +16,8 @@ class SelectSlot extends Component {
     super(props);
     this.state = {
       slotId: null,
-      ctime: ''
+      ctime: '',
+      selectedPeriod: 'all'
     };
     this.handlerNextBtnClick.bind(this);
     this.handleSlotSelection.bind(this);
@@ -25,6 +26,7 @@ class SelectSlot extends Component {
   componentDidMount() {
     let {pid, clinicid, appdate} = this.props.appointmentData;
     this.props.onGetSlots(pid, clinicid, appdate);
+    this.state.slotListing = this.generateSlots(this.props.slotList.slots);
   }
 
   handleSlotSelection = (e) => {
@@ -37,30 +39,43 @@ class SelectSlot extends Component {
   };
   
   generateSlots = (slotList) => {
-    let slotListing = slotList.map((slot) => {
-      return (
-        <li key={slot.id} className={(this.state.slotId === slot.id) ? 'selected' : ''}>
-          <span>{slot.id}</span>
-          <span>{slot.startTime}</span>
-          <span>{slot.period}</span>
-          <span>{slot.waitingTime} mins</span>
-          <span>{slot.status}</span>
-          <span><button value={JSON.stringify(slot)} className={'btn btn-link'} onClick={this.handleSlotSelection} title={slot.id}>Select</button></span>
-        </li>
-      );
-    });
+    let slotListing = "";
+    if(slotList.length > 0) {
+      slotListing = slotList.map((slot) => {
+        return (
+          <li key={slot.id} className={(this.state.slotId === slot.id) ? 'selected' : ''}>
+            <span>{slot.id}</span>
+            <span>{slot.startTime}</span>
+            <span>{slot.period}</span>
+            <span>{slot.waitingTime} mins</span>
+            <span>{slot.status}</span>
+            <span>
+            {slot.slot_status !== 'Booked' &&
+            <button value={JSON.stringify(slot)} className={'btn btn-link'} onClick={this.handleSlotSelection} title={slot.id}>Select</button>
+            }&nbsp;
+          </span>
+          </li>
+        );
+      });
+    }
     return slotListing;
   };
   
-  handleSlotPeriodChange = (e) => {
-    let slots = this.props.slots.slots;
-    if (e.target.value !== 'all') {
-      slots = this.props.slots.slots.filter((slot) => {
-        return slot.period === e.target.value;
+  filterSlots = (period) => {
+    let filterStr = (period === undefined) ? this.state.selectedPeriod : period;
+    let filteredSlots = this.props.slotList.slots;
+    if (filterStr !== 'all') {
+      filteredSlots = this.props.slotList.slots.filter((slot) => {
+        return slot.period === filterStr;
       });
     }
+    return filteredSlots;
+  };
+  
+  handleSlotPeriodChange = (e) => {
     this.setState({
-      slotListing: this.generateSlots(slots)
+      selectedPeriod: e.target.value,
+      slotListing: this.generateSlots(this.filterSlots(e.target.value))
     });
   };
   
@@ -77,7 +92,7 @@ class SelectSlot extends Component {
       sessionStorage.setItem('conferkare.appointment.activeStage', 0);
       return <Redirect to='/'/>;
     }
-    this.state.slotListing = this.generateSlots(this.props.slotList.slots);
+    this.state.slotListing = this.generateSlots(this.filterSlots());
     const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
@@ -154,7 +169,7 @@ class SelectSlot extends Component {
                       <Col>
                         <ul className={'slotsListingContainer'}>
                           <li>
-                            <span>S. No.</span>
+                            <span>ID</span>
                             <span>Slot time</span>
                             <span>Morning/Evening</span>
                             <span>Wait time</span>

@@ -16,6 +16,13 @@ export const clinicsSuccess = (clinicList) => {
   };
 };
 
+export const citiesFailure = (error) => {
+  return {
+    type: actionTypes.CITY_FAILURE,
+    error
+  };
+};
+
 export const clinicsFailure = (error) => {
   return {
     type: actionTypes.CLINIC_FAILURE,
@@ -51,11 +58,16 @@ export const orderPharmaItemsFailure = (error) => {
   };
 };
 
-export const getCities = () => {
+export const getServiceCities = () => {
   return dispatch => {
-    axios.get(process.env.REACT_APP_API_URL + "Market/getcity/").then(
+    axios.get(process.env.REACT_APP_API_URL + "Pharmacyorder/getcityforavailableservice/").then(
       response => {
-        dispatch(citiesSuccess(response.data));
+        // console.log(JSON.stringify(response.data));
+        if (response.data.success === 1) {
+          dispatch(citiesSuccess(response.data.result));
+        } else {
+          dispatch(citiesFailure(response.data.result.errormsg));
+        }
       }).catch(err => {
       console.log(err);
     });
@@ -65,14 +77,14 @@ export const getCities = () => {
 export const getClinics = (city) => {
   return dispatch => {
     const cityData = new FormData();
-    cityData.append('city', city);
-    axios.post(process.env.REACT_APP_API_URL + "Clinic/getregisteredclinicsbycity/", cityData).then(
+    cityData.append('cityId', city);
+    axios.post(process.env.REACT_APP_API_URL + "Pharmacyorder/getclinicsforavailableservice/", cityData).then(
       response => {
         // console.log(JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(clinicsSuccess(response.data.result));
         } else {
-          dispatch(clinicsFailure(response.data.error.errormsg));
+          dispatch(clinicsFailure(response.data.result.errormsg));
         }
       }).catch(err => {
       console.log(err);
@@ -87,8 +99,8 @@ export const generatePharmacyOrderId = (clinicId, userId) => {
     clinicData.append('userId', userId);
     axios.post(process.env.REACT_APP_API_URL + "Pharmacyorder/getpharmaorderid/", clinicData).then(
       response => {
-        console.log('response for generatePharmacyOrderId');
-        console.log(JSON.stringify(response.data));
+        // console.log('response for generatePharmacyOrderId');
+        // console.log(JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(generatePharmacyOrderIdSuccess(response.data.result));
         } else {

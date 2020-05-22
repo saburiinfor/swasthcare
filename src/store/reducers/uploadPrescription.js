@@ -15,6 +15,10 @@ const citiesSuccess = (state, action) => {
   });
 };
 
+const citiesFailure = (state, action) => {
+  return state;
+};
+
 const clinicsSuccess = (state, action) => {
   return updateObject(state, {
     clinicList: action.clinicList
@@ -51,6 +55,8 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CITY_SUCCESS:
       return citiesSuccess(state, action);
+    case actionTypes.CITY_FAILURE:
+      return citiesFailure(state, action);
     case actionTypes.CLINIC_SUCCESS:
       return clinicsSuccess(state, action);
     case actionTypes.CLINIC_FAILURE:

@@ -12,14 +12,16 @@ import bsCustomFileInput from 'bs-custom-file-input'
 import {Alert} from "react-bootstrap";
 
 function CityOptions(cityList) {
-  let activeCities = cityList.cityList.filter(city => city.status === "Active");
-  let optList = activeCities.map((item) => <option key={item.id} value={item.id} selected={item.id === '1' ? true : false}>{item.name}</option>);
+  // console.log("cities list", cityList);
+  // let activeCities = cityList.cityList.filter(city => city.status === "Active");
+  let optList = cityList.cityList.map((item) => <option key={item.cityid} value={item.cityid}>{item.cityname}</option>);
   return optList;
 }
 
 function ClinicOptions(clinicList) {
-  let activeClinics = clinicList.clinicList.filter(clinic => (clinic.status === "Active" && clinic.name !== ""));
-  let optList = activeClinics.map((item) => <option key={item.clinicid} value={item.clinicid} selected={item.clinicid === '26' ? true : false}>{item.name}</option>);
+  // console.log("clinic list", clinicList);
+  // let activeClinics = clinicList.clinicList.filter(clinic => (clinic.status === "Active" && clinic.name !== ""));
+  let optList = clinicList.clinicList.map((item) => <option key={item.clinicid} value={item.clinicid}>{item.name}</option>);
   return optList;
 }
 
@@ -140,13 +142,11 @@ class UploadPrescription extends Component {
             <Row>
               <Col className={'boundingBox'}>
                 <h5>City</h5>
-                <select onChange={this.handleCityChange} defaultValue='1'>
-                  <option value={''}>Select city</option>
+                <select onChange={this.handleCityChange} defaultValue={'1'}>
                   <CityOptions cityList={this.props.cityList}/>
                 </select><br/><br/>
                 <h5>Clinic</h5>
                 <select onChange={this.handleClinicChange} defaultValue='26'>
-                  <option value={''}>Select clinic</option>
                   <ClinicOptions clinicList={this.props.clinicList}/>
                 </select><br/><br/>
                 <Form>
@@ -189,7 +189,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetCities: () => dispatch(actions.getCities()),
+    onGetCities: () => dispatch(actions.getServiceCities()),
     onGetClinics: (city) => dispatch(actions.getClinics(city)),
     onGeneratePharmaOrderId: (clinicId, userId) => dispatch(actions.generatePharmacyOrderId(clinicId, userId)),
     onPlaceOrderPharmaItems: (clinicId, userId, pharmaOrderId, file) => dispatch(actions.placeOrderPharmaItems(clinicId, userId, pharmaOrderId, file))
