@@ -28,6 +28,8 @@ const Header = () => {
     <div className="header">
       <Route exact path="/" component={LoginHeader}/>
       <Route exact path="/login" component={LoginHeader}/>
+      <Route exact path="/forgotPassword" component={LoginHeader}/>
+      <Route exact path="/resetPassword" component={LoginHeader}/>
       <Route exact path="/createuser" component={LoggedHeader}/>
       <Route exact path="/dashboard" component={UserHeader}/>
       <Route exact path="/appointments" component={UserHeader}/>

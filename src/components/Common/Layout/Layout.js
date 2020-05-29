@@ -6,7 +6,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import HeaderMobile from "../../mobile/Header/Header";
 import "./Layout.module.scss";
-import { Route } from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import LoginForm from "../../../containers/Auth/LoginForm";
 import CreateUser from "../../../containers/CreateUser/CreateUser";
 import NewUser from "../../../containers/CreateUser/NewUser";
@@ -20,6 +20,8 @@ import AppointmentPayment from "../../../containers/NewApointment/AppointmentPay
 import SubmitAppointment from "../../../containers/NewApointment/SubmitAppointment";
 import AppointmentCreateResponse from "../../../containers/NewApointment/AppointmentCreateResponse";
 import UploadPrescription from "../../../containers/Pharmacy/UploadPrescription";
+import ForgotPassword from "../../../containers/Auth/ForgotPassword";
+import ResetPassword from "../../../containers/Auth/ResetPassword";
 
 const Layout = (props) => {
   return (
@@ -50,6 +52,8 @@ const Layout = (props) => {
             <Route exact path="/submitAppointment" component={SubmitAppointment}/>
             <Route exact path="/appointmentCreateResponse" component={AppointmentCreateResponse}/>
             <Route exact path="/uploadPrescription" component={UploadPrescription}/>
+            <Route exact path="/forgotPassword" component={ForgotPassword}/>
+            <Route exact path="/resetPassword" component={ResetPassword}/>
           </Row>
         </Container>
         <Footer/>

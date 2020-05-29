@@ -190,7 +190,7 @@ class LoginForm extends Component {
               <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.enableSubmit}>Sign In</ButtonField>
               {errorMessage}
             </Form>
-            {/*<p id="forgotPWD"><a href="#" className="textDn">Forgot username/password </a></p>*/}
+            <p id="forgotPWD"><a href="/forgotPassword" className="textDn">Forgot password </a></p>
             <BrowserView>
               <p id="signUp"><Link to="/createuser" className="textDn">New User, Sign Up </Link></p>
             </BrowserView>

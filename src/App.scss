@@ -5,6 +5,19 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.oneGridBox {
+  margin: 0px auto;
+  min-width: 500px;
+  button, a {
+    margin-left: 3px;
+  }
+  .reset-messages {
+    .form-label {
+      padding-left: 6px;
+    }
+  }
+}
+
 .globalLinks-mob {
   display: none;
 }
@@ -13,6 +26,7 @@ body {
   background: rgb(19, 183, 228);
   background: linear-gradient(136deg, rgba(19, 183, 228, 1) 42%, rgba(89, 122, 239, 1) 35%);
   height: 100%;
+  min-height: 800px;
 }
 
 .logged-bg {
@@ -72,7 +86,7 @@ body {
   }
 }
 
-.bgWhite {
+.bgWhite, .oneGridBox {
   background: #fff;
   border-radius: 10px;
   padding: 20px;
