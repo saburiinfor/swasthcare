@@ -107,8 +107,8 @@ body {
 }
 
 .Footer {
-  //position: relative;
-  bottom: -100px;
+  position: absolute;
+  bottom: 0px;
   min-height: 60px;
   width: 100%;
   padding: 20px 5px;
