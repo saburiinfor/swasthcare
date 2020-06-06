@@ -26,7 +26,7 @@ class Logout extends Component {
           <img src={LogoutIcon} alt={'Sign out'} onClick={this.signoutHandler.bind(null, this)}/>
         </MobileView>
         <BrowserView>
-          <Button color="primary" onClick={this.signoutHandler.bind(null, this)}>Sign out</Button>;
+          <Button color="primary" onClick={this.signoutHandler.bind(null, this)}>Sign out</Button>
         </BrowserView>
       </div>
     )

@@ -194,16 +194,16 @@ class LoginForm extends Component {
             <BrowserView>
               <p id="signUp"><Link to="/createuser" className="textDn">New User, Sign Up </Link></p>
             </BrowserView>
+            <MobileView>
+              <div className="globalLinks-mob">
+                <ul>
+                  <li><Link to="/createuser">Sign Up</Link></li>
+                  <li><Link to="#">Privacy</Link></li>
+                  <li><Link to="#">Contact us</Link></li>
+                </ul>
+              </div>
+            </MobileView>
           </div>
-          <MobileView>
-            <div className="globalLinks-mob">
-              <ul>
-                <li><Link to="/createuser">Sign Up</Link></li>
-                <li><Link to="#">Privacy</Link></li>
-                <li><Link to="#">Contact us</Link></li>
-              </ul>
-            </div>
-          </MobileView>
         </Col>
       </Aux>
     );
