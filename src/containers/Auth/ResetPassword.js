@@ -11,7 +11,8 @@ class ResetPassword extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      passwordMatchError: false,
+      passwordMatchError: true,
+      newPWD: false,
       errorText: 'New password and confirm password should match, please try again.'
     };
   };
@@ -24,6 +25,9 @@ class ResetPassword extends Component {
   changeHandler = (event) => {
     let newpwd = document.querySelector('#newpassword0').value,
       newpwd1 = event.target.value;
+    this.setState({
+      newPWD: true
+    });
     if (newpwd !== newpwd1) {
       this.setState({
         passwordMatchError: true
@@ -80,7 +84,7 @@ class ResetPassword extends Component {
             {(this.props.invalidToken === false && this.props.isPasswordUpdated === false) &&
               <Form.Group>
                 <Form.Row>
-                  {this.state.passwordMatchError &&
+                  {(this.state.passwordMatchError && this.state.newPWD) &&
                   <Alert key={'reset-failure'} variant={'danger'}>
                     {this.state.errorText}
                   </Alert>
@@ -123,7 +127,7 @@ class ResetPassword extends Component {
                   </Form.Group>
                 </Form.Row>
                 <Form.Row>
-                  <Button type="submit">Update password</Button>
+                  <Button disabled={this.state.passwordMatchError} type="submit">Update password</Button>
                 </Form.Row>
               </Form.Group>
             }
