@@ -6,6 +6,7 @@ import BasicButton from "../../components/Common/BasicButton/BasicButton";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from "./Dashboard.module.scss";
 import dateformat from 'dateformat';
+import {Button} from "react-bootstrap";
 
 class AppointmentRow extends Component {
   constructor(props) {
@@ -25,9 +26,9 @@ class AppointmentRow extends Component {
   };
   
   render() {
-    console.log(this.props.appointment);
     let appointmentDate = '',
-      toggleOn = this.props.appointment.status === 'Booked';
+      toggleOn = this.props.appointment.status === 'Booked',
+      appIdNumber = this.props.appointment.appid.substring(1);
     if (this.props.appointment.appdate !== '--') {
       appointmentDate = dateformat(new Date(this.props.appointment.appdate), 'yyyy-mm-dd');
     }
@@ -46,6 +47,11 @@ class AppointmentRow extends Component {
                               childClass="ml-1" childSize="1x" childIcon={faCheck} handleStateChange={this.handleStateChange.bind(this)}/>
               <BasicButton size="sm" text="Reshedule"/>
               {/*<BasicButton color={'default'} size="sm" text="Cancel" onClick={this.cancelAppointment}/>*/}
+            </Col>
+          </Row>
+          <Row>
+            <Col md="12">
+              <Button target={'_new'} variant={'success'} type={'button'} active={true} href={process.env.REACT_APP_VC_URL + 'r/' + appIdNumber}>Video link</Button>
             </Col>
           </Row>
         </Container>

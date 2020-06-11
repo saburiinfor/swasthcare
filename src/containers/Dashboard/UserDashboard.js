@@ -7,7 +7,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen, faUser} from "@fortawesome/free-solid-svg-icons";
 import newAppointment from "../../assets/images/newAppointment.png";
 import {Helmet} from "react-helmet";
-import {Link, Redirect} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../shared";
 import dateformat from 'dateformat';

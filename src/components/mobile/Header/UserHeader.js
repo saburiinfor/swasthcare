@@ -7,6 +7,8 @@ import NotificationIcon from "../../../assets/images/notification-icon.png";
 import {Link} from "react-router-dom";
 import TreatmentIcon from "../../../assets/images/treatment-1.png";
 import PharmacyIcon from "../../../assets/images/pharmacy-100.png";
+import VCActiveIcon from "../../../assets/images/videocall.png";
+import VCIcon from "../../../assets/images/videocall.png";
 
 class UserHeader extends React.Component {
   componentDidMount() {
@@ -27,6 +29,11 @@ class UserHeader extends React.Component {
           <div className={this.props.selectedMenuItem === '2' ? 'navItem active' : 'navItem'}>
             <Link to={'/uploadPrescription'}>
               <img src={PharmacyIcon} alt={'Upload latest prescription and get medicines deliver at your door steps'}/><sup className={'launchItems'} title={'New'}>New</sup>
+            </Link>
+          </div>
+          <div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>
+            <Link to={'/vcSessions'}>
+              <img src={this.props.selectedMenuItem === '3' ? VCActiveIcon : VCIcon} alt={'Video consultations'}/><sup className={'launchItems'} title={'New'}>Beta</sup>
             </Link>
           </div>
         </nav>

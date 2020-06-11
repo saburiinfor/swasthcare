@@ -55,6 +55,9 @@ const Header = () => {
       <Route exact path="/uploadPrescription">
         <UserHeader selectedMenuItem={'2'}/>
       </Route>
+      <Route exact path="/vcSessions">
+        <UserHeader selectedMenuItem={'3'}/>
+      </Route>
     </div>
   );
 };
