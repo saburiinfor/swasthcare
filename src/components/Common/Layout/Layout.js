@@ -37,7 +37,7 @@ const Layout = (props) => {
           </MobileView>
         </div>
         <Container fluid>
-          <Row className="MiddleContainer">
+          <div className="MiddleContainer">
             <Route exact path="/" component={LoginForm}/>
             <Route exact path="/newUser" component={NewUser}/>
             <Route exact path="/login" component={LoginForm}/>
@@ -56,7 +56,7 @@ const Layout = (props) => {
             <Route exact path="/forgotPassword" component={ForgotPassword}/>
             <Route exact path="/resetPassword" component={ResetPassword}/>
             <Route exact path="/vcSessions" component={VCSessions}/>
-          </Row>
+          </div>
         </Container>
         <Footer/>
       </main>

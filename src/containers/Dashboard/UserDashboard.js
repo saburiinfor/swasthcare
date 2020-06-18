@@ -97,7 +97,7 @@ class UserDashboard extends Component {
           ' @media screen and (min-width: 800px) { .header{border-bottom:1px solid #666} } '}</style>
         </Helmet>
         <Row>
-          <Col md="8">
+          <Col md="12">
             <Row className={styles.editBtnRow}>
               <Col>
                 <Button className={styles.editBtn} size="sm">
@@ -138,9 +138,9 @@ class UserDashboard extends Component {
               </Col>
             </Row>
           </Col>
-          <Col md="4">
-            <ImgWithOverlayTextGroup/>
-          </Col>
+          {/*<Col md="4">*/}
+          {/*  <ImgWithOverlayTextGroup/>*/}
+          {/*</Col>*/}
         </Row>
       </Col>
     );

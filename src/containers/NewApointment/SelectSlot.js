@@ -104,7 +104,7 @@ class SelectSlot extends Component {
           <UserProfile/>
         }
         <Row>
-          <Col md="8">
+          <Col md="12">
             <div>
               <h2>Select Slot</h2>
               <Breadcrumb activeStep={'4'} />
@@ -186,9 +186,9 @@ class SelectSlot extends Component {
             </Row>
           </Col>
       
-          <Col md="4">
-            <ImgWithOverlayTextGroup/>
-          </Col>
+          {/*<Col md="4">*/}
+          {/*  <ImgWithOverlayTextGroup/>*/}
+          {/*</Col>*/}
         </Row>
       </Col>
     );

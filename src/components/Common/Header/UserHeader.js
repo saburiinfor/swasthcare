@@ -47,11 +47,11 @@ class UserHeader extends React.Component {
               <img src={PharmacyIcon} alt={'Upload latest prescription and get medicines deliver at your door steps'}/><sup className={'launchItems'} title={'New'}>New</sup>
             </Link>
           </div>
-          <div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>
-            <Link to={'/vcSessions'}>
-              <img src={this.props.selectedMenuItem === '3' ? VCActiveIcon : VCIcon} alt={'Video consultations'}/><sup className={'launchItems'} title={'New'}>Beta</sup>
-            </Link>
-          </div>
+          {/*<div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>*/}
+          {/*  <Link to={'/vcSessions'}>*/}
+          {/*    <img src={this.props.selectedMenuItem === '3' ? VCActiveIcon : VCIcon} alt={'Video consultations'}/><sup className={'launchItems'} title={'New'}>Beta</sup>*/}
+          {/*  </Link>*/}
+          {/*</div>*/}
         </nav>
       </div>
     );

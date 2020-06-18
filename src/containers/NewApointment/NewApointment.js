@@ -116,7 +116,7 @@ class NewApointment extends Component {
           <UserProfile/>
         }
         <Row>
-          <Col md="8">
+          <Col md="12">
             <div>
               <h2>Select city and appointment type</h2>
               <Breadcrumb activeStep={'1'}/>
@@ -155,9 +155,9 @@ class NewApointment extends Component {
             </Row>
           </Col>
           
-          <Col md="4">
-            <ImgWithOverlayTextGroup/>
-          </Col>
+          {/*<Col md="4">*/}
+          {/*  <ImgWithOverlayTextGroup/>*/}
+          {/*</Col>*/}
         </Row>
       </Col>
     

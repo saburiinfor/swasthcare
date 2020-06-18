@@ -8,9 +8,11 @@ body {
 .oneGridBox {
   margin: 0px auto;
   min-width: 500px;
+
   button, a {
     margin-left: 3px;
   }
+
   .reset-messages {
     .form-label {
       padding-left: 6px;
@@ -33,31 +35,43 @@ body {
   background-color: #fff;
 }
 
-.keyFeatures ul {
-  list-style-type: none;
+.keyFeatures {
+  background-image: radial-gradient(circle at top, #193DC9, #0C1558); // #1A39C3 #101961 #0C1558
+  font-size: 22px;
+  font-weight: bold;
+  padding: 0px 50px;
+  color: #fff;
+  .featuresHead {
+    text-align: justify;
+    margin: 40px;
+  }
 
-  li {
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 35px;
-    padding-bottom: 15px;
-    text-shadow: #0d1319 2px 2px 3px;
+  ul {
+    list-style-type: none;
+
+    li {
+      line-height: 35px;
+      padding-bottom: 15px;
+    }
   }
 }
 
 .form {
   .form-group {
     width: auto;
+
     .form-control {
       border: none;
       border-bottom: 1px solid #a9a9a9;
       border-radius: 0px;
     }
+
     .form-check-input {
       margin-left: 0px !important;
       float: left;
       left: 20px;
     }
+
     label {
       color: #666666;
       margin-left: 20px;
@@ -77,6 +91,7 @@ body {
       font-size: .9rem;
     }
   }
+
   .btn-primary {
     width: 100% !important;
     float: left !important;
@@ -92,6 +107,7 @@ body {
   padding: 20px;
   margin-top: 20px;
   box-shadow: #0d1319 2px 2px 4px;
+
   .welcomeMsg {
     font-size: 22px;
     font-weight: bold;
@@ -187,10 +203,12 @@ body {
 
 .carousel {
   margin: 20px 0px;
+
   .carousel-inner {
     width: 80%;
     left: 10%;
   }
+
   .carousel-control-prev,
   .carousel-control-next {
     cursor: pointer;
@@ -201,6 +219,7 @@ body {
   .carousel-item.active {
     align-items: center;
   }
+
   .carousel-indicators li {
     background-color: #000000;
   }
@@ -238,7 +257,7 @@ body {
     padding: 10px;
     margin-top: calc(50vh - 250px);
     width: 100%;
-    float:left;
+    float: left;
 
     .row {
       clear: both;

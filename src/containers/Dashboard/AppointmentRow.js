@@ -49,11 +49,13 @@ class AppointmentRow extends Component {
               {/*<BasicButton color={'default'} size="sm" text="Cancel" onClick={this.cancelAppointment}/>*/}
             </Col>
           </Row>
+          {this.props.appointment.apptype === "01" &&
           <Row>
             <Col md="12">
-              <Button target={'_new'} variant={'success'} type={'button'} active={true} href={process.env.REACT_APP_VC_URL + 'r/' + appIdNumber}>Video link</Button>
+              <Button target={'_new'} variant={'success'} type={'button'} active={true} href={this.props.appointment.connectionlink}>Video link</Button>
             </Col>
           </Row>
+          }
         </Container>
       </Jumbotron>
     );

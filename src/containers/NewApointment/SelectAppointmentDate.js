@@ -107,7 +107,7 @@ class SelectAppointmentDate extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md="8">
+          <Col md="12">
             <div className={styles.selectDate}>
               <h4>
                 Select appointment Date
@@ -178,7 +178,7 @@ class SelectAppointmentDate extends Component {
               </div>
             </div>
           </Col>
-          <Col md="4">{<ImgWithOverlayTextGroup/>}</Col>
+          {/*<Col md="4">{<ImgWithOverlayTextGroup/>}</Col>*/}
         </Row>
       </Col>
     );
