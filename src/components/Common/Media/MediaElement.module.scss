@@ -26,19 +26,33 @@
   padding-bottom: 15px;
 }
 
-.appointmentList h4 {
-  background-color: #ccc;
-  padding: 10px;
-}
-
-.appointmentList input {
-  margin: 20px 2%;
-  width: 46%;
+.appointmentList {
+  h4 {
+    background-color: #ccc;
+    padding: 10px;
+  }
+  input {
+    margin: 20px 15px;
+    width: 46%;
+  }
 }
 
 @media (max-width: 768px) {
   .mediaElement {
     width: 98%;
+    margin: .25rem!important;
+  }
+
+  .appointmentList {
+    height: 510px;
+    overflow: scroll;
+    h4 {
+      font-size: 1em;
+    }
+    input {
+      margin: 0px;
+      width: 100%;
+    }
   }
 
   .widthHalf {

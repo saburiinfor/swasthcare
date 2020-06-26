@@ -102,14 +102,16 @@ class AppointmentPayment extends Component {
             <Row>
               <Col>
                 <div className={'paymentBox'}>
-                  <h4>
-                    Make payment for appointment
+                  <div className={'stepHeader'}>
+                    <h4>
+                      Make payment for appointment
+                    </h4>
                     <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={ this.state.razorpay_payment_id === undefined ? 1 : 0 } />
-                  </h4>
+                  </div>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
                   </Helmet>
-                  <div>
+                  <div className={'stepSelectionBox'}>
                     <form ref={this.formRef}/>
                     <Row>
                       <Col>

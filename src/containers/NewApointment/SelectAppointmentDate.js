@@ -109,14 +109,17 @@ class SelectAppointmentDate extends Component {
         <Row>
           <Col md="12">
             <div className={styles.selectDate}>
-              <h4>
-                Select appointment Date
+              <div className={'stepHeader'}>
+                <h4>
+                  Select appointment Date
+                </h4>
                 <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
-              </h4>
+              </div>
               <Helmet>
-                <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
+                <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo' +
+                ' img{height:80px} @media only screen and (max-width: 700px) { .react-datepicker__month-container { width: 100%; }} '}</style>
               </Helmet>
-              <div>
+              <div className={'stepSelectionBox'}>
                 <Row>
                   <Col md="4">
                     <Input
@@ -164,7 +167,7 @@ class SelectAppointmentDate extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Col md="12" className="mt-5">
+                  <Col md="12" className="mt-2">
                     <DatePicker
                       selected={this.state.startDate}
                       inline
@@ -172,6 +175,7 @@ class SelectAppointmentDate extends Component {
                       startDate={new Date()}
                       monthsShown={2}
                       minDate={new Date()}
+                      calendarClassName={styles.selectDateCalendar}
                     />
                   </Col>
                 </Row>

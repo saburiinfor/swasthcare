@@ -39,7 +39,7 @@ class AppointmentRow extends Component {
           this.state.parentSelected ? styles.confirmed : ""
         )}
       >
-        <Container fluid>
+        <Col md="12" className="mt10">
           <Row>
             <Col md="7" className={styles.appointmentDesc}>Meet physician on {appointmentDate}</Col>
             <Col md="5" className={styles.appointmentBtns}>
@@ -56,7 +56,7 @@ class AppointmentRow extends Component {
             </Col>
           </Row>
           }
-        </Container>
+        </Col>
       </Jumbotron>
     );
   }

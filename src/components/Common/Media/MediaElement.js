@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {Button, Col, ListGroup, ListGroupItem, Media, Row} from "reactstrap";
 import {faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import styles from "./MediaElement.module.css";
+import styles from "./MediaElement.module.scss";
 import classnames from "classnames";
 
 class MediaElement extends Component {
@@ -40,7 +40,7 @@ class MediaElement extends Component {
           <div className="text-center">
             <FontAwesomeIcon color="#ccc" size="5x" icon={faUser}/>
           </div>
-          <div>{starIconArray}</div>
+          {/*<div>{starIconArray}</div>*/}
           <Button className="pt-0" color="link" onClick={this.selectPhysician.bind(null, panelData.id, panelData.clinicid)}>
             { (this.props.appointmentData.pid === panelData.id) ? 'Selected' : 'Select' }
           </Button>

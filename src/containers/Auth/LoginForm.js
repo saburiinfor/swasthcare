@@ -218,7 +218,7 @@ class LoginForm extends Component {
           <Col md={"4"}>
             <ul>
               <li>Phone appointments</li>
-              <li>Order Medicines</li>
+              <li>Order Home Physiotherapy</li>
               <li>Access Health Records</li>
             </ul>
           </Col>

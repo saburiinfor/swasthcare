@@ -4,7 +4,6 @@
   border-radius: .5rem .5rem 0px 0px;
   background-color: #fff;
   color: #000000;
-  min-width: 100px;
 }
 
 .tabCalendar {
@@ -22,7 +21,7 @@
 .appointments {
   margin: 15px;
   padding: 0px;
-  width: auto;
+  width: 100%;
   border-top: 1px solid #333333;
   .appointmentSection {
     border: 1px darkgrey solid;
@@ -67,6 +66,9 @@
   .editBtnRow {
     height: 1px;
   }
+  .appointments {
+    margin-top: 15px;
+  }
   .customTabs {
     height: 25vh;
     margin-bottom: 10px;
@@ -79,6 +81,10 @@
 @media only screen and (max-width: 500px) {
   .editBtnRow {
     height: 1px;
+  }
+  .appointments {
+    margin: 0px;
+    margin-top: 15px;
   }
   .customTabs {
     height: 28vh;
