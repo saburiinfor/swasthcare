@@ -124,19 +124,19 @@ class AppointmentPayment extends Component {
                           <tbody>
                             <tr>
                               <td>Appointment description</td>
-                              <td>{this.props.costDetails.description}</td>
+                              <td className={'detailsColumn'}>{this.props.costDetails.description}</td>
                             </tr>
                             <tr>
                               <td>Appointment charges</td>
-                              <td>Rs. {this.state.consultfee}</td>
+                              <td className={'detailsColumn'}>Rs. {this.state.consultfee}</td>
                             </tr>
                             <tr>
                               <td>Patient name</td>
-                              <td>{this.props.costDetails.p_name}</td>
+                              <td className={'detailsColumn'}>{this.props.costDetails.p_name}</td>
                             </tr>
                             <tr>
                               <td>Patient email</td>
-                              <td>{this.props.costDetails.p_email}</td>
+                              <td className={'detailsColumn'}>{this.props.costDetails.p_email}</td>
                             </tr>
                           </tbody>
                         </table>

@@ -304,6 +304,11 @@ body {
       float: left;
       margin-top: 2px;
     }
+    .detailsColumn {
+      width: 190px;
+      float: left;
+      overflow: scroll;
+    }
   }
 
   .bgWhite {
