@@ -25,6 +25,7 @@ const Header = () => {
       <Route exact path="/resetPassword" component={LoginHeader}/>
       <Route exact path="/createuser" component={LoggedHeader}/>
       <Route exact path="/dashboard" component={UserHeader}/>
+      <Route exact path="/manageAccount" component={UserHeader}/>
       <Route exact path="/appointments">
         <UserHeader selectedMenuItem={'1'}/>
       </Route>

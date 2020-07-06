@@ -110,7 +110,7 @@ class UserDashboard extends Component {
             <Row>
               <Col className="text-center">
                 <FontAwesomeIcon className="mr-2" color="#ccc" size="5x" icon={faUser}/>
-                <div className="mb-4">70% profile complete</div>
+                {/*<div className="mb-4">70% profile complete</div>*/}
               </Col>
             </Row>
             { this.props.profileCompliant === false &&

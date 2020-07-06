@@ -28,7 +28,7 @@ body {
   background: rgb(19, 183, 228);
   background: linear-gradient(136deg, rgba(19, 183, 228, 1) 42%, rgba(89, 122, 239, 1) 35%);
   height: 100%;
-  min-height: 800px;
+  //min-height: 800px;
 }
 
 .logged-bg {
@@ -42,6 +42,7 @@ body {
   font-weight: bold;
   padding: 0px 50px;
   color: #fff;
+
   .featuresHead {
     text-align: justify;
     margin: 40px;
@@ -116,35 +117,44 @@ body {
   }
 }
 
-.MiddleContainer {
-  .selectDate {
-    border: 1px #ccc solid;
-    border-radius: 3px;
-    width: 100%;
-    float: left;
-    div {
-      padding: 15px;
+.container-fluid {
+  min-height: 600px;
+
+  .MiddleContainer {
+    .selectDate {
+      border: 1px #ccc solid;
+      border-radius: 3px;
+      width: 100%;
+      float: left;
+
+      div {
+        padding: 15px;
+      }
     }
-  }
-  .stepHeader {
-    width: 100%;
-    background-color: #ccc;
-    padding: 0px !important;
-    float: left;
-  }
-  .stepSelectionBox {
-    float: left;
-    width: 100%;
-  }
-  h2 {
-    font-size: 1.5rem;
-  }
-  h4 {
-    font-size: 1rem;
-    float: left;
-    margin-top: 2px;
-    margin-bottom: 6px;
-    padding: 10px;
+
+    .stepHeader {
+      width: 100%;
+      background-color: #ccc;
+      padding: 0px !important;
+      float: left;
+    }
+
+    .stepSelectionBox {
+      float: left;
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+      float: left;
+      margin-top: 2px;
+      margin-bottom: 6px;
+      padding: 10px;
+    }
   }
 }
 
@@ -156,11 +166,13 @@ body {
 }
 
 .Footer {
-  //position: absolute;
+  position: fixed;
   bottom: 0px;
   min-height: 60px;
   width: 100%;
   padding: 20px 5px;
+  border-top: 1px solid #dcdcdc;
+  background-color: #FFFFFF;
 }
 
 .FooterCnt {
@@ -283,7 +295,7 @@ body {
     height: calc(100vh - 300px) !important;
   }
   .container-fluid {
-    height: 640px;
+    height: 550px;
     overflow: scroll;
   }
   .MiddleContainer {
@@ -293,18 +305,22 @@ body {
       padding-left: 0px;
       padding-right: 0px;
     }
+
     .col .stepSelectionBox {
       float: left;
     }
+
     h2 {
       font-size: 1.5rem;
     }
+
     h4 {
       font-size: 1rem;
       width: 175px;
       float: left;
       margin-top: 2px;
     }
+
     .detailsColumn {
       width: 190px;
       float: left;

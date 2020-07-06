@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Button, Col, Row, Form, FormGroup, Label } from "reactstrap";
-import "./UserProfile.scss";
+import "./UserManagement.scss";
 import { connect } from "react-redux";
 import * as actions from "../../shared";
 import dateformat from 'dateformat';
