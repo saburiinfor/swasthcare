@@ -8,6 +8,8 @@ import React from "react";
 import './Header.desktop.scss';
 import PharmacyIcon from '../../../assets/images/pharmacy-100.png';
 import TreatmentIcon from '../../../assets/images/treatment-1.png';
+import VCIcon from '../../../assets/images/videocall.png';
+import VCActiveIcon from '../../../assets/images/videocall-active.png';
 
 class UserHeader extends React.Component {
   componentDidMount() {
@@ -45,6 +47,11 @@ class UserHeader extends React.Component {
               <img src={PharmacyIcon} alt={'Upload latest prescription and get medicines deliver at your door steps'}/><sup className={'launchItems'} title={'New'}>New</sup>
             </Link>
           </div>
+          {/*<div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>*/}
+          {/*  <Link to={'/vcSessions'}>*/}
+          {/*    <img src={this.props.selectedMenuItem === '3' ? VCActiveIcon : VCIcon} alt={'Video consultations'}/><sup className={'launchItems'} title={'New'}>Beta</sup>*/}
+          {/*  </Link>*/}
+          {/*</div>*/}
         </nav>
       </div>
     );

@@ -6,6 +6,7 @@ import BasicButton from "../../components/Common/BasicButton/BasicButton";
 import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import styles from "./Dashboard.module.scss";
 import dateformat from 'dateformat';
+import {Button} from "react-bootstrap";
 
 class AppointmentRow extends Component {
   constructor(props) {
@@ -25,9 +26,9 @@ class AppointmentRow extends Component {
   };
   
   render() {
-    console.log(this.props.appointment);
     let appointmentDate = '',
-      toggleOn = this.props.appointment.status === 'Booked';
+      toggleOn = this.props.appointment.status === 'Booked',
+      appIdNumber = this.props.appointment.appid.substring(1);
     if (this.props.appointment.appdate !== '--') {
       appointmentDate = dateformat(new Date(this.props.appointment.appdate), 'yyyy-mm-dd');
     }
@@ -38,7 +39,7 @@ class AppointmentRow extends Component {
           this.state.parentSelected ? styles.confirmed : ""
         )}
       >
-        <Container fluid>
+        <Col md="12" className="mt10">
           <Row>
             <Col md="7" className={styles.appointmentDesc}>Meet physician on {appointmentDate}</Col>
             <Col md="5" className={styles.appointmentBtns}>
@@ -48,7 +49,14 @@ class AppointmentRow extends Component {
               {/*<BasicButton color={'default'} size="sm" text="Cancel" onClick={this.cancelAppointment}/>*/}
             </Col>
           </Row>
-        </Container>
+          {this.props.appointment.apptype === "01" &&
+          <Row>
+            <Col md="12">
+              <Button target={'_new'} variant={'success'} type={'button'} active={true} href={this.props.appointment.connectionlink}>Video link</Button>
+            </Col>
+          </Row>
+          }
+        </Col>
       </Jumbotron>
     );
   }

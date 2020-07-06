@@ -51,7 +51,7 @@ class AddComplaints extends Component {
           <UserProfile/>
         }
         <Row>
-          <Col md="8">
+          <Col md="12">
             <div>
               <h2>Add complaints/concerns</h2>
               <Breadcrumb activeStep={'5'} />
@@ -59,14 +59,16 @@ class AddComplaints extends Component {
             <Row>
               <Col>
                 <div className={'slotBox'}>
-                  <h4>
-                    Describe your health problems
+                  <div className={'stepHeader'}>
+                    <h4>
+                      Describe your health problems
+                    </h4>
                     <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
-                  </h4>
+                  </div>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
                   </Helmet>
-                  <div>
+                  <div className={'stepSelectionBox'}>
                     <Row>
                       <Col>
                         <textarea key={'complaintDesc'} onBlur={this.handleAddComplaintDescription}/>
@@ -78,9 +80,9 @@ class AddComplaints extends Component {
             </Row>
           </Col>
       
-          <Col md="4">
-            <ImgWithOverlayTextGroup/>
-          </Col>
+          {/*<Col md="4">*/}
+          {/*  <ImgWithOverlayTextGroup/>*/}
+          {/*</Col>*/}
         </Row>
       </Col>
     );

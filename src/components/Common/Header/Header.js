@@ -58,6 +58,9 @@ class Header extends React.Component {
         </Route>
         <Route exact path="/forgotPassword" component={LoginHeader} />
         <Route exact path="/resetPassword" component={LoginHeader} />
+        <Route exact path="/vcSessions">
+          <UserHeader selectedMenuItem={'3'}/>
+        </Route>
       </div>
     );
   }

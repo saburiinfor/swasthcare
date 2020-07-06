@@ -54,7 +54,7 @@ class SubmitAppointment extends Component {
         </Row>
         }
         <Row>
-          <Col md="8">
+          <Col md="12">
             <div>
               <h2>Appointment details</h2>
               <Breadcrumb activeStep={'7'} />
@@ -62,14 +62,16 @@ class SubmitAppointment extends Component {
             <Row>
               <Col>
                 <div className={styles.appointmentBox}>
-                  <h4>
-                    Submit appointment application
+                  <div className={'stepHeader'}>
+                    <h4>
+                      Submit application
+                    </h4>
                     <WizardButtons />
-                  </h4>
+                  </div>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
                   </Helmet>
-                  <div>
+                  <div className={'stepSelectionBox'}>
                     <Row>
                       <Col>
                         <table className={styles.appointmentTable}>
@@ -138,9 +140,9 @@ class SubmitAppointment extends Component {
               </Col>
             </Row>
           </Col>
-          <Col md="4">
-            <ImgWithOverlayTextGroup/>
-          </Col>
+          {/*<Col md="4">*/}
+          {/*  <ImgWithOverlayTextGroup/>*/}
+          {/*</Col>*/}
         </Row>
       </Col>
     );

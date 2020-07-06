@@ -85,3 +85,173 @@
     }
   }
 }
+
+@media only screen and (max-width: 700px) {
+  .customBreadcrumb {
+    margin: 1em auto;
+    height: 60px;
+
+    li {
+      width: 2em;
+      height: 2em;
+      margin: 0 0.7em;
+
+      span.stepText {
+        color: #111111;
+        position: relative;
+        bottom: -15px;
+        font-size: 9px;
+      }
+
+      img {
+        display: none;
+      }
+
+      span.stepDivider {
+        width: 25px;
+        height: 4px;
+        border: 2px solid #999999;
+        right: -28px;
+        top: -86px;
+        position: relative;
+        display: inline-block;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 2em;
+        left: -4em;
+        width: 4em;
+        height: .2em;
+        background: #ccc;
+        z-index: -1;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:first-child::before {
+        display: none;
+      }
+
+      &.active {
+        background: #1774C3;
+        font-weight: bold;
+      }
+
+      &.active ~ li {
+        background: #ccc;
+      }
+
+      &.confirmed {
+        background-color: #59C51A;
+        img {
+          position: relative;
+          top: -123px;
+          left: 9px;
+          width: 15px;
+          height: 15px;
+          display: block !important;
+        }
+      }
+
+      &.active ~ li::before {
+        background: #ccc;
+      }
+
+      &:last-child {
+        span.stepDivider {
+          right: 0px;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .customBreadcrumb {
+    margin: 1em auto;
+    height: 60px;
+
+    li {
+      width: 2em;
+      height: 2em;
+      margin: 0 0.5em;
+
+      span.stepText {
+        color: #111111;
+        position: relative;
+        bottom: -15px;
+        font-size: 9px;
+      }
+
+      img {
+        display: none;
+      }
+
+      span.stepDivider {
+        width: 25px;
+        height: 4px;
+        border: 2px solid #999999;
+        right: -28px;
+        top: -86px;
+        position: relative;
+        display: inline-block;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 2em;
+        left: -4em;
+        width: 4em;
+        height: .2em;
+        background: #ccc;
+        z-index: -1;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:first-child::before {
+        display: none;
+      }
+
+      &.active {
+        background: #1774C3;
+        font-weight: bold;
+      }
+
+      &.active ~ li {
+        background: #ccc;
+      }
+
+      &.confirmed {
+        background-color: #59C51A;
+        img {
+          position: relative;
+          top: -123px;
+          left: 9px;
+          width: 15px;
+          height: 15px;
+          display: block !important;
+        }
+      }
+
+      &.active ~ li::before {
+        background: #ccc;
+      }
+
+      &:last-child {
+        span.stepDivider {
+          right: 0px;
+          border-color: transparent;
+        }
+      }
+    }
+  }
+}

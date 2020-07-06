@@ -164,48 +164,66 @@ class LoginForm extends Component {
       return <Redirect to={this.props.authRedirectPath}/>;
     }
     return (
-      <Aux>
-        <Col sm="8">
-          <BrowserView>
-            <Carousel/>
-            <div className="keyFeatures">
-              <ul>
-                <li>* Flexibility in Booking and Scheduling Appointments Via Calendar </li>
-                <li>* 10,000 Doctors, 30,000 Lab Facilities and 8,000  Associated Clinics  </li>
-                <li>* Store & Access Electronic Prescriptions and Lab Reports </li>
-                <li>* Get Reminder via SMS and Mail </li>
-                <li>* Make Easy and Secure Online Payment</li>
-                <li>* Trusted by 50,000 Customers</li>
-                <li>* 24x7 Expert Support</li>
-                <li>* Home Clinic Services</li>
-              </ul>
-            </div>
-          </BrowserView>
-        </Col>
-        <Col sm="4">
-          <div className="bgWhite">
-            <div className={'welcomeMsg'}>Welcome to ConferKare</div>
-            <Form className="form" noValidate>
-              {form}
-              <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.enableSubmit}>Sign In</ButtonField>
-              {errorMessage}
-            </Form>
-            <p id="forgotPWD"><a href="/forgotPassword" className="textDn">Forgot password </a></p>
-            <BrowserView>
-              <p id="signUp"><Link to="/createuser" className="textDn">New User, Sign Up </Link></p>
-            </BrowserView>
-            <MobileView>
-              <div className="globalLinks-mob">
-                <ul>
-                  <li><Link to="/createuser">Sign Up</Link></li>
-                  <li><Link to="#">Privacy</Link></li>
-                  <li><Link to="#">Contact us</Link></li>
-                </ul>
+      <div>
+        <Row>
+          <Aux>
+            <Col sm="8">
+              <BrowserView>
+                <Carousel/>
+              </BrowserView>
+            </Col>
+            <Col sm="4">
+              <div className="bgWhite">
+                <div className={'welcomeMsg'}>Welcome to ConferKare</div>
+                <Form className="form" noValidate>
+                  {form}
+                  <ButtonField color="primary" className={'submitBtn'} btnType="customButton" clicked={this.submitHandler} disabled={!this.state.enableSubmit}>Sign In</ButtonField>
+                  {errorMessage}
+                </Form>
+                <p id="forgotPWD"><a href="/forgotPassword" className="textDn">Forgot password </a></p>
+                <BrowserView>
+                  <p id="signUp"><Link to="/createuser" className="textDn">New User, Sign Up </Link></p>
+                </BrowserView>
+                <MobileView>
+                  <div className="globalLinks-mob">
+                    <ul>
+                      <li><Link to="/createuser">Sign Up</Link></li>
+                      <li><Link to="#">Privacy</Link></li>
+                      <li><Link to="#">Contact us</Link></li>
+                    </ul>
+                  </div>
+                </MobileView>
               </div>
-            </MobileView>
+            </Col>
+          </Aux>
+        </Row>
+        <Row className="keyFeatures">
+          <div className={"featuresHead"}>
+            Get care at our SimpleeKare clinics or try our telehealth options. You have the convenience to get all your healthcare needs and maintain your personal doctor relationship.
           </div>
-        </Col>
-      </Aux>
+          <Col md={"4"}>
+            <ul>
+              <li>Clinic appointments</li>
+              <li>Order Lab Tests</li>
+              <li>Order home health services</li>
+            </ul>
+          </Col>
+          <Col md={"4"}>
+            <ul>
+              <li>Video appointments</li>
+              <li>Order Medicines</li>
+              <li>Pay Online</li>
+            </ul>
+          </Col>
+          <Col md={"4"}>
+            <ul>
+              <li>Phone appointments</li>
+              <li>Order Home Physiotherapy</li>
+              <li>Access Health Records</li>
+            </ul>
+          </Col>
+        </Row>
+      </div>
     );
   }
 }

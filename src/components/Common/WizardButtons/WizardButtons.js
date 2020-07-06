@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {Button, Form} from "react-bootstrap";
+import {BrowserView, MobileView} from 'react-device-detect';
 import './WizardButtons.scss';
 
 class WizardButtons extends Component {
@@ -55,10 +56,18 @@ class WizardButtons extends Component {
   render() {
     return (
       <div className={'wizBtnsContainer'}>
-        <Button variant={'primary'} onClick={this.backButtonClick}>Back</Button>
-        {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
-        <Button variant={'primary'} onClick={this.nextButtonClick} disabled={!this.state.processing}>Continue</Button>
-        }
+        <BrowserView>
+          <Button variant={'primary'} onClick={this.backButtonClick}>Back</Button>
+          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
+          <Button variant={'primary'} onClick={this.nextButtonClick} disabled={!this.state.processing}>Continue</Button>
+          }
+        </BrowserView>
+        <MobileView>
+          <Button size={'sm'} variant={'primary'} onClick={this.backButtonClick}>Back</Button>
+          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
+          <Button size={'sm'} variant={'primary'} onClick={this.nextButtonClick} disabled={!this.state.processing}>Continue</Button>
+          }
+        </MobileView>
       </div>
     );
   }

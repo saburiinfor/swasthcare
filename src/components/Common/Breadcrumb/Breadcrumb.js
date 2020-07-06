@@ -7,11 +7,11 @@ class Breadcrumb extends Component {
   componentDidMount() {
     const activeSteps = parseInt(this.props.activeStep);
     for (const key in this.refs) {
-      if (key.replace('step', '')  < activeSteps) {
+      if (key.replace('step', '') < activeSteps) {
         this.refs[key].className += ' confirmed';
       }
     }
-    this.refs['step'+activeSteps].className += ' active';
+    this.refs['step' + activeSteps].className += ' active';
   }
   
   render() {

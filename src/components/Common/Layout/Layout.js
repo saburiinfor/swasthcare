@@ -22,6 +22,7 @@ import AppointmentCreateResponse from "../../../containers/NewApointment/Appoint
 import UploadPrescription from "../../../containers/Pharmacy/UploadPrescription";
 import ForgotPassword from "../../../containers/Auth/ForgotPassword";
 import ResetPassword from "../../../containers/Auth/ResetPassword";
+import VCSessions from "../../../containers/VideoConsultations/VCSessions";
 
 const Layout = (props) => {
   return (
@@ -36,7 +37,7 @@ const Layout = (props) => {
           </MobileView>
         </div>
         <Container fluid>
-          <Row className="MiddleContainer">
+          <div className="MiddleContainer">
             <Route exact path="/" component={LoginForm}/>
             <Route exact path="/newUser" component={NewUser}/>
             <Route exact path="/login" component={LoginForm}/>
@@ -54,7 +55,8 @@ const Layout = (props) => {
             <Route exact path="/uploadPrescription" component={UploadPrescription}/>
             <Route exact path="/forgotPassword" component={ForgotPassword}/>
             <Route exact path="/resetPassword" component={ResetPassword}/>
-          </Row>
+            <Route exact path="/vcSessions" component={VCSessions}/>
+          </div>
         </Container>
         <Footer/>
       </main>

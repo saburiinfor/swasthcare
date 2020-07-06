@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import MediaElement from "./MediaElement";
 import {Input} from "reactstrap";
-import styles from "./MediaElement.module.css";
-import { connect } from 'react-redux';
+import styles from "./MediaElement.module.scss";
+import {connect} from 'react-redux';
 import * as actions from "../../../shared";
 import WizardButtons from "../WizardButtons/WizardButtons";
 
@@ -39,24 +39,28 @@ class MediaElementGroup extends Component {
     const {filter} = this.state;
     const filteredData = this.props.physicianList.filter((item) => {
       return Object.keys(item).some(key =>
-        (item[key] !== null) ? item[key].toLowerCase().includes(filter.toLowerCase()):false
+        (item[key] !== null) ? item[key].toLowerCase().includes(filter.toLowerCase()) : false
       );
     });
     return (
       <div className={styles.appointmentList}>
-        <h4>Select the doctor
+        <div className={'stepHeader'}>
+          <h4>Select the doctor
+          </h4>
           <WizardButtons nextBtnCallback={this.handlerNextBtnClick}/>
-        </h4>
+        </div>
+        <div className={'stepSelectionBox'}>
           {this.props.plistError !== null &&
-            <h6 style={{color: '#FF0000', marginLeft: '20px'}}>No physicians available in selected city, please try after sometime...</h6>
+          <h6 style={{color: '#FF0000', marginLeft: '20px'}}>No physicians available in selected city, please try after sometime...</h6>
           }
-          <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
-          { this.props.error !== null &&
-            <p>Physician details not found, please select another one</p>
+          <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange}/>
+          {this.props.error !== null &&
+          <p>Physician details not found, please select another one</p>
           }
           {filteredData.map((item, index) => (
             <MediaElement noOfStars="5" record={item} key={index} className="styles.mediaElement" {...this.props} />
           ))}
+        </div>
       </div>
     );
   }
@@ -76,7 +80,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData)),
-    onGetPhysicianById: (pid, clinicid) => dispatch(actions.getPhysicianById(pid,clinicid)),
+    onGetPhysicianById: (pid, clinicid) => dispatch(actions.getPhysicianById(pid, clinicid)),
     onSetPhysicianFilterText: (filterText) => dispatch(actions.setPhysicianFilterText(filterText))
   };
 };

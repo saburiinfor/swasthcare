@@ -6,8 +6,10 @@ import styles from "./Dashboard.module.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPen, faUser} from "@fortawesome/free-solid-svg-icons";
 import newAppointment from "../../assets/images/newAppointment.png";
+import newAppointmentMobile from "../../assets/images/newAppointment-2.png";
+import {BrowserView, MobileView} from "react-device-detect";
 import {Helmet} from "react-helmet";
-import {Link, Redirect} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../../shared";
 import dateformat from 'dateformat';
@@ -91,13 +93,13 @@ class UserDashboard extends Component {
       <Col md="12" className="mt10">
         <Redirect to={pageUrl}/>
         <Helmet>
-          <style>{'.header .logo h2{color:#333;} .tar{text-align:right;} .mt10{margin-top:10px;} main{ background: #fff; } .header' +
+          <style>{'.header .logo h2{color:#333;} .tar {text-align:right;margin-bottom: 5px;} .mt10{margin-top:10px;} main{ background: #fff; } .header' +
           ' .search{border:1px' +
           ' solid #ccc}' +
           ' @media screen and (min-width: 800px) { .header{border-bottom:1px solid #666} } '}</style>
         </Helmet>
         <Row>
-          <Col md="8">
+          <Col md="12">
             <Row className={styles.editBtnRow}>
               <Col>
                 <Button className={styles.editBtn} size="sm">
@@ -117,7 +119,14 @@ class UserDashboard extends Component {
             <Row>
               <Col>
                 <div className="tar">
-                  <Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn" alt={'New appointment'}/></Link>
+                  <BrowserView>
+                    <Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointment} className="appointmentBtn" title={'New appointment'} alt={'New' +
+                    ' appointment'}/></Link>
+                  </BrowserView>
+                  <MobileView>
+                    <Link to="/newAppointment" onClick={this.initializeAppointment}><img src={newAppointmentMobile} className="appointmentBtn" title={'New appointment'} alt={'New' +
+                    ' appointment'}/>&nbsp;New appointment</Link>
+                  </MobileView>
                 </div>
                 <div>
                   <Button className={this.state.activeTab === '1' ? styles.tabButtons + ' active' : styles.tabButtons} onClick={this.toggle.bind(this, '1')}>
@@ -138,9 +147,9 @@ class UserDashboard extends Component {
               </Col>
             </Row>
           </Col>
-          <Col md="4">
-            <ImgWithOverlayTextGroup/>
-          </Col>
+          {/*<Col md="4">*/}
+          {/*  <ImgWithOverlayTextGroup/>*/}
+          {/*</Col>*/}
         </Row>
       </Col>
     );

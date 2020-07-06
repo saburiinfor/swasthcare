@@ -2,18 +2,13 @@ h2 {
   font-weight: bold;
 }
 
-.container-fluid {
-  background: #fff;
-}
-
 .appointmentBox {
   border: 1px #cccccc solid;
   border-radius: 3px;
   width: 100%;
+  float: left;
   h4 {
-    background-color: #ccc;
     padding: 10px;
-
   }
 
   > div {

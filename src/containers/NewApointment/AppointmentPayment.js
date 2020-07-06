@@ -16,7 +16,7 @@ class AppointmentPayment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      consultfee: (parseInt(this.props.appointmentData.pt_price) > 0 ?  parseInt(this.props.appointmentData.pt_price) : 1)
+      consultfee: (parseInt(this.props.appointmentData.pt_price) > 0 ?  parseInt(this.props.appointmentData.pt_price) : 500)
   
   };
     this.handlePaymentSubmission.bind(this);
@@ -94,7 +94,7 @@ class AppointmentPayment extends Component {
         <UserProfile/>
         }
         <Row>
-          <Col md="8">
+          <Col md="12">
             <div>
               <h2>Appointment payment</h2>
               <Breadcrumb activeStep={'6'} />
@@ -102,14 +102,16 @@ class AppointmentPayment extends Component {
             <Row>
               <Col>
                 <div className={'paymentBox'}>
-                  <h4>
-                    Make payment for appointment
+                  <div className={'stepHeader'}>
+                    <h4>
+                      Make payment for appointment
+                    </h4>
                     <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={ this.state.razorpay_payment_id === undefined ? 1 : 0 } />
-                  </h4>
+                  </div>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
                   </Helmet>
-                  <div>
+                  <div className={'stepSelectionBox'}>
                     <form ref={this.formRef}/>
                     <Row>
                       <Col>
@@ -122,19 +124,19 @@ class AppointmentPayment extends Component {
                           <tbody>
                             <tr>
                               <td>Appointment description</td>
-                              <td>{this.props.costDetails.description}</td>
+                              <td className={'detailsColumn'}>{this.props.costDetails.description}</td>
                             </tr>
                             <tr>
                               <td>Appointment charges</td>
-                              <td>Rs. {this.state.consultfee}</td>
+                              <td className={'detailsColumn'}>Rs. {this.state.consultfee}</td>
                             </tr>
                             <tr>
                               <td>Patient name</td>
-                              <td>{this.props.costDetails.p_name}</td>
+                              <td className={'detailsColumn'}>{this.props.costDetails.p_name}</td>
                             </tr>
                             <tr>
                               <td>Patient email</td>
-                              <td>{this.props.costDetails.p_email}</td>
+                              <td className={'detailsColumn'}>{this.props.costDetails.p_email}</td>
                             </tr>
                           </tbody>
                         </table>
@@ -151,9 +153,9 @@ class AppointmentPayment extends Component {
               </Col>
             </Row>
           </Col>
-          <Col md="4">
-            <ImgWithOverlayTextGroup/>
-          </Col>
+          {/*<Col md="4">*/}
+          {/*  <ImgWithOverlayTextGroup/>*/}
+          {/*</Col>*/}
         </Row>
       </Col>
     );
