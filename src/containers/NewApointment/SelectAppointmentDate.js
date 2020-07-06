@@ -24,10 +24,17 @@ class SelectAppointmentDate extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handlerNextBtnClick.bind(this);
+    this.validateUserSelection.bind(this);
   }
   
   componentDidMount() {
   }
+  
+  validateUserSelection = () => {
+    let valuesSet = this.props.profileCompliant && this.state.appdate !== undefined;
+    console.log(valuesSet);
+    return !!valuesSet;
+  };
   
   zeroPrefixing = (val) => {
     return (val < 10) ? '0' + val : val;
@@ -113,7 +120,7 @@ class SelectAppointmentDate extends Component {
                 <h4>
                   Select appointment Date
                 </h4>
-                <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
+                <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} />
               </div>
               <Helmet>
                 <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo' +

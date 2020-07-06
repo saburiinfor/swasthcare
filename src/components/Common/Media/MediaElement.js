@@ -16,6 +16,7 @@ class MediaElement extends Component {
   };
 
   componentDidMount() {
+    this.props.appointmentData.selectedPhysician = false;
   }
   
   // click handler for physician selection
@@ -23,7 +24,9 @@ class MediaElement extends Component {
     this.props.onGetPhysicianById(pid, clinicid);
     this.props.appointmentData.pid = pid;
     this.props.appointmentData.clinicid = clinicid;
+    this.props.appointmentData.selectedPhysician = true;
   };
+  
   render() {
     const noOfStars = this.props.noOfStars;
     const panelData = this.props.record;

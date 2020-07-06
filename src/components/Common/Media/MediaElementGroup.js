@@ -13,11 +13,17 @@ class MediaElementGroup extends Component {
       filter: ""
     };
     this.handlerNextBtnClick.bind(this);
+    this.validateUserSelection.bind(this);
   }
   
   componentDidMount() {
     this.props.onGetPhysicianList(null, this.props.appointmentData.city, null);
   }
+  
+  validateUserSelection = () => {
+    let valuesSet = this.props.profileCompliant && this.props.appointmentData.selectedPhysician;
+    return !!valuesSet;
+  };
   
   handleChange = event => {
     this.setState({filter: event.target.value});
@@ -47,7 +53,7 @@ class MediaElementGroup extends Component {
         <div className={'stepHeader'}>
           <h4>Select the doctor
           </h4>
-          <WizardButtons nextBtnCallback={this.handlerNextBtnClick}/>
+          <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} />
         </div>
         <div className={'stepSelectionBox'}>
           {this.props.plistError !== null &&

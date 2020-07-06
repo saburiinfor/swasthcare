@@ -58,14 +58,14 @@ class WizardButtons extends Component {
       <div className={'wizBtnsContainer'}>
         <BrowserView>
           <Button variant={'primary'} onClick={this.backButtonClick}>Back</Button>
-          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
-          <Button variant={'primary'} onClick={this.nextButtonClick} disabled={!this.state.processing}>Continue</Button>
+          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7) &&
+          <Button variant={'primary'} onClick={this.nextButtonClick} disabled={this.props.noContinue}>Continue</Button>
           }
         </BrowserView>
         <MobileView>
           <Button size={'sm'} variant={'primary'} onClick={this.backButtonClick}>Back</Button>
-          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7 && (this.props.noContinue === false || this.props.noContinue === undefined)) &&
-          <Button size={'sm'} variant={'primary'} onClick={this.nextButtonClick} disabled={!this.state.processing}>Continue</Button>
+          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7) &&
+          <Button size={'sm'} variant={'primary'} onClick={this.nextButtonClick} disabled={this.props.noContinue}>Continue</Button>
           }
         </MobileView>
       </div>

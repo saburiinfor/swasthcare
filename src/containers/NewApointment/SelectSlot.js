@@ -21,6 +21,7 @@ class SelectSlot extends Component {
     };
     this.handlerNextBtnClick.bind(this);
     this.handleSlotSelection.bind(this);
+    this.validateUserSelection.bind(this);
   }
   
   componentDidMount() {
@@ -28,7 +29,13 @@ class SelectSlot extends Component {
     this.props.onGetSlots(pid, clinicid, appdate);
     this.state.slotListing = this.generateSlots(this.props.slotList.slots);
   }
-
+  
+  validateUserSelection = () => {
+    let valuesSet = this.props.profileCompliant && this.state.slotId !== null;
+    console.log(valuesSet);
+    return !!valuesSet;
+  };
+  
   handleSlotSelection = (e) => {
     let slotDetails = JSON.parse(e.target.value);
     this.setState({
@@ -116,7 +123,7 @@ class SelectSlot extends Component {
                     <h4>
                       Select the slot
                     </h4>
-                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} />
+                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} />
                   </div>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>

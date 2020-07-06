@@ -34,6 +34,7 @@ class NewApointment extends Component {
     };
     this.handlerNextBtnClick.bind(this);
     this.handleAppointmentTypeChange.bind(this);
+    this.validateUserSelection.bind(this);
   }
   
   componentDidMount() {
@@ -70,6 +71,11 @@ class NewApointment extends Component {
         city: cityName
       }
     });
+  };
+  
+  validateUserSelection = () => {
+    let valuesSet = this.props.profileCompliant && this.state.appointmentData.city !== '' && this.state.appointmentData.appointmentType !== '';
+    return !!valuesSet;
   };
   
   handlerNextBtnClick = () => {
@@ -128,7 +134,8 @@ class NewApointment extends Component {
                     <h4>
                       Select type and city
                     </h4>
-                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.props.profileCompliant} />
+                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} />
+                    {/*!this.props.profileCompliant*/}
                   </div>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
