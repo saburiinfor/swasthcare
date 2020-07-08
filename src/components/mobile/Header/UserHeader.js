@@ -17,7 +17,11 @@ class UserHeader extends React.Component {
     return (
       <div className="logged-header-mob">
         <img src={MenuIcon} alt={'Main menu'} className={'main-menu'}/>
-        <img src={SwasthLogoSmall} alt={'ConferKare'} className={'logo-small'}/>
+        <div className={'logo-small'}>
+          <Link to="/">
+            <h4 className={'logoText'}>Confer<span>Kare</span></h4>
+          </Link>
+        </div>
         <Logout {...this.props} />
         <img src={NotificationIcon} alt={'Notifications'} className={'notification-icon'}/>
         <nav className={'mainNav'}>

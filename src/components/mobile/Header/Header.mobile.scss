@@ -11,6 +11,22 @@
       padding-bottom: 5px;
 
       .logo-small {
+        display: inline;
+        margin-left: 25px;
+        a {
+          display: inline-block;
+        }
+        span {
+          color: #6EBF7A;
+          font-weight: normal;
+        }
+        .logoText {
+          color: #255DAA;
+          font-weight: bold;
+          display: inline-block;
+          vertical-align: middle;
+          text-shadow: #0d1319 2px 2px 2px;
+        }
       }
 
       .main-menu {
