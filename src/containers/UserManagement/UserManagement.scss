@@ -16,16 +16,17 @@
   float: left;
   width: 100%;
   .profilePhotoPanel {
-    float: left;
-    width: 25%;
-    display: inline;
     text-align: center;
-    margin-top: 50px;
+    margin: 20px 0px;
 
     .profilePhoto {
       display: inline-block;
       margin-bottom: 10px;
 
+      img {
+        width: 180px;
+        height: 180px;
+      }
       .profilePic {
         padding: 15px;
         border: 5px solid;
@@ -53,16 +54,42 @@
       line-height: 30px;
       .leftColumn {
         text-align: right;
+        width: 50%;
       }
       .rightColumn {
         text-align: left;
+        width: 50%;
       }
     }
   }
   .profileDetails {
-    float: left;
-    width: 74%;
-    display: inline;
-    border-left: 5px solid #acacac;
+    .patientGenderBox {
+      padding-left: 1rem;
+      .form-check {
+        margin-top: 15px;
+      }
+    }
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 0px;
+      margin-top: 1rem;
+    }
+    .card-header {
+      .editLink {
+        float: right;
+        //margin-top: -3px 0px 0px 0px;
+        //padding: 0px 10px;
+        //font-size: 15px;
+      }
+    }
+    .patientTexts {
+      font-weight: normal;
+      width: 100%;
+    }
+    .saveProfile {
+      float: right;
+      margin: 20px 0px;
+      padding: 8px 15px;
+    }
   }
 }

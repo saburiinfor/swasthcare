@@ -15,6 +15,7 @@ import submitAppointmentReducer from './store/reducers/submitAppointment';
 import uploadPrescriptionReducer from './store/reducers/uploadPrescription';
 import forgotPasswordReducer from './store/reducers/forgotPassword';
 import resetPasswordReducer from './store/reducers/resetPassword';
+import manageAccountReducer from './store/reducers/manageAccount';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -42,7 +43,8 @@ const rootReducer = combineReducers({
   submitAppointment: submitAppointmentReducer,
   uploadPrescription: uploadPrescriptionReducer,
   forgotPassword: forgotPasswordReducer,
-  resetPassword: resetPasswordReducer
+  resetPassword: resetPasswordReducer,
+  manageAccount: manageAccountReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

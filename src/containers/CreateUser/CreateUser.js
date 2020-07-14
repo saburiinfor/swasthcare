@@ -38,7 +38,6 @@ class CreateUser extends Component {
     this.props.onSetUserStatus();
   };
   onSubmitHandler = (e) => {
-    console.log("current state is = " + JSON.stringify(this.state));
     this.props.onCreateUser(this.state);
   };
   onChangeHandler = (e) => {

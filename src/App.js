@@ -35,6 +35,7 @@ class App extends Component {
           <Route exact path="/forgotPassword" component={guestUser}/>
           <Route exact path="/resetPassword" component={guestUser}/>
           <Route exact path="/vcSessions" component={loggedInUser}/>
+          <Route exact path="/manageAccount" component={loggedInUser}/>
         </Switch>
       </Router>
     );
