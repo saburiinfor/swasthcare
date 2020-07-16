@@ -26,6 +26,9 @@
         &:first-child {
           width: 5%;
         }
+        .btn-link {
+          margin-top: -.375em;
+        }
       }
       &.selected {
         background-color: #ccc;

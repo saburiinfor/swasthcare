@@ -27,6 +27,7 @@ export const submitAppointment = (appointmentData) => {
     userData.append('clinic', appointmentData['clinicid']);
     userData.append('appType', appointmentData['appointmentType']);
     userData.append('connectionLink', null);
+    userData.append('transaction_id', appointmentData.razorpay_payment_id);
     axios.post(process.env.REACT_APP_API_URL + "Appointments/create/", userData).then(
       response => {
         console.log('inside appointment creation call');

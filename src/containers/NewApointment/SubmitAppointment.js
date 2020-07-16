@@ -10,6 +10,7 @@ import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from './NewApointment.module.scss';
+import {Alert} from "react-bootstrap";
 
 class SubmitAppointment extends Component {
   constructor(props) {
@@ -42,14 +43,16 @@ class SubmitAppointment extends Component {
         <Redirect to={pageUrl}/>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
-        </Helmet>
+        </Helmet>   
         { this.props.profileCompliant === false &&
         <UserProfile/>
         }
         {this.props.error !== null &&
         <Row>
           <Col>
-            {this.props.error}
+            <Alert key={'newAppointment-error'} variant={'danger'}>
+              {this.props.error}
+            </Alert>
           </Col>
         </Row>
         }

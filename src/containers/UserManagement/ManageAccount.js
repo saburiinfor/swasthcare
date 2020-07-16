@@ -126,12 +126,15 @@ class ManageAccount extends Component {
         });
       }
       let patientUpdatedData = {};
-      for (const key of ['name', 'contactNo', 'dob', 'gender', 'spokenLanguages', 'addressType', 'bloodgrp', 'plotNumber', 'pinCode', 'profilePicture']) {
+      for (const key of ['name', 'contactNo', 'dob', 'gender', 'spokenLanguages', 'addressType', 'bloodgrp', 'plotNumber', 'pinCode']) {
         patientUpdatedData[key] = (this.state.patientProfile[key] === undefined) ? this.props.patientProfile[key]: this.state.patientProfile[key];
+      }
+      if (this.state.patientProfile['profilePicture'] !== undefined) {
+        patientUpdatedData['profilePicture'] = this.state.patientProfile['profilePicture'];
       }
       patientUpdatedData['uid'] = this.props.userProfile.id;
       patientUpdatedData['token'] = this.props.token;
-      console.log(patientUpdatedData);
+      // console.log(patientUpdatedData);
       // patientForm;
       this.props.onUpdatePatientProfile(patientUpdatedData);
       this.editDetails();

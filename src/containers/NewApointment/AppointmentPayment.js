@@ -35,9 +35,9 @@ class AppointmentPayment extends Component {
   }
   
   handlePaymentSuccess = (response) => {
-    this.setState({
-      razorpay_payment_id: response.razorpay_payment_id
-    });
+    // console.log(response);
+    this.props.appointmentData.razorpay_payment_id = response.razorpay_payment_id;
+    this.props.onSetAppointmentData(this.props.appointmentData);
     let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
     sessionStorage.setItem('conferkare.appointment.activeStage', activeStage + 1);
     this.formRef.current.submit();

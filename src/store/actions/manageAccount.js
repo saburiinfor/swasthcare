@@ -36,8 +36,8 @@ export const getPatientProfile = (userID) => {
     userData.append("userID", userID);
     axios.post(process.env.REACT_APP_API_URL + "User/getpatientprofilebyuid/", userData).then(
       response => {
-        console.log('inside get profile data response inside manageaccount');
-        console.log("res ***" + JSON.stringify(response.data));
+        // console.log('inside get profile data response inside manageaccount');
+        // console.log("res ***" + JSON.stringify(response.data));
         let patientProfile = response.data;
         if (response.data.success === 1) {
           dispatch(patientProfileSuccess(patientProfile.result[0]));
@@ -59,8 +59,8 @@ export const updatePatientProfile = (patientObject) => {
     // patientData.append('profilePicture', patientObject['photo'][0]);
     axios.post(process.env.REACT_APP_API_URL + "User/patientprofileupdate/", patientData).then(
       response => {
-        console.log('inside get profile update response inside manageaccount');
-        console.log("res ***" + JSON.stringify(response.data));
+        // console.log('inside get profile update response inside manageaccount');
+        // console.log("res ***" + JSON.stringify(response.data));
         let patientUpdateResponse = response.data;
         if (response.data.success === 1) {
           dispatch(updatePatientSuccess(patientUpdateResponse.Message));
