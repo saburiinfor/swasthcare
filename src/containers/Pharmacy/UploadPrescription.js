@@ -8,7 +8,7 @@ import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGro
 import './Pharmacy.scss';
 import * as actions from "../../shared";
 import Form from "react-bootstrap/Form";
-import bsCustomFileInput from 'bs-custom-file-input'
+import bsCustomFileInput from 'bs-custom-file-input';
 import {Alert} from "react-bootstrap";
 
 function CityOptions(cityList) {

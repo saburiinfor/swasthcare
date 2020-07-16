@@ -49,7 +49,7 @@ export const getAppointmentList = (patientid) => {
     axios.post(process.env.REACT_APP_API_URL + "Appointments/getappointmentbyuser/", appointmentData).then(
       response => {
         // console.log('inside patients data response');
-        console.log("res ***" + JSON.stringify(response.data));
+        // console.log("res ***" + JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(appointmentListSuccess(Array.from(response.data.result)));
         } else {
@@ -68,7 +68,7 @@ export const cancelAppointment = (appId) => {
     axios.post(process.env.REACT_APP_API_URL + "Appointments/cancelappointmentbyid/", appointmentData).then(
       response => {
         // console.log('inside patients data response');
-        console.log("res ***" + JSON.stringify(response.data));
+        // console.log("res ***" + JSON.stringify(response.data));
         if (response.data.success === 1) {
           dispatch(cancelAppointmentSuccess(Array.from(response.data.Message)));
         } else {

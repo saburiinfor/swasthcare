@@ -14,7 +14,6 @@ class AppointmentRowGroup extends Component {
   }
   
   componentDidMount() {
-    console.log(this.props);
     this.props.onGetAppointmentList(this.props.userProfile.id);
   }
   

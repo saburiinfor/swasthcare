@@ -43,6 +43,13 @@
         color: dodgerblue;
         cursor: pointer;
       }
+      .uploadPhotoContainer {
+        text-align: left;
+        margin: 10px 0px;
+        .saveProfile {
+          margin-top: 5px;
+        }
+      }
     }
     .profileCompletion {
       margin-top: 20px;

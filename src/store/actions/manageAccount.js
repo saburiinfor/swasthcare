@@ -56,6 +56,7 @@ export const updatePatientProfile = (patientObject) => {
     for (const key in patientObject) {
       patientData.append(key, patientObject[key]);
     }
+    // patientData.append('profilePicture', patientObject['photo'][0]);
     axios.post(process.env.REACT_APP_API_URL + "User/patientprofileupdate/", patientData).then(
       response => {
         console.log('inside get profile update response inside manageaccount');

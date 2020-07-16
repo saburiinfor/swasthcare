@@ -8,6 +8,7 @@ import {Accordion, Alert, Button, Card, Form, FormControl, FormGroup, FormLabel,
 import {connect} from "react-redux";
 import * as actions from "../../shared";
 import UserProfile from "./UserProfile";
+import bsCustomFileInput from 'bs-custom-file-input';
 
 class ManageAccount extends Component {
   constructor(props) {
@@ -18,7 +19,8 @@ class ManageAccount extends Component {
       editPaymentDetails: false,
       editMiscDetails: false,
       patientProfile: {},
-      formValidated: false
+      formValidated: false,
+      editPhoto: false
     }
     this.editDetails.bind(this);
     this.updateProfile.bind(this);
@@ -27,8 +29,12 @@ class ManageAccount extends Component {
   }
   
   componentDidMount() {
+    bsCustomFileInput.init();
     this.props.onGetPatientProfile(this.props.userProfile.id);
-  }
+    this.setState({
+      patientProfile: this.props.patientProfile
+    });
+  };
   
   editDetails = (id) => {
     switch (id) {
@@ -37,7 +43,8 @@ class ManageAccount extends Component {
         editPersonalDetails: true,
         editHealthDetails: false,
         editPaymentDetails: false,
-        editMiscDetails: false
+        editMiscDetails: false,
+        editPhoto: false
       });
       break;
     case 1:
@@ -45,7 +52,8 @@ class ManageAccount extends Component {
         editPersonalDetails: false,
         editHealthDetails: true,
         editPaymentDetails: false,
-        editMiscDetails: false
+        editMiscDetails: false,
+        editPhoto: false
       });
       break;
     case 2:
@@ -53,7 +61,17 @@ class ManageAccount extends Component {
         editPersonalDetails: false,
         editHealthDetails: false,
         editPaymentDetails: true,
-        editMiscDetails: false
+        editMiscDetails: false,
+        editPhoto: false
+      });
+      break;
+    case 9:
+      this.setState({
+        editPersonalDetails: false,
+        editHealthDetails: false,
+        editPaymentDetails: false,
+        editMiscDetails: false,
+        editPhoto: true
       });
       break;
     default:
@@ -61,10 +79,21 @@ class ManageAccount extends Component {
         editPersonalDetails: false,
         editHealthDetails: false,
         editPaymentDetails: false,
-        editMiscDetails: false
+        editMiscDetails: false,
+        editPhoto: false
       });
       break;
     }
+  };
+  
+  handleFileSelection = (e) => {
+    const fileElement = e.target.files;
+    this.setState({
+      patientProfile: {
+        ...this.state.patientProfile,
+        profilePicture: fileElement[0]
+      }
+    });
   };
   
   setFormValidated = (flag) => {
@@ -72,11 +101,9 @@ class ManageAccount extends Component {
   }
   
   changePatientDetails = (event, controlId) => {
-    if (this.state.patientProfile.name === undefined) {
-      this.state.patientProfile = this.props.patientProfile;
-    }
     this.setState({
       patientProfile: {
+        ...this.props.patientProfile,
         [controlId]: event.target.value
       }
     });
@@ -88,21 +115,29 @@ class ManageAccount extends Component {
   
   updateProfile = (event) => {
     const patientForm = event.currentTarget;
-    if (patientForm.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    if (this.state.patientProfile.name === undefined) {
-      this.state.patientProfile = this.props.patientProfile;
-    }
-    let patientUpdatedData = {};
-    for (const key of ['name', 'contactNo', 'dob', 'gender', 'spokenLanguages', 'addressType', 'bloodgrp', 'plotNumber', 'pinCode']) {
-      patientUpdatedData[key] = this.state.patientProfile[key];
-    }
-    patientUpdatedData['uid'] = this.props.userProfile.id;
-    patientUpdatedData['token'] = this.props.token;
-    this.props.onUpdatePatientProfile(patientUpdatedData);
+    event.preventDefault();
     this.setFormValidated(true);
+    if (patientForm.checkValidity() === false) {
+      event.stopPropagation();
+    } else {
+      if (this.state.patientProfile.name === undefined) {
+        this.setState({
+          patientProfile: this.props.patientProfile
+        });
+      }
+      let patientUpdatedData = {};
+      for (const key of ['name', 'contactNo', 'dob', 'gender', 'spokenLanguages', 'addressType', 'bloodgrp', 'plotNumber', 'pinCode', 'profilePicture']) {
+        patientUpdatedData[key] = (this.state.patientProfile[key] === undefined) ? this.props.patientProfile[key]: this.state.patientProfile[key];
+      }
+      patientUpdatedData['uid'] = this.props.userProfile.id;
+      patientUpdatedData['token'] = this.props.token;
+      console.log(patientUpdatedData);
+      // patientForm;
+      this.props.onUpdatePatientProfile(patientUpdatedData);
+      this.editDetails();
+      this.setFormValidated(false);
+      this.props.onGetPatientProfile(this.props.userProfile.id);
+    }
   };
   
   render() {
@@ -137,36 +172,39 @@ class ManageAccount extends Component {
               </Col>
             </Row>
             }
-            <Row className={'manageAccount'}>
-              <Col md={"3"} className="profilePhotoPanel">
-                <div className={'profilePhoto'}>
-                  {this.props.patientProfile.img
-                    ? <Image src={this.props.patientProfile.img} title={'User profile'} roundedCircle/>
-                    : <FontAwesomeIcon className="profilePic" color="#ccc" size="5x" icon={faUser}/>
-                  }
-                  <br/>
-                  <span className={'profileEdit'}>Upload photo</span>
-                </div>
-                <Row className={'userDetails'}>
-                  <Col md={"6"} className={'leftColumn'}>
-                    {this.props.patientProfile.name}
-                  </Col>
-                  <Col md={'6'} className={'rightColumn'}>
-                    {this.props.patientProfile.dob}
-                  </Col>
-                </Row>
-                <Row className={'userDetails'}>
-                  <Col md={'6'} className={'leftColumn'}>
-                    {this.props.patientProfile.contactNo}
-                  </Col>
-                  <Col md={'6'} className={'rightColumn'}>
-                    {this.props.patientProfile.userId}
-                  </Col>
-                </Row>
-                {/*<div className="profileCompletion mb-4">70% profile complete</div>*/}
-              </Col>
-              <Col md={"9"} className={'profileDetails'}>
-                <Form name={"patientProfile"} noValidate validated={this.state.formValidated} onSubmit={this.updateProfile}>
+            <Form name={"patientProfile"} noValidate validated={this.state.formValidated} onSubmit={this.updateProfile}>
+              <Row className={'manageAccount'}>
+                <Col md={"3"} className="profilePhotoPanel">
+                  <div className={'profilePhoto'}>
+                    {this.props.patientProfile.img
+                      ? <Image src={this.props.patientProfile.img} title={'User profile'} roundedCircle/>
+                      : <FontAwesomeIcon className="profilePic" color="#ccc" size="5x" icon={faUser}/>
+                    }
+                    <br/>
+                    {this.state.editPhoto
+                      ? <div className={'uploadPhotoContainer'}><Form.File id="patientPhoto" label="Upload photo" custom onChange={this.handleFileSelection}/><Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button></div>
+                      : <span className={'profileEdit'} onClick={this.editDetails.bind(null, 9)}>Upload photo</span>
+                    }
+                  </div>
+                  <Row className={'userDetails'}>
+                    <Col md={"6"} className={'leftColumn'}>
+                      {this.props.patientProfile.name}
+                    </Col>
+                    <Col md={'6'} className={'rightColumn'}>
+                      {this.props.patientProfile.dob}
+                    </Col>
+                  </Row>
+                  <Row className={'userDetails'}>
+                    <Col md={'6'} className={'leftColumn'}>
+                      {this.props.patientProfile.contactNo}
+                    </Col>
+                    <Col md={'6'} className={'rightColumn'}>
+                      {this.props.patientProfile.userId}
+                    </Col>
+                  </Row>
+                  {/*<div className="profileCompletion mb-4">70% profile complete</div>*/}
+                </Col>
+                <Col md={"9"} className={'profileDetails'}>
                   <Accordion defaultActiveKey="0">
                     <Card>
                       <Card.Header>
@@ -231,7 +269,7 @@ class ManageAccount extends Component {
                             {this.state.editPersonalDetails
                               ? <FormControl type={'text'} placeholder={'Languages comma separated'} defaultValue={this.props.patientProfile.spoken_languages}
                                              onChange={event => this.changePatientDetails(event, 'spokenLanguages')}/>
-                              : <FormLabel className={'patientTexts'}>{this.props.patientProfile.spoken_languages === '' && 'NA'}</FormLabel>
+                              : <FormLabel className={'patientTexts'}>{this.props.patientProfile.spoken_languages === '' ? 'NA' : this.props.patientProfile.spoken_languages}</FormLabel>
                             }
                             {this.state.editPersonalDetails &&
                             <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
@@ -262,7 +300,7 @@ class ManageAccount extends Component {
                               <option value={'AB-'}>AB-</option>
                             </FormControl>
                             {this.state.editHealthDetails &&
-                            <Button type={'Submit'} variant={'primary'} className={'saveProfile'}>Save</Button>
+                            <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
                             }
                           </FormGroup>
                         </Card.Body>
@@ -288,32 +326,32 @@ class ManageAccount extends Component {
                           </FormGroup>
                           <FormGroup controlId={'profileForm.plot_number'}>
                             <FormLabel>Apartment No.</FormLabel>
-                            <FormControl required type={'text'} placeholder={'Apartment/Flat/Unit No.'} onChange={event => this.changePatientDetails(event, 'plotNumber')}/>
+                            <FormControl type={'text'} placeholder={'Apartment/Flat/Unit No.'} onChange={event => this.changePatientDetails(event, 'plotNumber')}/>
                           </FormGroup>
                           <FormGroup controlId={'profileForm.building_name'}>
                             <FormLabel>Building/apartment name</FormLabel>
-                            <FormControl required type={'text'} placeholder={'Apartment/Community/Building name'} onChange={event => this.changePatientDetails(event, 'building_name')}/>
+                            <FormControl type={'text'} placeholder={'Apartment/Community/Building name'} onChange={event => this.changePatientDetails(event, 'building_name')}/>
                           </FormGroup>
                           <FormGroup controlId={'profileForm.locality'}>
                             <FormLabel>Area/locality</FormLabel>
-                            <FormControl required type={'text'} placeholder={'Area/locality name'} onChange={event => this.changePatientDetails(event, 'locality')}/>
+                            <FormControl type={'text'} placeholder={'Area/locality name'} onChange={event => this.changePatientDetails(event, 'locality')}/>
                           </FormGroup>
                           <Form.Row>
                             <FormGroup as={Col} md={'4'} controlId={'profileForm.city'}>
                               <FormLabel>City</FormLabel>
-                              <FormControl required type={'text'} placeholder={'City'} onChange={event => this.changePatientDetails(event, 'city')}/>
+                              <FormControl type={'text'} placeholder={'City'} onChange={event => this.changePatientDetails(event, 'city')}/>
                             </FormGroup>
                             <FormGroup as={Col} md={'4'} controlId={'profileForm.state'}>
                               <FormLabel>State</FormLabel>
-                              <Form.Control required type={'text'} placeholder={'State'} onChange={event => this.changePatientDetails(event, 'state')}/>
+                              <Form.Control type={'text'} placeholder={'State'} onChange={event => this.changePatientDetails(event, 'state')}/>
                             </FormGroup>
                             <FormGroup as={Col} md={'4'} controlId={'profileForm.pincode'}>
                               <FormLabel>Pincode</FormLabel>
-                              <FormControl required type={'text'} placeholder={'Pincode'} onChange={event => this.changePatientDetails(event, 'pinCode')}/>
+                              <FormControl type={'text'} placeholder={'Pincode'} onChange={event => this.changePatientDetails(event, 'pinCode')}/>
                             </FormGroup>
                           </Form.Row>
                           {this.state.editPaymentDetails &&
-                          <Button type={'Submit'} variant={'primary'} className={'saveProfile'}>Save</Button>
+                          <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
                           }
                         </Card.Body>
                       </Accordion.Collapse>
@@ -330,9 +368,9 @@ class ManageAccount extends Component {
                     {/*  </Accordion.Collapse>*/}
                     {/*</Card>*/}
                   </Accordion>
-                </Form>
-              </Col>
-            </Row>
+                </Col>
+              </Row>
+            </Form>
           </Col>
           {/*<Col md="4">*/}
           {/*  <ImgWithOverlayTextGroup/>*/}

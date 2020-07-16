@@ -9,33 +9,25 @@ const initialState = {
 
 const patientProfileSuccess = (state, action) => {
   return updateObject(state, {
-    updatePatientSuccess: null,
-    patientProfile: action.patientProfile,
-    error: null
+    patientProfile: action.patientProfile
   });
 };
 
 const patientProfileFailure = (state, action) => {
   return updateObject(state, {
-    updatePatientSuccess: null,
-    patientProfile: {},
     error: action.error
   });
 };
 
 const updatePatientSuccess = (state, action) => {
   return updateObject(state, {
-    updatePatientSuccess: action.successMessage,
-    error: null,
-    patientProfile: {}
+    updatePatientSuccess: action.successMessage
   });
 };
 
 const updatePatientFailure = (state, action) => {
   return updateObject(state, {
-    updatePatientSuccess: null,
-    error: action.error,
-    patientProfile: {}
+    error: action.error
   });
 };
 
