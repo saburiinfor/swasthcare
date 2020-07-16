@@ -3,19 +3,26 @@ import {updateObject} from '../../shared/utility';
 
 const initialState = {
   userProfile: {},
+  successMessage: null,
   error: null
 };
 
 const userProfileSuccess = (state, action) => {
   return updateObject(state, {
     userProfile: action.userProfile,
+    successMessage: null,
     error: null
   });
 };
 
 const userUpdateSuccess = (state, action) => {
   return updateObject(state, {
-    userProfile: action.userProfile,
+    userProfile: {
+      ...action.userProfile,
+      id: action.userProfile.userId,
+      dateofbirth: action.userProfile.dob
+    },
+    successMessage: action.successMessage,
     error: null
   });
 };
@@ -23,7 +30,7 @@ const userUpdateSuccess = (state, action) => {
 const userUpdateFailure = (state, action) => {
   return updateObject(state, {
     error: action.error,
-    userProfile: {}
+    successMessage: null
   });
 };
 

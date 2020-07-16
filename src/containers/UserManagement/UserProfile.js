@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../../shared";
 import dateformat from 'dateformat';
 import DatePicker from 'react-date-picker';
+import {Alert} from "react-bootstrap";
 
 class UserProfile extends Component {
   constructor(props) {
@@ -52,8 +53,15 @@ class UserProfile extends Component {
       <Row>
         <Col md="12">
           <div className={'profileUpdateContainer'}>
+            {this.props.successMessage !== null &&
+              <Alert key={'profile-update-success'} variant={'success'}>
+                {this.props.successMessage}
+              </Alert>
+            }
             {this.props.error !== null &&
-              <strong>{this.props.error}<br/><br/></strong>
+              <Alert key={'profile-update-error'} variant={this.state.error !== null ? 'danger' : 'light'}>
+                {this.props.error}
+              </Alert>
             }
             <h6>
               <strong>Please set your Date of Birth to proceed.</strong>
@@ -75,6 +83,7 @@ class UserProfile extends Component {
 const mapStateToProps = state => {
   return {
     userProfile: state.UserProfile.userProfile,
+    successMessage: state.UserProfile.successMessage,
     error: state.UserProfile.error
   };
 };
