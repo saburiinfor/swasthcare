@@ -31,7 +31,8 @@ class UserHeader extends React.Component {
           <Link to={'#'}>
             <img src={AnnouncementIcon} alt={'Announcements'} className={'announcement-icon'}/>
           </Link>
-          <Link to={'/manageAccount'}>
+          {/*<Link to={'/manageAccount'}>*/}
+          <Link to={'#'}>
             <img src={ProfileIcon} alt={'Profile'} className={'profile-icon'}/>
           </Link>
           <Logout {...this.props} />
