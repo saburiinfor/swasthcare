@@ -134,7 +134,7 @@ class UploadPrescription extends Component {
             <Row>
               <Col>
                 <Alert key={'order-success'} variant={'success'}>
-                  Congratulations, we received your medicine delivery request. Our chemist would review and get back to you with further details...
+                  Congratulations, we received your medicine delivery request. Your pharmacy order id for future correspondence is -- <strong>{this.state.pharmaOrderId}</strong>
                 </Alert>
               </Col>
             </Row>
