@@ -51,7 +51,7 @@ class SelectSlot extends Component {
       slotListing = slotList.map((slot) => {
         return (
           <li key={slot.id} className={(this.state.slotId === slot.id) ? 'selected' : ''}>
-            <span>{slot.id}</span>
+            {/*<span>{slot.id}</span>*/}
             <span>{slot.startTime}</span>
             <span>{slot.period}</span>
             <span>{slot.waitingTime} mins</span>
@@ -178,7 +178,7 @@ class SelectSlot extends Component {
                       <Col>
                         <ul className={'slotsListingContainer'}>
                           <li className={'headRow'}>
-                            <span>ID</span>
+                            {/*<span>ID</span>*/}
                             <span>Slot time</span>
                             <span>Morning / Evening</span>
                             <span>Wait time</span>
