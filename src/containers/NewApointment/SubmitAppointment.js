@@ -77,6 +77,12 @@ class SubmitAppointment extends Component {
                   <div className={'stepSelectionBox'}>
                     <Row>
                       <Col>
+                        <button className={'btn btn-primary'} onClick={this.handleAppointmentSubmission}>
+                          Submit
+                        </button>
+                        <Row>
+                          <br/>
+                        </Row>
                         <table className={styles.appointmentTable}>
                           <thead>
                           <tr>
@@ -130,12 +136,6 @@ class SubmitAppointment extends Component {
                           </tr>
                           </tbody>
                         </table>
-                        <br/>
-                        {/*<form>*/}
-                          <button className={'btn btn-primary'} onClick={this.handleAppointmentSubmission}>
-                            Submit
-                          </button>
-                        {/*</form>*/}
                       </Col>
                     </Row>
                   </div>
