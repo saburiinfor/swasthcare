@@ -118,7 +118,7 @@ body {
 }
 
 .container-fluid {
-  min-height: 600px;
+  //min-height: 600px;
 
   .MiddleContainer {
     .selectDate {
@@ -142,6 +142,8 @@ body {
     .stepSelectionBox {
       float: left;
       width: 100%;
+      height: 60vh;
+      overflow-y: scroll;
     }
 
     h2 {
@@ -295,36 +297,36 @@ body {
     height: calc(100vh - 300px) !important;
   }
   .container-fluid {
-    height: 550px;
-    overflow: scroll;
-  }
-  .MiddleContainer {
-    .row, .col, .col-md-12 {
-      margin-left: 0px;
-      margin-right: 0px;
-      padding-left: 0px;
-      padding-right: 0px;
-    }
+    .MiddleContainer {
+      .row, .col, .col-md-12 {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
 
-    .col .stepSelectionBox {
-      float: left;
-    }
+      .stepSelectionBox {
+        float: left;
+        height: 51vh;
+        overflow-y: scroll;
+      }
 
-    h2 {
-      font-size: 1.5rem;
-    }
+      h2 {
+        font-size: 1.5rem;
+      }
 
-    h4 {
-      font-size: 1rem;
-      width: 175px;
-      float: left;
-      margin-top: 2px;
-    }
+      h4 {
+        font-size: 1rem;
+        width: 175px;
+        float: left;
+        margin-top: 2px;
+      }
 
-    .detailsColumn {
-      width: 190px;
-      float: left;
-      overflow: scroll;
+      .detailsColumn {
+        width: 190px;
+        float: left;
+        overflow: scroll;
+      }
     }
   }
 
