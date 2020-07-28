@@ -20,7 +20,7 @@ class App extends Component {
           <Route exact path="/" component={guestUser}/>
           <Route exact path="/login" component={guestUser}/>
           <Route exact path="/newUser" component={guestUser}/>
-          <Route exact path="/createuser" component={loggedInUser}/>
+          <Route exact path="/createuser" component={guestUser}/>
           <Route exact path="/appointments" component={loggedInUser}/>
           <Route exact path="/dashboard" component={loggedInUser}/>
           <Route exact path="/newAppointment" component={loggedInUser}/>

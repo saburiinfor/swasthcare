@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {Button, Col, Row, Form, FormGroup, Label } from "reactstrap";
+import {Button, Col, Row, Label } from "reactstrap";
 import "./UserManagement.scss";
 import { connect } from "react-redux";
 import * as actions from "../../shared";
 import dateformat from 'dateformat';
 import DatePicker from 'react-date-picker';
-import {Alert} from "react-bootstrap";
+import {Alert, FormLabel, Form, FormGroup} from "react-bootstrap";
 
 class UserProfile extends Component {
   constructor(props) {
@@ -14,7 +14,8 @@ class UserProfile extends Component {
       userProfile: {
         uid: null,
         token: null,
-        dob: null
+        dob: null,
+        gender: null
       },
       dob: new Date(),
       error: null
@@ -29,6 +30,7 @@ class UserProfile extends Component {
       userProfile: {
         uid: this.props.userProfile.id,
         dob: this.props.userProfile.dateofbirth,
+        gender: this.props.userProfile.gender,
         token: sessionStorage.getItem('token')
       }
     });
@@ -40,6 +42,15 @@ class UserProfile extends Component {
       userProfile: {
         ...this.state.userProfile,
         dob: dateformat(dob, 'yyyy-mm-dd')
+      }
+    });
+  };
+  
+  updateGender = (e) => {
+    this.setState({
+      userProfile: {
+        ...this.state.userProfile,
+        gender: e.target.value
       }
     });
   };
@@ -64,14 +75,33 @@ class UserProfile extends Component {
               </Alert>
             }
             <h6>
-              <strong>Please set your Date of Birth to proceed.</strong>
+              <strong>Please set your details to proceed.</strong>
             </h6>
             <Form>
-              <FormGroup>
-                <Label>Date of birth</Label><br/>
-                <DatePicker maxDate={this.state.dob} value={this.state.dob} onChange={this.selectUserDOB} format={'y-MM-dd'}/>
-                <Button className={'updateBtn'} color="primary" onClick={this.updateUserProfile}>Update</Button>
-              </FormGroup>
+              <Row>
+                <Col md={"5"}>
+                  <FormGroup>
+                    <Label>Date of birth</Label><br/>
+                    <DatePicker maxDate={this.state.dob} value={this.state.dob} onChange={this.selectUserDOB} format={'y-MM-dd'}/>
+                  </FormGroup>
+                </Col>
+                <Col md={"5"}>
+                  <FormGroup>
+                    <FormLabel>Gender</FormLabel>
+                    <br/>
+                    <Form.Check defaultChecked={this.props.userProfile.gender === "M"} name={"gender"} inline type="radio" label="Male" id="user_m" value={'M'}
+                                onChange={this.updateGender}/>
+                    <Form.Check defaultChecked={this.props.userProfile.gender === "F"} name={"gender"} inline type="radio" label="Female" id="user_f" value={'F'}
+                                onChange={this.updateGender}/>
+                    <Form.Check defaultChecked={this.props.userProfile.gender === "O"} name={"gender"} inline type="radio" label="Others" id="user_o" value={'O'}
+                                onChange={this.updateGender}/>
+                    <br/>
+                  </FormGroup>
+                </Col>
+                <Col md={"2"}>
+                  <Button className={'updateBtn'} color="primary" onClick={this.updateUserProfile}>Update</Button>
+                </Col>
+              </Row>
             </Form>
           </div>
         </Col>

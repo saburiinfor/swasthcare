@@ -24,7 +24,7 @@ class CreateUser extends Component {
       email: "",
       password: "",
       contactNo: "",
-      gender: "M",
+      gender: "",
       city: "1",
       address: "",
       bloodgrp: "",
