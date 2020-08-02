@@ -37,14 +37,14 @@ class MediaElement extends Component {
       );
     }
     return (
-      <Media className={classnames(styles.mediaElement, "m-1", "p-1", (this.props.appointmentData.pid === panelData.id && this.props.appointmentData.clinicid === panelData.clinicid) ? styles.selected : '')}>
+      <Media className={classnames(styles.mediaElement, "m-1", "p-1", (this.props.appointmentData.pid === panelData.id && this.props.appointmentData.clinicid === panelData.clinicid) ? styles.selected : '')} onClick={this.selectPhysician.bind(null, panelData.id, panelData.clinicid)}>
         <Media left top href="#">
           {/*} <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />*/}
           <div className="text-center">
             <FontAwesomeIcon color="#ccc" size="5x" icon={faUser}/>
           </div>
           {/*<div>{starIconArray}</div>*/}
-          <Button className="pt-0" color="link" onClick={this.selectPhysician.bind(null, panelData.id, panelData.clinicid)}>
+          <Button className="pt-0" color="link">
             { (this.props.appointmentData.pid === panelData.id) ? 'Selected' : 'Select' }
           </Button>
         </Media>
