@@ -4,11 +4,12 @@ import {Helmet} from "react-helmet";
 import "./UserManagement.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {Accordion, Alert, Button, Card, Form, FormControl, FormGroup, FormLabel, Image} from "react-bootstrap";
+import {Accordion, Alert, Button, Card, Form, FormControl, FormGroup, FormLabel, Image, ListGroup, ListGroupItem} from "react-bootstrap";
 import {connect} from "react-redux";
 import * as actions from "../../shared";
 import UserProfile from "./UserProfile";
 import bsCustomFileInput from 'bs-custom-file-input';
+import ListGroupItemHeading from "reactstrap/lib/ListGroupItemHeading";
 
 class ManageAccount extends Component {
   constructor(props) {
@@ -258,11 +259,11 @@ class ManageAccount extends Component {
                             <FormGroup className={'patientGenderBox'} as={Col} md={"6"} controlId={'profileForm.gender'}>
                               <FormLabel>Gender</FormLabel>
                               <br/>
-                              <Form.Check defaultChecked={this.props.patientProfile.gender === "M"} name={"gender"} inline type="radio" label="Male" id="patient_m" value={'M'}
+                              <Form.Check defaultChecked={this.props.userProfile.gender === "M"} name={"gender"} inline type="radio" label="Male" id="patient_m" value={'M'}
                                           onChange={event => this.changePatientDetails(event, 'gender')}/>
-                              <Form.Check defaultChecked={this.props.patientProfile.gender === "F"} name={"gender"} inline type="radio" label="Female" id="patient_f" value={'F'}
+                              <Form.Check defaultChecked={this.props.userProfile.gender === "F"} name={"gender"} inline type="radio" label="Female" id="patient_f" value={'F'}
                                           onChange={event => this.changePatientDetails(event, 'gender')}/>
-                              <Form.Check defaultChecked={this.props.patientProfile.gender === "O"} name={"gender"} inline type="radio" label="Others" id="patient_o" value={'O'}
+                              <Form.Check defaultChecked={this.props.userProfile.gender === "O"} name={"gender"} inline type="radio" label="Others" id="patient_o" value={'O'}
                                           onChange={event => this.changePatientDetails(event, 'gender')}/>
                               <br/>
                             </FormGroup>
@@ -312,13 +313,72 @@ class ManageAccount extends Component {
                     <Card>
                       <Card.Header>
                         <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                          Payment information
+                          Address information
                         </Accordion.Toggle>
                         <Button variant={'light'} className={'editLink'} onClick={this.editDetails.bind(null, 2)}>Edit</Button>
                       </Card.Header>
                       <Accordion.Collapse eventKey="2">
                         <Card.Body>
-                          <h5>Address details</h5>
+                          <h5>Your addresses</h5>
+                          <Row>
+                            <Col md={"4"}>
+                              <Card className={"addressCard newAddress"}>
+                                <Card.Body>
+                                  <Card.Text>
+                                    <span className={"plusSign"}>+</span>
+                                    Add address
+                                  </Card.Text>
+                                </Card.Body>
+                              </Card>
+                            </Col>
+                            <Col md={"4"}>
+                              <Card className={"addressCard"}>
+                                <Card.Header as={"h6"}>
+                                  <span className={'defaultAddress'}>
+                                    Default address
+                                  </span>
+                                  <span className={"addressType"}>
+                                    Home
+                                  </span>
+                                </Card.Header>
+                                <Card.Body>
+                                  <Card.Title>Ravi Kiran Lingam</Card.Title>
+                                  <Card.Text>
+                                    E-402, Aparana Hillpark Lakebreeze
+                                    Chandanagar, Serilingampalli
+                                    Hyderabad - 500050, Telagana
+                                  </Card.Text>
+                                </Card.Body>
+                                <Card.Footer>
+                                  <Card.Link href={"#"}></Card.Link>
+                                  <Card.Link className={'editAddress'} href={"#"}>Edit</Card.Link>
+                                </Card.Footer>
+                              </Card>
+                            </Col>
+                            <Col md={"4"}>
+                              <Card className={"addressCard"}>
+                                <Card.Header as={"h6"}>
+                                  <span className={'defaultAddress'}/>
+                                  <span className={"addressType"}>
+                                    Work
+                                  </span>
+                                </Card.Header>
+                                <Card.Body>
+                                  <Card.Title>Ravi Kiran Lingam</Card.Title>
+                                  <Card.Text>
+                                    E-402, Aparana Hillpark Lakebreeze
+                                    Chandanagar, Serilingampalli
+                                    Hyderabad - 500050, Telagana
+                                  </Card.Text>
+                                </Card.Body>
+                                <Card.Footer>
+                                  <Card.Link href={"#"}>Set as default</Card.Link>
+                                  <Card.Link className={'editAddress'} href={"#"}>Edit</Card.Link>
+                                </Card.Footer>
+                              </Card>
+                            </Col>
+                          </Row>
+                          
                           <FormGroup controlId={'profileForm.address_type'}>
                             <FormLabel>Address type</FormLabel>
                             <FormControl as={'select'} defaultValue={'Home'} onChange={event => this.changePatientDetails(event, 'addressType')}>
