@@ -72,3 +72,85 @@ export const updatePatientProfile = (patientObject) => {
     });
   };
 };
+
+export const patientGetAddressesSuccess = (patientAddresses) => {
+  return {
+    type: actionTypes.GET_PATIENT_ADDRESSES_SUCCESS,
+    patientAddresses
+  };
+};
+
+export const patientGetAddressesFailure = (error) => {
+  return {
+    type: actionTypes.GET_PATIENT_ADDRESSES_FAILURE,
+    error
+  };
+};
+
+export const getPatientAddresses = (userId) => {
+  return dispatch => {
+    const userData = new FormData();
+    userData.append('userID', userId);
+    axios.post(process.env.REACT_APP_API_URL + 'User/getaddressbyuserid/', userData).then(
+      response => {
+        // console.log('inside getAddresses API call');
+        // console.log('res *** ' + JSON.stringify(response.data));
+        let patientAddresses = response.data.result;
+        if (response.data.success === 1) {
+          dispatch(patientGetAddressesSuccess(patientAddresses))
+        } else {
+          dispatch(patientGetAddressesFailure(response.data.error.errorMsg));
+        }
+      }).catch(err => {
+      console.log(err);
+    })
+  };
+};
+
+export const patientUpdateAddressSuccess = (addressSuccessMessage) => {
+  return {
+    type: actionTypes.UPDATE_PATIENT_ADDRESS_SUCCESS,
+    addressSuccessMessage
+  };
+};
+
+export const patientUpdateAddressFailure = (error) => {
+  return {
+    type: actionTypes.UPDATE_PATIENT_ADDRESS_FAILURE,
+    error
+  };
+};
+
+export const updateAddress = (patientAddress) => {
+  return dispatch => {
+    const patientAddressData = new FormData();
+    let addressUpdateUrl;
+    if (patientAddress.operation === 'new') {
+      addressUpdateUrl = 'User/addaddress/';
+      for (const key of ['userID', 'id', 'plotNumber', 'addressType', 'pinCode', 'city', 'state', 'locality', 'landmark']) {
+        patientAddressData.append(key, patientAddress[key]);
+      }
+    } else if (patientAddress.operation === 'edit') {
+      addressUpdateUrl = 'User/updateaddress';
+      for (const key of ['userID', 'id', 'plotNumber', 'addressType', 'pinCode', 'city', 'state', 'locality', 'landmark']) {
+        patientAddressData.append(key, patientAddress[key]);
+      }
+    } else {
+      addressUpdateUrl = 'User/deleteaddress';
+      patientAddressData.append('userID', patientAddress.userID);
+      patientAddressData.append('id', patientAddress.id);
+    }
+    axios.post(process.env.REACT_APP_API_URL + addressUpdateUrl, patientAddressData).then(
+      response => {
+        console.log('inside update address API call');
+        console.log('res *** ' + JSON.stringify(response.data));
+        if (response.data.success === 1) {
+          dispatch(patientUpdateAddressSuccess(response.data.Message))
+        } else {
+          dispatch(patientUpdateAddressFailure(response.data.error.errorMsg));
+        }
+      }).catch(err => {
+      console.log(err);
+    })
+  }
+}

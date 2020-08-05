@@ -142,7 +142,7 @@ body {
     .stepSelectionBox {
       float: left;
       width: 100%;
-      height: 60vh;
+      height: calc(100vh - 490px);
       overflow-y: scroll;
     }
 
@@ -172,7 +172,7 @@ body {
   bottom: 0px;
   min-height: 60px;
   width: 100%;
-  padding: 20px 5px;
+  padding: 5px;
   border-top: 1px solid #dcdcdc;
   background-color: #FFFFFF;
 }
@@ -297,6 +297,8 @@ body {
     height: calc(100vh - 300px) !important;
   }
   .container-fluid {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
     .MiddleContainer {
       .row, .col, .col-md-12 {
         margin-left: 0px;
@@ -307,7 +309,7 @@ body {
 
       .stepSelectionBox {
         float: left;
-        height: 51vh;
+        height: calc(100vh - 390px);
         overflow-y: scroll;
       }
 
@@ -352,8 +354,13 @@ body {
     }
   }
 
-  .FooterCnt ul {
-    display: none;
+  .FooterCnt {
+    ul {
+      display: none;
+    }
+    .copyright {
+      margin-top:10px;
+    }
   }
 
   //.Footer {

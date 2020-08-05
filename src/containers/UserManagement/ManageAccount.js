@@ -1,15 +1,19 @@
-import React, {Component} from 'react';
+import React, {Component, Suspense, lazy} from 'react';
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import "./UserManagement.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {Accordion, Alert, Button, Card, Form, FormControl, FormGroup, FormLabel, Image, ListGroup, ListGroupItem} from "react-bootstrap";
+import {Accordion, Alert, Button, Card, Form, FormControl, FormGroup, FormLabel, Image} from "react-bootstrap";
 import {connect} from "react-redux";
 import * as actions from "../../shared";
 import UserProfile from "./UserProfile";
 import bsCustomFileInput from 'bs-custom-file-input';
-import ListGroupItemHeading from "reactstrap/lib/ListGroupItemHeading";
+import ListAddresses from "./ListAddresses";
+import ManageAddress from "./ManageAddress";
+// const ListAddresses = lazy(() => import('./ListAddresses'))
+// const ManageAddress = lazy(() => import('./ManageAddress'))
+
 
 class ManageAccount extends Component {
   constructor(props) {
@@ -21,7 +25,8 @@ class ManageAccount extends Component {
       editMiscDetails: false,
       patientProfile: {},
       formValidated: false,
-      editPhoto: false
+      editPhoto: false,
+      addressList: {}
     }
     this.editDetails.bind(this);
     this.updateProfile.bind(this);
@@ -31,9 +36,12 @@ class ManageAccount extends Component {
   
   componentDidMount() {
     bsCustomFileInput.init();
+    this.props.onGetPatientAddresses(this.props.userProfile.id);
     this.props.onGetPatientProfile(this.props.userProfile.id);
+    
     this.setState({
-      patientProfile: this.props.patientProfile
+      patientProfile: this.props.patientProfile,
+      addressList: this.props.addressList
     });
   };
   
@@ -209,7 +217,7 @@ class ManageAccount extends Component {
                   {/*<div className="profileCompletion mb-4">70% profile complete</div>*/}
                 </Col>
                 <Col md={"9"} className={'profileDetails'}>
-                  <Accordion defaultActiveKey="0">
+                  <Accordion className={'profileUpdatePanel'} defaultActiveKey="0">
                     <Card>
                       <Card.Header>
                         <Accordion.Toggle as={Button} variant="link" eventKey="0">
@@ -319,117 +327,21 @@ class ManageAccount extends Component {
                       </Card.Header>
                       <Accordion.Collapse eventKey="2">
                         <Card.Body>
+                          {this.props.addressError !== null &&
+                            <Alert key={'address-error'} variant={'danger'}>{this.props.addressError}</Alert>
+                          }
+                          { this.props.addressUpdateSuccess !== null &&
+                            <Alert key={'address-success'} variant={'danger'}>{this.props.addressSuccessMessage}</Alert>
+                          }
                           <h5>Your addresses</h5>
-                          <Row>
-                            <Col md={"4"}>
-                              <Card className={"addressCard newAddress"}>
-                                <Card.Body>
-                                  <Card.Text>
-                                    <span className={"plusSign"}>+</span>
-                                    Add address
-                                  </Card.Text>
-                                </Card.Body>
-                              </Card>
-                            </Col>
-                            <Col md={"4"}>
-                              <Card className={"addressCard"}>
-                                <Card.Header as={"h6"}>
-                                  <span className={'defaultAddress'}>
-                                    Default address
-                                  </span>
-                                  <span className={"addressType"}>
-                                    Home
-                                  </span>
-                                </Card.Header>
-                                <Card.Body>
-                                  <Card.Title>Ravi Kiran Lingam</Card.Title>
-                                  <Card.Text>
-                                    E-402, Aparana Hillpark Lakebreeze
-                                    Chandanagar, Serilingampalli
-                                    Hyderabad - 500050, Telagana
-                                  </Card.Text>
-                                </Card.Body>
-                                <Card.Footer>
-                                  <Card.Link href={"#"}></Card.Link>
-                                  <Card.Link className={'editAddress'} href={"#"}>Edit</Card.Link>
-                                </Card.Footer>
-                              </Card>
-                            </Col>
-                            <Col md={"4"}>
-                              <Card className={"addressCard"}>
-                                <Card.Header as={"h6"}>
-                                  <span className={'defaultAddress'}/>
-                                  <span className={"addressType"}>
-                                    Work
-                                  </span>
-                                </Card.Header>
-                                <Card.Body>
-                                  <Card.Title>Ravi Kiran Lingam</Card.Title>
-                                  <Card.Text>
-                                    E-402, Aparana Hillpark Lakebreeze
-                                    Chandanagar, Serilingampalli
-                                    Hyderabad - 500050, Telagana
-                                  </Card.Text>
-                                </Card.Body>
-                                <Card.Footer>
-                                  <Card.Link href={"#"}>Set as default</Card.Link>
-                                  <Card.Link className={'editAddress'} href={"#"}>Edit</Card.Link>
-                                </Card.Footer>
-                              </Card>
-                            </Col>
-                          </Row>
-                          
-                          <FormGroup controlId={'profileForm.address_type'}>
-                            <FormLabel>Address type</FormLabel>
-                            <FormControl as={'select'} defaultValue={'Home'} onChange={event => this.changePatientDetails(event, 'addressType')}>
-                              <option value={'Home'}>Home</option>
-                              <option value={'Work'}>Work</option>
-                              <option value={'Other'}>Other</option>
-                            </FormControl>
-                          </FormGroup>
-                          <FormGroup controlId={'profileForm.plot_number'}>
-                            <FormLabel>Apartment No.</FormLabel>
-                            <FormControl type={'text'} placeholder={'Apartment/Flat/Unit No.'} onChange={event => this.changePatientDetails(event, 'plotNumber')}/>
-                          </FormGroup>
-                          <FormGroup controlId={'profileForm.building_name'}>
-                            <FormLabel>Building/apartment name</FormLabel>
-                            <FormControl type={'text'} placeholder={'Apartment/Community/Building name'} onChange={event => this.changePatientDetails(event, 'building_name')}/>
-                          </FormGroup>
-                          <FormGroup controlId={'profileForm.locality'}>
-                            <FormLabel>Area/locality</FormLabel>
-                            <FormControl type={'text'} placeholder={'Area/locality name'} onChange={event => this.changePatientDetails(event, 'locality')}/>
-                          </FormGroup>
-                          <Form.Row>
-                            <FormGroup as={Col} md={'4'} controlId={'profileForm.city'}>
-                              <FormLabel>City</FormLabel>
-                              <FormControl type={'text'} placeholder={'City'} onChange={event => this.changePatientDetails(event, 'city')}/>
-                            </FormGroup>
-                            <FormGroup as={Col} md={'4'} controlId={'profileForm.state'}>
-                              <FormLabel>State</FormLabel>
-                              <Form.Control type={'text'} placeholder={'State'} onChange={event => this.changePatientDetails(event, 'state')}/>
-                            </FormGroup>
-                            <FormGroup as={Col} md={'4'} controlId={'profileForm.pincode'}>
-                              <FormLabel>Pincode</FormLabel>
-                              <FormControl type={'text'} placeholder={'Pincode'} onChange={event => this.changePatientDetails(event, 'pinCode')}/>
-                            </FormGroup>
-                          </Form.Row>
-                          {this.state.editPaymentDetails &&
-                          <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
+                          {/*Edit operation values would be new/edit/remove*/}
+                          { this.props.editAddress.flag
+                            ? <ManageAddress {...this.props} operation={'edit'} addressObj={this.props.editAddress.addressObj}/>
+                            : this.props.addressList.length < 1 ? <ManageAddress {...this.props} operation={'new'}/> : <ListAddresses {...this.props} />
                           }
                         </Card.Body>
                       </Accordion.Collapse>
                     </Card>
-                    {/*<Card>*/}
-                    {/*  <Card.Header>*/}
-                    {/*    <Accordion.Toggle as={Button} variant="link" eventKey="3">*/}
-                    {/*      Misc. information*/}
-                    {/*    </Accordion.Toggle>*/}
-                    {/*    <Button variant={'light'} className={'editLink'} onClick={this.editDetails(3)}>Edit</Button>*/}
-                    {/*  </Card.Header>*/}
-                    {/*  <Accordion.Collapse eventKey="3">*/}
-                    {/*    <Card.Body>Hello! I'm another body</Card.Body>*/}
-                    {/*  </Accordion.Collapse>*/}
-                    {/*</Card>*/}
                   </Accordion>
                 </Col>
               </Row>
@@ -446,19 +358,25 @@ class ManageAccount extends Component {
 
 const mapStateToProps = state => {
   return {
+    editAddress: { flag: false, addressObj: {}},
     userProfile: state.UserProfile.userProfile,
     profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
     patientProfile: state.manageAccount.patientProfile,
     error: state.manageAccount.error,
     successMessage: state.manageAccount.updatePatientSuccess,
-    token: sessionStorage.getItem('token')
+    token: sessionStorage.getItem('token'),
+    addressList: state.manageAccount.addressList,
+    addressError: state.manageAccount.addressError,
+    addressUpdateSuccess: state.manageAccount.addressUpdateSuccess
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onGetPatientProfile: (userID) => dispatch(actions.getPatientProfile(userID)),
-    onUpdatePatientProfile: (patientProfileObj) => dispatch(actions.updatePatientProfile(patientProfileObj))
+    onGetPatientProfile: (userId) => dispatch(actions.getPatientProfile(userId)),
+    onUpdatePatientProfile: (patientProfileObj) => dispatch(actions.updatePatientProfile(patientProfileObj)),
+    onGetPatientAddresses: (userId) => dispatch(actions.getPatientAddresses(userId)),
+    onUpdateAddress: (patientAddress) => dispatch(actions.updateAddress(patientAddress))
   };
 };
 

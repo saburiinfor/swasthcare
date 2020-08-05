@@ -10,7 +10,7 @@
       "@fortawesome/react-fontawesome": "^0.1.11",
       "@tiltbike/razorpay-checkout-js": "^1.0.0",
       "axios": "^0.19.2",
-      "bootstrap": "^4.5.0",
+      "bootstrap": "^4.5.1",
       "bs-custom-file-input": "^1.3.4",
       "classnames": "^2.2.6",
       "dateformat": "^3.0.3",
@@ -20,7 +20,6 @@
       "moment": "^2.27.0",
       "moment-timezone": "^0.5.31",
       "node-sass": "^4.14.1",
-      "npm-watch": "^0.6.0",
       "query-string": "^6.13.1",
       "react": "^16.13.1",
       "react-bootstrap": "^1.3.0",
@@ -66,8 +65,7 @@
       "test": "react-scripts test",
       "eject": "react-scripts eject",
       "predeploy": "npm run build",
-      "deploy": "gh-pages -d build",
-      "watch": "env-cmd -e development npm-watch"
+      "deploy": "gh-pages -d build"
    },
    "eslintConfig": {
       "extends": "react-app"

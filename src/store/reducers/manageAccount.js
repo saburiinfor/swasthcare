@@ -4,7 +4,10 @@ import {updateObject} from '../../shared/utility';
 const initialState = {
   patientProfile: {},
   updateSuccessMessage: null,
-  error: null
+  error: null,
+  addressList: {},
+  addressError: null,
+  addressUpdateSuccess: null
 };
 
 const patientProfileSuccess = (state, action) => {
@@ -31,6 +34,32 @@ const updatePatientFailure = (state, action) => {
   });
 };
 
+const getPatientAddressesSuccess = (state, action) => {
+  return updateObject(state, {
+    addressList: action.patientAddresses
+  });
+};
+
+const getPatientAddressesFailure = (state, action) => {
+  return updateObject(state, {
+    addressError: action.error
+  });
+};
+
+const updatePatientAddressSuccess = (state, action) => {
+  return updateObject(state, {
+    addressUpdateSuccess: action.addressSuccessMessage,
+    addressError: null
+  });
+};
+
+const updatePatientAddressFailure = (state, action) => {
+  return updateObject(state, {
+    addressError: action.error,
+    addressUpdateSuccess: null
+  })
+}
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_PATIENT_PROFILE_SUCCESS:
@@ -41,6 +70,14 @@ const reducer = (state = initialState, action) => {
       return updatePatientSuccess(state, action);
     case actionTypes.UPDATE_PATIENT_PROFILE_FAILURE:
       return updatePatientFailure(state, action);
+    case actionTypes.GET_PATIENT_ADDRESSES_SUCCESS:
+      return getPatientAddressesSuccess(state, action);
+    case actionTypes.GET_PATIENT_ADDRESSES_FAILURE:
+      return getPatientAddressesFailure(state, action);
+    case actionTypes.UPDATE_PATIENT_ADDRESS_SUCCESS:
+      return updatePatientAddressSuccess(state, action);
+    case actionTypes.UPDATE_PATIENT_ADDRESS_FAILURE:
+      return updatePatientAddressFailure(state, action);
     default:
       return state;
   }
