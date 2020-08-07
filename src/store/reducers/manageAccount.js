@@ -8,7 +8,20 @@ const initialState = {
   addressList: {},
   addressError: null,
   addressUpdateSuccess: null,
-  stateList: []
+  stateList: [],
+  loading: false
+};
+
+const startLoading = (state, action) => {
+  return updateObject(state, {
+    loading: action.loading
+  });
+};
+
+const stopLoading = (state, action) => {
+  return updateObject(state, {
+    loading: action.loading
+  });
 };
 
 const patientProfileSuccess = (state, action) => {
@@ -25,13 +38,15 @@ const patientProfileFailure = (state, action) => {
 
 const updatePatientSuccess = (state, action) => {
   return updateObject(state, {
-    updatePatientSuccess: action.successMessage
+    updatePatientSuccess: action.successMessage,
+    error: null
   });
 };
 
 const updatePatientFailure = (state, action) => {
   return updateObject(state, {
-    error: action.error
+    error: action.error,
+    updatePatientSuccess: null
   });
 };
 
@@ -87,6 +102,10 @@ const reducer = (state = initialState, action) => {
       return updatePatientAddressFailure(state, action);
     case actionTypes.STATE_SUCCESS:
       return statesSuccess(state, action);
+    case actionTypes.START_LOADING:
+      return startLoading(state, action);
+    case actionTypes.STOP_LOADING:
+      return stopLoading(state, action);
     default:
       return state;
   }

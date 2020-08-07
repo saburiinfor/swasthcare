@@ -2,6 +2,20 @@ import axios from 'axios';
 import FormData from 'form-data';
 import * as actionTypes from '../../shared/actionTypes';
 
+export const startLoading = () => {
+  return {
+    type: actionTypes.START_LOADING,
+    loading: true
+  };
+};
+
+export const stopLoading = () => {
+  return {
+    type: actionTypes.STOP_LOADING,
+    loading: false
+  };
+};
+
 export const patientProfileSuccess = (patientProfile) => {
   return {
     type: actionTypes.GET_PATIENT_PROFILE_SUCCESS,
@@ -52,11 +66,11 @@ export const getPatientProfile = (userID) => {
 
 export const updatePatientProfile = (patientObject) => {
   return dispatch => {
+    dispatch(startLoading());
     const patientData = new FormData();
     for (const key in patientObject) {
       patientData.append(key, patientObject[key]);
     }
-    // patientData.append('profilePicture', patientObject['photo'][0]);
     axios.post(process.env.REACT_APP_API_URL + "User/patientprofileupdate/", patientData).then(
       response => {
         // console.log('inside get profile update response inside manageaccount');
@@ -65,10 +79,13 @@ export const updatePatientProfile = (patientObject) => {
         if (response.data.success === 1) {
           dispatch(updatePatientSuccess(patientUpdateResponse.Message));
         } else {
-          dispatch(updatePatientFailure(patientUpdateResponse.error.errorMsg));
+          dispatch(updatePatientFailure(patientUpdateResponse.error.errormsg));
         }
+        dispatch(stopLoading());
+        dispatch(getPatientProfile(patientObject.uid));
       }).catch(err => {
-      console.log(err);
+        dispatch(stopLoading());
+        console.log(err);
     });
   };
 };
@@ -123,6 +140,7 @@ export const patientUpdateAddressFailure = (error) => {
 
 export const updateAddress = (patientAddress) => {
   return dispatch => {
+    dispatch(startLoading());
     const patientAddressData = new FormData();
     let addressUpdateUrl;
     if (patientAddress.operation === 'new') {
@@ -149,7 +167,9 @@ export const updateAddress = (patientAddress) => {
         } else {
           dispatch(patientUpdateAddressFailure(response.data.error.errorMsg));
         }
+        dispatch(stopLoading());
       }).catch(err => {
+        dispatch(stopLoading());
       console.log(err);
     })
   }

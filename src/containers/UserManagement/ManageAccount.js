@@ -4,7 +4,7 @@ import {Helmet} from "react-helmet";
 import "./UserManagement.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
-import {Accordion, Alert, Button, Card, Form, FormControl, FormGroup, FormLabel, Image} from "react-bootstrap";
+import {Accordion, Alert, Button, Card, Fade, Form, FormControl, FormGroup, FormLabel, Image, Spinner} from "react-bootstrap";
 import UserProfile from "./UserProfile";
 import bsCustomFileInput from 'bs-custom-file-input';
 import ListAddresses from "./ListAddresses";
@@ -31,7 +31,6 @@ class ManageAccount extends Component {
     this.editDetails.bind(this);
     this.updateProfile.bind(this);
     this.changePatientDetails.bind(this);
-    this.resetFormValidation.bind(this);
     this.setEditAddressMode.bind(this);
   }
   
@@ -137,10 +136,6 @@ class ManageAccount extends Component {
     });
   };
   
-  resetFormValidation = (e, formName) => {
-    console.log(document.forms[formName]);
-  };
-  
   getPatientUpdatedData = () => {
     if (this.state.patientProfile.name === undefined) {
       this.setState({
@@ -148,12 +143,13 @@ class ManageAccount extends Component {
       });
     }
     let patientUpdatedData = {};
-    for (const key of ['name', 'contactNo', 'dob', 'gender', 'spokenLanguages', 'bloodgrp']) {
+    for (const key of ['name', 'contactNo', 'dob', 'gender', 'bloodgrp']) {
       patientUpdatedData[key] = (this.state.patientProfile[key] === undefined) ? this.props.patientProfile[key] : this.state.patientProfile[key];
     }
     if (this.state.patientProfile['profilePicture'] !== undefined) {
       patientUpdatedData['profilePicture'] = this.state.patientProfile['profilePicture'];
     }
+    patientUpdatedData['spokenLanguages'] = (this.state.patientProfile['spokenLanguages'] !== undefined) ? this.state.patientProfile['spokenLanguages'] : this.props.patientProfile['spoken_languages'];
     patientUpdatedData['uid'] = this.props.userProfile.id;
     patientUpdatedData['token'] = this.props.token;
     return patientUpdatedData;
@@ -173,14 +169,15 @@ class ManageAccount extends Component {
     } else {
       let patientUpdatedData = this.getPatientUpdatedData();
       // patientForm;
+      // console.log(patientUpdatedData);
       this.props.onUpdatePatientProfile(patientUpdatedData);
+      this.props.onGetPatientProfile(this.props.userProfile.id);
       this.editDetails();
       if (patientForm.name === 'patientProfilePicture') {
         this.setPictureFormValidated(false);
       } else {
         this.setProfileFormValidated(false);
       }
-      this.props.onGetPatientProfile(this.props.userProfile.id);
     }
   };
   
@@ -196,31 +193,40 @@ class ManageAccount extends Component {
         <Row>
           <Col md="12">
             {this.props.profileCompliant === false &&
-            <UserProfile/>
+              <UserProfile/>
             }
             {this.props.error !== null &&
             <Row>
               <Col>
-                <Alert key={'patient-error'} variant={'danger'}>
-                  {this.props.error}
-                </Alert>
+                <Fade timeout={1000}>
+                  <Alert key={'patient-error'} variant={'danger'}>
+                    {this.props.error}
+                  </Alert>
+                </Fade>
               </Col>
             </Row>
             }
             {this.props.successMessage &&
             <Row>
               <Col>
-                <Alert key={'profile-success'} variant={'success'}>
-                  {this.props.successMessage}
-                </Alert>
+                <Fade>
+                  <Alert key={'profile-success'} variant={'success'}>
+                    {this.props.successMessage}
+                  </Alert>
+                </Fade>
               </Col>
             </Row>
+            }
+            {this.props.loading &&
+              <Spinner animation="border" role="status" variant={'success'}>
+                <span className="sr-only">Loading...</span>
+              </Spinner>
             }
             <Row className={'manageAccount'}>
               <Col md={"3"} className="profilePhotoPanel">
                 <div className={'profilePhoto'}>
                   {this.props.patientProfile.img
-                    ? <Image src={this.props.patientProfile.img} title={'User profile'} roundedCircle/>
+                    ? <Image src={this.state.patientProfile.img} title={'User profile'} roundedCircle/>
                     : <FontAwesomeIcon className="profilePic" color="#ccc" size="5x" icon={faUser}/>
                   }
                   <Form name={"patientProfilePicture"} noValidate validated={this.state.pictureFormValidated} onSubmit={event => this.updateProfile(event)}>
@@ -229,8 +235,8 @@ class ManageAccount extends Component {
                       ?
                       <div className={'uploadPhotoContainer'}>
                         <FormGroup controlId={'profilePicture'}>
-                          <Form.File id="patientPhoto" custom onChange={this.handleFileSelection}>
-                            <Form.File.Input required/>
+                          <Form.File custom>
+                            <Form.File.Input id="patientPhoto" required onChange={this.handleFileSelection}/>
                             <Form.File.Label data-browse={'Browse'}>
                               Profile picture
                             </Form.File.Label>
@@ -239,7 +245,7 @@ class ManageAccount extends Component {
                             </Form.Control.Feedback>
                           </Form.File>
                         </FormGroup>
-                        <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={event => this.resetFormValidation(event, 'patientProfilePicture')}>Save</Button>
+                        <Button type={'Submit'} variant={'primary'} className={'saveProfile'}>Save</Button>
                       </div>
                       : <span className={'profileEdit'} onClick={this.editDetails.bind(null, 9)}>Upload photo</span>
                     }
@@ -332,7 +338,7 @@ class ManageAccount extends Component {
                               : <FormLabel className={'patientTexts'}>{this.props.patientProfile.spoken_languages === '' ? 'NA' : this.props.patientProfile.spoken_languages}</FormLabel>
                             }
                             {this.state.editPersonalDetails &&
-                            <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
+                              <Button type={'Submit'} variant={'primary'} className={'saveProfile'}>Save</Button>
                             }
                           </FormGroup>
                         </Form>
@@ -350,7 +356,7 @@ class ManageAccount extends Component {
                       <Card.Body>
                         <FormGroup controlId={'profileForm.bloodgrp'}>
                           <FormLabel>Blood Group</FormLabel>
-                          <FormControl as={'select'} defaultValue={this.props.patientProfile.bloodgrp} onChange={event => this.changePatientDetails(event, 'bloodgrp')}>
+                          <FormControl as={'select'} value={this.props.patientProfile.bloodgrp || ''} onChange={event => this.changePatientDetails(event, 'bloodgrp')}>
                             <option value={'A+'}>A+</option>
                             <option value={'O+'}>O+</option>
                             <option value={'B+'}>B+</option>
@@ -361,7 +367,7 @@ class ManageAccount extends Component {
                             <option value={'AB-'}>AB-</option>
                           </FormControl>
                           {this.state.editHealthDetails &&
-                          <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
+                          <Button type={'Submit'} variant={'primary'} className={'saveProfile'}>Save</Button>
                           }
                         </FormGroup>
                       </Card.Body>
@@ -419,7 +425,8 @@ const mapStateToProps = state => {
     addressError: state.manageAccount.addressError,
     addressUpdateSuccess: state.manageAccount.addressUpdateSuccess,
     cityList: state.newAppointment.cityList,
-    stateList: state.manageAccount.stateList
+    stateList: state.manageAccount.stateList,
+    loading: state.manageAccount.loading
   };
 };
 

@@ -33,8 +33,8 @@ class ManageAddress extends Component {
   
   loadDefaultValuesInState = () => {
     if (this.props.operation !== 'new') {
-      let selectedCity = (this.props.cityList.find(city => city.name === this.props.addressObj.city)).id,
-        selectedState = (this.props.stateList.find(state => state.name === this.props.addressObj.state)).id;
+      let selectedCity = this.props.addressObj.city !== null ? (this.props.cityList.find(city => city.name === this.props.addressObj.city)).id : null,
+        selectedState = this.props.addressObj.state !== null ? (this.props.stateList.find(state => state.name === this.props.addressObj.state)).id : null;
       this.setState({
         patientAddress: {
           ...this.state.patientAddress,
@@ -60,11 +60,13 @@ class ManageAddress extends Component {
       return false;
     }
     let addressUpdatedData = {};
-    for (const key of ['userID', 'id', 'operation', 'addressType', 'plotNumber', 'locality', 'city', 'state', 'pinCode', 'landmark']) {
+    for (const key of ['userID', 'id', 'operation', 'addressType', 'plotNumber', 'locality', 'city', 'state', 'landmark']) {
       addressUpdatedData[key] = (this.state.patientAddress[key] === undefined) ? this.props.addressObj[key] : this.state.patientAddress[key];
     }
+    addressUpdatedData['pinCode'] = this.state.patientAddress.pinCode === undefined ? this.props.addressObj.PinCode : this.state.patientAddress.pinCode;
     // console.log(addressUpdatedData);
     this.props.onUpdateAddress(addressUpdatedData);
+    this.props.onGetPatientAddresses(this.props.userProfile.id);
     this.props.changeEditView(false);
   };
   
@@ -133,7 +135,8 @@ class ManageAddress extends Component {
             <FormGroup as={Col} md={'4'} controlId={'profileForm.city'}>
               <FormLabel>City</FormLabel>
               {this.props.operation === 'new' || this.props.operation === 'edit'
-                ? <Form.Control as={'select'} defaultValue={this.state.patientAddress.city} required onChange={event => this.changePatientDetails(event, 'city')}>
+                ? <Form.Control as={'select'} value={this.state.patientAddress.city || ''} onChange={event => this.changePatientDetails(event, 'city')}>
+                  <option key={'no-city'} value={''}>Select city</option>
                   {this.props.cityList.map((city =>
                       <option key={city.id} value={city.id}>{city.name}</option>
                   ))}
@@ -147,7 +150,8 @@ class ManageAddress extends Component {
             <FormGroup as={Col} md={'4'} controlId={'profileForm.state'}>
               <FormLabel>State</FormLabel>
               {this.props.operation === 'new' || this.props.operation === 'edit'
-                ? <Form.Control as={'select'} defaultValue={this.state.patientAddress.state} required onChange={event => this.changePatientDetails(event, 'state')}>
+                ? <Form.Control as={'select'} value={this.state.patientAddress.state || ''} onChange={event => this.changePatientDetails(event, 'state')}>
+                  <option key={'no-state'} value={''}>Select state</option>
                   {this.props.stateList.map((state =>
                       <option key={state.id} value={state.id}>{state.name}</option>
                   ))}
@@ -161,7 +165,7 @@ class ManageAddress extends Component {
             <FormGroup as={Col} md={'4'} controlId={'profileForm.pincode'}>
               <FormLabel>Pincode</FormLabel>
               {this.props.operation === 'new' || this.props.operation === 'edit'
-                ? <FormControl defaultValue={this.props.addressObj.PinCode} required type={'text'} placeholder={'Pincode'} onChange={event => this.changePatientDetails(event, 'pinCode')}/>
+                ? <FormControl defaultValue={this.props.addressObj.PinCode} type={'text'} placeholder={'Pincode'} onChange={event => this.changePatientDetails(event, 'pinCode')}/>
                 : <Form.Text as={'div'}>{this.props.addressObj.PinCode}</Form.Text>
               }
               <Form.Control.Feedback type={'invalid'} tooltip>

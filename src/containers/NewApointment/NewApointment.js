@@ -29,7 +29,7 @@ class NewApointment extends Component {
         appointmentTypeLabel: 'Clinic visit',
         pid: null,
         application_id: 1,
-        service: 'Consultation'
+        service: '1'
       }
     };
     this.handlerNextBtnClick.bind(this);

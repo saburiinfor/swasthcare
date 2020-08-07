@@ -65,6 +65,9 @@ export const UPDATE_PATIENT_ADDRESS_SUCCESS = 'UPDATE_PATIENT_ADDRESS_SUCCESS';
 export const UPDATE_PATIENT_ADDRESS_FAILURE = 'UPDATE_PATIENT_ADDRESS_FAILURE';
 export const STATE_SUCCESS = 'STATE_SUCCESS';
 
+export const START_LOADING = 'START_LOADING';
+export const STOP_LOADING = 'STOP_LOADING';
+
 // // export const API_URL = 'https://www.conferadmin.com/restapi/';
 // export const API_URL = 'https://www.skrepository.com/restapi/';
 //

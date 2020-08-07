@@ -80,10 +80,10 @@ class ListAddresses extends Component {
                   <Card.Body>
                     <Card.Title>{this.props.patientProfile.name}</Card.Title>
                     <Card.Text>
-                      {address.plotNumber}
-                      {address.locality}
-                      {address.city} - {address.pinCode}
-                      {address.state}
+                      {address.plotNumber}<br/>
+                      {address.locality}<br/>
+                      {address.city} - {address.PinCode}<br/>
+                      {address.state}<br/>
                     </Card.Text>
                   </Card.Body>
                   <Card.Footer>
@@ -113,10 +113,10 @@ class ListAddresses extends Component {
                   <Card.Body>
                     <Card.Title>{this.props.patientProfile.name}</Card.Title>
                     <Card.Text>
-                      {address.plotNumber}
-                      {address.locality}
-                      {address.city} - {address.pinCode}
-                      {address.state}
+                      {address.plotNumber}<br/>
+                      {address.locality}<br/>
+                      {address.city} - {address.PinCode}<br/>
+                      {address.state}<br/>
                     </Card.Text>
                   </Card.Body>
                   <Card.Footer>
