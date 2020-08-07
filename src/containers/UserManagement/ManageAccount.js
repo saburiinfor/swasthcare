@@ -137,10 +137,6 @@ class ManageAccount extends Component {
     });
   };
   
-  resetFormValidation = (e, formName) => {
-    console.log(document.forms[formName]);
-  };
-  
   getPatientUpdatedData = () => {
     if (this.state.patientProfile.name === undefined) {
       this.setState({
@@ -173,14 +169,14 @@ class ManageAccount extends Component {
     } else {
       let patientUpdatedData = this.getPatientUpdatedData();
       // patientForm;
-      // this.props.onUpdatePatientProfile(patientUpdatedData);
+      this.props.onUpdatePatientProfile(patientUpdatedData);
       this.editDetails();
       if (patientForm.name === 'patientProfilePicture') {
         this.setPictureFormValidated(false);
       } else {
         this.setProfileFormValidated(false);
       }
-      // this.props.onGetPatientProfile(this.props.userProfile.id);
+      this.props.onGetPatientProfile(this.props.userProfile.id);
     }
   };
   
