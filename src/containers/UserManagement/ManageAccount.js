@@ -137,6 +137,10 @@ class ManageAccount extends Component {
     });
   };
   
+  resetFormValidation = (e, formName) => {
+    console.log(document.forms[formName]);
+  };
+  
   getPatientUpdatedData = () => {
     if (this.state.patientProfile.name === undefined) {
       this.setState({
