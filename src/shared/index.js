@@ -13,4 +13,4 @@ export { submitAppointment } from '../store/actions/submitAppointment';
 export { getServiceCities, generatePharmacyOrderId, placeOrderPharmaItems, getClinics } from '../store/actions/uploadPrescription';
 export { sendResetLink } from '../store/actions/forgotPassword';
 export { validateToken, resetPassword } from '../store/actions/resetPassword';
-export { getPatientProfile, updatePatientProfile, getPatientAddresses, updateAddress } from '../store/actions/manageAccount';
+export { getPatientProfile, updatePatientProfile, getPatientAddresses, updateAddress, getStates } from '../store/actions/manageAccount';

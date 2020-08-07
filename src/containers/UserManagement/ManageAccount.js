@@ -1,19 +1,16 @@
-import React, {Component, Suspense, lazy} from 'react';
+import React, {Component} from 'react';
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import "./UserManagement.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUser} from "@fortawesome/free-solid-svg-icons";
 import {Accordion, Alert, Button, Card, Form, FormControl, FormGroup, FormLabel, Image} from "react-bootstrap";
-import {connect} from "react-redux";
-import * as actions from "../../shared";
 import UserProfile from "./UserProfile";
 import bsCustomFileInput from 'bs-custom-file-input';
 import ListAddresses from "./ListAddresses";
 import ManageAddress from "./ManageAddress";
-// const ListAddresses = lazy(() => import('./ListAddresses'))
-// const ManageAddress = lazy(() => import('./ManageAddress'))
-
+import * as actions from "../../shared";
+import {connect} from "react-redux";
 
 class ManageAccount extends Component {
   constructor(props) {
@@ -24,18 +21,24 @@ class ManageAccount extends Component {
       editPaymentDetails: false,
       editMiscDetails: false,
       patientProfile: {},
-      formValidated: false,
+      pictureFormValidated: false,
+      profileFormValidated: false,
       editPhoto: false,
-      addressList: {}
+      addressList: {},
+      editAddressMode: false,
+      operation: 'new'
     }
     this.editDetails.bind(this);
     this.updateProfile.bind(this);
     this.changePatientDetails.bind(this);
     this.resetFormValidation.bind(this);
+    this.setEditAddressMode.bind(this);
   }
   
   componentDidMount() {
     bsCustomFileInput.init();
+    this.props.onGetCities();
+    this.props.onGetStates();
     this.props.onGetPatientAddresses(this.props.userProfile.id);
     this.props.onGetPatientProfile(this.props.userProfile.id);
     
@@ -105,8 +108,24 @@ class ManageAccount extends Component {
     });
   };
   
-  setFormValidated = (flag) => {
-    this.setState({formValidated: flag});
+  setEditAddressMode = (flag) => {
+    this.setState({
+      editAddressMode: flag
+    });
+  };
+  
+  setOperation = (op) => {
+    this.setState({
+      operation: op
+    });
+  };
+  
+  setProfileFormValidated = (flag) => {
+    this.setState({profileFormValidated: flag});
+  }
+  
+  setPictureFormValidated = (flag) => {
+    this.setState({pictureFormValidated: flag});
   }
   
   changePatientDetails = (event, controlId) => {
@@ -118,37 +137,50 @@ class ManageAccount extends Component {
     });
   };
   
-  resetFormValidation = () => {
-    this.setFormValidated(false);
+  resetFormValidation = (e, formName) => {
+    console.log(document.forms[formName]);
   };
+  
+  getPatientUpdatedData = () => {
+    if (this.state.patientProfile.name === undefined) {
+      this.setState({
+        patientProfile: this.props.patientProfile
+      });
+    }
+    let patientUpdatedData = {};
+    for (const key of ['name', 'contactNo', 'dob', 'gender', 'spokenLanguages', 'bloodgrp']) {
+      patientUpdatedData[key] = (this.state.patientProfile[key] === undefined) ? this.props.patientProfile[key] : this.state.patientProfile[key];
+    }
+    if (this.state.patientProfile['profilePicture'] !== undefined) {
+      patientUpdatedData['profilePicture'] = this.state.patientProfile['profilePicture'];
+    }
+    patientUpdatedData['uid'] = this.props.userProfile.id;
+    patientUpdatedData['token'] = this.props.token;
+    return patientUpdatedData;
+  }
+  
   
   updateProfile = (event) => {
     const patientForm = event.currentTarget;
     event.preventDefault();
-    this.setFormValidated(true);
+    if (patientForm.name === 'patientProfilePicture') {
+      this.setPictureFormValidated(true);
+    } else {
+      this.setProfileFormValidated(true);
+    }
     if (patientForm.checkValidity() === false) {
       event.stopPropagation();
     } else {
-      if (this.state.patientProfile.name === undefined) {
-        this.setState({
-          patientProfile: this.props.patientProfile
-        });
-      }
-      let patientUpdatedData = {};
-      for (const key of ['name', 'contactNo', 'dob', 'gender', 'spokenLanguages', 'addressType', 'bloodgrp', 'plotNumber', 'pinCode']) {
-        patientUpdatedData[key] = (this.state.patientProfile[key] === undefined) ? this.props.patientProfile[key]: this.state.patientProfile[key];
-      }
-      if (this.state.patientProfile['profilePicture'] !== undefined) {
-        patientUpdatedData['profilePicture'] = this.state.patientProfile['profilePicture'];
-      }
-      patientUpdatedData['uid'] = this.props.userProfile.id;
-      patientUpdatedData['token'] = this.props.token;
-      // console.log(patientUpdatedData);
+      let patientUpdatedData = this.getPatientUpdatedData();
       // patientForm;
-      this.props.onUpdatePatientProfile(patientUpdatedData);
+      // this.props.onUpdatePatientProfile(patientUpdatedData);
       this.editDetails();
-      this.setFormValidated(false);
-      this.props.onGetPatientProfile(this.props.userProfile.id);
+      if (patientForm.name === 'patientProfilePicture') {
+        this.setPictureFormValidated(false);
+      } else {
+        this.setProfileFormValidated(false);
+      }
+      // this.props.onGetPatientProfile(this.props.userProfile.id);
     }
   };
   
@@ -184,49 +216,65 @@ class ManageAccount extends Component {
               </Col>
             </Row>
             }
-            <Form name={"patientProfile"} noValidate validated={this.state.formValidated} onSubmit={this.updateProfile}>
-              <Row className={'manageAccount'}>
-                <Col md={"3"} className="profilePhotoPanel">
-                  <div className={'profilePhoto'}>
-                    {this.props.patientProfile.img
-                      ? <Image src={this.props.patientProfile.img} title={'User profile'} roundedCircle/>
-                      : <FontAwesomeIcon className="profilePic" color="#ccc" size="5x" icon={faUser}/>
-                    }
+            <Row className={'manageAccount'}>
+              <Col md={"3"} className="profilePhotoPanel">
+                <div className={'profilePhoto'}>
+                  {this.props.patientProfile.img
+                    ? <Image src={this.props.patientProfile.img} title={'User profile'} roundedCircle/>
+                    : <FontAwesomeIcon className="profilePic" color="#ccc" size="5x" icon={faUser}/>
+                  }
+                  <Form name={"patientProfilePicture"} noValidate validated={this.state.pictureFormValidated} onSubmit={event => this.updateProfile(event)}>
                     <br/>
                     {this.state.editPhoto
-                      ? <div className={'uploadPhotoContainer'}><Form.File id="patientPhoto" label="Upload photo" custom onChange={this.handleFileSelection}/><Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button></div>
+                      ?
+                      <div className={'uploadPhotoContainer'}>
+                        <FormGroup controlId={'profilePicture'}>
+                          <Form.File id="patientPhoto" custom onChange={this.handleFileSelection}>
+                            <Form.File.Input required/>
+                            <Form.File.Label data-browse={'Browse'}>
+                              Profile picture
+                            </Form.File.Label>
+                            <Form.Control.Feedback type={'invalid'} tooltip>
+                              Please select a photo
+                            </Form.Control.Feedback>
+                          </Form.File>
+                        </FormGroup>
+                        <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={event => this.resetFormValidation(event, 'patientProfilePicture')}>Save</Button>
+                      </div>
                       : <span className={'profileEdit'} onClick={this.editDetails.bind(null, 9)}>Upload photo</span>
                     }
-                  </div>
-                  <Row className={'userDetails'}>
-                    <Col md={"6"} className={'leftColumn'}>
-                      {this.props.patientProfile.name}
-                    </Col>
-                    <Col md={'6'} className={'rightColumn'}>
-                      {this.props.patientProfile.dob}
-                    </Col>
-                  </Row>
-                  <Row className={'userDetails'}>
-                    <Col md={'6'} className={'leftColumn'}>
-                      {this.props.patientProfile.contactNo}
-                    </Col>
-                    <Col md={'6'} className={'rightColumn'}>
-                      {this.props.patientProfile.userId}
-                    </Col>
-                  </Row>
-                  {/*<div className="profileCompletion mb-4">70% profile complete</div>*/}
-                </Col>
-                <Col md={"9"} className={'profileDetails'}>
-                  <Accordion className={'profileUpdatePanel'} defaultActiveKey="0">
-                    <Card>
-                      <Card.Header>
-                        <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                          Personal information
-                        </Accordion.Toggle>
-                        <Button variant={'light'} className={'editLink'} onClick={this.editDetails.bind(null, 0)}>Edit</Button>
-                      </Card.Header>
-                      <Accordion.Collapse eventKey="0">
-                        <Card.Body>
+                  </Form>
+                </div>
+                <Row className={'userDetails'}>
+                  <Col md={"6"} className={'leftColumn'}>
+                    {this.props.patientProfile.name}
+                  </Col>
+                  <Col md={'6'} className={'rightColumn'}>
+                    {this.props.patientProfile.dob}
+                  </Col>
+                </Row>
+                <Row className={'userDetails'}>
+                  <Col md={'6'} className={'leftColumn'}>
+                    {this.props.patientProfile.contactNo}
+                  </Col>
+                  <Col md={'6'} className={'rightColumn'}>
+                    {this.props.patientProfile.userId}
+                  </Col>
+                </Row>
+                {/*<div className="profileCompletion mb-4">70% profile complete</div>*/}
+              </Col>
+              <Col md={"9"} className={'profileDetails'}>
+                <Accordion className={'profileUpdatePanel'} defaultActiveKey="0">
+                  <Card>
+                    <Card.Header>
+                      <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                        Personal information
+                      </Accordion.Toggle>
+                      <Button variant={'light'} className={'editLink'} onClick={this.editDetails.bind(null, 0)}>Edit</Button>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="0">
+                      <Card.Body>
+                        <Form name={"patientProfile"} noValidate validated={this.state.profileFormValidated} onSubmit={this.updateProfile}>
                           <FormGroup controlId={'profileForm.name'}>
                             <FormLabel>Full name</FormLabel>
                             {this.state.editPersonalDetails
@@ -287,65 +335,67 @@ class ManageAccount extends Component {
                             <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
                             }
                           </FormGroup>
-                        </Card.Body>
-                      </Accordion.Collapse>
-                    </Card>
-                    <Card>
-                      <Card.Header>
-                        <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                          Health information
-                        </Accordion.Toggle>
-                        <Button variant={'light'} className={'editLink'} onClick={this.editDetails.bind(null, 1)}>Edit</Button>
-                      </Card.Header>
-                      <Accordion.Collapse eventKey="1">
-                        <Card.Body>
-                          <FormGroup controlId={'profileForm.bloodgrp'}>
-                            <FormLabel>Blood Group</FormLabel>
-                            <FormControl as={'select'} defaultValue={this.props.patientProfile.bloodgrp} onChange={event => this.changePatientDetails(event, 'bloodgrp')}>
-                              <option value={'A+'}>A+</option>
-                              <option value={'O+'}>O+</option>
-                              <option value={'B+'}>B+</option>
-                              <option value={'AB+'}>AB+</option>
-                              <option value={'A-'}>A-</option>
-                              <option value={'O-'}>O-</option>
-                              <option value={'B-'}>B-</option>
-                              <option value={'AB-'}>AB-</option>
-                            </FormControl>
-                            {this.state.editHealthDetails &&
-                            <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
-                            }
-                          </FormGroup>
-                        </Card.Body>
-                      </Accordion.Collapse>
-                    </Card>
-                    <Card>
-                      <Card.Header>
-                        <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                          Address information
-                        </Accordion.Toggle>
-                        <Button variant={'light'} className={'editLink'} onClick={this.editDetails.bind(null, 2)}>Edit</Button>
-                      </Card.Header>
-                      <Accordion.Collapse eventKey="2">
-                        <Card.Body>
-                          {this.props.addressError !== null &&
-                            <Alert key={'address-error'} variant={'danger'}>{this.props.addressError}</Alert>
+                        </Form>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                  <Card>
+                    <Card.Header>
+                      <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                        Health information
+                      </Accordion.Toggle>
+                      <Button variant={'light'} className={'editLink'} onClick={this.editDetails.bind(null, 1)}>Edit</Button>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="1">
+                      <Card.Body>
+                        <FormGroup controlId={'profileForm.bloodgrp'}>
+                          <FormLabel>Blood Group</FormLabel>
+                          <FormControl as={'select'} defaultValue={this.props.patientProfile.bloodgrp} onChange={event => this.changePatientDetails(event, 'bloodgrp')}>
+                            <option value={'A+'}>A+</option>
+                            <option value={'O+'}>O+</option>
+                            <option value={'B+'}>B+</option>
+                            <option value={'AB+'}>AB+</option>
+                            <option value={'A-'}>A-</option>
+                            <option value={'O-'}>O-</option>
+                            <option value={'B-'}>B-</option>
+                            <option value={'AB-'}>AB-</option>
+                          </FormControl>
+                          {this.state.editHealthDetails &&
+                          <Button type={'Submit'} variant={'primary'} className={'saveProfile'} onClick={this.resetFormValidation}>Save</Button>
                           }
-                          { this.props.addressUpdateSuccess !== null &&
-                            <Alert key={'address-success'} variant={'danger'}>{this.props.addressSuccessMessage}</Alert>
-                          }
-                          <h5>Your addresses</h5>
-                          {/*Edit operation values would be new/edit/remove*/}
-                          { this.props.editAddress.flag
-                            ? <ManageAddress {...this.props} operation={'edit'} addressObj={this.props.editAddress.addressObj}/>
-                            : this.props.addressList.length < 1 ? <ManageAddress {...this.props} operation={'new'}/> : <ListAddresses {...this.props} />
-                          }
-                        </Card.Body>
-                      </Accordion.Collapse>
-                    </Card>
-                  </Accordion>
-                </Col>
-              </Row>
-            </Form>
+                        </FormGroup>
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                  <Card>
+                    <Card.Header>
+                      <Accordion.Toggle as={Button} variant="link" eventKey="2">
+                        Address information
+                      </Accordion.Toggle>
+                      <Button variant={'light'} className={'editLink'} onClick={this.editDetails.bind(null, 2)}>Edit</Button>
+                    </Card.Header>
+                    <Accordion.Collapse eventKey="2">
+                      <Card.Body>
+                        {this.props.addressError !== null &&
+                        <Alert key={'address-error'} variant={'danger'}>{this.props.addressError}</Alert>
+                        }
+                        {this.props.addressUpdateSuccess !== null &&
+                        <Alert key={'address-success'} variant={'success'}>{this.props.addressUpdateSuccess}</Alert>
+                        }
+                        <h5>Your addresses</h5>
+                        {/*Edit operation values would be new/edit/remove*/}
+                        {this.state.editAddressMode
+                          ? <ManageAddress {...this.props} operation={this.state.operation} addressObj={this.props.editAddress.addressObj} changeEditView={(flag) => this.setEditAddressMode(flag)}/>
+                          : this.props.addressList.length < 1
+                            ? <ManageAddress {...this.props} operation={'new'}  changeEditView={(flag) => this.setEditAddressMode(flag)}/>
+                            : <ListAddresses {...this.props} addressList={this.props.addressList} changeEditView={(flag) => this.setEditAddressMode(flag)} setOperation={(op) => this.setOperation(op)} />
+                        }
+                      </Card.Body>
+                    </Accordion.Collapse>
+                  </Card>
+                </Accordion>
+              </Col>
+            </Row>
           </Col>
           {/*<Col md="4">*/}
           {/*  <ImgWithOverlayTextGroup/>*/}
@@ -358,7 +408,7 @@ class ManageAccount extends Component {
 
 const mapStateToProps = state => {
   return {
-    editAddress: { flag: false, addressObj: {}},
+    editAddress: {flag: false, addressObj: {}},
     userProfile: state.UserProfile.userProfile,
     profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
     patientProfile: state.manageAccount.patientProfile,
@@ -367,7 +417,9 @@ const mapStateToProps = state => {
     token: sessionStorage.getItem('token'),
     addressList: state.manageAccount.addressList,
     addressError: state.manageAccount.addressError,
-    addressUpdateSuccess: state.manageAccount.addressUpdateSuccess
+    addressUpdateSuccess: state.manageAccount.addressUpdateSuccess,
+    cityList: state.newAppointment.cityList,
+    stateList: state.manageAccount.stateList
   };
 };
 
@@ -376,7 +428,9 @@ const mapDispatchToProps = dispatch => {
     onGetPatientProfile: (userId) => dispatch(actions.getPatientProfile(userId)),
     onUpdatePatientProfile: (patientProfileObj) => dispatch(actions.updatePatientProfile(patientProfileObj)),
     onGetPatientAddresses: (userId) => dispatch(actions.getPatientAddresses(userId)),
-    onUpdateAddress: (patientAddress) => dispatch(actions.updateAddress(patientAddress))
+    onUpdateAddress: (patientAddress) => dispatch(actions.updateAddress(patientAddress)),
+    onGetStates: () => dispatch(actions.getStates()),
+    onGetCities: () => dispatch(actions.getCities())
   };
 };
 

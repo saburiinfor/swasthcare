@@ -131,12 +131,12 @@ export const updateAddress = (patientAddress) => {
         patientAddressData.append(key, patientAddress[key]);
       }
     } else if (patientAddress.operation === 'edit') {
-      addressUpdateUrl = 'User/updateaddress';
+      addressUpdateUrl = 'User/updateaddress/';
       for (const key of ['userID', 'id', 'plotNumber', 'addressType', 'pinCode', 'city', 'state', 'locality', 'landmark']) {
         patientAddressData.append(key, patientAddress[key]);
       }
     } else {
-      addressUpdateUrl = 'User/deleteaddress';
+      addressUpdateUrl = 'User/deleteaddress/';
       patientAddressData.append('userID', patientAddress.userID);
       patientAddressData.append('id', patientAddress.id);
     }
@@ -153,4 +153,22 @@ export const updateAddress = (patientAddress) => {
       console.log(err);
     })
   }
-}
+};
+
+export const statesSuccess = (stateList) => {
+  return {
+    type: actionTypes.STATE_SUCCESS,
+    stateList
+  };
+};
+
+export const getStates = () => {
+  return dispatch => {
+    axios.get(process.env.REACT_APP_API_URL + "Market/getstate/").then(
+      response => {
+        dispatch(statesSuccess(response.data));
+      }).catch(err => {
+      console.log(err);
+    });
+  };
+};

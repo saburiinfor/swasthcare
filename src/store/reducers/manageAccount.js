@@ -7,7 +7,8 @@ const initialState = {
   error: null,
   addressList: {},
   addressError: null,
-  addressUpdateSuccess: null
+  addressUpdateSuccess: null,
+  stateList: []
 };
 
 const patientProfileSuccess = (state, action) => {
@@ -60,6 +61,12 @@ const updatePatientAddressFailure = (state, action) => {
   })
 }
 
+const statesSuccess = (state, action) => {
+  return updateObject(state, {
+    stateList: action.stateList
+  });
+};
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_PATIENT_PROFILE_SUCCESS:
@@ -78,6 +85,8 @@ const reducer = (state = initialState, action) => {
       return updatePatientAddressSuccess(state, action);
     case actionTypes.UPDATE_PATIENT_ADDRESS_FAILURE:
       return updatePatientAddressFailure(state, action);
+    case actionTypes.STATE_SUCCESS:
+      return statesSuccess(state, action);
     default:
       return state;
   }
