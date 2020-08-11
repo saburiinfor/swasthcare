@@ -24,7 +24,7 @@ class AppointmentRowGroup extends Component {
         return (
           <Aux>
             {filteredList.map((appointmentItem, index) => {
-              return <AppointmentRow appointment={appointmentItem} key={index}/>;
+              return <AppointmentRow {...this.props} appointment={appointmentItem} key={index}/>;
             })}
           </Aux>
         )
@@ -50,13 +50,25 @@ const mapStateToProps = state => {
     userProfile: state.UserProfile.userProfile,
     appointmentsList: state.appointmentGroup.appointmentsList,
     error: state.appointmentGroup.error,
-    cancelSuccess: state.appointmentGroup.cancelSuccess
+    cancelSuccess: state.appointmentGroup.cancelSuccess,
+    pdfMedicationData: state.appointmentGroup.pdfMedicationData,
+    medicationError: state.appointmentGroup.medicationError,
+    pdfData: state.appointmentGroup.pdfData,
+    prescriptionError: state.appointmentGroup.prescriptionError,
+    clinicDetails: state.appointmentGroup.clinicDetails,
+    clinicError: state.appointmentGroup.clinicError,
+    appointmentDetails: state.appointmentGroup.appointmentDetails,
+    appointmentDetailsError: state.appointmentGroup.appointmentDetailsError
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onCancelAppointment: (appointmentId) => dispatch(actions.cancelAppointment(appointmentId)),
-    onGetAppointmentList: (id) => dispatch(actions.getAppointmentList(id))
+    onGetAppointmentList: (id) => dispatch(actions.getAppointmentList(id)),
+    onGetAppointmentDetails: (appointmentId) => dispatch(actions.getAppointmentDetails(appointmentId)),
+    onGetMedicineDetails: (appointmentId) => dispatch(actions.getMedicineDetails(appointmentId)),
+    onGetPrescriptionDetails: (appointmentId) => dispatch(actions.getPrescriptionDetails(appointmentId)),
+    onGetClinicDetails: (clinicId) => dispatch(actions.getClinicDetailsById(clinicId))
   };
 };
 

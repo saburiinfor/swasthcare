@@ -77,9 +77,9 @@ export const updatePatientProfile = (patientObject) => {
         // console.log("res ***" + JSON.stringify(response.data));
         let patientUpdateResponse = response.data;
         if (response.data.success === 1) {
-          dispatch(updatePatientSuccess(patientUpdateResponse.Message));
+          dispatch(updatePatientSuccess(patientUpdateResponse.result[0].successMsg));
         } else {
-          dispatch(updatePatientFailure(patientUpdateResponse.error.errormsg));
+          dispatch(updatePatientFailure(patientUpdateResponse.error.errorMsg));
         }
         dispatch(stopLoading());
         dispatch(getPatientProfile(patientObject.uid));
@@ -163,7 +163,7 @@ export const updateAddress = (patientAddress) => {
         console.log('inside update address API call');
         console.log('res *** ' + JSON.stringify(response.data));
         if (response.data.success === 1) {
-          dispatch(patientUpdateAddressSuccess(response.data.Message))
+          dispatch(patientUpdateAddressSuccess(response.data.result[0].successMsg))
         } else {
           dispatch(patientUpdateAddressFailure(response.data.error.errorMsg));
         }

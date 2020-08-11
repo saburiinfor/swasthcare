@@ -36,6 +36,7 @@
       "react-scripts": "^3.4.1",
       "react-telephone-input": "^4.75.5",
       "reactstrap": "^8.5.1",
+      "pdfmake": "^0.1.67",
       "redux": "^4.0.5",
       "redux-file-upload": "0.0.19",
       "redux-persist": "^6.0.0",

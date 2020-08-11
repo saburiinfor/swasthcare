@@ -52,13 +52,15 @@ const updatePatientFailure = (state, action) => {
 
 const getPatientAddressesSuccess = (state, action) => {
   return updateObject(state, {
-    addressList: action.patientAddresses
+    addressList: action.patientAddresses,
+    addressUpdateSuccess: null
   });
 };
 
 const getPatientAddressesFailure = (state, action) => {
   return updateObject(state, {
-    addressError: action.error
+    addressError: action.error,
+    addressUpdateSuccess: null
   });
 };
 

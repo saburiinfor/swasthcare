@@ -226,7 +226,7 @@ class ManageAccount extends Component {
               <Col md={"3"} className="profilePhotoPanel">
                 <div className={'profilePhoto'}>
                   {this.props.patientProfile.img
-                    ? <Image src={this.state.patientProfile.img} title={'User profile'} roundedCircle/>
+                    ? <Image src={this.props.patientProfile.img} title={'User profile'} roundedCircle/>
                     : <FontAwesomeIcon className="profilePic" color="#ccc" size="5x" icon={faUser}/>
                   }
                   <Form name={"patientProfilePicture"} noValidate validated={this.state.pictureFormValidated} onSubmit={event => this.updateProfile(event)}>
@@ -385,7 +385,7 @@ class ManageAccount extends Component {
                         {this.props.addressError !== null &&
                         <Alert key={'address-error'} variant={'danger'}>{this.props.addressError}</Alert>
                         }
-                        {this.props.addressUpdateSuccess !== null &&
+                        {(this.props.addressUpdateSuccess !== null && this.state.editAddressMode === false) &&
                         <Alert key={'address-success'} variant={'success'}>{this.props.addressUpdateSuccess}</Alert>
                         }
                         <h5>Your addresses</h5>
