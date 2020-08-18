@@ -15,6 +15,8 @@ phases:
       # install npm dependencies
       - echo installing package dependencies
       - npm install
+      - echo installing env-cmd
+      - npm install -g env-cmd
   build:
     commands:
       # Tests
@@ -22,7 +24,7 @@ phases:
       - echo Build the application
   post_build:
     commands:
-      - ./node_modules/.bin/env-cmd -e development npm run build
+      - env-cmd -e development npm run build
 artifacts:
   files:
     - "**/*"
