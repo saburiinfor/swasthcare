@@ -20,8 +20,6 @@ phases:
       # Tests
       # Build
       - echo Build the application
-  post_build:
-    commands:
       - env-cmd -e development npm run build
 artifacts:
   files:
