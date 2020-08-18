@@ -20,10 +20,11 @@ phases:
       # Tests
       # Build
       - echo Build the application
-      - env-cmd -e development npm run build
+      - npm run envbuild
 artifacts:
   files:
-    - "**/*"
+    - source /*
+      destination /home/ec2-user/swasthcare/build/
   discard-paths: no
   base-directory: build
 
