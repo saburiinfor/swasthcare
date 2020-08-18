@@ -23,8 +23,7 @@ phases:
       - npm run envbuild
 artifacts:
   files:
-    - source /*
-      destination /home/ec2-user/swasthcare/
+    - "**/*"
   discard-paths: no
 #
 #version: 0.0
