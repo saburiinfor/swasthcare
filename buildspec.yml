@@ -1,0 +1,53 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      # install nodejs and npm
+      - echo Installing nodejs
+      - curl -sL https://deb.nodesource.com/setup_current.x | bash -
+      - apt install -y nodejs
+      # update npm tree
+      - echo Updating npm tree
+      - npm update
+  pre_build:
+    commands:
+      # install npm dependencies
+      - echo installing package dependencies
+      - npm install
+  build:
+    commands:
+      # Tests
+      # Build
+      - echo Build the application
+      - env-cmd -e development npm run build
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: build
+#
+#version: 0.0
+#os: linux
+#files:
+#  - source: /index.html
+#    destination: /var/www/html/
+#hooks:
+#  BeforeInstall:
+#    - location: scripts/install_dependencies
+#      timeout: 300
+#      runas: root
+#    - location: scripts/start_server
+#      timeout: 300
+#      runas: root
+#  ApplicationStop:
+#    - location: scripts/stop_server
+#      timeout: 300
+#      runas: root
+
+
+#version: 0.0
+#os: linux
+#files:
+#  - source: /index.html
+#    destination: /home/ec2-user/
