@@ -1,6 +1,6 @@
 export { auth, setAuthRedirectPath } from '../store/actions/auth';
 export { getCountry, getCity, createUser, setUserStatus } from '../store/actions/createUser';
-export { getAppointmentList, cancelAppointment, getMedicineDetails, getPrescriptionDetails, getClinicDetailsById, getAppointmentDetails } from '../store/actions/appointmentGroup';
+export { getAppointmentList, cancelAppointment, getMedicineDetails, getPrescriptionDetails, getClinicDetailsById, getAppointmentDetails, generatePDF } from '../store/actions/appointmentGroup';
 export { setAppointmentDate, getProfile } from '../store/actions/UserDashboard';
 export { getUserProfile, updateUserProfile } from '../store/actions/UserProfile';
 export { setSignout } from '../store/actions/logout';

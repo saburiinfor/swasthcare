@@ -216,3 +216,26 @@ export const getClinicDetailsById = (clinicId) => {
     });
   };
 };
+
+export const generatePDFSuccess = (doc) => {
+  return {
+    type: actionTypes.POST_PDF_DOCUMENT,
+    doc
+  };
+};
+
+export const generatePDF = (doc) => {
+  return dispatch => {
+    console.log(doc);
+    const pdfDoc = new FormData();
+    pdfDoc.append("doc", JSON.stringify(doc));
+    axios.post('/pdf', pdfDoc).then(
+      response => {
+        console.log("res ***" + JSON.stringify(response));
+        dispatch(generatePDF(response.data));
+      }
+    ).catch(err => {
+      console.log(err);
+    });
+  };
+};

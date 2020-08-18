@@ -68,7 +68,8 @@ const mapDispatchToProps = dispatch => {
     onGetAppointmentDetails: (appointmentId) => dispatch(actions.getAppointmentDetails(appointmentId)),
     onGetMedicineDetails: (appointmentId) => dispatch(actions.getMedicineDetails(appointmentId)),
     onGetPrescriptionDetails: (appointmentId) => dispatch(actions.getPrescriptionDetails(appointmentId)),
-    onGetClinicDetails: (clinicId) => dispatch(actions.getClinicDetailsById(clinicId))
+    onGetClinicDetails: (clinicId) => dispatch(actions.getClinicDetailsById(clinicId)),
+    onGeneratePDF: (doc) => dispatch(actions.generatePDF(doc))
   };
 };
 

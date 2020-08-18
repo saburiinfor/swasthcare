@@ -76,6 +76,7 @@ export const GET_CLINIC_DETAILS_SUCCESS = 'GET_CLINIC_DETAILS_SUCCESS';
 export const GET_CLINIC_DETAILS_FAILURE = 'GET_CLINIC_DETAILS_FAILURE';
 export const GET_APPOINTMENT_DETAILS_SUCCESS = 'GET_APPOINTMENT_DETAILS_SUCCESS';
 export const GET_APPOINTMENT_DETAILS_FAILURE = 'GET_APPOINTMENT_DETAILS_FAILURE';
+export const POST_PDF_DOCUMENT = 'PUSH_PDF_DOCUMENT';
 
 // // export const API_URL = 'https://www.conferadmin.com/restapi/';
 // export const API_URL = 'https://www.skrepository.com/restapi/';

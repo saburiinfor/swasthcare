@@ -75,11 +75,11 @@ export const updatePatientProfile = (patientObject) => {
       response => {
         // console.log('inside get profile update response inside manageaccount');
         // console.log("res ***" + JSON.stringify(response.data));
-        let patientUpdateResponse = response.data;
+        let patientUpdateResponse = response.data.result[0];
         if (response.data.success === 1) {
-          dispatch(updatePatientSuccess(patientUpdateResponse.result[0].successMsg));
+          dispatch(updatePatientSuccess(patientUpdateResponse.successMsg));
         } else {
-          dispatch(updatePatientFailure(patientUpdateResponse.error.errorMsg));
+          dispatch(updatePatientFailure(patientUpdateResponse.errorMsg));
         }
         dispatch(stopLoading());
         dispatch(getPatientProfile(patientObject.uid));
