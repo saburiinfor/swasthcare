@@ -26,8 +26,6 @@ artifacts:
     - source /*
       destination /home/ec2-user/swasthcare/
   discard-paths: no
-  base-directory: build
-
 #
 #version: 0.0
 #os: linux
