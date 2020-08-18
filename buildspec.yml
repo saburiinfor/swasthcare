@@ -15,8 +15,6 @@ phases:
       # install npm dependencies
       - echo installing package dependencies
       - npm install
-      - echo installing env-cmd
-      - npm install -g env-cmd
   build:
     commands:
       # Tests
