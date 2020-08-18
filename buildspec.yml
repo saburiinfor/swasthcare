@@ -22,7 +22,7 @@ phases:
       - echo Build the application
   post_build:
     commands:
-      - env-cmd -e development npm run build
+      - ./node_modules/.bin/env-cmd -e development npm run build
 artifacts:
   files:
     - "**/*"
