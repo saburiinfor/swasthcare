@@ -1,29 +1,35 @@
+#version: 0.2
+#
+#phases:
+#  install:
+#    commands:
+#      # install nodejs and npm
+#      - echo Installing nodejs
+#      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+#      - . ~/.nvm/nvm.sh
+#      - nvm install node
+#      # update npm tree
+#      - echo Updating npm tree
+#      - npm update
+#  pre_build:
+#    commands:
+#      # install npm dependencies
+#      - echo installing package dependencies
+#      - npm install
+#  build:
+#    commands:
+#      # Tests
+#      # Build
+#      - echo Build the application
+#      - env-cmd -e development npm run build
+#artifacts:
+#  files:
+#    - "**/*"
+#  discard-paths: no
+#  base-directory: build
 version: 0.2
 
-phases:
-  install:
-    commands:
-      # install nodejs and npm
-      - echo Installing nodejs
-      - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
-      - . ~/.nvm/nvm.sh
-      - nvm install node
-      # update npm tree
-      - echo Updating npm tree
-      - npm update
-  pre_build:
-    commands:
-      # install npm dependencies
-      - echo installing package dependencies
-      - npm install
-  build:
-    commands:
-      # Tests
-      # Build
-      - echo Build the application
-      - env-cmd -e development npm run build
-artifacts:
-  files:
-    - "**/*"
-  discard-paths: no
-  base-directory: build
+os: linux
+
+files:
+  - "**/*"
