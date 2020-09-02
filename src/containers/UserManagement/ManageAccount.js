@@ -26,7 +26,8 @@ class ManageAccount extends Component {
       editPhoto: false,
       addressList: {},
       editAddressMode: false,
-      operation: 'new'
+      operation: 'new',
+      show: true
     }
     this.editDetails.bind(this);
     this.updateProfile.bind(this);
@@ -157,6 +158,9 @@ class ManageAccount extends Component {
   
   
   updateProfile = (event) => {
+    this.setState({
+      show: true
+    });
     const patientForm = event.currentTarget;
     event.preventDefault();
     if (patientForm.name === 'patientProfilePicture') {
@@ -181,6 +185,12 @@ class ManageAccount extends Component {
     }
   };
   
+  setShow = (flag) => {
+    this.setState({
+      show: flag
+    });
+  };
+  
   render() {
     return (
       <Col md="12" className="mt10">
@@ -198,22 +208,18 @@ class ManageAccount extends Component {
             {this.props.error !== null &&
             <Row>
               <Col>
-                <Fade timeout={1000}>
-                  <Alert key={'patient-error'} variant={'danger'}>
-                    {this.props.error}
-                  </Alert>
-                </Fade>
+                <Alert show={this.state.show} key={'patient-error'} onClose={() => this.setShow(false)} variant={'danger'} dismissible>
+                  {this.props.error}
+                </Alert>
               </Col>
             </Row>
             }
             {this.props.successMessage &&
             <Row>
               <Col>
-                <Fade>
-                  <Alert key={'profile-success'} variant={'success'}>
-                    {this.props.successMessage}
-                  </Alert>
-                </Fade>
+                <Alert show={this.state.show} key={'profile-success'} onClose={() => this.setShow(false)} variant={'success'} dismissible>
+                  {this.props.successMessage}
+                </Alert>
               </Col>
             </Row>
             }

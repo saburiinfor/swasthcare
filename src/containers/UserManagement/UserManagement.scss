@@ -12,6 +12,15 @@
   }
 }
 
+@keyframes cssHide {
+  0%   {display: block;}
+  100% {display: none;}
+}
+
+.alertHide {
+  animation: cssHide 5s forwards;
+}
+
 .manageAccount {
   float: left;
   width: 100%;
