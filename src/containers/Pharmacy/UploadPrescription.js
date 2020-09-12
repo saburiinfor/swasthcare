@@ -94,7 +94,7 @@ class UploadPrescription extends Component {
       return <Redirect to='/'/>;
     }
     return (
-      <Col md="12" className="mt10">
+      <Col md="12" className="mt10">-
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .tar{text-align:right;} .mt10{margin-top:10px;} main{ background: #fff; } .header' +
           ' .search{border:1px' +

@@ -24,6 +24,8 @@ import ForgotPassword from "../../../containers/Auth/ForgotPassword";
 import ResetPassword from "../../../containers/Auth/ResetPassword";
 import VCSessions from "../../../containers/VideoConsultations/VCSessions";
 import ManageAccount from "../../../containers/UserManagement/ManageAccount";
+import LabAppointment from "../../../containers/LabManagement/LabAppointment";
+import SelectClinic from "../../../containers/LabManagement/SelectClinic";
 
 const Layout = (props) => {
   return (
@@ -58,6 +60,8 @@ const Layout = (props) => {
             <Route exact path="/resetPassword" component={ResetPassword}/>
             <Route exact path="/vcSessions" component={VCSessions}/>
             <Route exact path="/manageAccount" component={ManageAccount}/>
+            <Route exact path="/LabAppointment" component={LabAppointment}/>
+            <Route exact path="/SelectClinic" component={SelectClinic}/>
           </div>
         </Container>
         <Footer/>

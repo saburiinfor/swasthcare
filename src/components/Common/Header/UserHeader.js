@@ -10,6 +10,7 @@ import PharmacyIcon from '../../../assets/images/pharmacy-100.png';
 import TreatmentIcon from '../../../assets/images/treatment-1.png';
 import VCIcon from '../../../assets/images/videocall.png';
 import VCActiveIcon from '../../../assets/images/videocall-active.png';
+import LabImageIcon from '../../../assets/images/labimage.png';
 
 class UserHeader extends React.Component {
   componentDidMount() {
@@ -45,7 +46,12 @@ class UserHeader extends React.Component {
           </div>
           <div className={this.props.selectedMenuItem === '2' ? 'navItem active' : 'navItem'}>
             <Link to={'/uploadPrescription'}>
-              <img src={PharmacyIcon} alt={'Upload latest prescription and get medicines deliver at your door steps'}/><sup className={'launchItems'} title={'New'}>New</sup>
+              <img src={PharmacyIcon} alt={'Upload latest prescription and get medicines deliver at your door steps'}/>
+            </Link>
+          </div>
+          <div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>
+            <Link to={'/labAppointment'}>
+              <img src={LabImageIcon} alt={'for pathology appointment '}/><sup className={'launchItems'} title={'New'}>New</sup>
             </Link>
           </div>
           {/*<div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>*/}

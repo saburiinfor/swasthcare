@@ -16,8 +16,10 @@ import uploadPrescriptionReducer from './store/reducers/uploadPrescription';
 import forgotPasswordReducer from './store/reducers/forgotPassword';
 import resetPasswordReducer from './store/reducers/resetPassword';
 import manageAccountReducer from './store/reducers/manageAccount';
+import labAppointmentReducer from './store/reducers/labAppointment';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import LabAppointment from './containers/LabManagement/LabAppointment';
 
 const persistConfig = {
   key: 'root',
@@ -44,7 +46,8 @@ const rootReducer = combineReducers({
   uploadPrescription: uploadPrescriptionReducer,
   forgotPassword: forgotPasswordReducer,
   resetPassword: resetPasswordReducer,
-  manageAccount: manageAccountReducer
+  manageAccount: manageAccountReducer,
+  labAppointment: labAppointmentReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
