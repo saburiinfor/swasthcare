@@ -66,7 +66,7 @@ class MediaElement extends Component {
                   Specializations
                 </Col>
                 <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                  {panelData.specializations}
+                  {panelData.physpecialization}
                 </Col>
               </Row>
             </ListGroupItem>
