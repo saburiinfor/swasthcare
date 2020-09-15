@@ -1,39 +1,36 @@
 h2 {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+.appointmentBox {
+  border: 1px #cccccc solid;
+  border-radius: 3px;
+  width: 100%;
+  float: left;
+
+  h4 {
+    padding: 10px;
   }
-  
-  .appointmentBox {
-    border: 1px #cccccc solid;
-    border-radius: 3px;
+
+  .appointmentTable {
     width: 100%;
-    float: left;
-    h4 {
-      padding: 10px;
+
+    thead tr {
+      background-color: #cccccc;
+      text-align: center;
+      font-weight: bold;
     }
-  
-    > div {
-      padding: 15px;
+
+    tr {
+      border: 1px solid #cccccc;
     }
-  
-    .appointmentTable {
-      width: 100%;
-  
-      thead tr {
-        background-color: #cccccc;
-        text-align: center;
+
+    td {
+      padding: 5px;
+
+      &:first-child {
         font-weight: bold;
       }
-  
-      tr {
-        border: 1px solid #cccccc;
-      }
-  
-      td {
-        padding: 5px;
-  
-        &:first-child {
-          font-weight: bold;
-        }
-      }
     }
   }
+}

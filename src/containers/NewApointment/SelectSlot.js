@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as actions from "../../shared";
 import {Redirect} from "react-router-dom";
-import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import UserProfile from "../UserManagement/UserProfile";
@@ -10,6 +9,8 @@ import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import './SelectSlot.scss';
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 class SelectSlot extends Component {
   constructor(props) {
@@ -96,14 +97,17 @@ class SelectSlot extends Component {
 
   render() {
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/'/>;
     }
     this.state.slotListing = this.generateSlots(this.filterSlots());
-    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl}/>
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
@@ -114,7 +118,11 @@ class SelectSlot extends Component {
           <Col md="12">
             <div>
               <h2>Select Slot</h2>
-              <Breadcrumb activeStep={'4'} />
+              <WizardContext.Consumer>
+                {wizard => (
+                  <Breadcrumb activeStep={'4'} steps={wizard.steps}/>
+                )}
+              </WizardContext.Consumer>
             </div>
             <Row>
               <Col>

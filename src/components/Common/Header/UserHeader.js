@@ -14,6 +14,10 @@ import LabImageIcon from '../../../assets/images/labimage.png';
 
 class UserHeader extends React.Component {
   componentDidMount() {
+    if (this.props.appFlow === 'appointment') {
+      process.env['REACT_APP_FLOW_ID'] = '1';
+    }
+    process.env.REACT_APP_KEY = this.props.appKey;
   }
   render() {
     return (
@@ -51,7 +55,7 @@ class UserHeader extends React.Component {
           </div>
           <div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>
             <Link to={'/labAppointment'}>
-              <img src={LabImageIcon} alt={'for pathology appointment '}/><sup className={'launchItems'} title={'New'}>New</sup>
+              <img src={LabImageIcon} alt={'Appointment for Clinical purpose'}/><sup className={'launchItems'} title={'New'}>New</sup>
             </Link>
           </div>
           {/*<div className={this.props.selectedMenuItem === '3' ? 'navItem active' : 'navItem'}>*/}

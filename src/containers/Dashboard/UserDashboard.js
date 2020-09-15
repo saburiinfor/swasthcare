@@ -16,6 +16,8 @@ import dateformat from 'dateformat';
 import UserProfile from "../UserManagement/UserProfile";
 import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import DatePicker from 'react-date-picker';
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 class UserDashboard extends Component {
   constructor(props) {
@@ -79,19 +81,24 @@ class UserDashboard extends Component {
       contactNo: this.props.userProfile.contactNo
     };
     // Set an activeStage counter to sessionStorage object for moving around pages in wizard
-    sessionStorage.setItem('conferkare.appointment.activeStage', 1);
+    sessionStorage.setItem(wizards.appointment.key, 1);
     this.props.onSetAppointmentData(appointmentData);
   };
   
   render() {
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/' />;
     }
-    const pageUrl = getPageLink();
+    sessionStorage.setItem(wizards.appointment.key, 0);
+    sessionStorage.setItem(wizards.labappointment.key, 0);
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl}/>
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .tar {text-align:right;margin-bottom: 5px;} .mt10{margin-top:10px;} main{ background: #fff; } .header' +
           ' .search{border:1px' +

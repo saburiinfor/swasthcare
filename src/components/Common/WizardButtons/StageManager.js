@@ -1,8 +1,29 @@
-// Function which would return the page url to be render depending on activeStage item value stored in sessionStorage
-const getPageLink = function () {
+import React, {Component} from 'react';
+import {wizards} from "../../../shared/WizardContext";
+import {Redirect} from "react-router";
+
+class StageManager extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    // console.log(this.props);
+  }
+
+  render() {
+    let pageUrl = getPageLink(this.props.flow, this.props.wizardKey);
+    return (
+      <Redirect to={pageUrl}/>
+    );
+  };
+}
+
+const getPageLink = function (flow, key) {
   let pageUrl;
-  const activeStage = sessionStorage.getItem('conferkare.appointment.activeStage');
-  switch (parseInt(activeStage)) {
+  const activeStage = sessionStorage.getItem(key);
+  if (flow === 1) {
+    switch (parseInt(activeStage)) {
     case 0:
       pageUrl = '/dashboard';
       break;
@@ -33,8 +54,22 @@ const getPageLink = function () {
     default:
       pageUrl = '/dashboard';
       break;
+    }
+  } else if (flow === 2) {
+    switch (parseInt(activeStage)) {
+    case 0:
+      pageUrl = '/labAppointment';
+      break;
+    case 1:
+      pageUrl = '/selectClinic';
+      break;
+    default:
+      pageUrl = '/labAppointment';
+      break;
+    }
   }
+
   return pageUrl;
 };
 
-export default getPageLink;
+export default StageManager;

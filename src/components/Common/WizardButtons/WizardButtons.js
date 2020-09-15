@@ -25,8 +25,8 @@ class WizardButtons extends Component {
   
   setPreviousStep = () => {
     return new Promise((resolve) => {
-      let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
-      sessionStorage.setItem('conferkare.appointment.activeStage', activeStage < 1 ? 0 : (activeStage - 1));
+      let activeStage = parseInt(sessionStorage.getItem(this.props.wizardKey));
+      sessionStorage.setItem(this.props.wizardKey, activeStage < 1 ? 0 : (activeStage - 1));
       resolve('done');
     });
   };
@@ -39,8 +39,8 @@ class WizardButtons extends Component {
   
   setNextStep = () => {
     return new Promise((resolve) => {
-      let activeStage = parseInt(sessionStorage.getItem('conferkare.appointment.activeStage'));
-      sessionStorage.setItem('conferkare.appointment.activeStage', activeStage + 1);
+      let activeStage = parseInt(sessionStorage.getItem(this.props.wizardKey));
+      sessionStorage.setItem(this.props.wizardKey, activeStage + 1);
       resolve('done');
     });
   };
@@ -58,13 +58,13 @@ class WizardButtons extends Component {
       <div className={'wizBtnsContainer'}>
         <BrowserView>
           <Button variant={'primary'} onClick={this.backButtonClick}>Back</Button>
-          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7) &&
+          {(parseInt(sessionStorage.getItem(this.props.wizardKey)) < parseInt(this.props.steps)) &&
           <Button variant={'primary'} onClick={this.nextButtonClick} disabled={this.props.noContinue}>Continue</Button>
           }
         </BrowserView>
         <MobileView>
           <Button size={'sm'} variant={'primary'} onClick={this.backButtonClick}>Back</Button>
-          {(parseInt(sessionStorage.getItem('conferkare.appointment.activeStage')) < 7) &&
+          {(parseInt(sessionStorage.getItem(this.props.wizardKey)) < parseInt(this.props.steps)) &&
           <Button size={'sm'} variant={'primary'} onClick={this.nextButtonClick} disabled={this.props.noContinue}>Continue</Button>
           }
         </MobileView>

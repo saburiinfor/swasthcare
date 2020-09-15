@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from "../../shared";
 import {Redirect} from "react-router-dom";
-import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import UserProfile from "../UserManagement/UserProfile";
@@ -11,6 +10,8 @@ import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import styles from './NewApointment.module.scss';
 import {Alert} from "react-bootstrap";
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 class SubmitAppointment extends Component {
   constructor(props) {
@@ -30,20 +31,23 @@ class SubmitAppointment extends Component {
   
   render() {
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/'/>;
     }
     if (this.props.appId !== null) {
       sessionStorage.setItem('conferkare.appointment.activeStage', 8);
       return <Redirect to={'/appointmentCreateResponse'} {...this.props} />
     }
-    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl}/>
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
-        </Helmet>   
+        </Helmet>
         { this.props.profileCompliant === false &&
         <UserProfile/>
         }
@@ -60,7 +64,11 @@ class SubmitAppointment extends Component {
           <Col md="12">
             <div>
               <h2>Appointment details</h2>
-              <Breadcrumb activeStep={'7'} />
+              <WizardContext.Consumer>
+                {wizard => (
+                  <Breadcrumb activeStep={'7'} steps={wizard.steps}/>
+                )}
+              </WizardContext.Consumer>
             </div>
             <Row>
               <Col>

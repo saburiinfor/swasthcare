@@ -19,7 +19,6 @@ import manageAccountReducer from './store/reducers/manageAccount';
 import labAppointmentReducer from './store/reducers/labAppointment';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import LabAppointment from './containers/LabManagement/LabAppointment';
 
 const persistConfig = {
   key: 'root',

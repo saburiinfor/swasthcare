@@ -4,12 +4,12 @@ import {Redirect} from "react-router-dom";
 import {Button, Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import UserProfile from "../UserManagement/UserProfile";
-import './LabManagement.scss';
 import * as actions from "../../shared";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
-import LabWizardButtons from "../../components/Common/WizardButtons/LabWizardButtons";
-import getPageLink from "../../components/Common/WizardButtons/LabStageManager";
 import styles from "./LabManagement.scss";
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
+import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 
 function CityOptions(cityList) {
   //console.log(cityList);
@@ -20,7 +20,6 @@ function CityOptions(cityList) {
 }
 
 class LabAppointment extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -70,22 +69,26 @@ class LabAppointment extends Component {
     });
     this.props.onSetAppointmentData(this.state.appointmentData);
   };
+  
   validateUserSelection = () => {
     console.log(this.state.appointmentData.city)
     console.log(this.props.profileCompliant)
     let valuesSet = this.props.profileCompliant && this.state.appointmentData.city !== '' ;
     return !!valuesSet;
   }
+  
   render() {
-    
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.labappointment.activeStage', 0);
+      sessionStorage.setItem(wizards.labappointment.key, 0);
       return <Redirect to='/' />;
     }
-    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl} />
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
@@ -94,20 +97,26 @@ class LabAppointment extends Component {
         }
       <Row>
        <Col md="12">
-       
            <div>
-
             <h2>Select City </h2>
-            <Breadcrumb activeStep={'1'}/>
+             <WizardContext.Consumer>
+               {wizard => (
+                 <Breadcrumb activeStep={'1'} steps={wizard.steps} wizardKey={wizard.key}/>
+               )}
+             </WizardContext.Consumer>
           </div>
           <Row>
               <Col>
-                <div className={styles.selectDate}>
+                <div className={'selectDate'}>
                   <div className={'stepHeader'}>
                     <h4>
                       Select city
                     </h4>
-                  <LabWizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} />
+                    <WizardContext.Consumer>
+                      {wizard => (
+                        <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} steps={wizard.steps} wizardKey={wizard.key} />
+                      )}
+                    </WizardContext.Consumer>
                   </div>
                   <Helmet>
                     <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} .header .logo img{height:80px} '}</style>
@@ -119,7 +128,7 @@ class LabAppointment extends Component {
                          <select onChange={this.handleCityChange} defaultValue='Bhubaneswar'>
                           <option value={'All'}>All cities</option>
                           <CityOptions cityList={this.props.cityList}/>
-                        </select> 
+                        </select>
                       </Col>
                     </Row><br/><br/>
                     
@@ -134,11 +143,10 @@ class LabAppointment extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     cityList: state.newAppointment.cityList,
     userProfile: state.UserProfile.userProfile,
-     profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
+    profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
     //appointmentData: state.newAppointment.appointmentData
   };
 };

@@ -10,7 +10,8 @@ import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import { connect } from 'react-redux';
 import * as actions from "../../shared";
 import {Redirect} from "react-router-dom";
-import getPageLink from "../../components/Common/WizardButtons/StageManager";
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 class SelectAppointmentDate extends Component {
   constructor(props) {
@@ -101,16 +102,23 @@ class SelectAppointmentDate extends Component {
   
   render() {
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/'/>;
     }
-    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl}/>
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Row>
           <Col>
-            <Breadcrumb activeStep={'3'} />
+            <WizardContext.Consumer>
+              {wizard => (
+                <Breadcrumb activeStep={'3'} steps={wizard.steps}/>
+              )}
+            </WizardContext.Consumer>
           </Col>
         </Row>
         <Row>

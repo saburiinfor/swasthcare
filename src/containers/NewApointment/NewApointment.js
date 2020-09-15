@@ -9,7 +9,8 @@ import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import UserProfile from "../UserManagement/UserProfile";
 import styles from "./SelectAppointmentDate.module.scss";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
-import getPageLink from "../../components/Common/WizardButtons/StageManager";
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 function CityOptions(cityList) {
   let activeCities = cityList.cityList.filter(city => city.status === "Active");
@@ -90,7 +91,7 @@ class NewApointment extends Component {
   
   render() {
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/'/>;
     }
     // if (this.props.appointmentData.city !== null) {
@@ -111,10 +112,13 @@ class NewApointment extends Component {
         </label>
       </div>
     ));
-    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl}/>
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
@@ -125,7 +129,11 @@ class NewApointment extends Component {
           <Col md="12">
             <div>
               <h2>Select city and appointment type</h2>
-              <Breadcrumb activeStep={'1'}/>
+              <WizardContext.Consumer>
+                {wizard => (
+                  <Breadcrumb activeStep={'1'} steps={wizard.steps} wizardKey={wizard.key}/>
+                )}
+              </WizardContext.Consumer>
             </div>
             <Row>
               <Col>
@@ -134,7 +142,11 @@ class NewApointment extends Component {
                     <h4>
                       Select type and city
                     </h4>
-                    <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} />
+                    <WizardContext.Consumer>
+                      {wizard => (
+                        <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} steps={wizard.steps} wizardKey={wizard.key} />
+                      )}
+                    </WizardContext.Consumer>
                     {/*!this.props.profileCompliant*/}
                   </div>
                   <Helmet>

@@ -7,8 +7,9 @@ import {Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
 import * as actions from "../../shared";
 import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
-import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import UserProfile from "../UserManagement/UserProfile";
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 class SelectPhysician extends Component {
   constructor(props) {
@@ -26,13 +27,16 @@ class SelectPhysician extends Component {
   render() {
     // If the user want to logout or token invalidated, take user to Guest page
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/'/>;
     }
-    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl}/>
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Helmet>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
         </Helmet>
@@ -43,7 +47,11 @@ class SelectPhysician extends Component {
           <Col md="12">
             <div>
               <h2>Select physician</h2>
-              <Breadcrumb activeStep={'2'} />
+              <WizardContext.Consumer>
+                {wizard => (
+                  <Breadcrumb activeStep={'2'} steps={wizard.steps}/>
+                )}
+              </WizardContext.Consumer>
             </div>
             <MediaElementGroup {...this.props} />
           </Col>

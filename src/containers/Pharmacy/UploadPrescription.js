@@ -10,6 +10,7 @@ import * as actions from "../../shared";
 import Form from "react-bootstrap/Form";
 import bsCustomFileInput from 'bs-custom-file-input';
 import {Alert} from "react-bootstrap";
+import {wizards} from "../../shared/WizardContext";
 
 function CityOptions(cityList) {
   // console.log("cities list", cityList);
@@ -90,7 +91,7 @@ class UploadPrescription extends Component {
   
   render() {
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/'/>;
     }
     return (

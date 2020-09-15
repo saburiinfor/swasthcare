@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as actions from "../../shared";
 import {Redirect} from "react-router-dom";
-import getPageLink from "../../components/Common/WizardButtons/StageManager";
 import {Col, Row} from "reactstrap";
 import {Helmet} from "react-helmet";
 import UserProfile from "../UserManagement/UserProfile";
@@ -11,6 +10,8 @@ import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import ImgWithOverlayTextGroup from "../ImgWithOverlayText/ImgWithOverlayTextGroup";
 import './razorpay.scss';
 import { loadCheckout } from '@tiltbike/razorpay-checkout-js';
+import {WizardContext, wizards} from "../../shared/WizardContext";
+import StageManager from "../../components/Common/WizardButtons/StageManager";
 
 class AppointmentPayment extends Component {
   constructor(props) {
@@ -79,13 +80,16 @@ class AppointmentPayment extends Component {
   
   render() {
     if (this.props.userProfile.success === 0) {
-      sessionStorage.setItem('conferkare.appointment.activeStage', 0);
+      sessionStorage.setItem(wizards.appointment.key, 0);
       return <Redirect to='/'/>;
     }
-    const pageUrl = getPageLink();
     return (
       <Col md="12" className="mt10">
-        <Redirect to={pageUrl}/>
+        <WizardContext.Consumer>
+          {wizard => (
+            <StageManager flow={wizard.flow} wizardKey={wizard.key}/>
+          )}
+        </WizardContext.Consumer>
         <Helmet>
           <base href={'/'}/>
           <style>{'.header .logo h2{color:#333;} .mt10{margin-top:10px;} main{ background: #fff; } .header .search{border:1px solid #ccc} .header{border-bottom:1px solid #666} '}</style>
@@ -97,7 +101,11 @@ class AppointmentPayment extends Component {
           <Col md="12">
             <div>
               <h2>Appointment payment</h2>
-              <Breadcrumb activeStep={'6'} />
+              <WizardContext.Consumer>
+                {wizard => (
+                  <Breadcrumb activeStep={'6'} steps={wizard.steps}/>
+                )}
+              </WizardContext.Consumer>
             </div>
             <Row>
               <Col>
