@@ -13,9 +13,17 @@ import {connect} from "react-redux";
 class SelectClinic extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      clinicId:''
+    };
   }
   
   componentDidMount() {
+    //console.log(this.props.labAppointmentData)
+    let {city} = this.props.labAppointmentData;
+    this.props.onGetClinicByCity(city);
+     //console.log(city)
+   // this.props.onGetSlots();
   }
   
   handlerNextBtnClick = () => {
@@ -90,17 +98,18 @@ class SelectClinic extends Component {
 }
 
 const mapStateToProps = (state) => {
+  //console.log(state)
   return {
     cityList: state.newAppointment.cityList,
     userProfile: state.UserProfile.userProfile,
     profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
-    //appointmentData: state.newAppointment.appointmentData
+    labAppointmentData: state.labAppointment.labAppointmentData
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetCities: () => dispatch(actions.getCities()),
-    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))
+    onGetClinicByCity: (city) => dispatch(actions.getClinicByCity(city)),
+    onSetAppointmentData: (labAppointmentData) => dispatch(actions.setLabAppointmentData(labAppointmentData))
   };
 };
 export default connect (mapStateToProps,mapDispatchToProps)(SelectClinic);

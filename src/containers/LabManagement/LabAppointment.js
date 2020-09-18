@@ -14,7 +14,7 @@ import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 function CityOptions(cityList) {
   //console.log(cityList);
   let activeCities = cityList.cityList.filter(city => city.status === "Active");
-  let optList = activeCities.map((item) => <option key={item.id} value={item.name}>{item.name}</option>);
+  let optList = activeCities.map((item) => <option key={item.id} value={item.id}>{item.name}</option>);
   //console.log(optList);
   return optList;
 }
@@ -24,9 +24,8 @@ class LabAppointment extends Component {
     super(props);
     this.state = {
       cityList: [],
-      appointmentData: {
-        city: 'Bhubaneswar',
-        pid: null,
+      labAppointmentData: {
+        city: '1',
         application_id: 1,
         service: '2'
       }
@@ -38,8 +37,8 @@ class LabAppointment extends Component {
   componentDidMount() {
     this.props.onGetCities();
     this.setState({
-      appointmentData: {
-        ...this.state.appointmentData,
+      labAppointmentData: {
+        ...this.state.labAppointmentData,
         patientid: this.props.userProfile.id,
         name: this.props.userProfile.name,
         email: this.props.userProfile.email,
@@ -52,8 +51,8 @@ class LabAppointment extends Component {
     let cityName = e.target.value;
     //console.log(cityName);
     this.setState({
-      appointmentData: {
-        ...this.state.appointmentData,
+      labAppointmentData: {
+        ...this.state.labAppointmentData,
         city: cityName
       }
       
@@ -62,18 +61,18 @@ class LabAppointment extends Component {
   };
   handlerNextBtnClick = () => {
     this.setState({
-      appointmentData: {
-        ...this.state.appointmentData,
+      labAppointmentData: {
+        ...this.state.labAppointmentData,
         patientid: this.props.userProfile.id
       }
     });
-    this.props.onSetAppointmentData(this.state.appointmentData);
+    this.props.onSetAppointmentData(this.state.labAppointmentData);
   };
   
   validateUserSelection = () => {
-    console.log(this.state.appointmentData.city)
-    console.log(this.props.profileCompliant)
-    let valuesSet = this.props.profileCompliant && this.state.appointmentData.city !== '' ;
+    //console.log(this.state.appointmentData.city)
+    //console.log(this.props.profileCompliant)
+    let valuesSet = this.props.profileCompliant && this.state.labAppointmentData.city !== '' ;
     return !!valuesSet;
   }
   
@@ -144,16 +143,16 @@ class LabAppointment extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    cityList: state.newAppointment.cityList,
+    cityList: state.labAppointment.cityList,
     userProfile: state.UserProfile.userProfile,
     profileCompliant: state.UserProfile.userProfile.dateofbirth !== '0000-00-00',
-    //appointmentData: state.newAppointment.appointmentData
+    labAppointmentData: state.labAppointment.labappointmentData
   };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    onGetCities: () => dispatch(actions.getCities()),
-    onSetAppointmentData: (appointmentData) => dispatch(actions.setAppointmentData(appointmentData))
+    onGetCities: () => dispatch(actions.getCityList()),
+    onSetAppointmentData: (labAppointmentData) => dispatch(actions.setLabAppointmentData(labAppointmentData))
   };
 };
 export default connect (mapStateToProps,mapDispatchToProps)(LabAppointment);
