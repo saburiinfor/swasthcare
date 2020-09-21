@@ -1,1 +1,884 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="shortcut icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no"/><meta name="theme-color" content="#000000"/><link rel="manifest" href="/manifest.json"/><title>ConferKare</title><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"/><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/><link href="/static/css/2.87926953.chunk.css" rel="stylesheet"><link href="/static/css/main.f35da77a.chunk.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><script>!function(e){function r(r){for(var n,f,l=r[0],a=r[1],i=r[2],p=0,s=[];p<l.length;p++)f=l[p],Object.prototype.hasOwnProperty.call(o,f)&&o[f]&&s.push(o[f][0]),o[f]=0;for(n in a)Object.prototype.hasOwnProperty.call(a,n)&&(e[n]=a[n]);for(c&&c(r);s.length;)s.shift()();return u.push.apply(u,i||[]),t()}function t(){for(var e,r=0;r<u.length;r++){for(var t=u[r],n=!0,l=1;l<t.length;l++){var a=t[l];0!==o[a]&&(n=!1)}n&&(u.splice(r--,1),e=f(f.s=t[0]))}return e}var n={},o={1:0},u=[];function f(r){if(n[r])return n[r].exports;var t=n[r]={i:r,l:!1,exports:{}};return e[r].call(t.exports,t,t.exports,f),t.l=!0,t.exports}f.m=e,f.c=n,f.d=function(e,r,t){f.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:t})},f.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},f.t=function(e,r){if(1&r&&(e=f(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var t=Object.create(null);if(f.r(t),Object.defineProperty(t,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var n in e)f.d(t,n,function(r){return e[r]}.bind(null,n));return t},f.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return f.d(r,"a",r),r},f.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},f.p="/";var l=this.webpackJsonpconferkare=this.webpackJsonpconferkare||[],a=l.push.bind(l);l.push=r,l=l.slice();for(var i=0;i<l.length;i++)r(l[i]);var c=a;t()}([])</script><script src="/static/js/2.5a1d8474.chunk.js"></script><script src="/static/js/main.b45ba455.chunk.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Ashion Template">
+    <meta name="keywords" content="Ashion, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ConferKare</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+   <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+	
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__close">+</div>
+        <div class="offcanvas__logo">
+            <a href="./index.html"><img src="img/ConferKare.png" alt=""></a>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__auth">
+             <a href="" class="link danger">Login/Sign Up  <i class="fa fa-user-o" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
+
+    <!-- Header Section Begin -->
+    <nav class="navbar navbar-expand-lg navbar-inverse bg-light fixed-top">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12">
+				<div class="row">
+				<div class="col-xl-2 col-lg-2">
+				
+                    <div class="header__logo">
+                        <a href="./index.html"><img src="img/ConferKare.png" alt="" style="max-width: 70%;"></a>
+                    </div>
+               </div>
+                <div class="col-xl-8 col-lg-8">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="#doctor_consult">Doctor Consultation</a></li>
+							 <li><a href="#lab_test">Lab Tests</a></li>
+                            
+                            <li><a href="#pharma">Pharmacy</a></li>
+							
+                            <li><a href="#health_service">Health Services</a></li>
+							<li><a href="#radiology_test">Radiology Tests</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class=" col-xl-2 col-lg-2">
+                    <div class="header__right">
+					 <a href="" class="link danger">Login/Sign Up  <i class="fa fa-user-o" aria-hidden="true"></i></a>
+                        <div class="header__right__auth">
+                        </div>
+						
+                    </div>
+                </div>
+				</div>
+            </div>
+            <div class="canvas__open">
+                <i class="fa fa-bars"></i>
+            </div>
+			 </div>
+        </div>
+    </nav>
+   
+   <div id="news-slider99" class="owl-carousel" style="margin-top: 94px;">
+   <div>
+     
+		<img src="img/banner/health_Service.jpg" class="img-fluid" />
+		
+   </div>
+   <div >
+        
+    <img src="img/banner/lab_test.jpg" class="img-fluid" />
+   </div>
+     
+   <div >
+        
+  <img src="img/banner/doctor_consult.jpg" class="img-fluid" />
+      </div>
+    </div>
+	
+  <section class="pricing  " id="doctor_consult">
+            <div class="container">
+			
+                <div class="row">
+      <!-- Free Tier -->
+       <div class="section-title" >
+                    <h4>Doctor Consultation</h4>
+					
+       </div>
+                    
+     <div id="doctor-consult" class="owl-carousel" onclick="location.href='https://conferkare.com/';" style="cursor: pointer;">
+      
+        <div class="card mb-3 mb-lg-3"  >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">General Physicians</span></h6>
+            <hr>
+			
+			<p>Access your family doctors via video, phone or chat .</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Everyday Care</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Reduce trips to Hospital</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>E-Prescriptions </li>
+              <li></li>
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			<!--<h4 style="color:rgb(69 130 191);"><del>₹1244</del> &nbsp;&nbsp; ₹3446</h4>-->
+          </div>
+		  </div>
+		  </div>
+		  
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer" style="padding: 7px;">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Multi Specialty Doctors</span></h6>
+            <hr>
+			
+			<p>Advanced care for any Specialty .</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Expert Advice</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Treatment Plan</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Referral Management </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer" style="padding: 0px;">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Surgeons</span></h6>
+            <hr>
+			
+			<p>Surgical treatment for various ailments .</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Top Surgeons </li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Pre and Post Operative Management</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Coordinated Care </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+		
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer" style=" padding: 0px;">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Chat with your Doctor</span></h6>
+            <hr>
+			
+			<p>Chat with your doctors without the need for appointments.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Confidential</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Share Reports </li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Get advice by chat </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			<!--<h4 style="color:rgb(69 130 191);"><del>₹1244</del> &nbsp;&nbsp; ₹3446</h4>-->
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Second Opinions</span></h6>
+            <hr>
+			
+			<p>Get a more informed decision online for a diagnosis or treatment plan.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>No need to visit Hospital </li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Access Top Experts</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Get Personalized Care</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Physiotherapy</span></h6>
+            <hr>
+			
+			<p>Reduce pain and perform your daily activities with better fitness level.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Tailored Treatment Package</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Get treated at Home or Clinic</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Preventive and Rehabilitation Care 
+            </li>
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+           </div>  
+                    
+                
+            </div>
+        </section>
+
+
+<section class="banner set-bg " data-setbg="img/banner/doctor_consult.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 m-auto">
+                <div class="banner__slider owl-carousel">
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            
+                            <h2>Talk to a Doctor within Minutes</h2>
+                            <a href="https://conferkare.com/">Book now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                         <div class="banner__text">
+                            
+                            <h2>Access Top Doctors for Online Consultations from Anywhere, Anytime
+    through VIDEO/PHONE or CHAT
+       </h2>
+                            <a href="https://conferkare.com/">Book now</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+ 
+<section class="pricing " id="lab_test">
+            <div class="container">
+			
+                <div class="row">
+      <!-- Free Tier -->
+       <div class="section-title" >
+                    <h4>Lab Test</h4>
+					
+                </div>
+                    
+     <div id="lab-test" class="owl-carousel" onclick="location.href='https://conferkare.com/';" style="cursor: pointer;">
+      
+        <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Health Packages </span></h6>
+            <hr>
+			
+			<p>Essential preventive screening tests to get insights into overall health.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Screening for health conditions</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Complete Metabolic Panel</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Determine Risk factors </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Individual Tests</span></h6>
+            <hr>
+			
+			<p>Select tests directly and schedule appointment for sample collection.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Trusted by Doctors </li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Test results reported by Top Doctors</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Get reports online </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">COVID Tests </span></h6>
+            <hr>
+			
+			<p>Get the essential COVID tests from ICMR approved Labs .</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Diagnostic Testing </li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Antibody Testing for past infection</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Help with COVID Care</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		
+                     </div>  
+                    
+                
+            </div>
+        </section>
+
+		
+
+<!-- Banner Section Begin -->
+<section class="banner set-bg" data-setbg="img/banner/lab_test.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 m-auto">
+                <div class="banner__slider owl-carousel">
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            
+                            <h2 style="color:white">Fast and affordable lab testing in our private labs.</h2><br><br>
+                            <a style="color:white" href="https://conferkare.com/">Book now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                         <div class="banner__text">
+                            
+                            <h2 style="color:white">Lab at your doorstep, all pathology solutions with at-home sample collection. Just a call away.</h2><br><br>
+                            <a style="color:white" href="#">Book now</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<br>
+
+<section class="pricing  " id="pharma">
+            <div class="container">
+			
+                <div class="row">
+      <!-- Free Tier -->
+       <div class="section-title" >
+                    <h4>Pharmacy</h4>
+                </div>
+                    
+     <div id="pharmacy" class="owl-carousel" onclick="location.href='https://conferkare.com/';" style="cursor: pointer;">
+      
+        <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">OTC </span></h6>
+            <hr>
+			
+			<p>Our online store will help you buy over the counter products faster and easier.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Search by Product or Category</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Dispensed by Pharmacy</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>100% safe and Home Delivered or Pickup</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">COVID Essentials </span></h6>
+            <hr>
+			
+			<p>Safety supplies for your family, home or office.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Personal protection supplies</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Maintain Clean Facilities</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Diagnose, monitor and test</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+		
+          </div>
+		  </div>
+		  </div>
+		
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Prescription Medicines </span></h6>
+            <hr>
+			
+			<p>We help buying Prescription medicines easier, safer and reliable.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Wide range of high quality Generic and Branded medicines</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Dispensed by our licensed or partner pharmacy</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>100% safe and Home Delivered or local Pickup </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  
+        
+                     </div>  
+                    
+                
+            </div>
+        </section>
+		
+		<br>
+	<!-- Banner Section Begin -->
+<section class="banner set-bg" data-setbg="img/banner/pharmacy.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 m-auto">
+                <div class="banner__slider owl-carousel">
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            
+                            <h2 >Order medicine online with few easy steps.</h2><br><br>
+                            <a  href="https://conferkare.com/login">Book now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                         <div class="banner__text">
+                            
+                            <h2 >Serving the community with home delivering your medical supplies. Order anytime and avail discounts and Cash on delivery.</h2><br><br>
+                            <a  href="https://conferkare.com/">Book now</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+
+
+<section class="pricing  " id="health_service">
+            <div class="container">
+			
+                <div class="row">
+      <!-- Free Tier -->
+       <div class="section-title">
+                    <h4>Health services</h4>
+                </div>
+                    
+     <div id="health-service" class="owl-carousel" onclick="location.href='https://conferkare.com/';" style="cursor: pointer;">
+      
+        <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Vaccination </span></h6>
+            <hr>
+			
+			<p>We provide all kinds of vaccinations for new born, kids and adults.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Wide range of vaccinations</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Home or Clinic administered</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Online Vaccination Records</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+		
+          </div>
+		  </div>
+		  </div>
+		  
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Physiotherapy </span></h6>
+            <hr>
+			
+			<p>Reduce pain and perform your daily activities with better fitness level.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Tailored Treatment Package</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Get treated at Home or Clinic</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Preventive and Rehabilitation Care </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+		
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Home X-Ray  </span></h6>
+            <hr>
+			
+			<p>We help patients to avoid difficult and potentially hazardous trips to hospitals.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Faster turnaround time for Diagnosis </li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Digital X-Ray with Radiologist reporting</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Trusted by Doctors</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Nursing  </span></h6>
+            <hr>
+			
+			<p>Allow your loved one to receive the care they Need.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>In-Home Nursing</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Manage specific ailments</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Physician directed long or short term services </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Wound Dressing   </span></h6>
+            <hr>
+			
+			<p>We bring efficient ways to treat wounds by bringing the clinic to patients.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Personalized approach</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>TeleHealth Platform to track progress</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Heal wounds faster </li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  
+        
+                     </div>  
+                    
+                
+            </div>
+        </section>
+		
+		<!-- Banner Section Begin -->
+<section class="banner set-bg" data-setbg="img/banner/health_Service.jpg" >
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-10 col-lg-10 m-auto">
+                <div class="banner__slider owl-carousel">
+                    <div class="banner__item">
+                        <div class="banner__text">
+                            
+                            <h2 style="color:white">Providing the best health services</h2><br><br>
+                            <a style="color:white" href="https://conferkare.com/">Book now</a>
+                        </div>
+                    </div>
+                    <div class="banner__item">
+                         <div class="banner__text">
+                            
+                            <h2 style="color:white">Solution of your health issues with complete facilities. Expert doctors, lab tests, pharmacy no need to go anywhere.</h2><br><br>
+                            <a  style="color:white" href="https://conferkare.com/">Book now</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="pricing  " id="radiology_test">
+            <div class="container">
+			
+                <div class="row" >
+      <!-- Free Tier -->
+      <div class="section-title">
+                    <h4>Radiology TESTS</h4>
+                </div>
+                    
+     <div id="radiology" class="owl-carousel" onclick="location.href='https://conferkare.com/';" style="cursor: pointer;">
+      
+        <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">X-Ray   </span></h6>
+            <hr>
+			
+			<p>Get X-Ray tests done at top imaging facilities and diagnostic centers.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Expert Reporting on every case</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Digital X-Ray for all situations</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Less Radiation exposure</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">MRI  </span></h6>
+            <hr>
+			
+			<p>Magnetic resonance imaging (MRI) uses magnets to create detailed images of your body.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>No Radiation exposure</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Images show normal or abnormal tissue</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Higher quality than X-Rays</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">CT Scans    </span></h6>
+            <hr>
+			
+			<p>A computed tomography (CT) scan uses X-rays to display cross sectional images.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Higher quality 2D-3D images than X-Ray</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Expert Reports trusted by Top doctors</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Non invasive process</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		
+		  <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Ultrasound    </span></h6>
+            <hr>
+			
+			<p>An ultrasound exam uses a handheld device to take pictures of organs and other structures using high frequency sound waves.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Painless process</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Expert Radiologist Reporting</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>All types and procedures</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+		
+          </div>
+		  </div>
+		  </div>
+		 
+		 <div class="card mb-3 mb-lg-3" >
+		<div class="offer">
+          <div class="card-body">
+           
+            <h6 class="card-price text-center">Mammogram </span></h6>
+            <hr>
+			
+			<p>Mammography is X-ray imaging of your breasts designed to detect tumors and other abnormalities.</p>
+            <ul class="fa-ul">
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Screening for potential signs or symptoms</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Diagnostic imaging to investigate abnormal findings</li>
+              <li><span class="fa-li"><i class="fa fa-check"></i></span>Expert Radiologist reporting</li>
+              
+              
+            </ul>
+            <a href="#" class="btn btn-block btn-primary ">Know More</a>
+			<hr>
+			
+          </div>
+		  </div>
+		  </div>
+		  
+        
+                     </div>  
+                    
+                
+            </div>
+        </section>
+<br><br>
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="footer__about">
+                    <div class="footer__logo">
+                        <a href="./index.html"><img src="img/ConferKare.png" style="height: 30px;" alt=""></a>
+                    </div>
+                    <p>Get care at our SimpleeKare clinics or try our telehealth options. You have the convenience to get all your healthcare needs and maintain your personal doctor relationship.</p>
+                    
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="footer__widget">
+                    <h6>Sitemap</h6>
+                    <ul>
+                       <li class="active"><a href="#doctor_consult">Doctor Consultation</a></li>
+							 <li><a href="#lab_test">Lab Tests</a></li>
+                            
+                            <li><a href="#pharma">Pharmacy</a></li>
+							
+                            <li><a href="#health_service">Health Services</a></li>
+							<li><a href="#radiology_test">Radiology Tests</a></li>
+                    </ul>
+                </div>
+            </div>
+			<div class="col-lg-2 col-md-2 col-sm-2">
+                <div class="footer__widget">
+                    <h6>Services</h6>
+                    <ul>
+                       <li><a href="./index.html">Clinic appointments</a></li>
+					   <li><a href="#">Video appointments</a></li>
+                            <li><a href="#">Order Lab Tests</a></li>
+                            <li><a href="#">Order Medicines</a></li>
+                            <li><a href="./shop.html">Order Home Physiotherapy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="footer__widget">
+                    <h6>Find Us</h6>
+                    <p>
+		 				N2 19 , IRC Village, Nayapalli ,<br> Bhubaneswar-751015,Odisha
+             (+91) 977 64 14444<br>
+             Info@SimpleeLabs.com
+						</p>
+						
+                    </ul>
+					 <div class="footer__social">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+              
+                <div class="footer__copyright__text">
+                    <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> <a href="https://conferkare.com"> ConferKare </a> All Right Reserved</p>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+<!-- Search Begin -->
+<div class="search-model">
+    <div class="h-100 d-flex align-items-center justify-content-center">
+        <div class="search-close-switch">+</div>
+        <form class="search-model-form">
+            <input type="text" id="search-input" placeholder="Search here....."/>
+        </form>
+    </div>
+</div>
+<!-- Search End -->
+
+<<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.countdown.min.js"></script>
+<script src="js/jquery.slicknav.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/main.js"></script>
+ <script src="js/carousel.js"></script>
+
+</body>
+
+</html>
