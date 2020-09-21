@@ -1,0 +1,88 @@
+@media only screen and (max-width: 500px) {
+  .header {
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid #666;
+
+    .logged-header-mob {
+      width: 100%;
+      position: relative;
+      text-align: center;
+      padding-bottom: 5px;
+
+      .logo-small {
+        display: inline;
+        margin-left: 25px;
+        a {
+          display: inline-block;
+        }
+        span {
+          color: #6EBF7A;
+          font-weight: normal;
+        }
+        .logoText {
+          color: #255DAA;
+          font-weight: bold;
+          display: inline-block;
+          vertical-align: middle;
+          text-shadow: #0d1319 2px 2px 2px;
+        }
+      }
+
+      .main-menu {
+        float: left;
+        margin: 5px 0px 0px 10px;
+      }
+
+      .notification-icon {
+        float: right;
+        margin: 5px 10px 0px 0px;
+      }
+
+      .signoutBox {
+        display: inline;
+        float: right;
+        padding: 5px 10px;
+      }
+      .mainNav {
+        margin-top: 10px;
+        border-top: 1px solid #666666;
+        padding-top: 15px;
+        .navItem {
+          float: left;
+          display: inline-block;
+          margin: 0px 20px;
+          font-size: 14px;
+          padding-bottom: 10px;
+          img {
+            height: 30px;
+          }
+          .launchItems {
+            color: #ffffff;
+            background-color: red;
+            font-weight: bold;
+            padding: 2px;
+          }
+          &.active {
+            border-bottom: 2px solid orangered;
+          }
+        }
+      }
+    }
+
+    .logo {
+      width: 100%;
+      margin-left: 15px;
+      span {
+        color: #6EBF7A;
+        font-weight: normal;
+      }
+      .logoText {
+        color: #255DAA;
+        font-weight: bold;
+        display: inline-block;
+        text-shadow: #0d1319 3px 2px 4px;
+      }
+    }
+  }
+}

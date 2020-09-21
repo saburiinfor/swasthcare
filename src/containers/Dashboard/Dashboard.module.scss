@@ -1,0 +1,115 @@
+.tabButtons {
+  padding: 10px;
+  margin-right: 0px;
+  border-radius: .5rem .5rem 0px 0px;
+  background-color: #fff;
+  color: #000000;
+}
+
+.tabCalendar {
+  padding: 8px;
+  border: 1px solid #6c757d;
+  display: inline-block;
+  border-radius: .5rem .5rem 0px 0px;
+  position: relative;
+  top: 1px;
+  &.active {
+    background-color: #6c757d;
+  }
+}
+
+.appointments {
+  margin: 15px;
+  padding: 0px;
+  width: 100%;
+  border-top: 1px solid #333333;
+  .appointmentSection {
+    border: 1px darkgrey solid;
+    background-color: #fff !important;
+    padding: 10px 0px 10px 0px !important;
+    border-left: 3px #17a2b8 solid;
+    margin: 10px 10px .5rem;
+    border-radius: 0px;
+    box-shadow: #999999 2px 2px 4px;
+
+    .container-fluid {
+      background: #fff;
+    }
+  }
+
+  .appointmentSection.confirmed {
+    border-left: 3px darkorange solid;
+  }
+}
+
+.appointmentBtns {
+  text-align: right;
+}
+
+.editBtn {
+  background-color: #FFFFFF !important;
+  border: none !important;
+  float: right;
+}
+
+.customTabs {
+  border: 1px #dee2e6 solid !important;
+  border-top: 0 #fff solid !important;
+  padding: 15px;
+}
+
+.fontBold {
+  font-weight: bold !important;
+}
+
+@media only screen and (max-height: 700px) {
+  .editBtnRow {
+    height: 1px;
+  }
+  .appointments {
+    margin-top: 15px;
+  }
+  .customTabs {
+    height: 25vh;
+    margin-bottom: 10px;
+    .appointments {
+      height: 25vh;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .editBtnRow {
+    height: 1px;
+  }
+  .appointments {
+    margin: 0px;
+    margin-top: 15px;
+  }
+  .customTabs {
+    height: 28vh;
+    margin-bottom: 10px;
+    .appointments {
+      height: 25vh;
+      overflow: scroll;
+    }
+    .appointmentSection {
+      margin-bottom: .5rem;
+      border-radius: 0px;
+      box-shadow: 2px 2px 4px #dcdcdc;
+      .appointmentDesc {
+        width: 60%;
+        font-size: 14px;
+      }
+      .appointmentBtns {
+        width: 40%;
+        * {
+          font-size: 12px;
+        }
+        :first-child {
+          margin-bottom: 5px;
+        }
+      }
+    }
+  }
+}

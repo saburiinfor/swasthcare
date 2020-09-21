@@ -1,0 +1,123 @@
+.header {
+  padding: 10px 0px;
+  width: 100%;
+  display: flex;
+
+  .logged-header {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    padding-bottom: 5px;
+
+    .logo {
+      display: inline;
+      img {
+        margin-top: -10px;
+        margin-right: 10px;
+      }
+      a {
+        display: inline-block;
+      }
+      span {
+        color: #6EBF7A;
+        font-weight: normal;
+      }
+      .logoText {
+        color: #255DAA;
+        font-size: 32px;
+        font-weight: bold;
+        display: inline-block;
+        vertical-align: middle;
+        text-shadow: #0d1319 2px 2px 2px;
+      }
+    }
+
+    .main-menu {
+      float: left;
+      margin: 5px 0px 0px 10px;
+    }
+
+    .header-controls {
+      float: right;
+      margin: 5px 15px 0px 0px;
+      .notification-icon, .profile-icon, .announcement-icon {
+        margin-right: 10px;
+        height: 25px;
+      }
+      .signoutBox {
+        display: inline;
+        float: right;
+        margin-top: -5px;
+      }
+    }
+    .mainNav {
+      border-top: 1px solid #666666;
+      padding-top: 15px;
+      .navItem {
+        float: left;
+        display: inline-block;
+        margin: 0px 20px;
+        font-size: 14px;
+        padding-bottom: 10px;
+        img {
+          height: 30px;
+        }
+        .launchItems {
+          color: #ffffff;
+          background-color: red;
+          font-weight: bold;
+          padding: 2px;
+        }
+        &.active {
+          border-bottom: 2px solid orangered;
+        }
+      }
+    }
+  }
+
+  .login-header {
+    .logo {
+      width: 48%;
+      float: left;
+      img {
+        display: -webkit-inline-flex;
+        display: inline-flex;
+      }
+      span {
+        color: #6EBF7A;
+        font-weight: normal;
+      }
+      .logoText {
+        color: #255DAA;
+        font-size: 40px;
+        font-weight: bold;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 10px 0 0 30px;
+        text-shadow: #0d1319 1px 2px 2px;
+      }
+    }
+
+    .searchContainer {
+      width: 50%;
+      text-align: right;
+      float: right;
+
+      img {
+        vertical-align: middle;
+        position: relative;
+        top: -1px;
+        width: 15px;
+        right: 25px;
+      }
+      .search {
+        width: 48%;
+        height: 26px;
+        border-radius: 5px;
+        padding: 6px;
+        border: 1px solid #fff;
+        box-shadow: #0d1319 2px 2px 3px;
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+h2 {
+  font-weight: bold;
+}
+
+.appointmentBox {
+  border: 1px #cccccc solid;
+  border-radius: 3px;
+  width: 100%;
+  float: left;
+  h4 {
+    padding: 10px;
+  }
+
+  > div {
+    padding: 15px;
+  }
+
+  .appointmentTable {
+    width: 100%;
+
+    thead tr {
+      background-color: #cccccc;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    tr {
+      border: 1px solid #cccccc;
+    }
+
+    td {
+      padding: 5px;
+
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+}

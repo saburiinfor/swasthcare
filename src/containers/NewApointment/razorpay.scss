@@ -1,0 +1,55 @@
+.paymentBox {
+  .appointmentTable {
+    width: 100%;
+    thead tr {
+      background-color: #cccccc;
+      text-align: center;
+      font-weight: bold;
+    }
+    tr {
+      border: 1px solid #cccccc;
+    }
+    td {
+      padding: 5px;
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+  .rzp-button {
+    border: 0;
+    border-radius: 3px;
+    -webkit-transition: .2s;
+    transition: .2s;
+    box-shadow: 0 3px 13px rgba(0, 0, 0, 0.09), 0 1px 5px 0 rgba(0, 0, 0, 0.14);
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height: 48px;
+    height: 40px;
+    padding: 0 24px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: bold;
+    background: #528ff0;
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+      -webkit-transform: translateY(-2px) scale(1.01);
+      -ms-transform: translateY(-2px) scale(1.01);
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 5px 16px 1px rgba(0, 0, 0, 0.13), 0 1px 4px 0 rgba(0, 0, 0, 0.09);
+    }
+    &:active {
+      -webkit-transform: perspective(40px) rotateX(1deg);
+      transform: perspective(40px) rotateX(1deg)
+    }
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 40px;
+      font-size: 14px;
+    }
+  }
+}

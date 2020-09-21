@@ -1,0 +1,142 @@
+.profileUpdateContainer {
+  float: left;
+  width: 100%;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  padding: 20px;
+  z-index: 10;
+  position: relative;
+  margin-bottom: 10px;
+  .updateBtn {
+    float: right;
+  }
+}
+
+@keyframes cssHide {
+  0%   {display: block;}
+  100% {display: none;}
+}
+
+.alertHide {
+  animation: cssHide 5s forwards;
+}
+
+.manageAccount {
+  float: left;
+  width: 100%;
+  .profilePhotoPanel {
+    text-align: center;
+    margin: 20px 0px;
+
+    .profilePhoto {
+      display: inline-block;
+      margin-bottom: 10px;
+
+      img {
+        width: 180px;
+        height: 180px;
+      }
+      .profilePic {
+        padding: 15px;
+        border: 5px solid;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+      }
+
+      .profileEdit {
+        padding: 0px 20px;
+        text-align: center;
+        width: 100%;
+        float: left;
+        color: dodgerblue;
+        cursor: pointer;
+      }
+      .uploadPhotoContainer {
+        text-align: left;
+        margin: 10px 0px;
+        .saveProfile {
+          margin-top: 5px;
+        }
+      }
+    }
+    .profileCompletion {
+      margin-top: 20px;
+    }
+    .userDetails {
+      margin: 0px;
+      background-color: #27A0EC;
+      font-weight: bold;
+      line-height: 30px;
+      .leftColumn {
+        text-align: right;
+        width: 50%;
+      }
+      .rightColumn {
+        text-align: left;
+        width: 50%;
+      }
+    }
+  }
+  .profileDetails {
+    .patientGenderBox {
+      padding-left: 1rem;
+      .form-check {
+        margin-top: 15px;
+      }
+    }
+    .form-label {
+      font-weight: bold;
+      margin-bottom: 0px;
+      margin-top: 1rem;
+    }
+    .card-header {
+      .editLink {
+        float: right;
+        //margin-top: -3px 0px 0px 0px;
+        //padding: 0px 10px;
+        //font-size: 15px;
+      }
+    }
+    .card-body {
+      height: calc(100vh - 410px);
+      overflow-y: scroll;
+    }
+    .patientTexts {
+      font-weight: normal;
+      width: 100%;
+    }
+    .saveProfile, .cancelChange {
+      float: right;
+      margin: 20px 10px;
+      padding: 8px 15px;
+    }
+    .addressCard {
+      width: 100%;
+      height: 300px;
+      margin: 10px 0px;
+      .addressType {
+        float: right;
+      }
+      .card-link {
+        font-size: .9em;
+      }
+      //.editAddress {
+      //  float: right;
+      //}
+      &.newAddress {
+        font-size: 2em;
+        text-align: center;
+        padding-top: 10%;
+        border: 3px dashed #bcbcbc;
+        border-radius: 8px;
+        cursor: pointer;
+        .plusSign {
+          color: gray;
+          font-size: 2em;
+          display: block;
+        }
+      }
+    }
+  }
+}

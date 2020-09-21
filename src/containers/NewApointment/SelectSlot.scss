@@ -1,0 +1,71 @@
+.slotBox {
+  border: 1px #ccc solid;
+  border-radius: 3px;
+  width: 100%;
+  float: left;
+  > div {
+    padding: 15px;
+  }
+  ul.slotsListingContainer {
+    width: 100%;
+    list-style: none;
+    padding: 0px;
+    li {
+      border: 1px solid #444444;
+      list-style: none;
+      height: 45px;
+      //padding: 5px;
+      &:first-child {
+        background-color: #dcdcdc;
+        font-weight: bold;
+      }
+      span {
+        width: 20%;
+        display: inline-block;
+        text-align: center;
+        vertical-align: text-top;
+        padding: 5px 0px;
+        border-left: 1px solid #aaaaaa;
+        height: 100%;
+        .btn-link {
+          margin-top: -.6em;
+        }
+      }
+      &.selected {
+        background-color: #ccc;
+        border-color: #666666;
+      }
+    }
+  }
+
+  .form-check {
+    display: inline-block;
+    float: left;
+    width: auto;
+    margin-right: 20px;
+    input {
+      margin-top: 3px;
+    }
+  }
+
+  .container-fluid {
+    background: #fff;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .slotsListingContainer {
+    font-size: small;
+    li {
+      height: 30px;
+      &:first-child {
+        height: 45px;
+      }
+      span {
+        .btn-link {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}

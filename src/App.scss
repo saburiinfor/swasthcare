@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body {
+  font-size: 1em;
+  font-family: 'Roboto', sans-serif;
+}
+
+.oneGridBox {
+  margin: 0px auto;
+  min-width: 500px;
+
+  button, a {
+    margin-left: 3px;
+  }
+
+  .reset-messages {
+    .form-label {
+      padding-left: 6px;
+    }
+  }
+}
+
+.globalLinks-mob {
+  display: none;
+}
+
+.login-bg {
+  background: rgb(19, 183, 228);
+  background: linear-gradient(136deg, rgba(19, 183, 228, 1) 42%, rgba(89, 122, 239, 1) 35%);
+  height: 100%;
+  //min-height: 800px;
+}
+
+.logged-bg {
+  background-color: #fff;
+  height: 100%;
+}
+
+.keyFeatures {
+  background-image: radial-gradient(circle at top, #193DC9, #0C1558); // #1A39C3 #101961 #0C1558
+  font-size: 22px;
+  font-weight: bold;
+  padding: 0px 50px;
+  color: #fff;
+
+  .featuresHead {
+    text-align: justify;
+    margin: 40px;
+  }
+
+  ul {
+    list-style-type: none;
+
+    li {
+      line-height: 35px;
+      padding-bottom: 15px;
+    }
+  }
+}
+
+.form {
+  .form-group {
+    width: auto;
+
+    .form-control {
+      border: none;
+      border-bottom: 1px solid #a9a9a9;
+      border-radius: 0px;
+    }
+
+    .form-check-input {
+      margin-left: 0px !important;
+      float: left;
+      left: 20px;
+    }
+
+    label {
+      color: #666666;
+      margin-left: 20px;
+      float: left;
+      position: relative;
+      left: 5px;
+      top: -1px;
+    }
+  }
+
+  .form-check {
+    label {
+      color: #666666;
+      float: left;
+      position: relative;
+      top: -1px;
+      font-size: .9rem;
+    }
+  }
+
+  .btn-primary {
+    width: 100% !important;
+    float: left !important;
+    clear: both;
+    padding: 6px 0px !important;
+    margin: 15px 0px;
+  }
+}
+
+.bgWhite, .oneGridBox {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: #0d1319 2px 2px 4px;
+
+  .welcomeMsg {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}
+
+.container-fluid {
+  //min-height: 600px;
+
+  .MiddleContainer {
+    .selectDate {
+      border: 1px #ccc solid;
+      border-radius: 3px;
+      width: 100%;
+      float: left;
+
+      div {
+        padding: 15px;
+      }
+    }
+
+    .stepHeader {
+      width: 100%;
+      background-color: #ccc;
+      padding: 0px !important;
+      float: left;
+    }
+
+    .stepSelectionBox {
+      float: left;
+      width: 100%;
+      height: calc(100vh - 490px);
+      overflow-y: scroll;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h4 {
+      font-size: 1rem;
+      float: left;
+      margin-top: 2px;
+      margin-bottom: 6px;
+      padding: 10px;
+    }
+  }
+}
+
+.submitBtn {
+  width: auto !important;
+  float: right;
+  padding: 8px 40px !important;
+  margin-right: 10px;
+}
+
+.Footer {
+  position: fixed;
+  bottom: 0px;
+  min-height: 60px;
+  width: 100%;
+  padding: 5px;
+  border-top: 1px solid #dcdcdc;
+  background-color: #FFFFFF;
+}
+
+.FooterCnt {
+  text-align: center;
+
+  ul {
+    list-style-type: none;
+
+    li {
+      display: inline-block;
+      padding-left: 5px;
+
+      a {
+        text-decoration: none;
+        color: #000;
+        font-size: 15px;
+        line-height: 21px;
+        border-bottom: 1px solid;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+#forgotPWD, #signUp {
+  margin-bottom: 0;
+  padding-top: 5px;
+  font-size: .9rem;
+}
+
+.no-border {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  /* You may want to include this as bootstrap applies these
+      styles too */
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.carousel {
+  margin: 20px 0px;
+
+  .carousel-inner {
+    width: 80%;
+    left: 10%;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    cursor: pointer;
+    width: 10%;
+  }
+
+  .carousel-item,
+  .carousel-item.active {
+    align-items: center;
+  }
+
+  .carousel-indicators li {
+    background-color: #000000;
+  }
+}
+
+.carousel-item > img {
+  width: 100%;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  font-weight: bold !important;
+}
+
+.nav-tabs .nav-item {
+  margin-bottom: 0px !important;
+}
+
+.nav-tabs .nav-link {
+  color: #495057 !important;
+  background-color: #fff !important;
+  border-color: #dee2e6 #dee2e6 #fff !important;
+}
+
+/** Responisve css **/
+@media only screen and (max-width: 500px) {
+  main {
+    height: calc(100vh - 300px) !important;
+  }
+  .container-fluid {
+    padding-right: 10px !important;
+    padding-left: 10px !important;
+    .MiddleContainer {
+      .row, .col, .col-md-12 {
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+
+      .stepSelectionBox {
+        float: left;
+        height: calc(100vh - 390px);
+        overflow-y: scroll;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h4 {
+        font-size: 1rem;
+        width: 175px;
+        float: left;
+        margin-top: 2px;
+      }
+
+      .detailsColumn {
+        width: 190px;
+        float: left;
+        overflow: scroll;
+      }
+    }
+  }
+
+  .bgWhite {
+    background: #fff;
+    border-radius: 0px !important;
+    border: 1px solid #dcdcdc;
+    padding: 10px;
+    margin-top: calc(50vh - 250px);
+    width: 100%;
+    float: left;
+
+    .row {
+      clear: both;
+      float: left;
+      width: 100%;
+    }
+
+    #forgotPWD {
+      padding-top: 20px;
+      margin-bottom: 0px;
+      font-size: 14px;
+    }
+  }
+
+  .FooterCnt {
+    ul {
+      display: none;
+    }
+    .copyright {
+      margin-top:10px;
+    }
+  }
+
+  //.Footer {
+  //  position: fixed !important;
+  //  bottom: -10px !important;
+  //}
+
+  .form-control {
+    border: none !important;
+    border-bottom: 1px solid #ced4da !important;
+    border-radius: 0px !important;
+  }
+
+  .globalLinks-mob {
+    display: block !important;
+
+    ul {
+      display: block;
+      padding: 5px 0px 0px 5px;
+      margin-top: 10px;
+      border-top: 1px solid #dcdcdc;
+    }
+
+    ul,
+    li {
+      list-style-type: none;
+    }
+
+    li {
+      float: left;
+      padding: 0px 15px;
+
+      a {
+        color: #666666;
+        font-size: 14px;
+      }
+
+      border-right: 1px solid #ced4da;
+    }
+
+    li:last-child {
+      border-right: none;
+    }
+  }
+}

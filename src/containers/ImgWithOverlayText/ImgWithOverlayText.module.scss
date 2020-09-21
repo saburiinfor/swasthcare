@@ -1,0 +1,46 @@
+/* Container holding the image and the text */
+.overlayContainer {
+  position: relative;
+  text-align: center;
+  color: white;
+  margin-bottom: 10px;
+
+  .textCentered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: #000;
+  }
+}
+
+/* Centered text */
+
+.overlayImg {
+  width: 100%;
+}
+
+@media only screen and (max-height: 700px) {
+  .overlayContainer {
+    img {
+      height: 80px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .adsPanel {
+    display: flex;
+    flex-direction: row;
+    overflow: scroll;
+
+    .overlayContainer {
+      width: 200px;
+      margin: 0px 10px;
+      img {
+        height: 80px !important;
+      }
+    }
+  }
+}
