@@ -62,7 +62,8 @@
    "scripts": {
       "start": "set PORT=5000 && react-scripts start",
       "build": "react-scripts build",
-      "envbuild": "env-cmd -e production npm run build",
+      "qabuild": "env-cmd -e development npm run build",
+      "prodbuild": "env-cmd -e production npm run build",
       "devbuild": "set PORT=5000 && react-scripts build",
       "test": "react-scripts test",
       "eject": "react-scripts eject",
