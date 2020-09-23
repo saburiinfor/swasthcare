@@ -18,12 +18,6 @@ export const citiesSuccess = (cityList) => {
     };
 };
 
-export const cliniclistsuccess = (clinicList) => {
-    return {
-        type: actionTypes.CLINICLIST_SUCCESS,
-        clinicList
-    };
-};
 
 
 export const getCityList = () => {
@@ -38,22 +32,4 @@ export const getCityList = () => {
             });
     };
 };
-export const getClinicByCity = (city) => {
-   // console.log(city)
-    return dispatch => {
-        const clinicRequestData = new FormData();
-        clinicRequestData.append("city", city);
-        console.log(clinicRequestData)
-        axios.post(process.env.REACT_APP_API_URL + "Clinic/getclinicbycity/", clinicRequestData).then(
-            response => {
-                console.log(response.data.success)
-                if (response.data.success === 1) {
-                    let clinicData = response.data;
-                    console.log(clinicData)
-                    dispatch(cliniclistsuccess(clinicData));
-                }
-            }).catch(err => {
-                console.log(err);
-            });
-    };
-};
+

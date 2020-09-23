@@ -6,7 +6,6 @@ const initialState = {
         city: null,
     },
     cityList: [],
-    clinicList: [],
 };
 
 const appointmentDataSuccess = (state, action) => {
@@ -22,12 +21,7 @@ const citiesSuccess = (state, action) => {
     });
 };
 
-const cliniclistsuccess = (state, action) => {
-    return updateObject(state, {
-        clinicList: action,
-        clinicList : action.clinicList
-    });
-};
+
 
 
 const reducer = (state = initialState, action) => {
@@ -35,8 +29,6 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CITY_SUCCESS:
             console.log('reducer switch')
             return citiesSuccess(state, action);
-        case actionTypes.CLINICLIST_SUCCESS:
-            return cliniclistsuccess(state, action);
         case actionTypes.SET_LABAPPOINTMENTDATA:
             return appointmentDataSuccess(state, action);
        

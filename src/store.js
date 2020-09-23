@@ -17,6 +17,8 @@ import forgotPasswordReducer from './store/reducers/forgotPassword';
 import resetPasswordReducer from './store/reducers/resetPassword';
 import manageAccountReducer from './store/reducers/manageAccount';
 import labAppointmentReducer from './store/reducers/labAppointment';
+import selectClinicReducer from './store/reducers/selectClinic';
+import labMediaElementGroupReducer from './store/reducers/labMediaElementGroup';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -46,7 +48,9 @@ const rootReducer = combineReducers({
   forgotPassword: forgotPasswordReducer,
   resetPassword: resetPasswordReducer,
   manageAccount: manageAccountReducer,
-  labAppointment: labAppointmentReducer
+  labAppointment: labAppointmentReducer,
+  selectClinic: selectClinicReducer,
+  labMediaElementGroup: labMediaElementGroupReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

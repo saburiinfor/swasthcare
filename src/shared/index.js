@@ -14,4 +14,6 @@ export { getServiceCities, generatePharmacyOrderId, placeOrderPharmaItems, getCl
 export { sendResetLink } from '../store/actions/forgotPassword';
 export { validateToken, resetPassword } from '../store/actions/resetPassword';
 export { getPatientProfile, updatePatientProfile, getPatientAddresses, updateAddress, getStates } from '../store/actions/manageAccount';
-export { getCityList, getClinicByCity, setLabAppointmentData } from '../store/actions/labAppointment';
+export { getCityList, setLabAppointmentData } from '../store/actions/labAppointment';
+export { getClinicByCity } from '../store/actions/selectClinic';
+export { getTestList, setClinicFilterText } from '../store/actions/labMediaElementGroup';

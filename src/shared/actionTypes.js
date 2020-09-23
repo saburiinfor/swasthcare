@@ -8,7 +8,6 @@ export const AUTH_LOGOUT_FAIL = 'AUTH_LOGOUT_FAIL';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 
 export const COUNTRY_SUCCESS = 'COUNTRY_SUCCESS';
-console.log('action types call')
 export const CITY_SUCCESS = 'CITY_SUCCESS';
 export const CITY_FAILURE = 'CITY_FAILURE';
 export const CREATEUSER_SUCCESS = 'CREATEUSER_SUCCESS';
@@ -80,6 +79,11 @@ export const GET_APPOINTMENT_DETAILS_FAILURE = 'GET_APPOINTMENT_DETAILS_FAILURE'
 export const POST_PDF_DOCUMENT = 'PUSH_PDF_DOCUMENT';
 export const SET_LABAPPOINTMENTDATA = 'SET_LABAPPOINTMENTDATA';
 export const CLINICLIST_SUCCESS = 'CLINICLIST_SUCCESS';
+
+export const SET_CLINIC_FILTER_TEXT = 'SET_CLINIC_FILTER_TEXT';
+//export const SET_SELECTED_PHY_ID = 'SET_SELECTED_PHY_ID';
+export const GET_CLINICDETAIL_SUCCESS = 'GET_CLINICDETAIL_SUCCESS';
+export const GET_CLINICDETAIL_FAILURE = 'GET_CLINICDETAIL_FAILURE';
 
 // // export const API_URL = 'https://www.conferadmin.com/restapi/';
 // export const API_URL = 'https://www.skrepository.com/restapi/';
