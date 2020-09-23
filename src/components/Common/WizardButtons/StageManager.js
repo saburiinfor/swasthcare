@@ -61,10 +61,10 @@ const getPageLink = function (flow, key) {
       pageUrl = '/labAppointment';
       break;
     case 1:
-      pageUrl = '/selectClinic';
+      pageUrl = '/labAppointment';
       break;
     default:
-      pageUrl = '/labAppointment';
+      pageUrl = '/selectClinic';
       break;
     }
   }

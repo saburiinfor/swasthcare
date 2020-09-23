@@ -1,10 +1,11 @@
 import React, {Component} from "react";
 import LabMediaElement from "./LabMediaElement";
-import {Input} from "reactstrap";
-import styles from "./MediaElement.module.scss";
+import {Col, Input} from "reactstrap";
+import styles from "../../components/Common/Media/MediaElement.module.scss";
 import {connect} from 'react-redux';
-import * as actions from "../../../shared";
-import WizardButtons from "../WizardButtons/WizardButtons";
+import * as actions from "../../shared";
+import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
+import {WizardContext} from "../../shared/WizardContext";
 
 class LabMediaElementGroup extends Component {
   
@@ -19,6 +20,7 @@ class LabMediaElementGroup extends Component {
   componentDidMount() {
   
     this.props.onGetClinicByCity(this.props.labAppointmentData.city);
+    console.log(this.props);
     // console.log("componentDidMount")
     // console.log(this.props.labAppointmentData.city)
     // console.log(this.props.clinicList)
@@ -43,20 +45,23 @@ class LabMediaElementGroup extends Component {
     this.props.onSetLabAppointmentData(this.props.labAppointmentData);
   };
   render() {
- //console.log(this.state)
-    // const { filter } = this.state;
-    // const filteredData = this.props.clinicList.filter((item) => {
-    //   return Object.keys(item).some(key =>
-    //     (item[key] !== null) ? item[key].toLowerCase().includes(filter.toLowerCase()) : false
-    //   );
-    // });
+    const { filter } = this.state;
+    const filteredData = this.props.clinicList.filter((item) => {
+      return Object.keys(item).some(key =>
+        (item[key] !== null) ? item[key].toLowerCase().includes(filter.toLowerCase()) : false
+      );
+    });
     
     return (
       <div className={styles.appointmentList}>
         <div className={'stepHeader'}>
           <h4>Select Clinic
           </h4>
-          <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} />
+          <WizardContext.Consumer>
+            {wizard => (
+              <WizardButtons nextBtnCallback={this.handlerNextBtnClick} noContinue={!this.validateUserSelection()} steps={wizard.steps} wizardKey={wizard.key} />
+            )}
+          </WizardContext.Consumer>
         </div>
         <div className={'stepSelectionBox'}>
           {this.props.cliniclistError !== null &&
@@ -66,9 +71,10 @@ class LabMediaElementGroup extends Component {
           {this.props.error !== null &&
             <p>Clinic details not found, please select another one</p>
           } */}
-          {/* {filteredData.map((item, index) => (
+          
+          {filteredData.map((item, index) => (
             <LabMediaElement noOfStars="5" record={item} key={index} className="styles.mediaElement" {...this.props} />
-          ))} */}
+          ))}
         </div>
       </div>
     );
@@ -78,11 +84,11 @@ const mapStateToProps = (state) => {
  // console.log(state)
   return {
     clinicList: state.selectClinic.clinicList,
-    labAppointmentData: state.labAppointment.labAppointmentData, 
+    labAppointmentData: state.labAppointment.labAppointmentData,
     filter: state.labMediaElementGroup.filter,
     clinicDetails: state.labMediaElementGroup.clinicDetails,
     error: state.labMediaElementGroup.error,
-    cliniclistError: state.selectClinic.error
+    cliniclistError: state.selectClinic.cliniclistError
   };
 };
 const mapDispatchToProps = (dispatch) => {

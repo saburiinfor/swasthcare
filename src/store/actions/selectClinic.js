@@ -2,14 +2,18 @@ import * as actionTypes from '../../shared/actionTypes';
 import axios from "axios";
 
 export const cliniclistsuccess = (clinicList) => {
-    console.log('action creater call')
     return {
         type: actionTypes.CLINICLIST_SUCCESS,
         clinicList
     };
 };
 
-
+export const clinicListError = (error) => {
+  return {
+    type: actionTypes.CLINICLIST_FAILURE,
+    error
+  };
+};
 
 export const getClinicByCity = (city) => {
     // console.log(city)
@@ -22,10 +26,12 @@ export const getClinicByCity = (city) => {
             response => {
                //console.log(response.data.success)
                 if (response.data.success === 1) {
-                    let clinicData = response.data;
-                    console.log('action result')
+                    let clinicData = response.data.result;
+                    // console.log('action result')
                     //console.log(clinicData)
                     dispatch(cliniclistsuccess(clinicData));
+                } else {
+                  dispatch(clinicListError(response.data.error));
                 }
             }).catch(err => {
                 console.log(err);

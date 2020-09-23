@@ -9,7 +9,7 @@ import Breadcrumb from "../../components/Common/Breadcrumb/Breadcrumb";
 import WizardButtons from "../../components/Common/WizardButtons/WizardButtons";
 import * as actions from "../../shared";
 import { connect } from "react-redux";
-import LabMediaElementGroup from '../../components/Common/Media/LabMediaElementGroup';
+import LabMediaElementGroup from './LabMediaElementGroup';
 
 class SelectClinic extends Component {
   constructor(props) {
