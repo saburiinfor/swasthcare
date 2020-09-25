@@ -21,14 +21,14 @@ export const getClinicByCity = (city) => {
     return dispatch => {
         const clinicRequestData = new FormData();
         clinicRequestData.append("city", city);
-        console.log(clinicRequestData)
+        //console.log(clinicRequestData)
         axios.post(process.env.REACT_APP_API_URL + "Clinic/getclinicbycity/", clinicRequestData).then(
             response => {
                //console.log(response.data.success)
                 if (response.data.success === 1) {
                     let clinicData = response.data.result;
                     // console.log('action result')
-                    //console.log(clinicData)
+                    console.log(clinicData)
                     dispatch(cliniclistsuccess(clinicData));
                 } else {
                   dispatch(clinicListError(response.data.error));

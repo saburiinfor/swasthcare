@@ -24,13 +24,15 @@ export const getClinicDetailsFailure = (error) => {
 };
 
 export const getTestList = (clinicid) => {
+    console.log(clinicid)
     return dispatch => {
         const clinicData = new FormData();
         clinicData.append('clinicid', clinicid);
-        axios.post(process.env.REACT_APP_API_URL + "Tests/gettestlist/", clinicData).then(
+        console.log(clinicData)
+        axios.get(process.env.REACT_APP_API_URL + "Tests/gettestlist/", clinicData).then(
             response => {
                 // console.log('inside physician data response');
-                console.log("res ***" + JSON.stringify(response.data));
+               console.log("res ***" + JSON.stringify(response));
                 if (response.data.success === 1) {
                     dispatch(getClinicDetailsSuccess(response.data.result[0]));
                 } else {

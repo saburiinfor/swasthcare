@@ -22,7 +22,7 @@ class SelectClinic extends Component {
   componentDidMount() {
     //console.log(this.props.labAppointmentData)
     let { city } = this.props.labAppointmentData;
-    console.log(city)
+    //console.log(city)
     this.props.onGetClinicByCity(city);
   }
 

@@ -20,7 +20,7 @@ class LabMediaElementGroup extends Component {
   componentDidMount() {
   
     this.props.onGetClinicByCity(this.props.labAppointmentData.city);
-    console.log(this.props);
+    
     // console.log("componentDidMount")
     // console.log(this.props.labAppointmentData.city)
     // console.log(this.props.clinicList)
@@ -37,15 +37,16 @@ class LabMediaElementGroup extends Component {
   };
 
   handlerNextBtnClick = () => {
-    for (const key of ['clinicname', 'clinicaddress', 'cliniccontact']) {
-      this.props.labAppointmentData[key] = this.props.clinicDetails[key];
-    }
-    this.props.labAppointmentData.cliniciId= this.props.clinicDetails.clinicId;
-    this.props.onSelectClinic(this.props.labAppointmentData.clinicId);
+    // for (const key of ['name', 'clinicid', 'cliniccontact']) {
+    //   this.props.labAppointmentData[key] = this.props.clinicDetails[key];
+    // }
+    //this.props.labAppointmentData.clinicid= this.props.clinicDetails.clinicid;
+    this.props.onSelectClinic(this.props.labAppointmentData.clinicid);
     this.props.onSetLabAppointmentData(this.props.labAppointmentData);
   };
   render() {
     const { filter } = this.state;
+    //console.log(this.props.clinicList)
     const filteredData = this.props.clinicList.filter((item) => {
       return Object.keys(item).some(key =>
         (item[key] !== null) ? item[key].toLowerCase().includes(filter.toLowerCase()) : false
@@ -67,8 +68,8 @@ class LabMediaElementGroup extends Component {
           {this.props.cliniclistError !== null &&
             <h6 style={{ color: '#FF0000', marginLeft: '20px' }}>No Clinic available in selected city, please try after sometime...</h6>
           }
-          {/* <Input type="search" name="search" id="searchDoctor" placeholder="Search by name, location or clinic" value={filter} onChange={this.handleChange} />
-          {this.props.error !== null &&
+           <Input type="search" name="search" id="searchClinic" placeholder="Search by clinic name" value={filter} onChange={this.handleChange} />
+          {/* {this.props.error !== null &&
             <p>Clinic details not found, please select another one</p>
           } */}
           
@@ -93,8 +94,9 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
+    onGetClinicByCity: (city) => dispatch(actions.getClinicByCity(city)),
     onSetLabAppointmentData: (labAppointmentData) => dispatch(actions.setLabAppointmentData(labAppointmentData)),
-    onGetTestByClinic: (clinicid) => dispatch(actions.getTestList(clinicid)),
+    //onGetTestByClinic: (clinicid) => dispatch(actions.getTestList(clinicid)),
     onSetClinicFilterText: (filterText) => dispatch(actions.setClinicFilterText(filterText))
   };
 };

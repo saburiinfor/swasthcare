@@ -9,27 +9,29 @@ class LabMediaElement extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      pid: null,
       clinicid: null
     };
-    this.selectPhysician.bind(this);
+    
+    this.selectClinic.bind(this);
   };
   
   componentDidMount() {
-    // this.props.appointmentData.selectedPhysician = false;
+    this.props.labAppointmentData.selectedClinic = false;
   }
   
-  // click handler for physician selection
-  selectPhysician = (pid, clinicid) => {
-    this.props.onGetPhysicianById(pid, clinicid);
-    this.props.appointmentData.pid = pid;
-    this.props.appointmentData.clinicid = clinicid;
-    this.props.appointmentData.selectedPhysician = true;
+  // click handler for clinic selection
+  selectClinic = (clinicid) => {
+    //console.log(clinicid)
+    //this.props.onGetTestByClinic(clinicid);
+    this.props.labAppointmentData.clinicid = clinicid;
+    console.log(this.props.labAppointmentData.clinicid)
+    this.props.labAppointmentData.selectedClinic = true;
   };
   
   render() {
     const noOfStars = this.props.noOfStars;
     const panelData = this.props.record;
+    console.log(this.props.labAppointmentData.clinicid)
     let starIconArray = [];
     for (let i = 0; i < noOfStars; i++) {
       starIconArray[i] = (
@@ -37,17 +39,16 @@ class LabMediaElement extends Component {
       );
     }
     return (
-      // <Media className={classnames(styles.mediaElement, "m-1", "p-1", (this.props.appointmentData.pid === panelData.id && this.props.appointmentData.clinicid === panelData.clinicid) ?
-      // styles.selected : '')} onClick={this.selectPhysician.bind(null, panelData.id, panelData.clinicid)}>
-      <Media className={classnames(styles.mediaElement, "m-1", "p-1")}>
+     
+      <Media className={classnames(styles.mediaElement, "m-1", "p-1", (this.props.labAppointmentData.clinicid === panelData.clinicid ) ? styles.selected : '')} onClick={this.selectClinic.bind(null,panelData.clinicid)}>
         <Media left top href="#">
-          {/*} <Media object data-src="holder.js/64x64" alt="Generic placeholder image" />*/}
           <div className="text-center">
-            <FontAwesomeIcon color="#ccc" size="5x" icon={faUser}/>
+            <FontAwesomeIcon color="#ccc" size="5x" icon={faUser} />
           </div>
           {/*<div>{starIconArray}</div>*/}
           <Button className="pt-0" color="link">
-            {/*{(this.props.appointmentData.pid === panelData.id) ? 'Selected' : 'Select'}*/}
+            {console.log(this.props.labAppointmentData.clinicid)}
+            {(this.props.labAppointmentData.clinicid === panelData.clinicid) ? 'Selected' : 'Select'}
           </Button>
         </Media>
         <Media body>
@@ -58,37 +59,37 @@ class LabMediaElement extends Component {
                   Name
                 </Col>
                 <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                  {/*{panelData.phyname}*/}
+                  {panelData.name}
                 </Col>
               </Row>
             </ListGroupItem>
             <ListGroupItem className="border-0 p-0">
               <Row>
                 <Col className={classnames(styles.widthHalf, "font-weight-bold", "pr-1")} md="5">
-                  Specializations
+                  Service
                 </Col>
                 <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                  {/*{panelData.specializations}*/}
+                  Pathology
                 </Col>
               </Row>
             </ListGroupItem>
             <ListGroupItem className="border-0 p-0">
               <Row>
                 <Col className={classnames(styles.widthHalf, "font-weight-bold", "pr-1")} md="5">
-                  Practicing since
+                  Location
                 </Col>
                 <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                  {/*{panelData.experience}*/}
+                  {panelData.address}
                 </Col>
               </Row>
             </ListGroupItem>
             <ListGroupItem className="border-0 p-0">
               <Row>
                 <Col className={classnames(styles.widthHalf, "font-weight-bold", "pr-1")} md="5">
-                  Consult at
+                 Service Mode
                 </Col>
                 <Col md="7" className={classnames(styles.widthHalf, "pl-1")}>
-                  {/*{panelData.clinicname}*/}
+                  Home Visit,Clinic Visit
                 </Col>
               </Row>
             </ListGroupItem>
